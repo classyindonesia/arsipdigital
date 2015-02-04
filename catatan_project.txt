@@ -1,0 +1,29 @@
+1. level ada 3
+	a. admin
+	b. staff
+	c. user
+
+
+2. import user lewat excel
+	a. data = email+password
+
+3. tidak ada akses publik
+
+4. langsung halaman login
+
+5. akses file pribadi(user)
+
+6. utk level admin & staff bisa lihat file2 user
+
+7. folder yg menentukan admin
+	a. jika folder dihapus oleh admin, maka isinya jg ikut terhapus semua
+
+8. setiap user memiliki data profile
+	a. nama lengkap
+	b. TTL
+	c. nomor hp
+	d. dst
+
+9. user admin bisa memberi akses kepada level staff, untuk melihat data user
+	a. admin bisa memilih staff mana saja yg bisa akses data user tsb
+	b. admin bisa menghapus akses staff dan tidak bisa melihat data user lagi
