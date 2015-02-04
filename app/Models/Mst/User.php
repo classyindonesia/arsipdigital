@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models\Mst;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +15,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'mst_users';
 
 	/**
 	 * The attributes that are mass assignable.
