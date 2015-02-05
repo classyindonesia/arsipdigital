@@ -36,23 +36,12 @@
                                     <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
                                         Jane Doe - Web Developer
-                                        <small>menjadi member sejak : 
+                                        <small>terdaftar sejak : 
                                             {{ Fungsi::date_to_tgl(date('Y-m-d', strtotime(Auth::user()->created_at))) }}
                                             </small>
                                     </p>
                                 </li>
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </li>
+ 
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">

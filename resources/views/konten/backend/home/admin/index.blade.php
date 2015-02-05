@@ -58,7 +58,14 @@
 @endsection
 
 
-
+@section('script_tambahan')
+    {!! HTML::script('js/plugins/sparkline/jquery.sparkline.min.js') !!}    
+    {!! HTML::script('js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') !!}    
+    {!! HTML::script('js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') !!}    
+    {!! HTML::script('js/plugins/jqueryKnob/jquery.knob.js') !!}    
+    {!! HTML::script('js/plugins/daterangepicker/daterangepicker.js') !!}    
+    {!! HTML::script('js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') !!}    
+@stop
 
 
 @section('title')	
