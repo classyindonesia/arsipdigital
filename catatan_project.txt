@@ -17,6 +17,7 @@
 
 7. folder yg menentukan admin
 	a. jika folder dihapus oleh admin, maka isinya jg ikut terhapus semua
+	b. di dalam folder yg ditentukan admin, user bs membuat folder tambahan
 
 8. setiap user memiliki data profile
 	a. nama lengkap
@@ -27,3 +28,8 @@
 9. user admin bisa memberi akses kepada level staff, untuk melihat data user
 	a. admin bisa memilih staff mana saja yg bisa akses data user tsb
 	b. admin bisa menghapus akses staff dan tidak bisa melihat data user lagi
+
+10. membuat rak
+	a. hanya admin yg bs membuat rak
+	b. ID autoincrement
+	c. kolom "kode", auto generate [random string]
