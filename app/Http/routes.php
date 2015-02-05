@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'HomeController@index',
+	'as'			=> 'home.index'
+	]);
+
+
+
 
 //Route::get('home', 'HomeController@index');
 
