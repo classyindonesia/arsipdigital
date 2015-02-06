@@ -33,3 +33,11 @@
 	a. hanya admin yg bs membuat rak
 	b. ID autoincrement
 	c. kolom "kode", auto generate [random string]
+
+11. jenis file arsip
+	a. pdf, bs di preview dgn pdf.js
+	b. word
+	c. excel
+	d. gambar [ada watermark, setting:bs di download tanpa/dgn watermark]
+12. buat halaman public untuk search data user
+	
