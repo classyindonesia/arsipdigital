@@ -1,0 +1,139 @@
+/* customize nav samping */
+ .nav-pills > li.active > a {
+  /*
+    background-color:#00ba8b;
+    */
+    color:#038564;
+    background-color: #eee;
+  border-bottom : 2px solid #00ba8b;
+}
+
+
+
+ .nav-pills > li > a {
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+
+    color:#038564;
+}
+ 
+.nav-pills>li.active>a:hover {
+    background-color: #eee;
+    color:#038564;
+}
+/* end of customize nav samping */
+
+
+
+/* link */
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}    
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #ccc;
+}
+
+.navbar-default .nav > li > a {
+    color: #fff;
+}
+
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus {
+    color: #ccc;
+    background: transparent;
+}
+
+
+/* title */
+.navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ccc;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: #33414e;
+  }
+ .navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #485C6E;
+}
+ .navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #485C6E;
+}
+      
+
+ 
+
+
+
+/* agar setiap elemen yg memakai class spin, langsung berputar */       
+.spin {
+  -webkit-animation: spin .9s infinite linear;
+  -moz-animation: spin .9s infinite linear;
+  -o-animation: spin .9s infinite linear;
+  animation: spin .9s infinite linear;
+     -webkit-transform-origin: 50% 58%;
+         transform-origin:50% 58%;
+         -ms-transform-origin:50% 58%; /* IE 9 */
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+ @link-color:       @brand-primary;
+@link-color-hover: lighten(@link-color, 90%);
+ 
+a {
+  color:  #33414e;
+  text-decoration: none;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+ 
+}
+ a:hover {
+    color: #485C6E;
+     text-decoration: none;
+   }
+ 

@@ -17,11 +17,11 @@ Route::get('/', [
 	'as'			=> 'home.index'
 	]);
 
-
-
+/*Route::get('auth/login', [ 
+	'uses' => 'HomeController@login']);
+*/
 
 //Route::get('home', 'HomeController@index');
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

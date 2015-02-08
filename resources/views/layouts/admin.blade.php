@@ -18,45 +18,18 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-     <body class="skin-blue">
+     <body>
  
 
 
-
-@include('layouts.komponen.backend.header')
-
+    @include('layouts.komponen.backend.navbar')
 
 
 
-        <div class="wrapper row-offcanvas row-offcanvas-left">
-
-
-  @include('layouts.komponen.backend.sidebar')
-
-
-
-            <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">
-
-              @yield('konten_header')
-
-
-
-              @yield('main_konten')
-     
-
-
-
-
-            </aside><!-- /.right-side -->
-        </div><!-- ./wrapper -->
-
-        <!-- add new calendar event modal -->
-
-
+       <div class='container-fluid'>
+         @yield('main_konten')
+       </div>
 
     @include('layouts.komponen.backend.js')
-
-
   </body>
 </html>

@@ -1,17 +1,11 @@
-{!! HTML::script('js/jquery.min.js') !!}    
-{!! HTML::script('js/bootstrap.min.js') !!}    
-{!! HTML::script('js/jquery-ui.min.js') !!}    
+{!! HTML::script('plugins/jquery/jquery-2.1.3.min.js') !!}    
+{!! HTML::script('plugins/pace/pace.min.js') !!}    
+{!! HTML::script('plugins/bootstrap/js/dropdown.js') !!}    
+{!! HTML::script('plugins/bootstrap/js/collapse.js') !!}    
+
 
 
  @yield('script_tambahan')
 
 
-
-{!! HTML::script('js/AdminLTE/app.js') !!}
  
-
-
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) 
-        <script src="js/AdminLTE/dashboard.js" type="text/javascript"></script>
-
- -->
