@@ -1,4 +1,4 @@
-<?php namespace App\Models\Mst
+<?php namespace App\Models\Mst;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 

@@ -1,31 +1,13 @@
+@import url("//fonts.googleapis.com/css?family=Dosis");
+  
+
+body{
+  font-family: 'Dosis', sans-serif;
+ }
+
+
+
 /* customize nav samping */
- .nav-pills > li.active > a {
-  /*
-    background-color:#00ba8b;
-    */
-    color:#038564;
-    background-color: #eee;
-  border-bottom : 2px solid #00ba8b;
-}
-
-
-
- .nav-pills > li > a {
--webkit-border-radius: 0px;
--moz-border-radius: 0px;
-border-radius: 0px;
-
-    color:#038564;
-}
- 
-.nav-pills>li.active>a:hover {
-    background-color: #eee;
-    color:#038564;
-}
-/* end of customize nav samping */
-
-
-
 /* link */
 
 .navbar-default .navbar-nav > li > a {
@@ -59,6 +41,7 @@ border-radius: 0px;
 /* navbar */
 .navbar-default {
     background-color: #33414e;
+    color : #fff;
   }
  .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
@@ -75,6 +58,16 @@ border-radius: 0px;
       
 
  
+ .navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a, 
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:hover, 
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:focus {
+    color: #aaa;
+ }
+
+ .navbar-default .navbar-nav .dropdown .dropdown-menu > li {
+    color: #aaa;
+ }
+
 
 
 
@@ -139,46 +132,12 @@ a {
 
 
 
- /* bagian navbar */
- .nav-sidebar { 
-    width: 100%;
-    padding: 8px 0; 
-    border-right: 1px solid #ddd;
-}
-.nav-sidebar a {
-    color: #333;
-    -webkit-transition: all 0.08s linear;
-    -moz-transition: all 0.08s linear;
-    -o-transition: all 0.08s linear;
-    transition: all 0.08s linear;
-    -webkit-border-radius: 4px 0 0 4px; 
-    -moz-border-radius: 4px 0 0 4px; 
-    border-radius: 4px 0 0 4px; 
-}
-.nav-sidebar .active a { 
-    cursor: default;
-    background-color: #33414e; 
-    color: #fff; 
-    text-shadow: 1px 1px 1px #666; 
-}
-.nav-sidebar .active a:hover {
-    background-color: #485C6E;   
-}
-.nav-sidebar .text-overflow a,
-.nav-sidebar .text-overflow .media-body {
-    white-space: nowrap;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis; 
-}
+ /* bagian sidebar */
 
-/* Right-aligned sidebar */
-.nav-sidebar.pull-right { 
-    border-right: 0; 
-    border-left: 1px solid #ddd; 
-}
-.nav-sidebar.pull-right a {
-    -webkit-border-radius: 0 4px 4px 0; 
-    -moz-border-radius: 0 4px 4px 0; 
-    border-radius: 0 4px 4px 0; 
-}
+
+
+
+/* custom */
+.title_header{
+  margin:2px;
+  }

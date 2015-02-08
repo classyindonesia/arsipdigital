@@ -20,6 +20,11 @@ class CreateMstDataUserTable extends Migration {
 			$table->date('tgl_lahir');
 			$table->enum('jenis_kelamin', ['L', 'P']);
 			$table->string('no_hp', 20);
+
+   		$table->unsignedInteger('mst_user_id');
+		$table->foreign('mst_user_id')->references('id')->on('mst_users')->onDelete('CASCADE');				
+
+
 			$table->timestamps();
 		});
 	}

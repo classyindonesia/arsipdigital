@@ -2,8 +2,11 @@
                 <ul class="nav">
 
 
-                    <li> 
-                        <i class='fa fa-user' style='font-size:30px;'></i> {{ Auth::user()->name }}
+                    <li style='text-align:center;'> 
+                        <i class='fa fa-user' style='font-size:50px;'></i> 
+                        <hr style='margin:0px;'>
+
+                       {{ Auth::user()->data_user->nama }}
                         <br>
                         <i class='fa fa-circle text-success'></i> online
                         <hr>
@@ -13,8 +16,21 @@
 
 
 
-                    <li @if(isset($dashboard_home)) class="active" @endif ><a href="{{ URL::route('home.index') }}">Home</a></li>
-                    <li @if(isset($users_home)) class="active" @endif><a href="{{ URL::route('users.index') }}">Daftar Pengguna</a></li>
+                    <li @if(isset($dashboard_home)) class="active" @endif >
+                        <a href="{{ URL::route('home.index') }}">
+                            <i class='fa fa-home'></i> Home
+                        </a>
+                    </li>
+                    
+
+                    <li @if(isset($users_home)) class="active" @endif>
+                        <a href="{{ URL::route('users.index') }}">
+                            <i class='fa fa-users'></i> Daftar Pengguna
+                        </a>
+                    </li>
+                    
+
+
                     <li><a href="javascript:;">Products</a></li>
                     <li><a href="javascript:;">FAQ</a></li>
                     <li class="nav-divider"></li>

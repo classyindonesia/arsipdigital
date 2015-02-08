@@ -37,6 +37,10 @@
         </div>
        
       <div class='col-md-10'>
+
+        @yield('title_header')
+
+
          @yield('main_konten')
        </div>
     </div>
