@@ -6,6 +6,8 @@ use App\Models\Mst\Rak;
 use App\Http\Requests\CreateRak;
 use App\Http\Requests\UpdateRak;
 
+use Illuminate\Http\Request;
+
 
 class RakController extends Controller {
  
@@ -47,6 +49,14 @@ class RakController extends Controller {
 		$r->save();
 		return $request->all();
 	}
+
+
+	public function del(Request $request){
+		$o = Rak::find($request->input('id'));
+		$o->delete();
+		return 'ok';
+	}
+
 
  
 }

@@ -32,3 +32,8 @@ Route::post('rak/update', [
 	'uses'			=> 'Admin\RakController@update',
 	'as'			=> 'rak.update'
 	]);
+Route::post('rak/del', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\RakController@del',
+	'as'			=> 'rak.del'
+	]);
