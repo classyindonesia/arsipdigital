@@ -11549,149 +11549,6 @@ Copyright (c) 2014 Daniel Eden
   height: 4px;
 }
 
-@import url("//fonts.googleapis.com/css?family=Dosis");
-  
-
-body{
-  font-family: 'Dosis', sans-serif;
- }
-
-
-
-/* customize nav samping */
-/* link */
-
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-}    
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #ccc;
-}
-
-.navbar-default .nav > li > a {
-    color: #fff;
-}
-
-.navbar-default .nav > li > a:hover,
-.navbar-default .nav > li > a:focus {
-    color: #ccc;
-    background: transparent;
-}
-
-
-/* title */
-.navbar-default .navbar-brand {
-    color: white;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #ccc;
-}
-
-/* navbar */
-.navbar-default {
-    background-color: #33414e;
-    color : #fff;
-  }
- .navbar-default .navbar-nav > .open > a, 
-.navbar-default .navbar-nav > .open > a:hover, 
-.navbar-default .navbar-nav > .open > a:focus {
-    color: #fff;
-    background-color: #485C6E;
-}
- .navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:hover, 
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #fff;
-    background-color: #485C6E;
-}
-      
-
- 
- .navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a, 
-.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:hover, 
-.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:focus {
-    color: #aaa;
- }
-
- .navbar-default .navbar-nav .dropdown .dropdown-menu > li {
-    color: #aaa;
- }
-
-
-
-
-/* agar setiap elemen yg memakai class spin, langsung berputar */       
-.spin {
-  -webkit-animation: spin .9s infinite linear;
-  -moz-animation: spin .9s infinite linear;
-  -o-animation: spin .9s infinite linear;
-  animation: spin .9s infinite linear;
-     -webkit-transform-origin: 50% 58%;
-         transform-origin:50% 58%;
-         -ms-transform-origin:50% 58%; /* IE 9 */
-}
-
-@-moz-keyframes spin {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-
- @link-color:       @brand-primary;
-@link-color-hover: lighten(@link-color, 90%);
- 
-a {
-  color:  #33414e;
-  text-decoration: none;
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
- 
-}
- a:hover {
-    color: #485C6E;
-     text-decoration: none;
-   }
-
-
-
- /* bagian sidebar */
-
-
-
-
-/* custom */
-.title_header{
-  margin:2px;
-  }
 
 
 /* Background colors */
@@ -11922,3 +11779,163 @@ a {
     border-radius: 0 4px 4px 0; 
 }
 
+
+   
+
+body{
+  font-family: 'Dosis', sans-serif;
+ }
+
+ .btn-primary{
+  background-color: #33414e;
+ }
+ 
+ .btn-primary:hover, 
+ .btn-primary:focus, 
+ .btn-primary:active, 
+ .btn-primary.active, 
+ .open > .dropdown-toggle.btn-primary {
+    background: #485C6E;
+}
+
+/* customize nav samping */
+/* link */
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}    
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #ccc;
+}
+
+.navbar-default .nav > li > a {
+    color: #fff;
+}
+
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus {
+    color: #ccc;
+    background: transparent;
+}
+
+
+/* title */
+.navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ccc;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: #33414e;
+    color : #fff;
+  }
+ .navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #485C6E;
+}
+ .navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #485C6E;
+}
+      
+
+ 
+ .navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a {
+    color: #222;
+ }
+
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:hover, 
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:focus{
+  background-color: #485C6E;
+  color : #fff;
+}
+
+
+   
+ .navbar-default .navbar-nav .dropdown .dropdown-menu {
+    background-color: #fff;
+    color: #222;
+ }
+
+ 
+
+
+/* agar setiap elemen yg memakai class spin, langsung berputar */       
+.spin {
+  -webkit-animation: spin .9s infinite linear;
+  -moz-animation: spin .9s infinite linear;
+  -o-animation: spin .9s infinite linear;
+  animation: spin .9s infinite linear;
+     -webkit-transform-origin: 50% 58%;
+         transform-origin:50% 58%;
+         -ms-transform-origin:50% 58%; /* IE 9 */
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+ @link-color:       @brand-primary;
+@link-color-hover: lighten(@link-color, 90%);
+ 
+a {
+  color:  #33414e;
+  text-decoration: none;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+ 
+}
+ a:hover {
+    color: #485C6E;
+     text-decoration: none;
+   }
+
+
+
+ /* bagian sidebar */
+
+
+
+
+/* custom */
+.title_header{
+  margin:2px;
+  }

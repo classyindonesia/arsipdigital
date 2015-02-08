@@ -37,5 +37,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 
+	public function level(){
+		return $this->belongsTo('App\Models\Ref\UserLevel', 'ref_user_level_id');
+	}
+
+	public function setPasswordAttribute($password){
+		$this->attributes['password'] = bcrypt($password);
+	}
+
 
 }

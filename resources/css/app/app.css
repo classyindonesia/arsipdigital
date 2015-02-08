@@ -1,11 +1,20 @@
-@import url("//fonts.googleapis.com/css?family=Dosis");
-  
+   
 
 body{
   font-family: 'Dosis', sans-serif;
  }
 
-
+ .btn-primary{
+  background-color: #33414e;
+ }
+ 
+ .btn-primary:hover, 
+ .btn-primary:focus, 
+ .btn-primary:active, 
+ .btn-primary.active, 
+ .open > .dropdown-toggle.btn-primary {
+    background: #485C6E;
+}
 
 /* customize nav samping */
 /* link */
@@ -58,17 +67,24 @@ body{
       
 
  
- .navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a, 
+ .navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a {
+    color: #222;
+ }
+
 .navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:hover, 
-.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:focus {
-    color: #aaa;
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:focus{
+  background-color: #485C6E;
+  color : #fff;
+}
+
+
+   
+ .navbar-default .navbar-nav .dropdown .dropdown-menu {
+    background-color: #fff;
+    color: #222;
  }
 
- .navbar-default .navbar-nav .dropdown .dropdown-menu > li {
-    color: #aaa;
- }
-
-
+ 
 
 
 /* agar setiap elemen yg memakai class spin, langsung berputar */       

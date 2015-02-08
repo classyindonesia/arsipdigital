@@ -1,21 +1,29 @@
 @extends('layouts.admin')
 
-
-
  
 
-
 @section('title_header')
- <h1 class='title_header'>Daftar Pengguna  </h1>
+ 
+<button class='btn btn-primary pull-right' id='add'> <i class='fa fa-plus-square'></i> create</button>
+	<script type="text/javascript">
+	$('#add').click(function(){
+		$('#myModal').modal('show');
+		$('.modal-body').load('{{ URL::route("users.add") }}');
+	})
+	</script>
+
+	
+ <h1 class='title_header '>Daftar Pengguna  </h1>
 	<hr>
 @stop
 
 
 
-@section('main_konten')
+@section('main_konten') 
 
-dasd asdas 
-   
+ 
+
+	@include('konten.backend.users.list_user')
 @endsection
 
 

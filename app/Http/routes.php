@@ -11,23 +11,10 @@
 |
 */
 
-Route::get('/', [
-	'middleware'	=> 'auth',
-	'uses'			=> 'Admin\HomeController@index',
-	'as'			=> 'home.index'
-	]);
-
-
-Route::get('users', [
-	'middleware'	=> 'hanya_admin',
-	'uses'			=> 'Admin\UserController@index',
-	'as'			=> 'users.index'
-	]);
+ 
 
 
 
-
-//Route::get('home', 'HomeController@index');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

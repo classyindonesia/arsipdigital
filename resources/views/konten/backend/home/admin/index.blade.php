@@ -3,7 +3,7 @@
 
 
 @section('title_header')
- <h1 class='title_header'>Dashboard  <small>control panel</small> </h1>
+ <h1 class='title_header  animated fadeIn'>Dashboard  <small>control panel</small> </h1>
 	<hr>
 @stop
 
@@ -16,19 +16,8 @@
 @include('konten.backend.home.admin.komponen.box_user')
 @include('konten.backend.home.admin.komponen.box_jml_arsip')
 @include('konten.backend.home.admin.komponen.box_jml_rak_arsip')
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
 
 
 <div class="col-lg-3 col-xs-6">

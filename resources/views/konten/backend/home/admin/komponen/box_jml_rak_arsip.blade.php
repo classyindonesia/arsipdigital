@@ -1,6 +1,6 @@
 
 
-<div class="col-lg-3 col-xs-6">
+<div class="col-lg-3 col-xs-6 animated fadeIn">
 	    <div class="small-box bg-maroon">
 		    <div class="inner">
 		        <h3>

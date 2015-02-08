@@ -24,7 +24,8 @@ elixir(function(mix) {
 	mix.scripts([
 		'plugins/jquery/jquery-2.1.3.min.js',
 		'plugins/bootstrap/dist/js/bootstrap.js',
-		'plugins/pace/pace.min.js'
+    'plugins/pace/pace.min.js',
+    'app.js'
 		], 'public/js/main.js');
 
 
@@ -34,9 +35,10 @@ elixir(function(mix) {
          "plugins/animate/animate.css",
          "plugins/pace/pace.css",
 
-         "app/app.css",
          "app/box.css",
          "app/sidebar.css",
+         "app/app.css",
+         
     ], 'public/css/main.css');
 
    mix.version("css/main.css");

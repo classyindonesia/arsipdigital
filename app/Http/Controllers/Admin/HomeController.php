@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mst\User;
 
 class HomeController extends Controller {
  
@@ -11,7 +12,9 @@ class HomeController extends Controller {
 
 
 	public function index(){
- 		return view('konten.backend.home.admin.index');
+		$jml_user = User::count();
+ 		return view('konten.backend.home.admin.index',
+ 			compact('jml_user'));
 	}
 
  
