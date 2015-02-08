@@ -12,14 +12,20 @@
 */
 
 Route::get('/', [
-	'middleware'	=> 'hanya_admin',
-	'uses'			=> 'HomeController@index',
+	'middleware'	=> 'auth',
+	'uses'			=> 'Admin\HomeController@index',
 	'as'			=> 'home.index'
 	]);
 
-/*Route::get('auth/login', [ 
-	'uses' => 'HomeController@login']);
-*/
+
+Route::get('users', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@index',
+	'as'			=> 'users.index'
+	]);
+
+
+
 
 //Route::get('home', 'HomeController@index');
 Route::controllers([

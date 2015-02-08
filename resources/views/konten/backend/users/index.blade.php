@@ -3,7 +3,7 @@
 @section('main_konten')
  
 
- <h1 class='animated bounce'>Admin Dashboard</h1>
+ <h1 class='animated bounce'>Daftar Pengguna</h1>
 <hr>
 
 

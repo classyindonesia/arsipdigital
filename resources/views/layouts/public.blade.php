@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
 
-    @include('layouts.komponen.backend.head')
-
- 
-
+    @include('layouts.komponen.public.head')
 
     <!-- Bootstrap -->
 
@@ -21,26 +18,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-     <body>
- 
+     <body> 
 
 
-    @include('layouts.komponen.backend.navbar')
-
-
-
- 
-
-       <div class='container-fluid'>
-        <div class='col-md-2'>
-           @include('layouts.komponen.backend.sidebar')
-        </div>
-       
-      <div class='col-md-10'>
+       <div class='container-fluid' style='margin-top:3em;'>
          @yield('main_konten')
        </div>
-    </div>
 
-    @include('layouts.komponen.backend.js')
+    @include('layouts.komponen.public.js')
   </body>
 </html>

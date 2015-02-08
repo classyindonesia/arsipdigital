@@ -1,6 +1,17 @@
-@extends('layouts.admin')
+@extends('layouts.public')
 
 @section('main_konten')
+
+
+<div class='container'>
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active"><a href="{{ URL::to('auth/login') }}">Login</a></li>
+	  <li role="presentation"><a href="{{ URL::to('auth/register') }}">Register</a></li>
+	 </ul>
+</div>
+<hr>
+
+
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">

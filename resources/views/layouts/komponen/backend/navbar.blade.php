@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a style='margin-top:-10px;' class="navbar-brand" href="{{ URL::route('home.index') }}"> 
-        <i style='font-size:30px;' class="fa fa-leanpub"></i> Dashboard {{ env('NAMA_APP') }}</a>
+        <i style='font-size:30px;' class="fa fa-leanpub"></i> {{ env('NAMA_APP') }}</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
