@@ -17,7 +17,7 @@
 
 7. folder yg menentukan admin
 	a. jika folder dihapus oleh admin, maka isinya jg ikut terhapus semua
-	b. di dalam folder yg ditentukan admin, user bs membuat folder tambahan
+	b. di dalam folder yg ditentukan admin, hanya admin yg bs membuat folder tambahan [folder di dlm folder]
 
 8. setiap user memiliki data profile
 	a. nama lengkap
@@ -39,5 +39,7 @@
 	b. word
 	c. excel
 	d. gambar [ada watermark, setting:bs di download tanpa/dgn watermark]
+
+
 12. buat halaman public untuk search data user
 	

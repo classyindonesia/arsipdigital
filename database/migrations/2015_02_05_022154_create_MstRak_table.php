@@ -17,6 +17,7 @@ class CreateMstRakTable extends Migration {
 			$table->increments('id');
 			$table->string('kode_rak');
 			$table->string('nama');
+			$table->text('keterangan');
 			$table->timestamps();
 		});
 	}

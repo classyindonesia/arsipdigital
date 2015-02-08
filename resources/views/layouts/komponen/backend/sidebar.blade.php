@@ -31,6 +31,15 @@
                     
 
 
+
+                    <li @if(isset($rak_home)) class="active" @endif>
+                        <a href="{{ URL::route('rak.index') }}">
+                            <i class='fa fa-building'></i> Daftar Rak Arsip
+                        </a>
+                    </li>
+
+
+
                     <li><a href="javascript:;">Products</a></li>
                     <li><a href="javascript:;">FAQ</a></li>
                     <li class="nav-divider"></li>

@@ -14,18 +14,18 @@ class MstUserSeeder extends Seeder{
 
 		$data1 = [
 			'email' => 'admin@example.com', 
-			'password' => Hash::make('admin'), 
+			'password' => 'admin', 
 			'ref_user_level_id' => 1
 			];
 
 		$data2 = [
 			'email' => 'staff@example.com', 
-			'password' => Hash::make('staff'), 
+			'password' => 'staff', 
 			'ref_user_level_id' => 2
 			];
 		$data3 = [
 			'email' => 'user@example.com', 
-			'password' => Hash::make('user'), 
+			'password' => 'user', 
 			'ref_user_level_id' => 3
 			];
 
