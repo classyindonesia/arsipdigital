@@ -39,6 +39,12 @@
                     </li>
 
 
+                    <li @if(isset($folder_home)) class="active" @endif>
+                        <a href="{{ URL::route('folders.index') }}">
+                            <i class='fa fa-folder'></i> Daftar Folder/Map Arsip
+                        </a>
+                    </li>
+
 
                     <li><a href="javascript:;">Products</a></li>
                     <li><a href="javascript:;">FAQ</a></li>

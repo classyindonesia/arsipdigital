@@ -41,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider {
 			require app_path('Http/routes/admin_home.php');
 			require app_path('Http/routes/admin_users.php');
 			require app_path('Http/routes/admin_rak.php');
+			require app_path('Http/routes/admin_folder.php');
 		});
 	}
 
