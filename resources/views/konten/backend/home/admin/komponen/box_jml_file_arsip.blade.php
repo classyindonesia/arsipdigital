@@ -1,20 +1,19 @@
-
-
 <div class="col-lg-3 col-xs-6 animated fadeIn">
-	    <div class="small-box bg-maroon">
+	    <div class="small-box bg-aqua">
 		    <div class="inner">
 		        <h3>
-		           {{ $jml_rak }}
+		            300
 		        </h3>
 		        <p>
-		           Rak Arsip
+		            Jml File Arsip
 		        </p>
 		    </div>
 		    <div class="icon">
-		       <i class='fa fa-building'></i>
+		       <i class="fa fa-bar-chart"></i>
 		    </div>
-		    <a href="{!! URL::route('rak.index') !!}" class="small-box-footer">
+		    <a href="#" class="small-box-footer">
 		        More info <i class="fa fa-arrow-circle-right"></i>
 		    </a>
 		</div>
 </div>
+

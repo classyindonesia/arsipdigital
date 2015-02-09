@@ -45,6 +45,15 @@
                         </a>
                     </li>
 
+                    <li @if(isset($ref_home)) class="active" @endif>
+                        <a href="{{ URL::route('data_ref.index') }}">
+                            <i class='fa fa-th-list'></i> Data Referensi
+                        </a>
+                    </li>
+
+
+
+
 
                     <li><a href="javascript:;">Products</a></li>
                     <li><a href="javascript:;">FAQ</a></li>
