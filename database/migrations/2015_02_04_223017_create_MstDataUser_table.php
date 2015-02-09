@@ -29,9 +29,14 @@ class CreateMstDataUserTable extends Migration {
 
 			$table->string('nama_ibu_kandung');
 
+   		$table->integer('ref_status_ikatan_id');
+   		$table->integer('ref_agama_id');
+   		$table->integer('ref_kota_id');
+   		$table->integer('ref_status_pernikahan_id');
+   		$table->integer('mst_user_id');
 
 
-/*  START create new*/
+/*  START create new 
    		$table->unsignedInteger('ref_status_ikatan_id');
 		$table->foreign('ref_status_ikatan_id')->references('id')->on('ref_status_ikatan')->onDelete('CASCADE');				
 
@@ -51,11 +56,11 @@ class CreateMstDataUserTable extends Migration {
 		$table->foreign('ref_status_pernikahan_id')->references('id')->on('ref_status_pernikahan')->onDelete('CASCADE');	
 
 
-/*  END create new*/
 
 
    		$table->unsignedInteger('mst_user_id');
 		$table->foreign('mst_user_id')->references('id')->on('mst_users')->onDelete('CASCADE');				
+   END create new*/
 
 
 			$table->timestamps();

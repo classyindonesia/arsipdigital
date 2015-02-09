@@ -48,6 +48,7 @@ class RouteServiceProvider extends ServiceProvider {
 			require app_path('Http/routes/ref/status_pernikahan.php');
 			require app_path('Http/routes/ref/kota.php');
 			require app_path('Http/routes/ref/status_ikatan.php');
+			require app_path('Http/routes/my_profile.php');
 		});
 	}
 

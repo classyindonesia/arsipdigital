@@ -53,6 +53,14 @@
 
 
 
+                    <li @if(isset($my_profile)) class="active" @endif>
+                        <a href="{{ URL::route('my_profile.index') }}">
+                            <i class='fa fa-wrench'></i> Profil Saya
+                        </a>
+                    </li>
+
+
+
 
 
                     <li><a href="javascript:;">Products</a></li>
