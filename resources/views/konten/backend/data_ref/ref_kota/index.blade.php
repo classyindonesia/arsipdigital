@@ -22,7 +22,7 @@
 <hr>
 
 
-<div class='col-md-6'>
+<div class='col-md-9'>
         <table class="table table-bordered table-hover animated fadeIn">
             <thead>
                 <tr>

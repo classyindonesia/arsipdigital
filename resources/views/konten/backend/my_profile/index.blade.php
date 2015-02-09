@@ -13,23 +13,31 @@
 
 
 @section('main_konten')
+<?php
+$data_user = Auth::user()->data_user;
+ ?>
 
+	<div class='col-md-6 animated fadeIn'>
+		@include('konten.backend.my_profile.konten_kiri')
+	</div>
 
-<div class='col-md-6 animated fadeIn'>
-	@include('konten.backend.my_profile.konten_kiri')
-</div>
+	<div class='col-md-6 animated fadeIn'>
+		@include('konten.backend.my_profile.konten_kanan')
+	</div>
 
-<div class='col-md-6 animated fadeIn'>
-	@include('konten.backend.my_profile.konten_kanan')
-</div>
-
-
-
-    
 @endsection
 
 
 
 @section('title')
 My Profile
+@endsection
+
+
+
+@section('script_tambahan')
+	{!! HTML::script('plugins/bootstrap-select/js/bootstrap-select.min.js') !!}
+@endsection
+@section('style_tambahan')
+	{!! HTML::style('plugins/bootstrap-select/css/bootstrap-select.min.css') !!}
 @endsection

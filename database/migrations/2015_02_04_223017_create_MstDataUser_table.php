@@ -31,7 +31,8 @@ class CreateMstDataUserTable extends Migration {
 
    		$table->integer('ref_status_ikatan_id');
    		$table->integer('ref_agama_id');
-   		$table->integer('ref_kota_id');
+   		$table->integer('ref_kota_id'); //kota tmpat tgl
+
    		$table->integer('ref_status_pernikahan_id');
    		$table->integer('mst_user_id');
 
