@@ -47,5 +47,15 @@ My Profile
 	{!! HTML::script('plugins/bootstrap-select/js/bootstrap-select.min.js') !!}
 @endsection
 @section('style_tambahan')
+
+<style type="text/css">
+.tabel_form_data td{
+	padding-top: 1em;
+	padding-bottom: 3px;
+}
+ 
+</style>
+
+
 	{!! HTML::style('plugins/bootstrap-select/css/bootstrap-select.min.css') !!}
 @endsection

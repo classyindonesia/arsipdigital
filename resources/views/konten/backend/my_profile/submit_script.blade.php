@@ -43,8 +43,11 @@ form_data ={
 		data : form_data,
 		type : 'post',
 		error:function(xhr, status, error){
+			$('#myModal').modal('show');
 
-	 	$('#pesan').addClass('alert alert-danger animated shake').html('<b>Error : </b><br>');
+	 	$('.modal-body').html('<div id="pesan"></div>');
+
+		$('#pesan').addClass('alert alert-danger animated shake').html('<b>Error : </b><br>');
         datajson = JSON.parse(xhr.responseText);
         $.each(datajson, function( index, value ) {
        		$('#pesan').append(index + ": " + value+"<br>")
