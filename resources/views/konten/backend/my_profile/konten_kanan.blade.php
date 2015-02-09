@@ -1,4 +1,10 @@
 <div class='form-group'>
+	{!! Form::label("no_induk", "nomor induk :") !!}
+	<input type='text' name='no_induk' id='no_induk' placeholder='nomor induk' value='{!! Auth::user()->data_user->no_induk !!}' class='form-control' />
+</div>
+
+
+<div class='form-group'>
 	{!! Form::label("nama_ibu_kandung", "Nama Ibu Kandung :") !!}
 	<input type='text' name='nama_ibu_kandung' id='nama_ibu_kandung' placeholder='nama ibu kandung..' value='{!! Auth::user()->data_user->nama_ibu_kandung !!}' class='form-control' />
 </div>

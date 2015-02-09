@@ -1,31 +1,27 @@
- 
-
-    {{-- contoh penggunaan select+search 
-    Form::selectRange('tgl_lahir', 1, 31, 
-    date('d', strtotime($data_user->tgl_lahir)),  
-    [
-    'id' => 'tgl_lahir', 
-    'style' => 'width:60px', 
-    'class' => 'selectpicker',
-    'data-live-search'	=> 'true'
-
-    ]) --}}
-
-
-
 <div class='form-group'>
 	{!! Form::label("nama", "nama lengkap :") !!}
 	<input type='text' name='nama' id='nama' placeholder='nama lengkap' value='{!! Auth::user()->data_user->nama !!}' class='form-control' />
 </div>
 
-<div class='form-group'>
-	{!! Form::label("no_induk", "nomor induk :") !!}
-	<input type='text' name='no_induk' id='no_induk' placeholder='nomor induk' value='{!! Auth::user()->data_user->no_induk !!}' class='form-control' />
-</div>
+
 
 <div class='form-group'>
 	{!! Form::label("alamat", "*alamat :") !!}
 	<input type='text' name='alamat' id='alamat' placeholder='alamat' value='{!! Auth::user()->data_user->alamat !!}' class='form-control' />
+</div>
+
+
+<div class='form-group'>
+	{!! Form::label("ref_kota_id", "Kota tempat tinggal :") !!}
+	{!! Form::select('ref_kota_id', 
+			Fungsi::get_dropdown($kota, 'kota tmpt tgl'), 
+			$data_user->ref_kota_id, 
+				[
+					'id' => 'ref_kota_id',
+					'class'	=> 'selectpicker',
+					'data-live-search'	=> 'true'
+				]) 
+	!!}
 </div>
 
 <div class='form-group'>
@@ -59,18 +55,7 @@
 </div>
 
 
-<div class='form-group'>
-	{!! Form::label("ref_kota_id", "Kota tempat tinggal :") !!}
-	{!! Form::select('ref_kota_id', 
-			Fungsi::get_dropdown($kota, 'kota tmpt tgl'), 
-			$data_user->ref_kota_id, 
-				[
-					'id' => 'ref_kota_id',
-					'class'	=> 'selectpicker',
-					'data-live-search'	=> 'true'
-				]) 
-	!!}
-</div>
+
 
 
 

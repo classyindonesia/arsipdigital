@@ -17,6 +17,13 @@
 $data_user = Auth::user()->data_user;
  ?>
 
+
+<div class='col-md-12'>
+	<button id='simpan' class='btn btn-primary pull-right'><i class='fa fa-floppy-o'></i> simpan</button>
+</div>
+	@include('konten.backend.my_profile.submit_script')
+
+
 	<div class='col-md-6 animated fadeIn'>
 		@include('konten.backend.my_profile.konten_kiri')
 	</div>
@@ -24,6 +31,7 @@ $data_user = Auth::user()->data_user;
 	<div class='col-md-6 animated fadeIn'>
 		@include('konten.backend.my_profile.konten_kanan')
 	</div>
+
 
 @endsection
 
