@@ -16,6 +16,7 @@ class CreateMstFolderTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nama', 100);
+			$table->integer('parent_id');
 
 	   		$table->unsignedInteger('mst_user_id');
 			$table->foreign('mst_user_id')->references('id')->on('mst_users')->onDelete('CASCADE');				

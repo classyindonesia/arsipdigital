@@ -75,11 +75,11 @@ class UserController extends Controller{
 	}
 
 
-		public function del(Request $request){
-			$o = User::find($request->input('id'));
-			$o->delete();
-			return 'ok';
-		}
+	public function del(Request $request){
+		$o = User::find($request->input('id'));
+		$o->delete();
+		return 'ok';
+	}
 	
 
 
