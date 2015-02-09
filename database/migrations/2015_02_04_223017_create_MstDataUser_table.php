@@ -47,8 +47,8 @@ class CreateMstDataUserTable extends Migration {
    		$table->unsignedInteger('ref_kota_id');
 		$table->foreign('ref_kota_id')->references('id')->on('ref_kota')->onDelete('CASCADE');	
 
-   		$table->unsignedInteger('ref_status_nikah_id');
-		$table->foreign('ref_status_nikah_id')->references('id')->on('ref_status_nikah')->onDelete('CASCADE');	
+   		$table->unsignedInteger('ref_status_pernikahan_id');
+		$table->foreign('ref_status_pernikahan_id')->references('id')->on('ref_status_pernikahan')->onDelete('CASCADE');	
 
 
 /*  END create new*/
