@@ -29,7 +29,16 @@
   </ol>
 
  
-@include('konten.backend.arsip_saya.list_data')
+ <div class='col-md-8'>
+	@include('konten.backend.folder_user.list_arsip_folder')
+</div> 
+
+ <div class="col-md-3">
+ 	@include('konten.backend.folder_user.komponen.box_folder_info')
+</div><!-- /.col -->
+
+
+
 
 
 
