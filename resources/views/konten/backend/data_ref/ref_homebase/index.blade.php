@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = $homebase->currentPage(); ?>
+                <?php $no = $homebase->firstItem(); ?>
                 @foreach($homebase as $list)
                     <tr>
                         <td>{{ $no }}</td>

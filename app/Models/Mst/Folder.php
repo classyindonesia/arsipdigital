@@ -8,6 +8,11 @@ class Folder extends Eloquent {
 	protected $table = 'mst_folder';
 
 
+	public function mst_arsip(){
+		return $this->hasMany('App\Models\Mst\Arsip', 'mst_folder_id');
+	}
+
+
 
 
 	public function mst_rak(){

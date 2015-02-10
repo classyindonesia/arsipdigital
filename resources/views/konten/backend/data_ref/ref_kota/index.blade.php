@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = $kota->currentPage(); ?>
+                <?php $no = $kota->firstItem(); ?>
                 @foreach($kota as $list)
                     <tr>
                         <td>{{ $no }}</td>

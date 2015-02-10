@@ -10,7 +10,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php $no = $rak->currentPage(); ?>
+		<?php $no = $rak->firstItem(); ?>
 @foreach($rak as $list)
 		<tr>
 			<td align='center'> {{ $no }}</td>

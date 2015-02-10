@@ -8,6 +8,11 @@ class Rak extends Eloquent {
 	protected $table = 'mst_rak';
 
 
+	public function mst_folder(){
+		return $this->hasMany('App\Models\Mst\Folder', 'mst_rak_id');
+	}
+
+
 
 	public function keygen(){
 		$key = '';

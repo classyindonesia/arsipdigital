@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mst\User;
 use App\Models\Mst\Rak;
 use App\Models\Mst\Folder;
+use Auth;
 
 class HomeController extends Controller {
  
@@ -19,7 +20,16 @@ class HomeController extends Controller {
 		$jml_user 	= User::count();
 		$jml_rak	= Rak::count();
 		$jml_folder	= Folder::count();
- 		return view('konten.backend.home.admin.index',
+
+		if(Auth::user()->ref_user_level_id == 1){
+			$view = 'konten.backend.home.admin.index';
+		}elseif(Auth::user()->ref_user_level_id == 2){
+			$view = 'konten.backend.home.staff.index';			
+		}else{
+			$view = 'konten.backend.home.user.index';						
+		}
+
+ 		return view($view,
  			compact('jml_user', 'jml_rak', 'jml_folder'));
 	}
 

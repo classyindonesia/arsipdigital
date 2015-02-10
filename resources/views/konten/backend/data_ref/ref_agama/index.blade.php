@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = $agama->currentPage(); ?>
+                <?php $no = $agama->firstItem(); ?>
                 @foreach($agama as $list)
                     <tr>
                         <td>{{ $no }}</td>

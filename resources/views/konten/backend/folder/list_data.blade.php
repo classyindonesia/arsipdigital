@@ -11,7 +11,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php $no = $folder->currentPage(); ?>
+		<?php $no = $folder->firstItem(); ?>
 @foreach($folder as $list)
 		<tr>
 			<td align='center'> {{ $no }}</td>

@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class UpdateMyProfile extends Request {
+class CreateArsip extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,11 +22,8 @@ class UpdateMyProfile extends Request {
 	public function rules()
 	{
 		return [
-			'nama'		=> 'required',
-			'alamat'	=> 'required',
-			'tgl_lahir'	=> 'required|date',
-			'no_hp'		=> 'required',
-			'tempat_lahir'	=> 'required'
+			'nama'				=> 'required',
+			'mst_folder_id'		=> 'required',
 		];
 	}
 

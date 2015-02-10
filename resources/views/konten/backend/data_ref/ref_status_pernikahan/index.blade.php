@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = $status_pernikahan->currentPage(); ?>
+                <?php $no = $status_pernikahan->firstItem(); ?>
                 @foreach($status_pernikahan as $list)
                     <tr>
                         <td>{{ $no }}</td>

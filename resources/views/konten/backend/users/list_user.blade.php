@@ -10,7 +10,7 @@
 	</thead>
 	<tbody>
 
-<?php $no = $users->currentPage(); ?>
+<?php $no = $users->firstItem(); ?>
  
 @foreach($users as $list)
 		<tr>

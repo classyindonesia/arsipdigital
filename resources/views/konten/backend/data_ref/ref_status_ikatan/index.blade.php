@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = $status_ikatan->currentPage(); ?>
+                <?php $no = $status_ikatan->firstItem(); ?>
                 @foreach($status_ikatan as $list)
                     <tr>
                         <td>{{ $no }}</td>
