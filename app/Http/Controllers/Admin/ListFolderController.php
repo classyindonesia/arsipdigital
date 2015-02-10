@@ -19,7 +19,9 @@ class ListFolderController extends Controller {
 		$folder_home = true;
 		$folder = Folder::with(['mst_arsip' => function($query){
 				    $query->where('mst_user_id', '=', Auth::user()->id);
-				}, 'mst_rak', 'child'])->paginate(10);
+				}, 'mst_rak', 'child'])
+		->whereParentId(0)
+		->paginate(10);
 
  		return view('konten.backend.folder_user.index', compact('folder_home', 'folder'));
 	}

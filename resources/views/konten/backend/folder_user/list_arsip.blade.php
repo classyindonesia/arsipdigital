@@ -25,7 +25,7 @@
 
 <ol class="breadcrumb">
   <li><a href="{!! URL::route('list_folder.index') !!}">Folder</a></li>
-  <li class="active">[{{ $folder->nama }}]</li>
+  <li class="active">{{ $folder->nama }}</li>
   </ol>
 
  
