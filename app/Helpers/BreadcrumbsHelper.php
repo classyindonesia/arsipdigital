@@ -1,6 +1,7 @@
-<?php
+<?php namespace App\Helpers;
 
-  class ItemsHelper {
+
+  class BreadcrumbsHelper {
 
     private $items;
 
@@ -15,12 +16,16 @@
     private function itemArray() {
       $result = array();
       foreach($this->items as $item) {
-        if ($item->parent_id == 0) {
+        //if ($item->parent_id == 0) {
           $result[$item->nama] = $this->itemWithChildren($item);
-        }
+        //}
       }
       return $result;
     }
+
+
+
+
 
     private function childrenOf($item) {
       $result = array();

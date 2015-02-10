@@ -19,7 +19,11 @@
 			<td style='text-align:center;'>{{ $no }}</td>
 			<td>{{ $list->nama }}</td>
 			<td> @if(count($list->mst_rak)>0) {{ $list->mst_rak->nama }} @else - @endif </td>
-			<th style='text-align:center;'>{{ count($list->child) }}</th>
+			<td style='text-align:center;'>
+
+				<a class='label label-info' href="{!! URL::route('list_folder.child', $list->id) !!}">{{ count($list->child) }}</a>
+
+				</td>
 
 			<td style='text-align:center;'>
 				 

@@ -13,3 +13,11 @@ Route::get('list_folder', [
 	'as'			=> 'list_folder.list_arsip'
 	]);
  
+
+ /* view child folder ID */
+  Route::get('list_folder/child/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ListFolderController@child',
+	'as'			=> 'list_folder.child'
+	]);
+ 

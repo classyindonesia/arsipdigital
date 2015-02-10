@@ -16,11 +16,9 @@
 
   @include('konten.backend.arsip_saya.komponen.nav_atas')
  <hr>
+  @include('konten.backend.folder_user.komponen.breadcrumb_home')
 
 
-<ol class="breadcrumb">
-  <li><a href="{!! URL::route('list_folder.index') !!}">Folder</a></li>
-  </ol>
 
 
   @include('konten.backend.folder_user.list_data')
