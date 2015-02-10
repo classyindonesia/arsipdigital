@@ -4,8 +4,58 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "77c4f4e80972a91cb6c3bb7dd0b4f8d1",
+    "hash": "6e59750b13abc254d970bac641746f85",
     "packages": [
+        {
+            "name": "blueimp/jquery-file-upload",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vkhramtsov/jQuery-File-Upload.git",
+                "reference": "2e7551da295dc7d0e9d20a9d61886ffd8e472768"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vkhramtsov/jQuery-File-Upload/zipball/2e7551da295dc7d0e9d20a9d61886ffd8e472768",
+                "reference": "2e7551da295dc7d0e9d20a9d61886ffd8e472768",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Tschan",
+                    "homepage": "https://blueimp.net"
+                }
+            ],
+            "description": "File Upload widget for jQuery.",
+            "homepage": "https://github.com/blueimp/jQuery-File-Upload",
+            "keywords": [
+                "bootstrap",
+                "chunk",
+                "cross-domain",
+                "cross-site",
+                "drag",
+                "drop",
+                "file",
+                "gae",
+                "go",
+                "jquery",
+                "multiple",
+                "php",
+                "preview",
+                "progress",
+                "python",
+                "resume",
+                "selection",
+                "upload",
+                "widget"
+            ],
+            "time": "2015-02-06 05:45:38"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "1.2.0",
@@ -68,16 +118,16 @@
         },
         {
             "name": "danielstjules/stringy",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad"
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
                 "shasum": ""
             },
             "require": {
@@ -120,7 +170,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-01-08 15:21:43"
+            "time": "2015-02-10 06:19:18"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -456,16 +506,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.0",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "44c61252b5762ff53ad181ed416e3006c50a6a9b"
+                "reference": "30391aa20874c30725f653bea1ea5b895a5217cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/44c61252b5762ff53ad181ed416e3006c50a6a9b",
-                "reference": "44c61252b5762ff53ad181ed416e3006c50a6a9b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/30391aa20874c30725f653bea1ea5b895a5217cf",
+                "reference": "30391aa20874c30725f653bea1ea5b895a5217cf",
                 "shasum": ""
             },
             "require": {
@@ -577,7 +627,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-04 13:59:07"
+            "time": "2015-02-06 23:14:12"
         },
         {
             "name": "league/flysystem",
@@ -2839,7 +2889,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "illuminate/html": 20
+        "illuminate/html": 20,
+        "blueimp/jquery-file-upload": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

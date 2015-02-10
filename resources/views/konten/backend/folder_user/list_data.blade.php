@@ -1,5 +1,19 @@
+<?php 
+$parent_id = Request::segment(3);
+$folder_parent = \App\Models\Mst\Folder::whereParentId($parent_id)->first();
+?>
+@if(count($folder_parent)>0) 
 
-
+<a href="
+	@if($folder_parent->parent->parent_id == 0)
+		{!! URL::route('list_folder.index') !!}	
+	@else
+		{!! URL::route('list_folder.child', $folder_parent->parent->id) !!}	
+	@endif
+">
+	  kembali ke {{ $folder_parent->parent->nama }}
+</a>
+@endif
 
 <table class="table table-bordered table-hover">
 	<thead>

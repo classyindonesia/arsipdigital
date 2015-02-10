@@ -18,7 +18,15 @@
 			<td style='text-align:center;'>{{ $no }}</td>
 			<td>{{ $list->kode_arsip }}</td>
 			<td>{{ $list->nama }}</td>
-			<td> @if(count($list->mst_folder)>0) {{ $list->mst_folder->nama }} @else - @endif  </td>
+			<td>
+				@if(count($list->mst_folder)>0) 
+				<a href="{!! URL::route('list_folder.list_arsip', $list->mst_folder->id) !!}">
+					{{ $list->mst_folder->nama }} 
+				</a>
+				@else
+					-
+				@endif
+			</td>
 			<td>000</td>
 			<td>{{ Fungsi::date_to_tgl($list->tgl_arsip) }}</td>
 			<td> 
