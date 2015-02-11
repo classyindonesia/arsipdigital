@@ -32,9 +32,18 @@ class ListFolderController extends Controller {
 		$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
 				->where('mst_folder_id', '=', $id)
 				->orderBy('id', 'DESC')
+				->with('mst_file')
 				->paginate(10);
+		
 		$folder = Folder::find($id);
-   		return view('konten.backend.folder_user.list_arsip', compact('arsip', 'folder_home', 'folder'));		
+
+		$jml_file = 0;
+		$q_jml = Arsip::whereMstUserId(Auth::user()->id)->whereMstFolderId($id)->with('mst_file')->get();
+		foreach($q_jml as $list){
+			$jml_file = $jml_file+count($list->mst_file);
+		}
+
+   		return view('konten.backend.folder_user.list_arsip', compact('arsip', 'folder_home', 'folder', 'jml_file'));		
 	}
 
 

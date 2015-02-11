@@ -199,6 +199,7 @@ return [
 		/* tambahan */
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
+		'Fungsi'	=> 'App\Helpers\Fungsi'
 
 	],
 

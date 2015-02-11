@@ -36,3 +36,29 @@ Route::post('my_archive/del', [
 	'uses'			=> 'Admin\ArsipSayaController@del',
 	'as'			=> 'my_archive.del'
 	]);
+
+
+Route::get('my_archive/upload_file/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@upload_file',
+	'as'			=> 'my_archive.upload_file'
+	]);
+
+Route::post('my_archive/do_upload_file/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@do_upload_file',
+	'as'			=> 'my_archive.do_upload_file'
+	]);
+
+
+Route::post('my_archive/hapus_file', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@hapus_file',
+	'as'			=> 'my_archive.hapus_file'
+	]);
+
+Route::get('my_archive/list_file_raw/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@list_file_raw',
+	'as'			=> 'my_archive.list_file_raw'
+	]);

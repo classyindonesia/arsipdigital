@@ -5,7 +5,7 @@
 			<th width='13%'>Kode Arsip</th>
 			<th>Nama Arsip</th>
 			<th width='15%'>Folder</th>
-			<th  width='7%'>jml file</th>
+			<th  style='text-align:center;' width='7%'>jml file</th>
 			<th width='20%'>Tgl berkas diarsipkan</th>
 			<th width='10%'>action</th>
 		</tr>
@@ -27,7 +27,7 @@
 					-
 				@endif
 			</td>
-			<td>000</td>
+			<td style='text-align:center;'>{{ count($list->mst_file) }}</td>
 			<td>{{ Fungsi::date_to_tgl($list->tgl_arsip) }}</td>
 			<td> 
 				@include('konten.backend.arsip_saya.action')

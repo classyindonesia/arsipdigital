@@ -1,7 +1,7 @@
     <!-- Warning box -->
     <div class="box box-solid bg-light-blue">
         <div class="box-header">
-            <h3 class="box-title"> <i class='fa fa-info-circle'></i> Daftar Arsip Folder</h3>
+            <h3 class="box-title"> <i class='fa fa-info-circle'></i> Info Folder</h3>
         </div>
         <div class="box-body">
 <hr>
@@ -20,7 +20,7 @@
         		</tr>
         		<tr>
         			<td>Jumlah File</td>
-        			<td>: 000</td>
+        			<td>: {{ $jml_file }}</td>
         		</tr>
 
         	</table>

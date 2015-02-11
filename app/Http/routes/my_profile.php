@@ -15,18 +15,21 @@ Route::get('my_profile/coba_upload',  function(){
 	return view('coba_upload');
 });
 
-Route::post('my_profile/coba_upload',  ['as' => 'coba_upload', 'uses' => function(Illuminate\Http\Request $request){
+Route::post('my_profile/coba_upload',  
+	['as' => 'coba_upload', 
+	'uses' => function(Illuminate\Http\Request $request){
 
-$results = array();
-$files = $request->file('files');
+		$results = array();
+		$files = $request->file('files');
 
-	 foreach ($files as $file) {
-	 	$name = $file->getClientOriginalName();
-	 	$results[] = compact('name');
-	 }
+			 foreach ($files as $file) {
+			 	$name = $file->getClientOriginalName();
+			 	$results[] = compact('name');
+			 }
 
-
-	 return array(
-	        'files' => $results
-	    );
-}]);
+			 return array(
+			        'files' => $results
+			    );
+		}
+	]
+);

@@ -19,6 +19,10 @@ class Arsip extends Eloquent {
 		return $this->belongsTo('App\Models\Mst\Folder', 'mst_folder_id');
 	}
 
+	public function mst_file(){
+		return $this->hasMany('App\Models\Mst\File', 'mst_arsip_id');
+	}
+
  
 
 
