@@ -29,14 +29,18 @@
 		</tr>
 	</thead>
 	<tbody>
-
+		<?php $no = $rak->firstItem(); ?>
+@foreach($rak as $list)
 		<tr>
-			<td class='text-center'></td>
-			<td></td>
-			<td></td>
-			<td class='text-center'></td>
+			<td class='text-center'>{{ $no }}</td>
+			<td>{{ $list->nama }}</td>
+			<td width='15%' class='text-center'>  {{ count($list->mst_folder) }} </td>
+			<td class='text-center'>
+				@include('konten.backend.rak_user.action')
+			</td>
 		</tr>
-
+		<?php $no++; ?>
+@endforeach
 
 	</tbody>
 </table>

@@ -145,6 +145,9 @@ class ArsipSayaController extends Controller {
 					 	];
 					 	File::create($data_insert);
 
+					 	$f = new File;
+					 	$f->handle_file($nama_file_to_server);
+
 					} catch(Exception $e) {
 				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
 				 		//$results[] = compact('name');   

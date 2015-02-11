@@ -11,6 +11,7 @@ class Rak extends Eloquent {
 	public function mst_folder(){
 		return $this->hasMany('App\Models\Mst\Folder', 'mst_rak_id');
 	}
+ 
 
 
 

@@ -26,8 +26,11 @@
 	    <div class="small-box bg-teal">
 		    <div class="inner">
 		        <h3>
-		            200
-		        </h3>
+		        	<?php
+		        	$jml_arsip = \App\Models\Mst\File::where('mst_user_id', '=', Auth::user()->id)->count();
+		        	 ?>
+		           {{ $jml_arsip }}
+		           </h3>
 		        <p>
 		            Jml File Arsip
 		        </p>

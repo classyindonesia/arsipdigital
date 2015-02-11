@@ -5,4 +5,10 @@ Route::get('rak_user', [
 	'as'			=> 'rak_user.index'
 	]);
 
+ Route::get('rak_user/list_folder/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\RakUserController@list_folder',
+	'as'			=> 'rak_user.list_folder'
+	]);
+
  

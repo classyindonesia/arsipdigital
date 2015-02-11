@@ -14,14 +14,17 @@
 
 @section('main_konten')
 
+ 
+
+
+{{-- env('EKSTENSI_GAMBAR') --}}
+
  	@include('konten.backend.home.user.komponen.box_jml_arsip')
   
 
 
 
-
-d asd asdsa
-
+ 
 
 
     

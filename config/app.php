@@ -147,6 +147,7 @@ return [
 
 		/* tambahan */
 		'Illuminate\Html\HtmlServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
 
 	],
 
@@ -199,7 +200,8 @@ return [
 		/* tambahan */
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
-		'Fungsi'	=> 'App\Helpers\Fungsi'
+		'Fungsi'	=> 'App\Helpers\Fungsi',
+		'Image' 	=> 'Intervention\Image\Facades\Image'
 
 	],
 
