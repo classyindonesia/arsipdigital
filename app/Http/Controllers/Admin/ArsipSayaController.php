@@ -86,6 +86,13 @@ class ArsipSayaController extends Controller {
 
 	public function del(Request $request){
 		$o = Arsip::find($request->input('id'));
+
+		$file  = File::whereMstArsipId($request->input('id'))->get();
+		foreach($file as $list){
+			
+		}
+
+
 		$o->delete();
 		return 'ok';
 	}
