@@ -165,7 +165,7 @@ $size_all_files = File::whereMstArsipId($request->input('mst_arsip_id'))->sum('s
 	}
 
 
-	public function hapus_file(Request $request){
+	public function hapus_file(Request $request, File $f){
 		$file = File::find($request->input('id'));
 		$assetPath = '/upload/arsip';
 		$uploadPath = public_path($assetPath);
@@ -173,8 +173,71 @@ $size_all_files = File::whereMstArsipId($request->input('mst_arsip_id'))->sum('s
 		if(file_exists($path_file)){
 			unlink($path_file);
 		}
+		$f->remove_watermark_file($file->nama_file_tersimpan);
 		$file->delete();
 		return 'ok';
+	}
+
+	/* param = id file table */
+	public function download_file($id){
+		$file = File::find($id);
+		$assetPath = '/upload/arsip';
+		$uploadPath = public_path($assetPath);		
+		return response()->download($uploadPath.'/'.$file->nama_file_tersimpan, $file->nama_file_asli);
+	}
+
+
+
+	/* param = id file table */
+	public function download_file_watermark($id, File $f){
+		$file = File::find($id);
+		$assetPath = '/upload/arsip/watermark';
+		$uploadPath = public_path($assetPath);	
+
+		if(!file_exists($uploadPath.'/'.$file->nama_file_tersimpan)){
+			$f->handle_file($file->nama_file_tersimpan);
+		}		
+
+		$cek = $f->get_jenis_eksternsi($file->nama_file_tersimpan);
+		if($cek != 1){
+			abort(403, 'Unauthorized action.');
+		}
+
+	
+		return response()->download($uploadPath.'/'.$file->nama_file_tersimpan, $file->nama_file_asli);
+	}
+
+
+
+	public function before_download($id, File $f){
+		$file = File::find($id);
+		$cek = $f->get_jenis_eksternsi($file->nama_file_tersimpan);		
+		return view('konten.backend.arsip_saya.popup.before_download', compact('file', 'cek'));
+	}
+
+
+	public function view_file($id, File $file){
+		$file = $file->find($id);
+		$cek = $file->get_jenis_eksternsi($file->nama_file_tersimpan);
+		if($cek == 1 || $cek == 2){
+			return view('konten.backend.arsip_saya.file.view', compact('file', 'cek'));
+		}else{
+			abort(403, 'Unauthorized action.');
+		}
+		
+	}
+
+
+
+	/* khusus view file pdf */
+	public function view_file_pdf($id, File $file){
+		$file = $file->find($id);
+		$cek = $file->get_jenis_eksternsi($file->nama_file_tersimpan);
+		if($cek == 2){
+			return view('konten.backend.arsip_saya.file.view_pdf_full', compact('file', 'cek'));
+		}else{
+			abort(403, 'Unauthorized action.');
+		}
 	}
 
 

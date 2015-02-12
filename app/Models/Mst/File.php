@@ -70,10 +70,16 @@ class File extends Eloquent {
 				->insert(public_path('upload/').env('NAMA_FILE_WATERMARK'), env('SETTING_POSISI_WATERMARK'), 10, 10)
 				->save(public_path('/upload/arsip/watermark/').$nama_file);
 		}
-
-
 	}
 
 
+	public function remove_watermark_file($nama_file){
+		$assetPath = '/upload/arsip/watermark';
+		$uploadPath = public_path($assetPath);
+		$path_file = $uploadPath.'/'.$nama_file;
+		if(file_exists($path_file)){
+			unlink($path_file);
+		}		
+	}
 
 }

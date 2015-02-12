@@ -62,3 +62,37 @@ Route::get('my_archive/list_file_raw/{id}', [
 	'uses'			=> 'Admin\ArsipSayaController@list_file_raw',
 	'as'			=> 'my_archive.list_file_raw'
 	]);
+
+
+
+Route::get('my_archive/before_download/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@before_download',
+	'as'			=> 'my_archive.before_download'
+	]);
+
+
+Route::get('my_archive/download_file/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@download_file',
+	'as'			=> 'my_archive.download_file'
+	]);
+Route::get('my_archive/download_file_watermark/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@download_file_watermark',
+	'as'			=> 'my_archive.download_file_watermark'
+	]);
+
+
+Route::get('my_archive/view_file/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@view_file',
+	'as'			=> 'my_archive.view_file'
+	]);
+
+Route::get('my_archive/view_file_pdf/{id}', [
+	'middleware'	=> 'hanya_user',
+	'uses'			=> 'Admin\ArsipSayaController@view_file_pdf',
+	'as'			=> 'my_archive.view_file_pdf'
+	]);
+

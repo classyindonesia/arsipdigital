@@ -1,3 +1,7 @@
+@include('konten.backend.arsip_saya.action_file.download_file')
+
+||
+
 <i class='fa fa-times' style='cursor:pointer;' id='del{{ $list->id }}'></i>
 <script type="text/javascript">
 $('#del{{ $list->id }}').click(function(){
@@ -17,3 +21,6 @@ $('#del{{ $list->id }}').click(function(){
 	}
 })
 </script>
+
+
+

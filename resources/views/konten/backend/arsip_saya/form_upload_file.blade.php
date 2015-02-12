@@ -18,14 +18,17 @@
     <div style='display:none;' id='proses_upload'>
         <i class="fa fa-spinner fa-spin"></i>
     </div>
-     <div id='files'>
-     </div>
-
     <div  style='display:none;'  id="progress" class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
         <span id='persen_upload'>0%</span> Complete
       </div>
     </div>
+
+    
+     <div id='files'>
+     </div>
+
+
 </div>
 
 
