@@ -8,6 +8,8 @@ use App\Http\Requests\CreateUser;
 use App\Http\Requests\UpdateUser;
 
 
+use \PHPExcelReader\SpreadsheetReader as Reader;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller{
@@ -81,6 +83,81 @@ class UserController extends Controller{
 		return 'ok';
 	}
 	
+
+
+
+
+	public function import(){
+	$max = explode('M', ini_get("upload_max_filesize"));
+	$max_upload = $max[0] * 1048576;		
+		return view('konten.backend.users.popup.import', compact('max_upload'));
+	}
+
+
+
+
+	public function do_import(Request $request){
+	$files = $request->file('files');
+	$results = array();
+
+
+			 foreach ($files as $file) {
+
+				try {
+					/*
+	                $data = new Reader($file); 
+	                $a = $data->rowcount($sheet_index=0); 
+		            for($i=1;$i<=$a;$i++){
+		                if($i != 1 && $i != 2){                    
+		                      $no  = trim($data->val($i, 'B')); //email
+		                      $no3 = trim($data->val($i, 'C')); // Password
+		                       if($no != NULL && $no3 != NULL){
+
+								$user = User::whereEmail($no)->first();
+								if(count($user)>0){
+									$user->password = $no3;
+									$user->save();
+									$name = 'user dgn email :'.$no.' sudah ada dlm database, status updated!';
+								}else{
+									$data_insert = [
+											'email' => $no, 
+											'password' => $no3,
+											'ref_user_level_id'	=> 3
+											];
+									$insert_user = User::create($data_insert);
+									DataUser::create(['nama' => "", 'mst_user_id' => $insert_user->id]);
+									$name = "user dgn email".$no.' telah ditambahkan';
+								}
+								*/
+								$name = print_r($file);
+
+		                       	$results[] = compact('name');
+		         
+		         /*             }
+		                }
+		            }
+		            */					
+  
+
+					} catch(Exception $e) {
+				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
+				 		//$results[] = compact('name');   
+			 		}
+			 	
+			 	$results[] = compact('name');
+			 }
+
+ 
+
+	 return array(
+	        'files' => $results,
+  	    );	
+
+ 
+	}
+
+
+
 
 
 }

@@ -201,7 +201,8 @@ return [
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Fungsi'	=> 'App\Helpers\Fungsi',
-		'Image' 	=> 'Intervention\Image\Facades\Image'
+		'Image' 	=> 'Intervention\Image\Facades\Image',
+		'Reader'	=> '\PHPExcelReader\SpreadsheetReader',
 
 	],
 

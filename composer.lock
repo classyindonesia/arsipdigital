@@ -4,58 +4,8 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "760cfbc436a748dd7105a8368d7bdd9f",
+    "hash": "d9b1285b9918e640a28be3ac00788882",
     "packages": [
-        {
-            "name": "blueimp/jquery-file-upload",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vkhramtsov/jQuery-File-Upload.git",
-                "reference": "2e7551da295dc7d0e9d20a9d61886ffd8e472768"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vkhramtsov/jQuery-File-Upload/zipball/2e7551da295dc7d0e9d20a9d61886ffd8e472768",
-                "reference": "2e7551da295dc7d0e9d20a9d61886ffd8e472768",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Tschan",
-                    "homepage": "https://blueimp.net"
-                }
-            ],
-            "description": "File Upload widget for jQuery.",
-            "homepage": "https://github.com/blueimp/jQuery-File-Upload",
-            "keywords": [
-                "bootstrap",
-                "chunk",
-                "cross-domain",
-                "cross-site",
-                "drag",
-                "drop",
-                "file",
-                "gae",
-                "go",
-                "jquery",
-                "multiple",
-                "php",
-                "preview",
-                "progress",
-                "python",
-                "resume",
-                "selection",
-                "upload",
-                "widget"
-            ],
-            "time": "2015-02-06 05:45:38"
-        },
         {
             "name": "classpreloader/classpreloader",
             "version": "1.2.0",
@@ -976,6 +926,54 @@
             "time": "2015-01-18 11:29:59"
         },
         {
+            "name": "php-excel-reader/spreadsheet-reader",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rafsoaken/php-excel-reader.git",
+                "reference": "bb043649bef10cebc395569893e7b916f4775571"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rafsoaken/php-excel-reader/zipball/bb043649bef10cebc395569893e7b916f4775571",
+                "reference": "bb043649bef10cebc395569893e7b916f4775571",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcelReader": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "PHP license version 3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Vadim Tkachenko"
+                },
+                {
+                    "name": "David Sanders"
+                },
+                {
+                    "name": "Matt Kruse"
+                }
+            ],
+            "description": "PHPExcelReader/SpreadsheetReader - A class for reading Microsoft Excel (97/2003) Spreadsheets.",
+            "homepage": "http://code.google.com/p/php-excel-reader/",
+            "keywords": [
+                "excel",
+                "php",
+                "reader",
+                "spreadsheet"
+            ],
+            "time": "2015-02-06 10:25:35"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -1015,16 +1013,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.3.3",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174"
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0355cecab0591c83fed019a9572c510b0da29174",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2ce0e8f3020fd292c2ad2a496c5d83939823f642",
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642",
                 "shasum": ""
             },
             "require": {
@@ -1074,14 +1072,14 @@
                 }
             ],
             "description": "An interactive shell for modern PHP.",
-            "homepage": "https://github.com/bobthecow/psysh",
+            "homepage": "http://psysh.org",
             "keywords": [
                 "REPL",
                 "console",
                 "interactive",
                 "shell"
             ],
-            "time": "2015-01-20 21:18:03"
+            "time": "2015-02-12 19:35:52"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2947,7 +2945,7 @@
     "stability-flags": {
         "illuminate/html": 20,
         "intervention/image": 20,
-        "blueimp/jquery-file-upload": 20
+        "php-excel-reader/spreadsheet-reader": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

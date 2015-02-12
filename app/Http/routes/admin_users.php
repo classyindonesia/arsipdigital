@@ -35,3 +35,16 @@ Route::post('users/del', [
 	'uses'			=> 'Admin\UserController@del',
 	'as'			=> 'users.del'
 	]);
+
+
+Route::get('users/import', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@import',
+	'as'			=> 'users.import'
+	]);
+
+Route::post('users/do_import', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@do_import',
+	'as'			=> 'users.do_import'
+	]);
