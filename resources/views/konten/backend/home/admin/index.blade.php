@@ -15,26 +15,34 @@
 @section('main_konten')
 
 
+<div class='col-md-6' >
+	<div class="col-lg-6 col-xs-6 animated fadeIn">
+		@include('konten.backend.home.admin.komponen.box_user')
+	</div>
+	
+	<div class="col-lg-6 col-xs-6 animated fadeIn">
+		@include('konten.backend.home.admin.komponen.box_jml_rak_arsip')
+	</div>
+	<div class="col-lg-6 col-xs-6 animated fadeIn">
+		@include('konten.backend.home.admin.komponen.box_jml_folder_arsip')
+	</div>
+	<div class="col-lg-6 col-xs-6 animated fadeIn">
+		@include('konten.backend.home.admin.komponen.box_jml_arsip')
+	</div>
+	<div class="col-lg-6 col-xs-6 animated fadeIn">
+		@include('konten.backend.home.admin.komponen.box_jml_file_arsip')
+	</div>
+	<div class="col-lg-6 col-xs-6 animated fadeIn">
+		@include('konten.backend.home.admin.komponen.box_total_size_file')
+	 </div>
+</div>
 
-	@include('konten.backend.home.admin.komponen.box_user')
+	 <div class='col-md-6' >
 
-	@include('konten.backend.home.admin.komponen.box_jml_rak_arsip')
-
-	@include('konten.backend.home.admin.komponen.box_jml_folder_arsip')
+		@include('konten.backend.home.admin.komponen.statistik_folder')
 
 
-	@include('konten.backend.home.admin.komponen.box_jml_arsip')
-	@include('konten.backend.home.admin.komponen.box_jml_file_arsip')
-	@include('konten.backend.home.admin.komponen.box_total_size_file')
-	 
-	 
-
-
-
-
-
-
-
+</div>
     
 @endsection
 

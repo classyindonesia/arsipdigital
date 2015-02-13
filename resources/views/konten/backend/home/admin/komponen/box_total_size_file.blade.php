@@ -1,6 +1,5 @@
-<div class="col-lg-3 col-xs-6 animated fadeIn">
-
-	    <div class="small-box bg-red">
+ 
+	    <div class="small-box bg-blue">
 		    <div style='padding-top:3.1em;' class="inner">
 		        <b>
 		        	<?php
@@ -19,4 +18,4 @@
 		        More info <i class="fa fa-arrow-circle-right"></i>
 		    </a>
 		</div>
-</div>
+ 
