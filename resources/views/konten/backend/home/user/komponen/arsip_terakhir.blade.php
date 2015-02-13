@@ -8,11 +8,11 @@
 			<th>Arsip</th>
 			<th class='text-center' width='10%'>jml file</th>
 			<th width='15%'>created at</th>
-			<th width='10%'>Action</th>
+			<th width='15%' class='text-center'>Action</th>
 		</tr>
 	</thead>
 	<tbody>
-<?php 
+<?php
 $arsip = \App\Models\Mst\Arsip::whereMstUserId(Auth::user()->id)
 ->orderBy('id', 'DESC')
 ->with('mst_file')
@@ -24,7 +24,7 @@ $arsip = \App\Models\Mst\Arsip::whereMstUserId(Auth::user()->id)
 			<td>{{{ $list->nama }}}</td>
 			<td class='text-center'>{{ count($list->mst_file) }}</td>
 			<td>{!! Fungsi::date_to_tgl(date('Y-m-d', strtotime($list->created_at))) !!}</td>
-			<td>
+			<td class='text-center'>
 				@include('konten.backend.arsip_saya.action')
 			</td>
 		</tr>

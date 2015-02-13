@@ -211,6 +211,15 @@ $size_all_files = File::whereMstArsipId($request->input('mst_arsip_id'))->sum('s
 
 	public function before_download($id, File $f){
 		$file = File::find($id);
+
+		$assetPath = '/upload/arsip/watermark';
+		$uploadPath = public_path($assetPath);	
+
+		if(!file_exists($uploadPath.'/'.$file->nama_file_tersimpan)){
+			$f->handle_file($file->nama_file_tersimpan);
+		}	
+
+		
 		$cek = $f->get_jenis_eksternsi($file->nama_file_tersimpan);		
 		return view('konten.backend.arsip_saya.popup.before_download', compact('file', 'cek'));
 	}
