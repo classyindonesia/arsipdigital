@@ -6,6 +6,7 @@ use App\Models\Mst\DataUser;
 use App\Models\Ref\UserLevel;
 use App\Http\Requests\CreateUser;
 use App\Http\Requests\UpdateUser;
+use App\Helpers\Gravatar;
 
 
 use \PHPExcelReader\SpreadsheetReader as Reader;
@@ -96,7 +97,7 @@ class UserController extends Controller{
 
 
 
-	public function do_import(Request $request){
+	public function do_import(Request $request, Gravatar $gravatar){
 	$files = $request->file('files');
 	$results = array();
 
@@ -127,6 +128,7 @@ class UserController extends Controller{
 									$user->save();
 									$name = 'user dgn email : '.$email.' sudah ada dlm database, status updated!';
 								}else{
+									$gravatar->fetch_image($email);
 									$data_insert = [
 											'email' => $email, 
 											'password' => $password,

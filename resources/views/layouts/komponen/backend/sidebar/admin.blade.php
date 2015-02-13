@@ -60,13 +60,9 @@
                     </li>
 
 
+ 
 
 
-
-                    <li><a href="javascript:;">Products</a></li>
-                    <li><a href="javascript:;">FAQ</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
                 </ul>
             </nav>
  
