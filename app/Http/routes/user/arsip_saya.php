@@ -8,57 +8,57 @@ Route::get('my_archive', [
 
 
 Route::get('my_archive/add', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@add',
 	'as'			=> 'my_archive.add'
 	]);
 
 Route::get('my_archive/edit/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@edit',
 	'as'			=> 'my_archive.edit'
 	]);
 
 Route::post('my_archive/insert', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@insert',
 	'as'			=> 'my_archive.insert'
 	]);
 
 Route::post('my_archive/update', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@update',
 	'as'			=> 'my_archive.update'
 	]);
 
 Route::post('my_archive/del', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@del',
 	'as'			=> 'my_archive.del'
 	]);
 
 
 Route::get('my_archive/upload_file/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@upload_file',
 	'as'			=> 'my_archive.upload_file'
 	]);
 
 Route::post('my_archive/do_upload_file/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@do_upload_file',
 	'as'			=> 'my_archive.do_upload_file'
 	]);
 
 
 Route::post('my_archive/hapus_file', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@hapus_file',
 	'as'			=> 'my_archive.hapus_file'
 	]);
 
 Route::get('my_archive/list_file_raw/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@list_file_raw',
 	'as'			=> 'my_archive.list_file_raw'
 	]);
@@ -66,32 +66,32 @@ Route::get('my_archive/list_file_raw/{id}', [
 
 
 Route::get('my_archive/before_download/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@before_download',
 	'as'			=> 'my_archive.before_download'
 	]);
 
 
 Route::get('my_archive/download_file/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@download_file',
 	'as'			=> 'my_archive.download_file'
 	]);
 Route::get('my_archive/download_file_watermark/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@download_file_watermark',
 	'as'			=> 'my_archive.download_file_watermark'
 	]);
 
 
 Route::get('my_archive/view_file/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@view_file',
 	'as'			=> 'my_archive.view_file'
 	]);
 
 Route::get('my_archive/view_file_pdf/{id}', [
-	'middleware'	=> 'akses_file',
+	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@view_file_pdf',
 	'as'			=> 'my_archive.view_file_pdf'
 	]);

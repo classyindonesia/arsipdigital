@@ -25,6 +25,7 @@
 
 	@include('konten.backend.home.admin.komponen.box_jml_arsip')
 	@include('konten.backend.home.admin.komponen.box_jml_file_arsip')
+	@include('konten.backend.home.admin.komponen.box_total_size_file')
 	 
 	 
 

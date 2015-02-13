@@ -81,8 +81,8 @@ $(function () {
             });
 
             /* update arsip info */
-            $('#jml_file').html(data.result.jml_file);
-            $('#size_all_files').html(data.result.size_all_files);
+         //   $('#jml_file').html(data.result.jml_file);
+           // $('#size_all_files').html(data.result.size_all_files);
             
 
          },    

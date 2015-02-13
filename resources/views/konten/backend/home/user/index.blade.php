@@ -20,11 +20,16 @@
 {{-- env('EKSTENSI_GAMBAR') --}}
 
  	@include('konten.backend.home.user.komponen.box_jml_arsip')
+
+
+
+<div class=' col-md-9 '>
+ 	@include('konten.backend.home.user.komponen.pesan')
+ 	@include('konten.backend.home.user.komponen.arsip_terakhir')
+</div>
+
   
 
-
-
- 
 
 
     
@@ -34,4 +39,9 @@
 
 @section('title')
 Admin Dashboard
+@endsection
+
+
+@section('script_tambahan')
+  <script type="text/javascript" src="/plugins/moment/moment.min.js"></script>
 @endsection
