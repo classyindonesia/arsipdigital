@@ -1,0 +1,1 @@
+<a data-toggle='tooltip' title='upload file' href="{!! URL::route('arsip.upload_file', $list->id) !!}"> <i class='fa fa-cloud-upload'></i> </a>

@@ -2,17 +2,7 @@
                 <ul class="nav">
 
 
-                    <li style='text-align:center;'> 
-                        <i class='fa fa-user' style='font-size:50px;'></i> 
-                        <hr style='margin:0px;'>
-
-                       {{ Auth::user()->data_user->nama }}
-                        <br>
-                        <i class='fa fa-circle text-success'></i> online
-                        <hr>
- 
-
-                    </li>
+                    @include('layouts.komponen.backend.sidebar.sidebar_user_avatar')
 
 
 
@@ -22,6 +12,14 @@
                         </a>
                     </li>
                     
+
+                    <li @if(isset($arsip_home)) class="active" @endif>
+                        <a href="{{ URL::route('arsip.index') }}">
+                            <i class='fa fa-archive'></i> Arsip User
+                        </a>
+                    </li>
+
+
 
                     <li @if(isset($users_home)) class="active" @endif>
                         <a href="{{ URL::route('users.index') }}">

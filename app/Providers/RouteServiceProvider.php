@@ -52,6 +52,9 @@ class RouteServiceProvider extends ServiceProvider {
 			require app_path('Http/routes/ref/status_ikatan.php');
 			require app_path('Http/routes/my_profile.php');
 			require app_path('Http/routes/rak_user.php');
+			require app_path('Http/routes/arsip.php');
+
+
 
 			/* hanya utk user */
 			require app_path('Http/routes/user/arsip_saya.php');

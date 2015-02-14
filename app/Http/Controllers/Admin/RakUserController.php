@@ -26,9 +26,11 @@ class RakUserController extends Controller {
 
 
 	public function list_folder($id){
-//		$folder = Folder::whereMstRakId($id)->get();
 		$rak = Rak::find($id);
-		return view('konten.backend.rak_user.popup.list_folder', compact('rak'));
+		$mst_folder = $rak->mst_folder()->with(['mst_arsip' => function($q){
+			$q->where('mst_user_id', '=', Auth::user()->id);
+		}])->get();
+	return view('konten.backend.rak_user.popup.list_folder', compact('rak', 'mst_folder'));
 	}
 
 

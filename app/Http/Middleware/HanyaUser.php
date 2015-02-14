@@ -24,7 +24,7 @@ class HanyaUser {
 				return redirect()->guest('auth/login');
 			}
 		}else{
-			if($this->auth->user()->ref_user_level_id != 3){
+			if($this->auth->user()->ref_user_level_id == 2){
 				return response('Unauthorized.', 401);
 			}			
 		}

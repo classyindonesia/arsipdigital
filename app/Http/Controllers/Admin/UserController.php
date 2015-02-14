@@ -42,6 +42,7 @@ class UserController extends Controller{
 			$insert = $users->create($data_insert);
 		/* END insert ke tabel mst_users */
 
+		$gravatar->fetch_image($request->email);
 
 		/* START insert ke tabel mst_data_user */
 			$data_user_insert = [

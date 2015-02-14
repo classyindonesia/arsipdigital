@@ -8,13 +8,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php $no=1; ?>
-@foreach($rak->mst_folder as $list)
+		<?php $no=1;
+
+
+		 ?>
+@foreach($mst_folder as $list)
 		<tr>
 			<td>{{ $no }}</td>
 			<td>{{ $list->nama }}</td>
 			<td class='text-center'> {{ count($list->mst_arsip) }} </td>
 		</tr>
+		<?php $no++; ?>
 @endforeach
 	</tbody>
 </table>

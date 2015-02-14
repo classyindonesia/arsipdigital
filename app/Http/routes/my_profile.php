@@ -12,3 +12,14 @@ Route::post('my_profile/update', [
 	]);
 
  
+Route::get('my_profile/change_avatar', [
+'middleware'	=> 'auth',
+'uses'			=> 'Admin\MyProfileController@change_avatar',
+'as'			=> 'my_profile.change_avatar'
+]);
+
+Route::post('my_profile/do_change_avatar', [
+'middleware'	=> 'auth',
+'uses'			=> 'Admin\MyProfileController@do_change_avatar',
+'as'			=> 'my_profile.do_change_avatar'
+]);

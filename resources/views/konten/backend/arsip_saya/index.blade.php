@@ -33,6 +33,15 @@ $('#add').click(function(){
  @include('konten.backend.arsip_saya.komponen.nav_atas')
  <hr>
  
+<div class="col-md-6 col-md-offset-6"> 
+	@include('konten.backend.arsip_saya.form_search')
+</div>
+
+<div class='col-md-12'>
+	 <hr>
+</div>
+
+
 @include('konten.backend.arsip_saya.list_data')
 
 

@@ -17,11 +17,14 @@ class UpdateArsip extends Request {
         {
             return false;
         }
-
-        $thingBeingEdited = Arsip::find($request->input('id'));
-        if ( ! $thingBeingEdited || $thingBeingEdited->mst_user_id != Auth::id() ) {
-            return false;
+        if(!Auth::user()->ref_user_level_id == 1){
+	        $thingBeingEdited = Arsip::find($request->input('id'));
+	        if ( ! $thingBeingEdited || $thingBeingEdited->mst_user_id != Auth::id() ) {
+	            return false;
+	        }
         }
+
+
 
         return true;
 	}

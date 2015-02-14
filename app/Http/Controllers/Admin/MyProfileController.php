@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\UpdateMyProfile;
 
-
+use Auth;
 
 /*models */
 use App\Models\Ref\StatusPernikahan;
@@ -61,8 +61,35 @@ class MyProfileController extends Controller {
 		$d->save();
 
 		return 'ok';
-
  	}
 
+
+
+ 	public function change_avatar(){
+		$max = explode('M', ini_get("upload_max_filesize"));
+		$max_upload = $max[0] * 1048576; 		
+ 		return view('konten.backend.my_profile.popup.form_change_avatar', compact('max_upload'));
+ 	}
+
+
+ 	public function do_change_avatar(Request $request){
+		$assetPath = '/upload/avatars';
+		$uploadPath = public_path($assetPath);	
+		$file =  $request->file('files');
+		$results = [];
+
+		try {
+			$nama_file = md5(Auth::user()->email).'.jpg';
+		 	$file->move($uploadPath, $nama_file);
+		 	$name = $file->getClientOriginalName().' telah tersimpan! ';
+		}catch(Exception $e) {
+	 		$name = $file->getClientOriginalName().' gagal tersimpan!';
+	 		$results[] = compact('name');   
+		}
+		$results[] = compact('name');   
+	 return array(
+	        'files' => $results,
+ 	    );					
+ 	}
 
  }

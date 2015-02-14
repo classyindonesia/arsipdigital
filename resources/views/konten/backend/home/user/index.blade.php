@@ -42,6 +42,4 @@ Admin Dashboard
 @endsection
 
 
-@section('script_tambahan')
-  <script type="text/javascript" src="/plugins/moment/moment.min.js"></script>
-@endsection
+ 

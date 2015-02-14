@@ -15,10 +15,13 @@ use Illuminate\Http\Request;
 use App\Helpers\Fungsi;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Session\Store as Session;
+
 
 class ArsipSayaController extends Controller {
  
-	public function __construct(){
+	public function __construct(Session $session){
+		$this->session = $session;
 		view()->share('my_archive', true);
 	}
 
@@ -26,11 +29,36 @@ class ArsipSayaController extends Controller {
 
 	public function index(){
 		$my_archive_home = true;
-		$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
-		->orderBy('id', 'DESC')
-		->with('mst_file')
-		->paginate(10);
-   		return view('konten.backend.arsip_saya.index', compact('arsip', 'my_archive_home'));
+
+
+
+		if($this->session->has('pencarian_arsip')){
+			$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
+			->orderBy('id', 'DESC')
+			->where('nama', 'like', '%'.$this->session->get('pencarian_arsip').'%')
+			->with('mst_file')
+			->paginate(10);
+			if(count($arsip)<=0){
+				$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
+				->orderBy('id', 'DESC')
+				->where('kode_arsip', 'like', '%'.$this->session->get('pencarian_arsip').'%')
+				->with('mst_file')
+				->paginate(10);				
+			}
+			if(count($arsip)<=0){
+				$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
+				->orderBy('id', 'DESC')
+				->where('keterangan', 'like', '%'.$this->session->get('pencarian_arsip').'%')
+				->with('mst_file')
+				->paginate(10);				
+			}
+		}else{
+			$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
+			->orderBy('id', 'DESC')
+			->with('mst_file')
+			->paginate(10);
+		}
+	return view('konten.backend.arsip_saya.index', compact('arsip', 'my_archive_home'));
 	}
 
 

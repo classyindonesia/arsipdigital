@@ -98,3 +98,11 @@ Route::get('my_archive/view_file_pdf/{id}', [
 	'as'			=> 'my_archive.view_file_pdf'
 	]);
 
+
+
+Route::post('my_archive/submit_search', [
+'middleware'	=> 'hanya_user',
+'uses'			=> 'Admin\ArsipController@submit_search',
+'as'			=> 'my_archive.submit_search'
+]);
+

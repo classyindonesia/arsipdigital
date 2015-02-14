@@ -4,6 +4,23 @@
 
 
 
+<table width='100%'>
+	<tr>
+		<td>Nama File</td>
+		<td>{{ $file->nama_file_asli }}</td>
+	</tr>
+	<tr>
+		<td>size</td>
+		<td>{{ Fungsi::size($file->size) }}</td>
+	</tr>	
+</table>
+
+
+<hr>
+
+
+
+
 
  @if($cek == 1 || $cek == 2)
 	<b>View file</b><hr style='margin:2px;'>
