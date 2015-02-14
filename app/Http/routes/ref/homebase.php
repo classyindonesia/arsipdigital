@@ -12,7 +12,7 @@ Route::get('ref_homebase/add', [
 	'as'			=> 'ref_homebase.add'
 	]);
 
-Route::get('ref_homebase/edit/{id}', [
+Route::get('ref_homebase/edit/{homebase}', [
 	'middleware'	=> 'hanya_admin',
 	'uses'			=> 'Admin\RefHomeBaseController@edit',
 	'as'			=> 'ref_homebase.edit'

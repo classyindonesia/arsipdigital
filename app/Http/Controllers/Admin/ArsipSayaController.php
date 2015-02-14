@@ -42,9 +42,8 @@ class ArsipSayaController extends Controller {
 
 
 
-	public function edit($id){
+	public function edit(Arsip $arsip){
 		$folder = Folder::all();
-		$arsip 	= Arsip::find($id);
 		return view('konten.backend.arsip_saya.popup.edit', compact('folder', 'arsip'));
 	}
 
@@ -98,15 +97,12 @@ class ArsipSayaController extends Controller {
 	}
 
 
-	public function upload_file($id){
-
-	$max = explode('M', ini_get("upload_max_filesize"));
-	$max_upload = $max[0] * 1048576;
-
-		$arsip = Arsip::find($id);
-		$file = File::whereMstArsipId($id)->get();
+	public function upload_file(Arsip $arsip){
+		$max = explode('M', ini_get("upload_max_filesize"));
+		$max_upload = $max[0] * 1048576;
+		$file = File::whereMstArsipId($arsip->id)->get();
 		$user = User::find($arsip->mst_user_id)->data_user;
-		$size = File::whereMstArsipId($id)->sum('size');
+		$size = File::whereMstArsipId($arsip->id)->sum('size');
 		return view('konten.backend.arsip_saya.upload_file', compact('arsip', 'file', 'user', 'size', 'max_upload'));
 	} 
 
@@ -120,12 +116,9 @@ class ArsipSayaController extends Controller {
 	public function do_upload_file(Request $request, Filesystem $filesystem){
 		$assetPath = '/upload/arsip';
 		$uploadPath = public_path($assetPath);
-
 		$results = array();
 		$files = $request->file('files');
-
 			 foreach ($files as $file) {
-
 				try {
 						$size = $file->getSize();
 					 	$name = $file->getClientOriginalName();
@@ -147,7 +140,6 @@ class ArsipSayaController extends Controller {
 
 					 	$f = new File;
 					 	$f->handle_file($nama_file_to_server);
-
 					} catch(Exception $e) {
 				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
 				 		//$results[] = compact('name');   

@@ -13,7 +13,7 @@ Route::get('my_archive/add', [
 	'as'			=> 'my_archive.add'
 	]);
 
-Route::get('my_archive/edit/{id}', [
+Route::get('my_archive/edit/{mst_arsip}', [
 	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@edit',
 	'as'			=> 'my_archive.edit'
@@ -38,7 +38,7 @@ Route::post('my_archive/del', [
 	]);
 
 
-Route::get('my_archive/upload_file/{id}', [
+Route::get('my_archive/upload_file/{mst_arsip}', [
 	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@upload_file',
 	'as'			=> 'my_archive.upload_file'
@@ -77,6 +77,8 @@ Route::get('my_archive/download_file/{id}', [
 	'uses'			=> 'Admin\ArsipSayaController@download_file',
 	'as'			=> 'my_archive.download_file'
 	]);
+
+
 Route::get('my_archive/download_file_watermark/{id}', [
 	'middleware'	=> 'hanya_user',
 	'uses'			=> 'Admin\ArsipSayaController@download_file_watermark',

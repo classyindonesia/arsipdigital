@@ -39,8 +39,8 @@ class RefHomeBaseController extends Controller {
 	}
 
 
-	public function edit($id){
-		$homebase = HomeBase::find($id);
+	public function edit(HomeBase $homebase){
+		//$homebase = HomeBase::find($id);
 		return view('konten.backend.data_ref.ref_homebase.popup.edit', compact('homebase'));
 	}
 
