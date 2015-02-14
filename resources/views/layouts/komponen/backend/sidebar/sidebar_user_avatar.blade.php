@@ -15,6 +15,5 @@
 
    {{ Auth::user()->data_user->nama }}
     <br>
-    <i class='fa fa-circle text-success'></i> online
-    <hr>
+     <hr>
 </li>

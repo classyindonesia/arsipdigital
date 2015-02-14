@@ -76,7 +76,7 @@ $(function () {
         maxFileSize: {{ $max_upload }},
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
-                $('<p/>').html('<span class="text-success">'+file.name+'</span>').appendTo('#files');
+                $('<p/>').html('<span class="text-success">saved!</span>').appendTo('#files');
             });
  
          },    
