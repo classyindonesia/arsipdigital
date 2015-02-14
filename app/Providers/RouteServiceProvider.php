@@ -53,6 +53,7 @@ class RouteServiceProvider extends ServiceProvider {
 			require app_path('Http/routes/my_profile.php');
 			require app_path('Http/routes/rak_user.php');
 			require app_path('Http/routes/arsip.php');
+			require app_path('Http/routes/staff_akses.php');
 
 
 

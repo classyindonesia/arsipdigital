@@ -46,4 +46,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 
+	/* get akses staff yg level user */
+	public function akses_staff_user(){
+		return $this->hasMany('\App\Models\Mst\AksesStaff', 'mst_user_id');	
+	}
+
+
+	public function staff_user(){
+		return $this->belongsToMany('\App\Models\Mst\User', 'mst_akses_staff', 'mst_user_staff_id', 'mst_user_id');
+	}
+
+ 	
+
 }

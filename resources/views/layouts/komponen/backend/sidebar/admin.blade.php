@@ -20,6 +20,13 @@
                     </li>
 
 
+                    <li @if(isset($staff_akses_home)) class="active" @endif>
+                        <a href="{{ URL::route('staff_akses.index') }}">
+                            <i class='fa fa-plug'></i> Staff Akses
+                        </a>
+                    </li>
+                    
+
 
                     <li @if(isset($users_home)) class="active" @endif>
                         <a href="{{ URL::route('users.index') }}">
