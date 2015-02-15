@@ -9,6 +9,16 @@
 $('#add').click(function(){
 	$('.modal-body').load('{!! URL::route("staff_akses.add_list_user", Request::segment(3)) !!}');
 })
+
+
+
+$('#myModal').on('hidden.bs.modal', function (e) {
+	window.location.reload();
+})
+
+
+
+
 </script>
 
 

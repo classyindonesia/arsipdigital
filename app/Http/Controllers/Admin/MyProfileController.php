@@ -13,7 +13,7 @@ use App\Models\Ref\StatusIkatan;
 use App\Models\Ref\Agama;
 use App\Models\Ref\Kota;
 use App\Models\Mst\DataUser;
-
+use Intervention\Image\Facades\Image;
 class MyProfileController extends Controller {
  
 
@@ -81,6 +81,13 @@ class MyProfileController extends Controller {
 		try {
 			$nama_file = md5(Auth::user()->email).'.jpg';
 		 	$file->move($uploadPath, $nama_file);
+		 	
+		 	$img = Image::make($uploadPath.'/'.$nama_file);
+			$img->resize(300, null, function ($constraint) {
+			    $constraint->aspectRatio();
+			});
+			$img->save($uploadPath.'/'.$nama_file);
+
 		 	$name = $file->getClientOriginalName().' telah tersimpan! ';
 		}catch(Exception $e) {
 	 		$name = $file->getClientOriginalName().' gagal tersimpan!';
