@@ -12,35 +12,7 @@
                             <i class='fa fa-home'></i> Home
                         </a>
                     </li>
-                    
-
-                    <li @if(isset($users_home)) class="active" @endif>
-                        <a href="{{ URL::route('users.index') }}">
-                            <i class='fa fa-users'></i> Daftar Pengguna
-                        </a>
-                    </li>
-                    
-
-
-
-                    <li @if(isset($rak_home)) class="active" @endif>
-                        <a href="{{ URL::route('rak.index') }}">
-                            <i class='fa fa-building'></i> Daftar Rak Arsip
-                        </a>
-                    </li>
-
-
-                    <li @if(isset($folder_home)) class="active" @endif>
-                        <a href="{{ URL::route('folders.index') }}">
-                            <i class='fa fa-folder'></i> Daftar Folder/Map Arsip
-                        </a>
-                    </li>
-
-                    <li @if(isset($ref_home)) class="active" @endif>
-                        <a href="{{ URL::route('data_ref.index') }}">
-                            <i class='fa fa-th-list'></i> Data Referensi
-                        </a>
-                    </li>
+                     
 
 
 
@@ -51,13 +23,7 @@
                     </li>
 
 
-
-
-
-                    <li><a href="javascript:;">Products</a></li>
-                    <li><a href="javascript:;">FAQ</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+ 
                 </ul>
             </nav>
  
