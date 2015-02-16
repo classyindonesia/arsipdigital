@@ -11,7 +11,7 @@
 
 
 @section('main_konten') 
-	fasd fdsfsda
+@include('konten.backend.arsip_user.list_data')
 
 @endsection
 

@@ -69,6 +69,13 @@ class Arsip extends Eloquent {
 
 
 
+	public function akses_staff(){
+		return $this->belongsTo('\App\Models\Mst\AksesStaff', 'mst_user_id', 'mst_user_id');
+	}
+
+
+
+
 
 
 

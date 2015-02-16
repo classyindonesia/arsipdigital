@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-
+use Auth;
+use App\Models\Mst\AksesStaff;
+use App\Models\Mst\Arsip;
 
 class ArsipUserController extends Controller{
 
@@ -12,7 +13,10 @@ class ArsipUserController extends Controller{
 
 
 	public function index(){
-		return view('konten.backend.arsip_user.index');
+		$arsip_user = AksesStaff::whereMstUserStaffId(Auth::user()->id)
+		->with('mst_arsip')
+		->paginate(10);
+ 		return view('konten.backend.arsip_user.index', compact('arsip_user'));
 	}
 
 
