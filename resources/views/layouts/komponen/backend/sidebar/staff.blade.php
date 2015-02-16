@@ -13,7 +13,11 @@
                         </a>
                     </li>
                      
-
+                    <li @if(isset($arsip_user_home)) class="active" @endif >
+                        <a href="{{ URL::route('arsip_user.index') }}">
+                            <i class='fa fa-archive'></i> Arsip User
+                        </a>
+                    </li>
 
 
                     <li @if(isset($my_profile)) class="active" @endif>

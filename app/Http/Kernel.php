@@ -29,6 +29,7 @@ class Kernel extends HttpKernel {
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
 		'hanya_admin' 	=> 'App\Http\Middleware\HanyaAdmin',
 		'hanya_user'	=> 'App\Http\Middleware\HanyaUser',
+		'hanya_staff'	=> 'App\Http\Middleware\HanyaStaff',
 		'akses_file'	=> 'App\Http\Middleware\AksesFileUser'
 	];
 
