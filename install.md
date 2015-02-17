@@ -12,3 +12,14 @@ ketik :
 $ php artisan migrate && php artisan db:seed
 ```
  
+
+
+Troubleshooting :
+
+-jika muncul error saat migrate atau seed, ketik perintah ini terlebih dahulu :
+```
+$ composer dump-autoload && php artisan optimize
+```
+
+-tidak muncul pesan apa2 di layar, alias blank :
+lakukan chmod -R 777 pada folder "storage"
