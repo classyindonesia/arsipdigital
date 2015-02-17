@@ -33,15 +33,10 @@
 
 
        <div class='container'>
-        <div class='col-md-6 jumbotron'>
+        <div class='col-md-6 jumbotron animated fadeIn'>
               <h1 style='margin-top: 0px;'> <i class='fa fa-cubes'></i> Arsip Digital</h1>
 <hr style='margin:2px;'>
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
+ {!! env('DESKRIPSI_APP') !!}
 
           </div>
         <div class='col-md-6'>

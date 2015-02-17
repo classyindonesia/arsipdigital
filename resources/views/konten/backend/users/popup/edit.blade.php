@@ -8,7 +8,7 @@
 
 <div class='form-group'>
 	{!! Form::label('nama', 'Nama Lengkap : ') !!}
-	<input type='text' value='{{ $user->data_user->nama }}' placeholder='nama...' name='nama' id='nama' class='form-control' />
+	<input type='text' value='@if(count($user->data_user)>0) {{ $user->data_user->nama }} @endif' placeholder='nama...' name='nama' id='nama' class='form-control' />
 </div>
 
 
@@ -46,7 +46,7 @@ $('#pesan').removeClass('alert alert-danger').html('');
 
 form_data ={
 	user_id : '{{ $user->id }}',
-	user_data_id : '{{ $user->data_user->id }}',
+	user_data_id : '@if(count($user->data_user)>0){{ $user->data_user->id }}@endif',
 	email : email,
 	nama : nama,
 	level : level,
@@ -68,7 +68,7 @@ form_data ={
 		          //alert('error! terjadi kesalahan pada sisi server!')
 		},
 		success:function(ok){
-			window.location.reload();
+			//window.location.reload();
 		}
 	})
 })

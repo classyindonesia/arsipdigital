@@ -71,16 +71,26 @@ class UserController extends Controller{
 		$u->ref_user_level_id = $request->level;
 		$u->save();
 
-		//update data user
-		$du = DataUser::find($request->user_data_id);
-		$du->nama = $request->nama;
-		$du->save();
+		//update data user / insert
+		if(empty($request->user_data_id)){
+			$create_data = [
+				'nama'	=> $request->nama,
+				'mst_user_id'	=> $request->user_id
+			];
+			DataUser::create($create_data);
+		}else{
+			$du = DataUser::find($request->user_data_id);
+			$du->nama = $request->nama;
+			$du->save();			
+		}
 		return $request->all();
 	}
 
 
 	public function del(Request $request){
 		$o = User::find($request->input('id'));
+		$d = DataUser::whereMstUserId($request->input('id'))->first();
+		if(count($d)>0) $d->delete();
 		$o->delete();
 		return 'ok';
 	}

@@ -15,7 +15,7 @@
 @foreach($users as $list)
 		<tr>
 			<td align='center'> {{ $no }} </td>
-			<td> {{ $list->data_user->nama }} </td>
+			<td> @if($list->data_user) {{ $list->data_user->nama }} @else - @endif </td>
 			<td> {{ $list->email }} </td>
 			<td> {{ $list->level->nama }} </td>
 			<td align='center'> 
