@@ -29,7 +29,12 @@
 
 
 
-<img id='gambar' class='img-rounded' style='height:150px;border: 3px solid #ccc;' src="/upload/avatars/{{ md5(Auth::user()->email) }}.jpg">
+    @if(file_exists(public_path('upload/avatars/'.md5(Auth::user()->email).'.jpg')))
+        <img src="/upload/avatars/{!! md5(Auth::user()->email) !!}.jpg"   id='gambar' class='img-rounded'   style='width:100px;height:100px;border:3px solid #aaa;' />
+    @else
+        <img id='gambar' class='img-rounded' style='height:150px;border: 3px solid #ccc;'  src="/upload/user.png"  />
+    @endif
+
 
 
 

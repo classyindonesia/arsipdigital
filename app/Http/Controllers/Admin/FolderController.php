@@ -24,6 +24,12 @@ class FolderController extends Controller {
 	}
 
 
+	public function child($id){
+		$folder = Folder::with('mst_rak', 'child')->whereParentId($id)->paginate(10);
+ 		return view('konten.backend.folder.index', compact('folder'));		
+	}
+
+
 	public function add(){
 		$parent = Folder::all();
 		$rak = Rak::all();

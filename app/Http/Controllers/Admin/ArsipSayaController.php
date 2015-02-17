@@ -78,12 +78,17 @@ class ArsipSayaController extends Controller {
 
 
 	public function insert(CreateArsip $request){
+		if($request->mst_user_id == NULL){
+			$mst_user_id = Auth::user()->id;
+		}else{
+			$mst_user_id = $request->mst_user_id;
+		}
 		$data = [
 				'nama'			=> $request->nama, 
 				'kode_arsip'	=> $request->mst_folder_id, 
 				'keterangan'	=> $request->keterangan, 
 				'mst_folder_id'	=> $request->mst_folder_id, 
-				'mst_user_id'	=> Auth::user()->id, 
+				'mst_user_id'	=> $mst_user_id, 
 				'tgl_arsip'		=> $request->tgl_arsip,
 				'tgl_surat'		=> $request->tgl_surat, 
 				'no_surat'		=> $request->no_surat, 

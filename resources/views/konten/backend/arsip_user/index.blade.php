@@ -4,7 +4,7 @@
 
 @section('title_header')	
  
- <h1 class='title_header '>Daftar Arsip User  </h1>
+ <h1 class='title_header '>Daftar Akses Arsip User  </h1>
 <hr>
 @stop
 

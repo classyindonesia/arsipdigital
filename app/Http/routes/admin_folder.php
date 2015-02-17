@@ -7,6 +7,12 @@ Route::get('folders', [
 	]);
 
 
+Route::get('folders/child/{id}', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\FolderController@child',
+	'as'			=> 'folders.child'
+	]);
+
 
 Route::get('folders/add', [
 	'middleware'	=> 'hanya_admin',

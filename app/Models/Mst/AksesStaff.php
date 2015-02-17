@@ -11,4 +11,13 @@ class AksesStaff extends Eloquent {
 		return $this->hasMany('\App\Models\Mst\Arsip', 'mst_user_id', 'mst_user_id');
 	} 
 
+
+	public function mst_user(){
+		return $this->hasMany('\App\Models\Mst\User', 'id', 'mst_user_id');
+	}
+
+
+
+	
+
 }

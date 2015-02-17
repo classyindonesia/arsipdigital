@@ -56,6 +56,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsToMany('\App\Models\Mst\User', 'mst_akses_staff', 'mst_user_staff_id', 'mst_user_id');
 	}
 
+
+ 
+
  	
 
 }

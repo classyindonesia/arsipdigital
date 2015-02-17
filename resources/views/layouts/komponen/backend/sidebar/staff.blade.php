@@ -26,6 +26,7 @@
                         </a>
                     </li>
 
+                    <li><a href="{{ URL::to('auth/logout') }}"><i class="glyphicon glyphicon-off"></i> Logout</a> </li>
 
  
                 </ul>

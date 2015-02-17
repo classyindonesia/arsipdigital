@@ -24,13 +24,14 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'App\Http\Middleware\Authenticate',
-		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
-		'hanya_admin' 	=> 'App\Http\Middleware\HanyaAdmin',
-		'hanya_user'	=> 'App\Http\Middleware\HanyaUser',
-		'hanya_staff'	=> 'App\Http\Middleware\HanyaStaff',
-		'akses_file'	=> 'App\Http\Middleware\AksesFileUser'
+		'auth' 					=> 'App\Http\Middleware\Authenticate',
+		'auth.basic' 			=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
+		'guest' 				=> 'App\Http\Middleware\RedirectIfAuthenticated',
+		'hanya_admin' 			=> 'App\Http\Middleware\HanyaAdmin',
+		'hanya_user'			=> 'App\Http\Middleware\HanyaUser',
+		'hanya_staff'			=> 'App\Http\Middleware\HanyaStaff',
+		'akses_file'			=> 'App\Http\Middleware\AksesFileUser',
+		'akses_ke_arsip_user'	=> 'App\Http\Middleware\StaffAccessToUserArchive'
 	];
 
 }

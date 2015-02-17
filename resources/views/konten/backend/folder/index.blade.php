@@ -21,6 +21,8 @@ $('#add').click(function(){
 
 
 @section('main_konten') 
+	@include('konten.backend.folder.tombol_back')
+
 	@include('konten.backend.folder.list_data')
 
 @endsection
