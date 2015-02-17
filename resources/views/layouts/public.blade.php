@@ -33,7 +33,7 @@
 
 
        <div class='container'>
-        <div class='col-md-7 jumbotron'>
+        <div class='col-md-6 jumbotron'>
               <h1 style='margin-top: 0px;'> <i class='fa fa-cubes'></i> Arsip Digital</h1>
 <hr style='margin:2px;'>
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -44,13 +44,17 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 
           </div>
-        <div class='col-md-5'>
+        <div class='col-md-6'>
             @yield('main_konten')
         </div>
        </div>
 
 
-
+    <footer class="footer">
+      <div class="container">
+       <p class="text-muted">Copyright &copy; {{ str_replace('http://', '', URL::to("/")) }}</p>
+      </div>
+    </footer>
 
     @include('layouts.komponen.public.js')
   </body>
