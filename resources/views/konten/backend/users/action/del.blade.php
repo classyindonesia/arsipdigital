@@ -1,4 +1,5 @@
 @if($list->mst_user->id != Auth::user()->id)
+||
 	<i data-toggle='tooltip' title='delete' class='fa fa-times' style='cursor:pointer;' id='del{{ $list->mst_user->id }}'></i>
 	<script type="text/javascript">
 	$('#del{{ $list->mst_user->id }}').click(function(){
