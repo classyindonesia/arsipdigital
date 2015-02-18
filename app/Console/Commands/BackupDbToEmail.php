@@ -56,7 +56,7 @@ class BackupDbToEmail extends Command {
  		$this->info('sending files to your email backup...');
 
 			Mail::send('emails.backup_database', array('key' => 'value'), function($message){
- 			    $message->to(env('EMAIL_PENGIRIM'))
+ 			    $message->to(env('EMAIL_BACKUP_DB'))
 			    ->subject('Backup Database '.env('NAMA_APP').', '.Fungsi::date_to_tgl(date('Y-m-d')) );
 			    $message->attach(storage_path('framework/cache/backup_db_'.date('Y-m-d').'.sql.gz'));
 			});
