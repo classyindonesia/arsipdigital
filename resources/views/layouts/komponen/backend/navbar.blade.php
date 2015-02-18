@@ -33,7 +33,7 @@
       <ul class="nav navbar-nav navbar-right">
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            {{ Auth::user()->data_user->nama }} <span class="caret"></span>
+           @if(count(Auth::user()->data_user)>0) {{ Auth::user()->data_user->nama }} @else -kosong- @endif <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
             <li style='padding-left:1em;'>
