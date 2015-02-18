@@ -5,7 +5,7 @@
 			<th>Nama</th>
 			<th>Email</th>
 			<th>Level</th>
-			<th width='5%'>Action</th>
+			<th  align='center' width='10%'>Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -15,12 +15,11 @@
 @foreach($users as $list)
 		<tr>
 			<td align='center'> {{ $no }} </td>
-			<td> @if($list->data_user) {{ $list->data_user->nama }} @else - @endif </td>
-			<td> {{ $list->email }} </td>
-			<td> {{ $list->level->nama }} </td>
+			<td> {{ $list->nama }}</td>
+			<td> {{ $list->mst_user->email }} </td>
+			<td> {{ $list->mst_user->level->nama }} </td>
 			<td align='center'> 
-				@include('konten.backend.users.action')
-	
+				@include('konten.backend.users.action')	
 			</td>
 		</tr>
 		<?php $no++; ?>

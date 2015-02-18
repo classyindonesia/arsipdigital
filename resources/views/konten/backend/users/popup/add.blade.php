@@ -68,15 +68,16 @@ form_data ={
 	email : email,
 	nama : nama,
 	password : password,
-	level : level,
+	ref_user_level_id : level,
 	_token : '{!! csrf_token() !!}'
-
 }
+$('#pesan').attr('disabled', 'disabled');
 	$.ajax({
 		url : '{{ URL::route("users.insert") }}',
 		data : form_data,
 		type : 'post',
 		error:function(xhr, status, error){
+			$('#pesan').removeAttr('disabled');
 		 	$('#pesan').addClass('alert alert-danger animated shake').html('<b>Error : </b><br>');
           datajson = JSON.parse(xhr.responseText);
           $.each(datajson, function( index, value ) {

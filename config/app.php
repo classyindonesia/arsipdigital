@@ -148,6 +148,7 @@ return [
 		/* tambahan */
 		'Illuminate\Html\HtmlServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
 
 	],
 
@@ -203,6 +204,8 @@ return [
 		'Fungsi'	=> 'App\Helpers\Fungsi',
 		'Image' 	=> 'Intervention\Image\Facades\Image',
 		'Reader'	=> '\PHPExcelReader\SpreadsheetReader',
+		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
+		'Gravatar'	=> 'App\Helpers\Gravatar',
 
 	],
 

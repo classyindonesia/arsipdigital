@@ -24,7 +24,8 @@ class CreateUser extends Request {
 		return [
 			'email'		=> 'required|email|unique:mst_users',
 			'password'	=> 'required|min:6',
-			'nama'		=> 'required'
+			'nama'		=> 'required',
+			'ref_user_level_id'	=> 'required'
 		];
 	}
 

@@ -1,18 +1,20 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateArsip;
-use App\Http\Requests\UpdateArsip;
+
 
 use Auth;
+use Fungsi;
 
 /* models */
 use App\Models\Mst\User;
 use App\Models\Mst\Arsip;
 use App\Models\Mst\Folder;
 use App\Models\Mst\File;
+
 use Illuminate\Http\Request; 
-use App\Helpers\Fungsi;
+use App\Http\Requests\CreateArsip;
+use App\Http\Requests\UpdateArsip;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Session\Store as Session;

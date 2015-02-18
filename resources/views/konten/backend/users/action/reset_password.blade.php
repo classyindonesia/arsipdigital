@@ -1,11 +1,10 @@
-
-<i data-toggle='tooltip' title='delete' class='fa fa-times' style='cursor:pointer;' id='del{{ $list->mst_user->id }}'></i>
+<i data-toggle='tooltip' title='reset password' id='reset_pass{!! $list->mst_user->id !!}' class='fa fa-refresh' style='cursor:pointer;'></i>
 <script type="text/javascript">
-$('#del{{ $list->mst_user->id }}').click(function(){
+$('#reset_pass{!! $list->mst_user->id !!}').click(function(){
 	setuju = confirm('are you sure?');
 	if(setuju == true){
 		$.ajax({
-			url : '{{ URL::route("users.del") }}',
+			url : '{{ URL::route("users.reset_password") }}',
 			data : {id : '{{ $list->mst_user->id }}', _token : '{!! csrf_token() !!}'},
 			type : 'post',
 			error: function(err){
@@ -17,4 +16,5 @@ $('#del{{ $list->mst_user->id }}').click(function(){
 		})
 	}
 })
+
 </script>

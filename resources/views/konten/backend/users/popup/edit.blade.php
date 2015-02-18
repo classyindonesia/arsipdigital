@@ -49,7 +49,7 @@ form_data ={
 	user_data_id : '@if(count($user->data_user)>0){{ $user->data_user->id }}@endif',
 	email : email,
 	nama : nama,
-	level : level,
+	ref_user_level_id : level,
 	_token : '{!! csrf_token() !!}'
 
 }
@@ -68,7 +68,7 @@ form_data ={
 		          //alert('error! terjadi kesalahan pada sisi server!')
 		},
 		success:function(ok){
-			//window.location.reload();
+			window.location.reload();
 		}
 	})
 })

@@ -48,3 +48,30 @@ Route::post('users/do_import', [
 	'uses'			=> 'Admin\UserController@do_import',
 	'as'			=> 'users.do_import'
 	]);
+
+Route::get('users/export', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@export',
+	'as'			=> 'users.export'
+	]);
+
+Route::post('users/submit_search', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@submit_search',
+	'as'			=> 'users.submit_search'
+	]);
+
+
+/* show data_user by its ID */
+Route::get('users/show/{id}', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@show',
+	'as'			=> 'users.show'
+	]);
+
+Route::post('users/reset_password', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@reset_password',
+	'as'			=> 'users.reset_password'
+	]);
+

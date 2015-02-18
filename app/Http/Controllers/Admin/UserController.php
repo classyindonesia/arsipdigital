@@ -1,30 +1,54 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
+/* request */
+use App\Http\Requests\CreateUser;
+use App\Http\Requests\UpdateUser;
+use Illuminate\Http\Request;
+
+/* models */
 use App\Models\Mst\User;
 use App\Models\Mst\DataUser;
 use App\Models\Ref\UserLevel;
-use App\Http\Requests\CreateUser;
-use App\Http\Requests\UpdateUser;
-use App\Helpers\Gravatar;
 
-
-use \PHPExcelReader\SpreadsheetReader as Reader;
-
-use Illuminate\Http\Request;
+/* Facade */
+use Excel;
+use Fungsi;
+use Reader;
+use Auth;
+use Session;
+use Gravatar;
+use Input;
 
 class UserController extends Controller{
 
 
-	public function __construct(){
+	public function __construct(Session $session){
 		view()->share('users_home', true);
 	}
 
 
 	public function index(){
-		$users = User::with('data_user')->paginate(10);
+		if(Session::has('pencarian_user')){
+			$users = DataUser::where('nama', 'like', '%'.Session::get('pencarian_user').'%')->paginate(10);
+		}else{
+			$users = DataUser::paginate(10);
+		}
+
 		return view('konten.backend.users.index', compact('users'));
 	}
+
+
+	public function submit_search(Request $request){
+		if($request->has('submit')){
+			Session::put('pencarian_user', $request->input('pencarian'));
+		}else{
+			Session::forget('pencarian_user');
+		}
+		return 'ok';
+	}
+
 
 
 	public function add(){
@@ -32,7 +56,7 @@ class UserController extends Controller{
 		return view('konten.backend.users.popup.add', compact('level'));
 	}
 
-	public function insert(CreateUser $request, User $users, DataUser $data_user){
+	public function insert(CreateUser $request, User $users, DataUser $data_user, Gravatar $gravatar){
 		/* START insert ke tabel mst_users */
 			$data_insert = [
 			'email'	=> $request->email,
@@ -51,7 +75,7 @@ class UserController extends Controller{
 			];
 			$data_user->create($data_user_insert);
 		/* END insert ke tabel mst_data_user */
-	return 'ok';
+	return $request->all();
 	}
 
 
@@ -68,11 +92,11 @@ class UserController extends Controller{
 	public function update(UpdateUser $request){
 		$u = User::find($request->user_id);
 		$u->email = $request->email;
-		$u->ref_user_level_id = $request->level;
+		$u->ref_user_level_id = $request->ref_user_level_id;
 		$u->save();
 
 		//update data user / insert
-		if(empty($request->user_data_id)){
+		if(count($u->data_user)<=0){
 			$create_data = [
 				'nama'	=> $request->nama,
 				'mst_user_id'	=> $request->user_id
@@ -176,6 +200,98 @@ class UserController extends Controller{
  
 	}
 
+
+
+
+	public function export(){
+		 
+		Excel::create('data_user_'.Fungsi::date_to_tgl(date('Y-m-d')), function($excel) {
+		    $excel->setTitle(env('NAMA_APP').' | Data User');
+		    $excel->setCreator(Auth::user()->email)
+		          ->setCompany(env('NAMA_APP'));
+		    $excel->setDescription('generated from '.env('NAMA_APP'));
+
+		    /* sheet awal */
+		    $excel->sheet('Data User', function($sheet) {
+		    	$sheet->setHeight([1 => 50, 2 => 27]);
+		    	$sheet->row(1,['Data User | '.env('NAMA_APP')]);
+				$sheet->row(2, [
+					'No.',
+					'Nama', 'Email', 'Nomor Induk', 'Alamat', 'tgl lahir',
+					'Tempat Lahir', 'Jenis Kelamin', 'No HP', 'Kode POS',
+					'no telp', 'no KTP', 'Nama Ibu Kandung', 'Status Ikatan',
+					'Agama', 'Kota', 'Home Base', 'Status Pernikahan', 
+					]);
+				$sheet->cells('A1:R1', function($cells) {
+					$cells->setFontSize(16);
+				});
+				$sheet->setBorder('A2:R2', 'thin');
+				$sheet->cells('A2:R2', function($cells) {
+					$cells->setBackground('#DDEEFF');
+				});
+
+
+				/* start create data row */
+				$i = 3;
+					foreach(DataUser::all() as $list){
+
+						if($list->jenis_kelamin == 'L'){
+							$jk = 'Laki-laki';
+						}else{
+							$jk = 'Perempuan';
+						}
+
+						if(count($list->mst_user)>0){ $email = $list->mst_user->email;	}else{ $email = '-'; }
+						if(count($list->ref_kota)>0){	$kota = $list->ref_kota->nama;	}else{ $kota = '';	}
+						
+						if(count($list->ref_agama)>0){	$agama = $list->ref_agama->nama;	}else{ $agama = '';	}
+						if(count($list->ref_status_ikatan)>0){	$status_ikatan = $list->ref_status_ikatan->nama;	}else{ $status_ikatan = '';	}
+						if(count($list->ref_status_pernikahan)>0){	$status_pernikahan = $list->ref_status_pernikahan->nama;	}else{ $status_pernikahan = '';	}
+						if(count($list->ref_homebase)>0){	$homebase = $list->ref_homebase->nama;	}else{ $homebase = '';	}
+
+
+					$sheet->row($i, [
+						$i-2,
+						$list->nama, $list->mst_user->email, $list->no_induk, $list->alamat, Fungsi::date_to_tgl($list->tgl_lahir),
+						$list->tempat_lahir, $jk, $list->no_hp, $list->kode_post,
+						 $list->no_telp, $list->no_ktp, $list->nama_ibu_kandung, $status_ikatan,
+						$agama, $kota, $homebase, $status_pernikahan, 
+						]);		
+
+					$sheet->setHeight($i, 20);
+						$i++;
+					}
+				/* end create data row */
+				
+
+		    	$sheet->mergeCells('A1:R1');
+		    	$sheet->setAutoSize(true);
+				$sheet->setFreeze('A3');
+
+		    });
+
+
+		})->export('xls');	
+	}
+
+
+
+
+	public function show($id){
+		$data_user = DataUser::find($id);
+		return view('konten.backend.users.popup.show', compact('data_user'));
+	}
+
+
+	/* reset password agar password sama dgn email */
+	public function reset_password(){
+		$user = User::find(Input::get('id'));
+		if(count($user)>0){
+			$user->password = $user->email;
+			$user->save();
+		}
+		return 'ok';
+	}
 
 
 
