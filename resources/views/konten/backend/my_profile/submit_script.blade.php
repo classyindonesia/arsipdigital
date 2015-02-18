@@ -17,6 +17,7 @@ ref_status_pernikahan_id	= $('#ref_status_pernikahan_id').val();
 ref_status_ikatan_id		= $('#ref_status_ikatan_id').val();
 ref_agama_id				= $('#ref_agama_id').val();
 ref_kota_id					= $('#ref_kota_id').val();
+ref_homebase_id				= $('#ref_homebase_id').val();
 /* end value */
 
 form_data ={
@@ -36,6 +37,7 @@ form_data ={
 	ref_status_ikatan_id		: ref_status_ikatan_id,
 	ref_agama_id				: ref_agama_id,
 	ref_kota_id					: ref_kota_id,
+	ref_homebase_id				: ref_homebase_id,
  	_token 						: '{!! csrf_token() !!}'
 }
 	$.ajax({

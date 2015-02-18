@@ -4,7 +4,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\UpdateMyProfile;
-
+use App\Http\Requests\UpdatePassword;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 
 /*models */
@@ -13,6 +14,7 @@ use App\Models\Ref\StatusIkatan;
 use App\Models\Ref\Agama;
 use App\Models\Ref\Kota;
 use App\Models\Mst\DataUser;
+use App\Models\Mst\User;
 use Intervention\Image\Facades\Image;
 class MyProfileController extends Controller {
  
@@ -57,6 +59,7 @@ class MyProfileController extends Controller {
 		$d->ref_status_pernikahan_id 	= $req->ref_status_pernikahan_id;
 		$d->ref_agama_id 				= $req->ref_agama_id;
 		$d->ref_kota_id 				= $req->ref_kota_id;
+		$d->ref_homebase_id				= $req->ref_homebase_id;
 
 		$d->save();
 
@@ -97,6 +100,26 @@ class MyProfileController extends Controller {
 	 return array(
 	        'files' => $results,
  	    );					
+ 	}
+
+
+
+ 	public function change_password(){
+ 		return view('konten.backend.my_profile.popup.change_password');
+ 	}
+
+ 	public function update_password(UpdatePassword $request){
+ 		$old_password = Auth::user()->password;
+ 		if (Hash::check($request->password_lama, $old_password)){
+			    // The passwords match...
+ 				$u = User::find(Auth::user()->id);
+ 				$u->password = $request->password_baru;
+ 				$u->save();
+ 				return 'ok';
+			}else{
+		 		$response = ['error' => 'password salah! '];
+		 		return response()->json($response, 422);				
+			}
  	}
 
  }

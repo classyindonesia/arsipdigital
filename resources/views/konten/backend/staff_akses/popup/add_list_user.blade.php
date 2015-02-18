@@ -9,7 +9,7 @@ $('#back').click(function(){
 
 
 
-<h3>Edit Akses - {{ $list_user->data_user->nama }}</h3>
+<h3>Edit Akses - @if(count($list_user->data_user)>0) {{ $list_user->data_user->nama }} @endif</h3>
 
 <hr>
 
@@ -23,7 +23,7 @@ $('#back').click(function(){
 
 @foreach(\App\Models\Mst\User::whereRefUserLevelId(3)->get() as $list )
 	<tr>
-		<td>{{ $list->data_user->nama }}</td>
+		<td>@if(count($list_user->data_user)>0) {{ $list->data_user->nama }} @else - @endif</td>
 		<td>{{ $list->email }}</td>
 		<td> @if(count($list->akses_staff_user) >0) 
 				<i style='cursor:pointer;' id='edit{{ $list->id }}' class='fa fa-check-square-o'></i> 

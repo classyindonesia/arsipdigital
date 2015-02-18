@@ -3,6 +3,13 @@
 
 
 @section('title_header')
+
+
+			<button   id='simpan' class='btn btn-primary pull-right'><i class='fa fa-floppy-o'></i> simpan</button>
+
+
+
+
   <h1 class='title_header  '>My Profile  </h1>
 	<hr>
 @stop
@@ -26,8 +33,16 @@ $data_user = Auth::user()->data_user;
 
 	<div class='col-md-6 animated fadeIn'>
 		<div style='height:100px'>
-			<button   id='simpan' class='btn btn-primary pull-right'><i class='fa fa-floppy-o'></i> simpan</button>
-		</div>
+<button class='btn btn-primary pull-right' id='add'> <i class='fa fa-cogs'></i> change password</button>
+<script type="text/javascript">
+$('#add').click(function(){
+	$('#myModal').modal('show');
+	$('.modal-body').load('{{ URL::route("my_profile.change_password") }}');
+})
+</script>
+
+
+		</div> 
  <hr>
 		@include('konten.backend.my_profile.konten_kanan')
 	</div>

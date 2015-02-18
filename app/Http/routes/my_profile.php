@@ -23,3 +23,16 @@ Route::post('my_profile/do_change_avatar', [
 'uses'			=> 'Admin\MyProfileController@do_change_avatar',
 'as'			=> 'my_profile.do_change_avatar'
 ]);
+
+
+Route::get('my_profile/change_password', [
+'middleware'	=> 'auth',
+'uses'			=> 'Admin\MyProfileController@change_password',
+'as'			=> 'my_profile.change_password'
+]);
+
+Route::post('my_profile/update_password', [
+'middleware'	=> 'auth',
+'uses'			=> 'Admin\MyProfileController@update_password',
+'as'			=> 'my_profile.update_password'
+]);

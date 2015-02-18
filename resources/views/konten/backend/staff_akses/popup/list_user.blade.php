@@ -38,7 +38,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
 @foreach($list_user as $list)
 		<tr>
 			<td class='text-center'>{{ $no }}</td>
-			<td>{{ $list->data_user->nama }}</td>
+			<td> @if(count($list->data_user)) {{ $list->data_user->nama }} @else - @endif</td>
 			<td>{{ $list->email }}</td>
 			<td>
 

@@ -1,7 +1,12 @@
+<?php
+$jml_file = \App\Models\Mst\File::count();
+
+?>
+
  	    <div class="small-box bg-aqua">
 		    <div class="inner">
 		        <h3>
-		            300
+		            {{ $jml_file }}
 		        </h3>
 		        <p>
 		            Jml File Arsip

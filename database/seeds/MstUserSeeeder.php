@@ -34,9 +34,9 @@ class MstUserSeeder extends Seeder{
 		if(count($user3)<=0) User::create($data3);
 
 
-$dt1 = DataUser::whereMstUserId('1')->first();
-$dt2 = DataUser::whereMstUserId('2')->first();
-$dt3 = DataUser::whereMstUserId('3')->first();
+$dt1 = DataUser::whereMstUserId(1)->first();
+$dt2 = DataUser::whereMstUserId(2)->first();
+$dt3 = DataUser::whereMstUserId(3)->first();
 
 	if(count($dt1)<=0) DataUser::create(['nama' => 'Administrator', 'mst_user_id' => 1]);
 	if(count($dt2)<=0) DataUser::create(['nama' => 'Staff', 'mst_user_id' => 2]);

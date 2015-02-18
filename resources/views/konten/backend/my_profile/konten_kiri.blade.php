@@ -61,6 +61,20 @@
 	<td>{!! Form::select('jenis_kelamin', ['L' => 'Laki-laki', 'P' => 'Perempuan'], $data_user->jenis_kelamin, ['id' => 'jenis_kelamin']) !!}</td>
 </tr>
 
+<tr>
+	<td>{!! Form::label("ref_homebase_id", "Home Base :") !!}</td>
+	<td>	{!! Form::select('ref_homebase_id', 
+			Fungsi::get_dropdown(\App\Models\Ref\HomeBase::all(), 'home base'), 
+			$data_user->ref_homebase_id, 
+				[
+					'id' => 'ref_homebase_id',
+					'class'	=> 'selectpicker',
+					'data-live-search'	=> 'true'
+				]) 
+	!!}</td>
+</tr>
+
+
 
 </table>
  

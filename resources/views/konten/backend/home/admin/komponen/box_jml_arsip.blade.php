@@ -1,8 +1,12 @@
+<?php
+$jml_arsip = \App\Models\Mst\Arsip::count();
+
+?>
 
 	    <div class="small-box bg-olive">
 		    <div class="inner">
 		        <h3>
-		            200
+		            {{ $jml_arsip }}
 		        </h3>
 		        <p>
 		            Jml Arsip
