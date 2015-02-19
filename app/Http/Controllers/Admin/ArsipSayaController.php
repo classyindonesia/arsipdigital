@@ -117,12 +117,18 @@ class ArsipSayaController extends Controller {
 
 
 
-	public function del(Request $request){
+	public function del(Request $request, File $f){
 		$o = Arsip::find($request->input('id'));
-
+		$assetPath = '/upload/arsip';
+		$uploadPath = public_path($assetPath);
 		$file  = File::whereMstArsipId($request->input('id'))->get();
 		foreach($file as $list){
-			
+			$path_file = $uploadPath.'/'.$list->nama_file_tersimpan;
+			if(file_exists($path_file)){
+				unlink($path_file);
+			}
+			$f->remove_watermark_file($list->nama_file_tersimpan);		
+			$list->delete();	
 		}
 
 
