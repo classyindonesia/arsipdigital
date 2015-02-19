@@ -223,11 +223,15 @@ class UserController extends Controller{
 				$sheet->cells('A2:R2', function($cells) {
 					$cells->setBackground('#DDEEFF');
 				});
+				$sheet->setColumnFormat(['I' => '@']);
 
 
 				/* start create data row */
 				$i = 3;
 					foreach(DataUser::all() as $list){
+
+						
+						$sheet->setHeight($i, 20);
 
 						if($list->jenis_kelamin == 'L'){
 							$jk = 'Laki-laki';
@@ -247,16 +251,19 @@ class UserController extends Controller{
 					$sheet->row($i, [
 						$i-2,
 						$list->nama, $list->mst_user->email, $list->no_induk, $list->alamat, Fungsi::date_to_tgl($list->tgl_lahir),
-						$list->tempat_lahir, $jk, $list->no_hp, $list->kode_post,
-						 $list->no_telp, $list->no_ktp, $list->nama_ibu_kandung, $status_ikatan,
+						$list->tempat_lahir, $jk, '"'.$list->no_hp.'"', $list->kode_post,
+						 '"'.$list->no_telp.'"', '"'.$list->no_ktp.'"', $list->nama_ibu_kandung, $status_ikatan,
 						$agama, $kota, $homebase, $status_pernikahan, 
 						]);		
 
-					$sheet->setHeight($i, 20);
+					
+
+
 						$i++;
 					}
 				/* end create data row */
 				
+
 
 		    	$sheet->mergeCells('A1:R1');
 		    	$sheet->setAutoSize(true);
