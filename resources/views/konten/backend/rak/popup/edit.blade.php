@@ -47,12 +47,13 @@ form_data ={
 	keterangan : keterangan,
 	_token : '{!! csrf_token() !!}'
 }
+$('#simpan').attr('disabled', 'disabled');
 	$.ajax({
 		url : '{{ URL::route("rak.update") }}',
 		data : form_data,
 		type : 'post',
 		error:function(xhr, status, error){
-
+			$('#simpan').removeAttr('disabled');
 	 	$('#pesan').addClass('alert alert-danger animated shake').html('<b>Error : </b><br>');
         datajson = JSON.parse(xhr.responseText);
         $.each(datajson, function( index, value ) {

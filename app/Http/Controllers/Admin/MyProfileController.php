@@ -5,8 +5,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\UpdateMyProfile;
 use App\Http\Requests\UpdatePassword;
-use Illuminate\Support\Facades\Hash;
-use Auth;
+
+use Hash, Auth, Image;
 
 /*models */
 use App\Models\Ref\StatusPernikahan;
@@ -15,8 +15,7 @@ use App\Models\Ref\Agama;
 use App\Models\Ref\Kota;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
-use Intervention\Image\Facades\Image;
-class MyProfileController extends Controller {
+ class MyProfileController extends Controller {
  
 
 	public function __construct(){

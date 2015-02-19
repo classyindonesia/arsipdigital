@@ -32,11 +32,13 @@ form_data ={
 	nama : nama,
  	_token : '{!! csrf_token() !!}'
 }
+$('#simpan').attr('disabled', 'disabled');
 	$.ajax({
 		url : '{{ URL::route("ref_status_pernikahan.insert") }}',
 		data : form_data,
 		type : 'post',
 		error:function(xhr, status, error){
+			$('#simpan').removeAttr('disabled');
 
 	 	$('#pesan').addClass('alert alert-danger animated shake').html('<b>Error : </b><br>');
         datajson = JSON.parse(xhr.responseText);

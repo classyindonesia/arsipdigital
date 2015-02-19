@@ -3,8 +3,7 @@
 use App\Http\Controllers\Controller;
 
 
-use Auth;
-use Fungsi;
+use Auth, Fungsi;
 
 /* models */
 use App\Models\Mst\User;

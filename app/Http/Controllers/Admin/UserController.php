@@ -13,13 +13,7 @@ use App\Models\Mst\DataUser;
 use App\Models\Ref\UserLevel;
 
 /* Facade */
-use Excel;
-use Fungsi;
-use Reader;
-use Auth;
-use Session;
-use Gravatar;
-use Input;
+use Excel, Fungsi, Reader, Auth, Session, Gravatar, Input;
 
 class UserController extends Controller{
 
