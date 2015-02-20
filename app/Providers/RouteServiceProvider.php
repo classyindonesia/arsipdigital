@@ -58,6 +58,7 @@ class RouteServiceProvider extends ServiceProvider {
 
 			/*hanya utk level staff */
 			require app_path('Http/routes/arsip_user.php');
+			require app_path('Http/routes/berita.php');
 
 
 

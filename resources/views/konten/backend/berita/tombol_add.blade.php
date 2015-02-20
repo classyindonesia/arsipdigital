@@ -1,0 +1,1 @@
+<a class='btn btn-primary pull-right' href="{!! URL::route('admin_berita.create') !!}"> <i class='fa fa-plus-square'></i> create</a>

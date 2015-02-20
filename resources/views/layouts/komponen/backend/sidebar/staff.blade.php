@@ -20,6 +20,13 @@
                     </li>
 
 
+                    <li @if(isset($berita_home)) class="active" @endif >
+                        <a href="{{ URL::route('admin_berita.index') }}">
+                            <i class='fa fa-newspaper-o'></i> Berita
+                        </a>
+                    </li>
+
+
                     <li @if(isset($my_profile)) class="active" @endif>
                         <a href="{{ URL::route('my_profile.index') }}">
                             <i class='fa fa-wrench'></i> Profil Saya

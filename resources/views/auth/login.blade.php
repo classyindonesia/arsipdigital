@@ -28,28 +28,54 @@
 
 
 
+      <div class='col-md-6  animated fadeIn' style='padding-top:3px;'>
 
- 
+      <div class='col-md-12 jumbotron nimated fadeIn'>
+	      <h1 style='margin-top: 0px;'> <i class='fa fa-cubes'></i> Arsip Digital</h1>
+	      <hr style='margin:2px;'>
+	        {!! env('DESKRIPSI_APP') !!}
+      </div>
+
+
+      <div class='col-md-12 nimated fadeIn'>
+	      <h3 style='margin-top: 0px;font-weight:bold;'> <i class='fa fa-angle-right'></i> Latest News</h3>
+	      <hr style='margin:2px;'>
+			<?php 
+			$berita = \App\Models\Mst\Berita::orderBy('id', 'DESC')->paginate(4);
+			?>
+			@foreach($berita as $list)
+				<b> <i class='fa fa-caret-right'></i> {{ $list->judul }}</b>
+				<br>
+				{{ str_limit(strip_tags($list->artikel), $limit = 170, $end = '') }}
+				<hr style='margin:1px;'>
+			@endforeach
+
+			{!! $berita->render() !!}
+
+      </div>
+
+      </div>
 
 
 
 
 
-
-
+<div class='col-md-6'>
 	<div class="row">
  
 
 		<div class="col-md-8 col-md-offset-2">
 
-	<ul class="nav nav-tabs">
-	  <li role="presentation"  class="active"><a href="{{ URL::to('auth/login') }}">Login</a></li>
-	  <li role="presentation"><a href="{{ URL::to('auth/register') }}">Register</a></li>
-	 </ul>
+ 
 
 
 			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
+				<div class="panel-heading"> 
+					<h3 style='border-left:4px solid #ccc;padding-left:5px;'> Login Sistem </h3> 
+					<hr style='margin:1px;'>
+					Silahkan masukkan username dan password Anda untuk masuk ke dalam sistem.
+
+				</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -94,9 +120,8 @@
 			</div>
 		</div>
 	</div>
-
-
+</div>
  
 
-
+ 
 @endsection
