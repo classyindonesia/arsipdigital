@@ -13,7 +13,7 @@
 
  
 
-
+@include('layouts.komponen.public.navbar')
 
 
 
