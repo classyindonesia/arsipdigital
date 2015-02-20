@@ -81,6 +81,14 @@ class BeritaController extends Controller{
 	}
 	
 
+	public function public_berita($slug){
+		$berita = Berita::findBySlug($slug);
+		if($berita->is_published == 0){
+			abort(404);
+		}
+		return view('konten.frontend.berita.index', compact('berita'));
+	}
+
 
 
 }

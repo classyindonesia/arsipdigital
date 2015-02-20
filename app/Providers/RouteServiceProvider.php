@@ -65,6 +65,11 @@ class RouteServiceProvider extends ServiceProvider {
 			/* hanya utk user */
 			require app_path('Http/routes/user/arsip_saya.php');
 			require app_path('Http/routes/user/list_folder.php');
+
+
+			/* public */
+			require app_path('Http/routes/public/berita.php');
+
 		});
 	}
 

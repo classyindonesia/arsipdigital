@@ -22,10 +22,7 @@
     </nav><!-- /.navbar -->
 
 
- 
-
-
-
+  
 
 
       <div class='col-md-6  animated fadeIn' style='padding-top:3px;'>
@@ -41,12 +38,13 @@
 	      <h3 style='margin-top: 0px;font-weight:bold;'> <i class='fa fa-angle-right'></i> Latest News</h3>
 	      <hr style='margin:2px;'>
 			<?php 
-			$berita = \App\Models\Mst\Berita::orderBy('id', 'DESC')->paginate(4);
+			$berita = \App\Models\Mst\Berita::orderBy('id', 'DESC')->whereIsPublished(1)->paginate(4);
 			?>
 			@foreach($berita as $list)
 				<b> <i class='fa fa-caret-right'></i> {{ $list->judul }}</b>
 				<br>
-				{{ str_limit(strip_tags($list->artikel), $limit = 170, $end = '') }}
+				{{ str_limit(strip_tags($list->artikel), $limit = 170, $end = '') }} 
+					<a style='font-weight:bold;' href="{!! URL::route('berita.public_berita', $list->slug) !!}">selengkapnya...</a>
 				<hr style='margin:1px;'>
 			@endforeach
 
