@@ -23,8 +23,8 @@ class RouteServiceProvider extends ServiceProvider {
 	public function boot(Router $router)
 	{
 		parent::boot($router);
-		require app_path('Providers/model_binding/homebase.php');
-		require app_path('Providers/model_binding/mst_arsip.php');
+		require app_path('Http/model_binding/homebase.php');
+		require app_path('Http/model_binding/mst_arsip.php');
 
 		//
 	}

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Mst\User;
 use App\Models\Mst\Rak;
 use App\Models\Mst\Folder;
+
+/* facade */
 use Auth;
 
 class HomeController extends Controller {
