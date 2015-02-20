@@ -43,7 +43,7 @@
 	<td>
     {!! Form::selectRange('tgl_lahir', 1, 31, date('d', strtotime($data_user->tgl_lahir)),  ['id' => 'tgl_lahir', 'style' => 'width:60px']) !!}
     {!! Form::selectMonth('bln_lahir', date('m', strtotime($data_user->tgl_lahir)),  ['id' => 'bln_lahir', 'style' => 'width:100px']) !!} 
-    {!! Form::selectYear('thn', 1970, date('Y')-10,  date('Y', strtotime($data_user->tgl_lahir)), ['id' => 'thn_lahir', 'style' => 'width:100px']) !!}
+    {!! Form::selectYear('thn', 1930, date('Y')-10,  date('Y', strtotime($data_user->tgl_lahir)), ['id' => 'thn_lahir', 'style' => 'width:100px']) !!}
 
 	</td>
 </tr>
@@ -62,7 +62,7 @@
 </tr>
 
 <tr>
-	<td>{!! Form::label("ref_homebase_id", "Home Base :") !!}</td>
+	<td>{!! Form::label("ref_homebase_id", "*Home Base :") !!}</td>
 	<td>	{!! Form::select('ref_homebase_id', 
 			Fungsi::get_dropdown(\App\Models\Ref\HomeBase::all(), 'home base'), 
 			$data_user->ref_homebase_id, 

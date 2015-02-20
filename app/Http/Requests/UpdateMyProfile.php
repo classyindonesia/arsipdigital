@@ -22,11 +22,14 @@ class UpdateMyProfile extends Request {
 	public function rules()
 	{
 		return [
-			'nama'		=> 'required',
-			'alamat'	=> 'required',
-			'tgl_lahir'	=> 'required|date',
-			'no_hp'		=> 'required',
-			'tempat_lahir'	=> 'required'
+			'nama'						=> 'required',
+			'alamat'					=> 'required',
+			'tgl_lahir'					=> 'required|date',
+			'no_hp'						=> 'required',
+			'tempat_lahir'				=> 'required',
+			'ref_agama_id'				=> 'required',
+			'ref_homebase_id'			=> 'required',
+			'ref_status_pernikahan_id'	=> 'required'
 		];
 	}
 

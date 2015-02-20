@@ -28,12 +28,12 @@
 	</tr>
 
 	<tr>
-		<td>{!! Form::label("ref_status_pernikahan_id", "Status Nikah :") !!}</td>
+		<td>{!! Form::label("ref_status_pernikahan_id", "*Status Nikah :") !!}</td>
 		<td>{!! Form::select('ref_status_pernikahan_id', Fungsi::get_dropdown($ref_status_pernikahan, 'status nikah'), Auth::user()->data_user->ref_status_pernikahan_id, ['id' => 'ref_status_pernikahan_id']) !!}</td>
 	</tr>
 
 	<tr>
-		<td>{!! Form::label("ref_agama_id", "Agama :") !!}</td>
+		<td>{!! Form::label("ref_agama_id", "*Agama :") !!}</td>
 		<td>{!! Form::select('ref_agama_id', Fungsi::get_dropdown($agama, 'agama'), $data_user->ref_agama_id, ['id' => 'ref_agama_id']) !!}</td>
 	</tr>	
 
