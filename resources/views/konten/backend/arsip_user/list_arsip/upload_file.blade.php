@@ -19,7 +19,8 @@
 
 
 @section('main_konten')
-	@include('konten.backend.arsip_user.list_arsip.form_upload_file')
+
+
 
  
 
@@ -27,7 +28,7 @@
 <h3>Daftar File Tersimpan</h3>
 
 <div class='col-md-9' id='list_file_raw'>
-	@include('konten.backend.arsip_saya.list_file_uploaded')
+ 	@include('konten.backend.arsip_user.list_arsip.list_file_uploaded')
 </div>
 <div class='col-md-3'>
 	@include('konten.backend.arsip_saya.list_file_info')

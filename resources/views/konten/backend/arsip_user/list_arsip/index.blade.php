@@ -3,16 +3,7 @@
  
 
 @section('title_header')	
-
-
-<button class='btn btn-primary pull-right' id='add'> <i class='fa fa-plus-square'></i> create</button>
-<script type="text/javascript">
-$('#add').click(function(){
-	$('#myModal').modal('show');
-	$('.modal-body').load('{{ URL::route("arsip_user.add", Request::segment(3)) }}');
-})
-</script>
-
+ 
 
  <h1 class='title_header '>Daftar Arsip User - {{ $user->data_user->nama }}  </h1>
 

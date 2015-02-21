@@ -30,9 +30,3 @@ Route::get('arsip_user/list_file_raw/{id}/{mst_arsip_id}', [
 	'uses'			=> 'Admin\ArsipUserController@list_file_raw',
 	'as'			=> 'arsip_user.list_file_raw'
 	]);
-
-Route::get('arsip_user/add_arsip/{id}', [
-	'middleware'	=> 'akses_ke_arsip_user',
-	'uses'			=> 'Admin\ArsipUserController@add',
-	'as'			=> 'arsip_user.add'
-	]);
