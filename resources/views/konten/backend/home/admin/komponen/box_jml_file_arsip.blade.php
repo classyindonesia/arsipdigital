@@ -1,8 +1,3 @@
-<?php
-$jml_file = \App\Models\Mst\File::count();
-
-?>
-
  	    <div class="small-box bg-aqua">
 		    <div class="inner">
 		        <h3>

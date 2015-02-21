@@ -77,7 +77,9 @@ $('#simpan').attr('disabled', 'disabled');
 		},
 		success:function(ok){
 			//window.location.reload();
-			window.location.href = '{!! URL::route("admin_berita.index") !!}';
+			id_berita = ok["id"];
+			window.location.href = '{!! URL::to("berita/edit") !!}/'+id_berita;
+			//alert(id_berita);
 		}
 	})
 })

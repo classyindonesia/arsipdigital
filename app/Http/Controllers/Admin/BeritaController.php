@@ -46,8 +46,8 @@ class BeritaController extends Controller{
 			'komentar'		=> $request->komentar,
 			'mst_user_id'	=> Auth::user()->id
 		];
-		Berita::create($data);
-		return $request->all();
+		$insert = Berita::create($data);
+		return $insert;
 	}
 
 

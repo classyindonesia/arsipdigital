@@ -21,12 +21,13 @@ $('#back').click(function(){
 		<td>Status</td>
 	</tr>
 
-@foreach(\App\Models\Mst\User::whereRefUserLevelId(3)->get() as $list )
+@foreach($user as $list )
 	<tr>
 		<td>@if(count($list_user->data_user)>0) {{ $list->data_user->nama }} @else - @endif</td>
 		<td>{{ $list->email }}</td>
-		<td> @if(count($list->akses_staff_user) >0) 
+		<td> @if(count($list->akses_staff_user()->where('mst_user_staff_id', '=', Request::segment(3))->get()) >0) 
 				<i style='cursor:pointer;' id='edit{{ $list->id }}' class='fa fa-check-square-o'></i> 
+				 
 			@else 
 				<i style='cursor:pointer;' id='edit{{ $list->id }}' class='fa fa-square-o'></i>
 			@endif 

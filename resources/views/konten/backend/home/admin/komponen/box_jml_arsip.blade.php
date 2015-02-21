@@ -1,7 +1,4 @@
-<?php
-$jml_arsip = \App\Models\Mst\Arsip::count();
-
-?>
+ 
 
 	    <div class="small-box bg-olive">
 		    <div class="inner">

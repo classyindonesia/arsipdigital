@@ -2,9 +2,7 @@
 	    <div class="small-box bg-blue">
 		    <div style='padding-top:3.1em;' class="inner">
 		        <b>
-		        	<?php
-		        	$jml_size = \App\Models\Mst\File::sum('size');
-		        	 ?>
+ 
 		           {{ Fungsi::size($jml_size) }}
 		           </b>
 		        <p>

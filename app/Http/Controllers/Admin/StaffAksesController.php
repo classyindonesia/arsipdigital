@@ -34,8 +34,8 @@ class StaffAksesController extends Controller{
 
 	public function add_list_user($id){
 		$list_user = User::find($id);
-
-		return view('konten.backend.staff_akses.popup.add_list_user', compact('list_user'));
+		$user = User::whereRefUserLevelId(3)->get();
+		return view('konten.backend.staff_akses.popup.add_list_user', compact('list_user', 'user'));
 	}
 
 	public function update_akses(Request $request){

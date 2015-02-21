@@ -12,13 +12,7 @@
 		</tr>
 	</thead>
 	<tbody>
-<?php
-$arsip = \App\Models\Mst\Arsip::whereMstUserId(Auth::user()->id)
-->orderBy('id', 'DESC')
-->with('mst_file')
-->take(10)
-->get();
-?>
+ 
 @foreach($arsip as $list)
 		<tr>
 			<td>{{{ $list->nama }}}</td>
