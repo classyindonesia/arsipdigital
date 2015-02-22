@@ -5,7 +5,7 @@ use Intervention\Image\Facades\Image;
 
 class File extends Eloquent {
 
-	protected $fillable = ['nama', 'nama_file_asli', 'nama_file_tersimpan', 
+	protected $fillable = ['nama_file_asli', 'nama_file_tersimpan', 
 					'mst_arsip_id', 'mst_user_id', 'size'];
 	protected $table = 'mst_file';
 

@@ -151,8 +151,10 @@ $(function () {
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
                 $('<p/>').html('<span class="text-success">saved!</span>').appendTo('#files');
+                 data.files.splice(index,1); //remove selected file
+                 $('#selected_file').html('');
             });
-            document.getElementById("fileupload").value = "";
+             
           },    
     processfail: function (e, data) {
         set_progress_bar(0);

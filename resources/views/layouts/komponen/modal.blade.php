@@ -4,9 +4,11 @@
     <div class="modal-content">
  
       <div class="modal-body">
-        loading...
+        loading... <i class='fa fa-refresh fa-spin'></i>
       </div>
  
     </div>
   </div>
 </div>
+
+

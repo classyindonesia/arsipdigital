@@ -25,7 +25,8 @@ class BeritaController extends Controller{
 		}else{
 			$berita = Berita::orderBy('id', 'DESC')->paginate(10);
 		}
-		return view('konten.backend.berita.index', compact('berita'));
+		$nav_berita = true;
+		return view('konten.backend.berita.index', compact('berita', 'nav_berita'));
 	}
 
 

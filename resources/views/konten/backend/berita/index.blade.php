@@ -12,6 +12,8 @@
 
 
 @section('main_konten') 
+@include('konten.backend.berita.komponen.nav_atas')
+
 <div class="col-md-6 col-md-offset-6" style='margin-bottom:4px;'> 
 	@include('konten.backend.berita.form_search')
 
