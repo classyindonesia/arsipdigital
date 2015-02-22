@@ -6,7 +6,7 @@
 			<th width='5%'>status</th>
 			<th width='10%'> <i class='fa fa-calendar'></i> created at</th>
 			<td width='10%'><i class='fa fa-clock-o'></i> jam</td>
-			<th width='5%'>action</th>			
+			<th width='100px'>action</th>			
 		</tr>
 	</thead>
 	<tbody>

@@ -43,3 +43,12 @@ Route::post('berita/submit_search', [
 	'uses'			=> 'Admin\BeritaController@submit_search',
 	'as'			=> 'admin_berita.submit_search'
 	]);
+
+
+Route::get('berita/add_lampiran/{id}', [
+	'middleware'	=> 'hanya_staff',
+	'uses'			=> 'Admin\BeritaController@add_lampiran',
+	'as'			=> 'admin_berita.add_lampiran'
+	]);
+
+ 

@@ -7,6 +7,7 @@ use Auth, Input, Session;
 
 /* models*/ 
 use App\Models\Mst\Berita;
+use App\Models\Mst\BeritaToLampiran;
 
 /* request */
 use App\Http\Requests\CreateOrUpdateBerita;
@@ -90,6 +91,13 @@ class BeritaController extends Controller{
 		return view('konten.frontend.berita.index', compact('berita'));
 	}
 
+
+
+	public function add_lampiran($id){
+		$lampiran = BeritaToLampiran::where('mst_berita_id', '=', $id)->get();
+		$view = 'konten.backend.berita.popup.add_lampiran';
+		return view($view, compact('lampiran'));
+	}
 
 
 }
