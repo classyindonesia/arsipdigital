@@ -39,6 +39,9 @@ $id = $hashids->encode(1000, 2000, $list->id);
 </table>
 
 
+{!! $pengguna->render() !!}
+
+
 @endsection
 
 
