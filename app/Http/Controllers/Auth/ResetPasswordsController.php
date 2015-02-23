@@ -9,25 +9,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ResetPasswordsController extends Controller {
 
+	protected $auth;
 
-	public function __construct(){
+	protected $passwords;
+
+
+	public function __construct(PasswordBroker $passwords){
+		$this->passwords = $passwords;
 		view()->share('reset_password_home', true);
 	}
  
-
-	/**
-	 * The Guard implementation.
-	 *
-	 * @var Guard
-	 */
-	protected $auth;
-
-	/**
-	 * The password broker implementation.
-	 *
-	 * @var PasswordBroker
-	 */
-	protected $passwords;
 
 	/**
 	 * Display the form to request a password reset link.
