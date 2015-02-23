@@ -21,7 +21,11 @@ class BeritaController extends Controller {
 	}
 
 
-	public function download_lampiran($id){
+	public function download_lampiran($encrypted_id){
+		$hashids = new \Hashids\Hashids('qertymyr');
+		$numbers = $hashids->decode($encrypted_id);
+		$id = $numbers[2];
+				
 		$f = LampiranBerita::find($id);
 		if(count($f)>0){
 			return response()->download(storage_path('lampiran/'.$f->nama_file_tersimpan), $f->nama_file_asli);			

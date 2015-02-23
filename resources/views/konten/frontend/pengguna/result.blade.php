@@ -24,8 +24,7 @@
 @foreach($pengguna as $list)
 <?php
 $id = $hashids->encode(1000, 2000, $list->id);
-//$numbers = $hashids->decode($id);
- ?>
+?>
 		<tr>
 			<td class='text-align'>{{ $no }} </td>
 			<td>{{ $list->nama }}</td>

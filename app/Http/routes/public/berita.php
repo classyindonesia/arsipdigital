@@ -6,7 +6,7 @@ Route::get('berita/{slug}', [
 	]);
 
 
-Route::get('berita/download_lampiran/{id}', [
+Route::get('berita/download_lampiran/{encrypted_id}', [
 	'uses'			=> 'Publik\BeritaController@download_lampiran',
 	'as'			=> 'berita.download_lampiran'
 	]);

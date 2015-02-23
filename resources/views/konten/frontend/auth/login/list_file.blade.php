@@ -3,7 +3,10 @@
 	<hr style='margin:2px;'>
 	<ul>
 		@foreach($lampiran_berita as $list)
-			<li> <a href="{!! URL::route('berita.download_lampiran', $list->id) !!}">{!! $list->nama !!}</a> </li>
+		<?php
+		$id = $hashids->encode(1000, 2000, $list->id);
+		?>
+			<li> <a href="{!! URL::route('berita.download_lampiran', $id) !!}">{!! $list->nama !!}</a> </li>
 		@endforeach
 	</ul>
 
