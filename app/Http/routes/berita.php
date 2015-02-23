@@ -51,4 +51,14 @@ Route::get('berita/add_lampiran/{id}', [
 	'as'			=> 'admin_berita.add_lampiran'
 	]);
 
- 
+ Route::post('berita/insert_lampiran', [
+	'middleware'	=> 'hanya_staff',
+	'uses'			=> 'Admin\BeritaController@insert_lampiran',
+	'as'			=> 'admin_berita.insert_lampiran'
+	]);
+
+ Route::post('berita/del_lampiran', [
+	'middleware'	=> 'hanya_staff',
+	'uses'			=> 'Admin\BeritaController@del_lampiran',
+	'as'			=> 'admin_berita.del_lampiran'
+	]);

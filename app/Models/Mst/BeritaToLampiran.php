@@ -9,4 +9,10 @@ class BeritaToLampiran extends Eloquent {
 
 
 
+
+	public function mst_lampiran(){
+		return $this->belongsTo('\App\Models\Mst\LampiranBerita', 'mst_lampiran_berita_id');
+	}
+
+
 }

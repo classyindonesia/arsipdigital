@@ -22,7 +22,7 @@
 <tr>
 	<td>{!! Form::label("ref_kota_id", "Kota tempat tinggal :") !!}</td>
 	<td>	{!! Form::select('ref_kota_id', 
-			Fungsi::get_dropdown($kota, 'kota tmpt tgl'), 
+			Fungsi::get_dropdown($kota, 'Kota tempat tinggal'), 
 			$data_user->ref_kota_id, 
 				[
 					'id' => 'ref_kota_id',

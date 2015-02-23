@@ -27,3 +27,12 @@
 @section('title')
 	 Daftar Berita
 @endsection
+
+@section('style_tambahan')
+	  <link media="all" type="text/css" rel="stylesheet" href="/plugins/bootstrap-select/css/bootstrap-select.min.css">
+@endsection
+
+
+@section('script_tambahan')
+ <script src="/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+@endsection

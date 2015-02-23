@@ -3,11 +3,12 @@
 use App\Http\Controllers\Controller;
 
 /*facade */
-use Auth, Input, Session;
+use Auth, Input, Session, Fungsi;
 
 /* models*/ 
 use App\Models\Mst\Berita;
 use App\Models\Mst\BeritaToLampiran;
+use App\Models\Mst\LampiranBerita;
 
 /* request */
 use App\Http\Requests\CreateOrUpdateBerita;
@@ -22,9 +23,10 @@ class BeritaController extends Controller{
 		if(Session::has('pencarian_berita')){
 			$berita = Berita::orderBy('id', 'DESC')
 			->where('judul', 'like', '%'.Session::get('pencarian_berita').'%')
+			->with('berita_to_lampiran')
 			->paginate(10);			
 		}else{
-			$berita = Berita::orderBy('id', 'DESC')->paginate(10);
+			$berita = Berita::orderBy('id', 'DESC')->with('berita_to_lampiran')->paginate(10);
 		}
 		$nav_berita = true;
 		return view('konten.backend.berita.index', compact('berita', 'nav_berita'));
@@ -83,20 +85,31 @@ class BeritaController extends Controller{
 	}
 	
 
-	public function public_berita($slug){
-		$berita = Berita::findBySlug($slug);
-		if($berita->is_published == 0){
-			abort(404);
-		}
-		return view('konten.frontend.berita.index', compact('berita'));
-	}
+
 
 
 
 	public function add_lampiran($id){
-		$lampiran = BeritaToLampiran::where('mst_berita_id', '=', $id)->get();
+		$list_lampiran = Fungsi::get_dropdown(LampiranBerita::orderBy('id','DESC')->get(), 'lampiran');
+		$lampiran = BeritaToLampiran::where('mst_berita_id', '=', $id)->with('mst_lampiran')->get();
 		$view = 'konten.backend.berita.popup.add_lampiran';
-		return view($view, compact('lampiran'));
+		return view($view, compact('lampiran', 'list_lampiran'));
+	}
+
+
+	public function insert_lampiran(){
+		$data = [
+		'mst_lampiran_berita_id'	=> Input::get('mst_lampiran_berita_id'),
+		'mst_berita_id'				=> Input::get('mst_berita_id'),
+		];
+		BeritaToLampiran::create($data);
+		return 'ok';
+	}
+
+	public function del_lampiran(){
+		$o = BeritaToLampiran::find(Input::get('id'));
+		$o->delete();
+		return 'ok';
 	}
 
 

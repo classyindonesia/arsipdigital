@@ -4,6 +4,7 @@
 			<th width='5%'>No.</th>
 			<th>Judul</th>
 			<th width='5%'>status</th>
+			<th class='text-center' width='5%'>Lampiran</th>
 			<th width='10%'> <i class='fa fa-calendar'></i> created at</th>
 			<td width='10%'><i class='fa fa-clock-o'></i> jam</td>
 			<th width='100px'>action</th>			
@@ -21,6 +22,7 @@
 					<span class='label label-success'>published</span> 
 				@endif					
 			</td>
+			<td class='text-center'> {{ count($list->berita_to_lampiran) }}</td>
 			<td> {{ Fungsi::date_to_tgl(date('Y-m-d', strtotime($list->created_at))) }} </td>
 			<td> {{ date('H:i', strtotime($list->created_at)) }} WIB </td>
 			<td>

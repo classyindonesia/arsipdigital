@@ -24,6 +24,10 @@ class Berita extends Eloquent implements SluggableInterface{
 		return $this->belongsTo('App\Models\Mst\User', 'mst_user_id');
 	}
 
+	public function berita_to_lampiran(){
+		return $this->hasMany('\App\Models\Mst\BeritaToLampiran', 'mst_berita_id');
+	}
+
  
 
 }

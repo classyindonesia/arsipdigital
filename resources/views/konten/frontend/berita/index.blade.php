@@ -33,7 +33,19 @@
 
 {!! $berita->artikel !!}
 
- 
+<hr>
+<b>File Lampiran :</b><br>
+<ul>
+  @foreach($berita->berita_to_lampiran as $list_lampiran)
+    @if(count($list_lampiran->mst_lampiran)>0)
+    <li> <a class='label bg-yellow' target='__blank' href="{!! URL::route('berita.download_lampiran', $list_lampiran->mst_lampiran->id) !!}">
+       <i class='fa fa-cloud-download'></i> {!! $list_lampiran->mst_lampiran->nama !!}</a> </li>
+  @endif
+  @endforeach
+</ul>
+
+    
+
 <hr>
 
 @if($berita->komentar == 1)
