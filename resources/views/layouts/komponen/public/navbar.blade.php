@@ -13,16 +13,12 @@
 
 
         <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <i class='fa fa-server'></i> <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">pencarian data pengguna</a></li>
-            <li><a href="/password/email">lupa password ?</a></li>
+ 
 
-          </ul>
-        </li>
+            <li @if(isset($pencarian_pengguna_home)) class='active' @endif><a href="{!! URL::route('pengguna.index') !!}">  
+              <i class='fa fa-search'></i> pencarian data pengguna</a></li>
+            <li @if(isset($reset_password_home)) class='active' @endif><a href="/password/email">
+              <i class='fa fa-envelope'></i> lupa password</a></li>        
       </ul>
 
 

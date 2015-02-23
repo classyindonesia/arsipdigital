@@ -70,6 +70,8 @@ class RouteServiceProvider extends ServiceProvider {
 
 			/* public */
 			require app_path('Http/routes/public/berita.php');
+			require app_path('Http/routes/public/auth.php');
+			require app_path('Http/routes/public/pengguna.php');
 
 		});
 	}

@@ -22,7 +22,7 @@ class HanyaAdmin {
 			if($request->ajax()){
 				return response('Unauthorized.', 401);
 			}else{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('/');
 			}
 		}else{
 			if($this->auth->user()->ref_user_level_id != 1){

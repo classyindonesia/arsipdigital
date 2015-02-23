@@ -10,6 +10,7 @@ use App\Models\Mst\Arsip;
 use App\Models\Mst\File;
 use App\Models\Mst\AksesStaff;
 use App\Models\Mst\Berita;
+use App\Models\Mst\LampiranBerita;
 
 /* facade */
 use Auth;
@@ -23,16 +24,29 @@ class HomeController extends Controller {
 
 
 	public function index(){
-		if(Auth::user()->ref_user_level_id == 1){
-			//level admin
-			return $this->level_admin();
-		}elseif(Auth::user()->ref_user_level_id == 2){
-			//level staff
-			return $this->level_staff();	
+		if(Auth::check()){
+			//is logged in
+			if(Auth::user()->ref_user_level_id == 1){
+				//level admin
+				return $this->level_admin();
+			}elseif(Auth::user()->ref_user_level_id == 2){
+				//level staff
+				return $this->level_staff();	
+			}else{
+				//level user
+				return $this->level_user();			
+			}
 		}else{
-			//level user
-			return $this->level_user();			
+			return $this->public_access();
 		}
+	}
+
+
+
+	private function public_access(){
+		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->paginate(4);
+		$lampiran_berita = $lampiran_berita = LampiranBerita::orderBy('id', 'DESC')->take(5)->get();
+		return view('konten.frontend.auth.login.index', compact('berita', 'lampiran_berita'));
 	}
 
 

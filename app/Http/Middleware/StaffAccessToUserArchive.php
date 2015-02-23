@@ -20,7 +20,7 @@ class StaffAccessToUserArchive {
 			if($request->ajax()){
 				return response('Unauthorized.', 401);
 			}else{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('/');
 			}
 		}else{
 			if(Auth::user()->ref_user_level_id != 2){

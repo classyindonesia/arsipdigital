@@ -16,6 +16,7 @@ class BeritaController extends Controller {
 		if($berita->is_published == 0){
 			abort(404);
 		}
+
 		return view('konten.frontend.berita.index', compact('berita'));
 	}
 
