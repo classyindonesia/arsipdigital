@@ -34,7 +34,7 @@
       </div>
     </footer>
 
-    @include('layouts.komponen.public.js')
+    
 
     <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
