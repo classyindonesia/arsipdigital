@@ -12,12 +12,13 @@ class BeritaController extends Controller {
 
 
 	public function public_berita($slug){
+		$hashids = new \Hashids\Hashids('qertymyr');
 		$berita = Berita::findBySlug($slug);
 		if($berita->is_published == 0){
 			abort(404);
 		}
 
-		return view('konten.frontend.berita.index', compact('berita'));
+		return view('konten.frontend.berita.index', compact('berita', 'hashids'));
 	}
 
 
