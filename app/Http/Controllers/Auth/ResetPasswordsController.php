@@ -14,7 +14,8 @@ class ResetPasswordsController extends Controller {
 	protected $passwords;
 
 
-	public function __construct(PasswordBroker $passwords){
+	public function __construct(PasswordBroker $passwords, Guard $auth){
+		$this->auth = $auth;
 		$this->passwords = $passwords;
 		view()->share('reset_password_home', true);
 	}
@@ -78,7 +79,7 @@ class ResetPasswordsController extends Controller {
 			throw new NotFoundHttpException;
 		}
 
-		return view('auth.reset')->with('token', $token);
+		return view('konten.frontend.auth.reset.form_reset')->with('token', $token);
 	}
 
 	/**
