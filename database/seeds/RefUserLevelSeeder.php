@@ -12,6 +12,10 @@ class RefUserLevelSeeder  extends Seeder {
 		$level3 = UserLevel::find(3);
 		if(count($level3)<=0) UserLevel::create([ 'id'=>3, 'nama' => 'user']);
 	 	$this->command->info('User Level table seeded!');
+	 	$level4 = UserLevel::find(4);
+		if(count($level4)<=0) UserLevel::create([ 'id'=>4, 'nama' => 'web']);
+	 	$this->command->info('User Level table seeded!');
+
 	}
 
 

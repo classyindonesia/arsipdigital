@@ -12,14 +12,12 @@
                             <i class='fa fa-home'></i> Home
                         </a>
                     </li>
-                     
-                    <li @if(isset($arsip_user_home)) class="active" @endif >
-                        <a href="{{ URL::route('arsip_user.index') }}">
-                            <i class='fa fa-archive'></i> Arsip User
+                      
+                    <li @if(isset($berita_home)) class="active" @endif >
+                        <a href="{{ URL::route('admin_berita.index') }}">
+                            <i class='fa fa-newspaper-o'></i> Berita
                         </a>
                     </li>
-
-
 
 
                     <li @if(isset($my_profile)) class="active" @endif>

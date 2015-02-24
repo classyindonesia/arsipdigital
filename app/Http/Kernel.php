@@ -30,6 +30,7 @@ class Kernel extends HttpKernel {
 		'hanya_admin' 			=> 'App\Http\Middleware\HanyaAdmin',
 		'hanya_user'			=> 'App\Http\Middleware\HanyaUser',
 		'hanya_staff'			=> 'App\Http\Middleware\HanyaStaff',
+		'hanya_web'			=> 'App\Http\Middleware\HanyaLevelWeb',
 		'akses_file'			=> 'App\Http\Middleware\AksesFileUser',
 		'akses_ke_arsip_user'	=> 'App\Http\Middleware\StaffAccessToUserArchive'
 	];
