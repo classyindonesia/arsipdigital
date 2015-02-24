@@ -54,6 +54,7 @@ class RouteServiceProvider extends ServiceProvider {
 			require app_path('Http/routes/rak_user.php');
 			require app_path('Http/routes/arsip.php');
 			require app_path('Http/routes/staff_akses.php');
+			require app_path('Http/routes/admin_email.php');
 
 
 			/*hanya utk level staff */

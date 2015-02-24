@@ -33,7 +33,14 @@
                             <i class='fa fa-users'></i> Daftar Pengguna
                         </a>
                     </li>
-                    
+               
+
+
+                    <li @if(isset($emails_home)) class="active" @endif>
+                        <a href="{{ URL::route('emails.index') }}">
+                            <i class='fa fa-envelope-o'></i> Email
+                        </a>
+                    </li>
 
 
 
