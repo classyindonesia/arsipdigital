@@ -6,7 +6,7 @@ use App\Models\Mst\AntrianEmail;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
 
-use Input, Auth;
+use Input, Auth, Mail;
 
 class EmailController extends Controller {
  
@@ -59,6 +59,42 @@ class EmailController extends Controller {
 				}
 		}
 			return 'ok';
+	}
+
+
+
+	public function kirim_email(){
+		$antrian = AntrianEmail::where('mst_user_id', '=', Auth::user()->id)->get();
+		if(Input::has('kirim')){
+			/*
+			 	$data = [];
+				Mail::queue('emails.pesan', $data, function($message){
+					$antrian = AntrianEmail::where('mst_user_id', '=', Auth::user()->id)->get();
+					foreach($antrian as $list){
+						$email= $list->email;
+						$user = User::where('email', '=', $mail)->first();
+						$email2 = $user->email;
+						$nama = $user->data_user->nama;
+					    $message->to($email2, $nama)->subject('Welcome!');
+				    }
+				}); 
+				*/
+
+		foreach ($antrian as $mailuser) {
+			$data = [];
+		    Mail::queue('emails.pesan', $data, function($message) use ($mailuser) {
+		        $message
+		          ->from(env('EMAIL_PENGIRIM'))
+		          ->to($mailuser['email'], $mailuser['email'] )
+		          ->subject(Input::get('subject'));
+		    });
+		}
+
+		}else{			
+			foreach($antrian as $list){
+				$list->delete();
+			}
+		}
 	}
 
 	

@@ -18,3 +18,9 @@ Route::post('emails/insert_antrian', [
 	'as'			=> 'emails.insert_antrian'
 	]);
 
+
+Route::post('emails/kirim_email', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\EmailController@kirim_email',
+	'as'			=> 'emails.kirim_email'
+	]);

@@ -19,12 +19,4 @@ Route::controllers([
 ]);
 
 
-Route::get('q', function(){
-	for($i=1;$i<=20;$i++){
-	 	$data = [];
-		Mail::queue('emails.pesan', $data, function($message){
-		    $message->to('rey.barrolz@gmail.com', 'reka prihatanto')->subject('Welcome!');
-		}); 
-	}
-		return 'ok';	
-	});
+ 
