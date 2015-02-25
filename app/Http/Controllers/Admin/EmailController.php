@@ -6,7 +6,7 @@ use App\Models\Mst\AntrianEmail;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
 
-use Input, Auth, Mail;
+use Input, Auth, Mail, Session;
 
 class EmailController extends Controller {
  
@@ -16,6 +16,7 @@ class EmailController extends Controller {
 
 
 	public function index(){
+		Session::put('subject', 'testing subject');
 		$data_user = DataUser::all();
 		$antrian = AntrianEmail::paginate(10);
 		$view = 'konten.backend.emails.index';
@@ -66,29 +67,18 @@ class EmailController extends Controller {
 	public function kirim_email(){
 		$antrian = AntrianEmail::where('mst_user_id', '=', Auth::user()->id)->get();
 		if(Input::has('kirim')){
-			/*
-			 	$data = [];
-				Mail::queue('emails.pesan', $data, function($message){
-					$antrian = AntrianEmail::where('mst_user_id', '=', Auth::user()->id)->get();
-					foreach($antrian as $list){
-						$email= $list->email;
-						$user = User::where('email', '=', $mail)->first();
-						$email2 = $user->email;
-						$nama = $user->data_user->nama;
-					    $message->to($email2, $nama)->subject('Welcome!');
-				    }
-				}); 
-				*/
 
-		foreach ($antrian as $mailuser) {
-			$data = [];
-		    Mail::queue('emails.pesan', $data, function($message) use ($mailuser) {
-		        $message
-		          ->from(env('EMAIL_PENGIRIM'))
-		          ->to($mailuser['email'], $mailuser['email'] )
-		          ->subject(Input::get('subject'));
-		    });
-		}
+			foreach ($antrian as $mailuser) {
+				$subject = Input::get('subject');
+				$user = User::where('email', '=', $mailuser->email)->first();
+				$data = ['subject' => $subject];
+ 			    Mail::queue('emails.pesan', $data, function($message) use ($user) {
+			        $message
+			          ->from(env('EMAIL_PENGIRIM'))
+			          ->to($user->email, $user->data_user->nama )
+			          ->subject(Session::get('subject'));
+			    });
+			}
 
 		}else{			
 			foreach($antrian as $list){
