@@ -106,7 +106,6 @@ class EmailController extends Controller {
 				$list->delete();
 			}
 		}
-		$this->clear_attach_file();	
 	}
 
 
