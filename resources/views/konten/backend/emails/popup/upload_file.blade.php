@@ -38,20 +38,29 @@ $('#add_attach').click(function(){
     filter: alpha(opacity=0);
 }
 </style>
- 
-<div class="fileUpload btn btn-primary">
-    <span> <i class="fa fa-link"></i> pilih file </span>
-     <input 
-        id="fileupload" 
-        type="file"
-        name="files[]" 
-        data-url="{!! URL::route('emails.do_upload_file') !!}" 
-        class='btn btn-primary upload'
-        multiple
-    />
-</div>
-<span style='width:100px;overflow:hidden;' id='selected_file'></span>
 
+@if(File::isWritable(storage_path('attach/') ))
+     <div class="fileUpload btn btn-primary">
+        <span> <i class="fa fa-link"></i> pilih file </span>
+         <input 
+            id="fileupload" 
+            type="file"
+            name="files[]" 
+            data-url="{!! URL::route('emails.do_upload_file') !!}" 
+            class='btn btn-primary upload'
+            multiple
+        />
+    </div>
+    <span style='width:100px;overflow:hidden;' id='selected_file'></span>
+@else
+
+<div class='alert alert-danger'>
+        permision folder bermasalah, 
+    <br>
+    ./storage/attach/
+</div>
+
+@endif
 
 <hr>
 
