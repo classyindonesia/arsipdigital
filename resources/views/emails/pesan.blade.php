@@ -1,1 +1,1 @@
-controh pesan!!!
+{!! $konten !!}

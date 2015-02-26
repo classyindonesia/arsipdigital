@@ -4,8 +4,7 @@
 
 @section('title_header')	
 	
-	@include('konten.backend.emails.action_atas')
-
+ 
 
  <h1 class='title_header '>Kirim Email  </h1>
 <hr>
@@ -15,11 +14,9 @@
 
 @section('main_konten') 
 
-
-
-@include('konten.backend.emails.list_data')
-
-@include('konten.backend.emails.add_antrian')
+	@include('konten.backend.emails.komponen.nav_atas')
+	@include('konten.backend.emails.list_data')
+	@include('konten.backend.emails.add_antrian')
 
 @endsection
 
