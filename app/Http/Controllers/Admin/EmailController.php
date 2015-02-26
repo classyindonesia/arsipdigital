@@ -100,13 +100,13 @@ class EmailController extends Controller {
 			}
 			foreach($antrian as $list){
 				$list->delete();
-			}
-			$this->clear_attach_file();						
+			}								
 		}else{
 			foreach($antrian as $list){
 				$list->delete();
 			}
 		}
+		$this->clear_attach_file();	
 	}
 
 
