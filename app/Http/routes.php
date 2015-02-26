@@ -18,5 +18,4 @@ Route::controllers([
 	'password' => 'Auth\ResetPasswordsController',
 ]);
 
-
  

@@ -9,7 +9,13 @@ use App\Models\Mst\AttachEmail;
 
 use Illuminate\Http\Request;
 
-use Input, Auth, Mail, Session, Fungsi;
+/* facade */
+use Input, Auth, Mail, Session, Fungsi, Queue;
+
+/* queue commands */
+use App\Commands\SendEmail;
+use App\Commands\DelAttachedFiles;
+
 
 class EmailController extends Controller {
  
@@ -17,6 +23,14 @@ class EmailController extends Controller {
 		view()->share('emails_home', true);
 	}
 
+
+
+	private function clear_antrian(){
+		$antrian = AntrianEmail::whereMstUserId(Auth::user()->id)->get();
+		foreach($antrian as $list){
+			$list->delete();
+		}
+	}
 
 	public function index(){
 		$data_user = DataUser::all();
@@ -69,42 +83,27 @@ class EmailController extends Controller {
 
 	/* submit pengiriman email */
 	public function kirim_email(){
-		$antrian = AntrianEmail::where('mst_user_id', '=', Auth::user()->id)->get();
+		$antrian = AntrianEmail::whereMstUserId(Auth::user()->id)->get();
 		if(Input::has('kirim')){
-			$attached_files = AttachEmail::whereMstUserId(Auth::user()->id)->get();
-
 			foreach ($antrian as $mailuser) {
-				$subject = Input::get('subject');
-				$path = [];
-				foreach($attached_files as $file){
-			     	$path[] = storage_path('attach/'.Auth::user()->id.'/'.$file->nama_file_asli);
-			    }
-				$data = [
-					'subject' => $subject,
-					'konten' => Input::get('konten')
-					];
 				$user = User::where('email', '=', $mailuser->email)->first();
-  			    Mail::queue('emails.pesan', $data, function($message) use ($user, $subject, $path) {
-			        $message
-			          ->from(env('EMAIL_PENGIRIM'))
-			          ->to($user->email, $user->data_user->nama)
-			          ->subject($subject);      
-						 $size = count($path);  
-					     for($i=0;$i<$size;$i++){
-					     	if(file_exists($path[$i])){
-					     		$message->attach($path[$i]);
-					     	}
-						     
-					     }
-			    });
+				$subject = Input::get('subject');
+				$konten = Input::get('konten');
+				$my_id = Auth::user()->id;
+				if(count($user)>0){
+					$nama_penerima = $user->data_user->nama;					
+				}else{
+					$nama_penerima = null;
+				}
+				$email_penerima = $mailuser->email;
+				Queue::push(new SendEmail($konten, $subject, $email_penerima, $nama_penerima, $my_id));
 			}
-			foreach($antrian as $list){
-				$list->delete();
-			}								
+			//$this->clear_antrian();
+			
+			//Queue::push(new DelAttachedFiles($my_id));
+
 		}else{
-			foreach($antrian as $list){
-				$list->delete();
-			}
+			$this->clear_antrian();
 		}
 	}
 
