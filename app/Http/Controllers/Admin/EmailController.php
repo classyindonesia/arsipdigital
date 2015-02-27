@@ -98,9 +98,9 @@ class EmailController extends Controller {
 				$email_penerima = $mailuser->email;
 				Queue::push(new SendEmail($konten, $subject, $email_penerima, $nama_penerima, $my_id));
 			}
-			//$this->clear_antrian();
+			$this->clear_antrian();
 			
-			//Queue::push(new DelAttachedFiles($my_id));
+			Queue::push(new DelAttachedFiles($my_id));
 
 		}else{
 			$this->clear_antrian();
