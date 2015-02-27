@@ -6,6 +6,9 @@
 
 
   <div class='col-md-12 nimated fadeIn'>
+
+    <a class='btn btn-primary pull-right' href="{!! URL::route('berita.daftar_berita') !!}">daftar berita</a>
+
       <h3 style='margin-top: 0px;font-weight:bold;'> <i class='fa fa-angle-right'></i> Latest News</h3>
       <hr style='margin:2px;'>
 		@foreach($berita as $list)

@@ -1,4 +1,4 @@
-<?php namespace App\Http\ViewComposers;
+<?php namespace App\Http\ViewComposers\Frontend;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Users\Repository as UserRepository;

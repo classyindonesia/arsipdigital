@@ -14,7 +14,7 @@ class AksesResetPasswordPublik {
 	public function handle($request, Closure $next)
 	{
 		$sv = new SetupVariable;
-		$val = $sv->get_val('config_pencarian_frontend');
+		$val = $sv->get_val('config_password_frontend');
 		if($val == 0){
 			abort(404);
 		}

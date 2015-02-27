@@ -35,4 +35,11 @@ class BeritaController extends Controller {
 		}		
 	}
 
+
+	public function daftar_berita(){
+		$view = 'konten.frontend.berita.daftar_berita.index';
+		$berita = Berita::paginate(10);
+		return view($view, compact('berita'));
+	}
+
  }
