@@ -18,7 +18,7 @@
     <tr>
         <td class='text-center' width='5%'>No.</td>
         <td>Nama Config</td>
-        <td>Status</td>
+        <td>Status/Value</td>
         <td width='15%'>Action</td>
     </tr>
     @include('konten.backend.config.list_config.akses_pencarian_publik')
