@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder {
 
 		 $this->call('RefUserLevelSeeder');
 		 $this->call('MstUserSeeder');
+		 $this->call('SetupVariableSeeder');
 	}
 
 }

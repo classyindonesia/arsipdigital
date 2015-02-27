@@ -144,6 +144,8 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		'App\Providers\ComposerServiceProvider',
+ 
 
 		/* tambahan */
 		'Illuminate\Html\HtmlServiceProvider',
@@ -207,6 +209,7 @@ return [
 		'Reader'	=> '\PHPExcelReader\SpreadsheetReader',
 		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
 		'Gravatar'	=> 'App\Helpers\Gravatar',
+		'SetupVariable'	=> 'App\Models\SetupVariable'
 
 	],
 

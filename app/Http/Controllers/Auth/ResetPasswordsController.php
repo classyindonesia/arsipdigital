@@ -18,6 +18,7 @@ class ResetPasswordsController extends Controller {
 		$this->auth = $auth;
 		$this->passwords = $passwords;
 		view()->share('reset_password_home', true);
+		$this->middleware('akses_password_publik');
 	}
  
 

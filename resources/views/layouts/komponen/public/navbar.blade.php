@@ -12,14 +12,7 @@
         <div id="navbar" class="collapse navbar-collapse">
 
 
-        <ul class="nav navbar-nav navbar-right">
- 
-
-            <li @if(isset($pencarian_pengguna_home)) class='active' @endif><a href="{!! URL::route('pengguna.index') !!}">  
-              <i class='fa fa-search'></i> pencarian data pengguna</a></li>
-            <li @if(isset($reset_password_home)) class='active' @endif><a href="/password/email">
-              <i class='fa fa-envelope'></i> lupa password</a></li>        
-      </ul>
+          @include('layouts.komponen.public._navbar')
 
 
 

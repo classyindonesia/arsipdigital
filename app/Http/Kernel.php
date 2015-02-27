@@ -24,15 +24,17 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' 					=> 'App\Http\Middleware\Authenticate',
-		'auth.basic' 			=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' 				=> 'App\Http\Middleware\RedirectIfAuthenticated',
-		'hanya_admin' 			=> 'App\Http\Middleware\HanyaAdmin',
-		'hanya_user'			=> 'App\Http\Middleware\HanyaUser',
-		'hanya_staff'			=> 'App\Http\Middleware\HanyaStaff',
-		'hanya_web'			=> 'App\Http\Middleware\HanyaLevelWeb',
-		'akses_file'			=> 'App\Http\Middleware\AksesFileUser',
-		'akses_ke_arsip_user'	=> 'App\Http\Middleware\StaffAccessToUserArchive'
+		'auth' 						=> 'App\Http\Middleware\Authenticate',
+		'auth.basic' 				=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
+		'guest' 					=> 'App\Http\Middleware\RedirectIfAuthenticated',
+		'hanya_admin' 				=> 'App\Http\Middleware\HanyaAdmin',
+		'hanya_user'				=> 'App\Http\Middleware\HanyaUser',
+		'hanya_staff'				=> 'App\Http\Middleware\HanyaStaff',
+		'hanya_web'					=> 'App\Http\Middleware\HanyaLevelWeb',
+		'akses_file'				=> 'App\Http\Middleware\AksesFileUser',
+		'akses_ke_arsip_user'		=> 'App\Http\Middleware\StaffAccessToUserArchive',
+		'akses_pencarian_publik'	=> 'App\Http\Middleware\AksesPencarianPublik',
+		'akses_password_publik'		=> 'App\Http\Middleware\AksesResetPasswordPublik'
 	];
 
 }

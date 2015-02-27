@@ -71,6 +71,12 @@
                         </a>
                     </li>
 
+                    <li @if(isset($config_home)) class="active" @endif>
+                        <a href="{{ URL::route('config.index') }}">
+                            <i class='fa fa-cogs'></i> Config
+                        </a>
+                    </li>
+
 
  
                     <li><a href="{{ URL::to('auth/logout') }}"><i class="glyphicon glyphicon-off"></i> Logout</a> </li>
