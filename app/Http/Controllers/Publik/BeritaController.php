@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Mst\LampiranBerita;
 use App\Models\Mst\Berita;
 
+
+/* facades */
+use Input;
+
 class BeritaController extends Controller {
  
 
@@ -38,8 +42,17 @@ class BeritaController extends Controller {
 
 	public function daftar_berita(){
 		$view = 'konten.frontend.berita.daftar_berita.index';
-		$berita = Berita::paginate(10);
+		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->paginate(10);
 		return view($view, compact('berita'));
+	}
+
+	public function search_berita(){
+		$view = 'konten.frontend.berita.daftar_berita.search_result';
+		$berita = Berita::orderBy('id', 'DESC')
+			->whereIsPublished(1)
+			->where('judul', 'like', '%'.Input::get('pencarian').'%')
+			->get();
+		return view($view, compact('berita'));		
 	}
 
  }

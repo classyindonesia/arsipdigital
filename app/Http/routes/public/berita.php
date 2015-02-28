@@ -15,3 +15,10 @@ Route::get('berita/daftar_berita', [
 	'uses'			=> 'Publik\BeritaController@daftar_berita',
 	'as'			=> 'berita.daftar_berita'
 	]);
+
+
+Route::post('berita/search_berita', [
+	'uses'			=> 'Publik\BeritaController@search_berita',
+	'as'			=> 'berita.search_berita'
+	]);
+

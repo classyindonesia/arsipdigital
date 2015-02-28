@@ -3,6 +3,13 @@
 @section('main_konten')
 
  
+ <div class='col-md-8  animated fadeIn' style='padding-top:3px;'>
+
+ 
+
+  <div class='col-md-12 nimated fadeIn'>
+
+
 
 <h1 style='margin:2px;'> <a href="/"><i class='fa fa-arrow-left'></i></a> </h1>
 
@@ -38,6 +45,38 @@
 @if($berita->komentar == 1)
   @include('konten.frontend.berita.komentar')
 @endif
+
+
+
+
+  </div>
+ </div>
+
+
+
+<div class='col-md-4'>
+  <div class="row">
+ 
+
+    <div class="col-md-10 col-md-offset-2">
+
+ 
+    @include('konten.frontend.auth.login.form_login')
+
+
+
+
+      
+    @include('konten.frontend.auth.login.list_file')
+
+  
+    </div>
+  </div>
+</div>
+ 
+
+
+
 
 
 @endsection

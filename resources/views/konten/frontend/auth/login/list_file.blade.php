@@ -7,7 +7,7 @@
 			<?php
 			$id = $hashids->encode(1000, 2000, $list->id);
 			?>
-				<li> <a href="{!! URL::route('berita.download_lampiran', $id) !!}">{!! $list->nama !!}</a> </li>
+				<li style='margin-left:-15px;'> <a href="{!! URL::route('berita.download_lampiran', $id) !!}">{!! $list->nama !!}</a> </li>
 			@endforeach
 		</ul>
 

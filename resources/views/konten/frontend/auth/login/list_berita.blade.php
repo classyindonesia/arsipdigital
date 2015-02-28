@@ -19,6 +19,5 @@
 			<hr style='margin:1px;'>
 		@endforeach
 
-		{!! $berita->render() !!}
 
   </div>

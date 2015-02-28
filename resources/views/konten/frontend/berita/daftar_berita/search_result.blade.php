@@ -21,7 +21,6 @@
 
 
 
-
   <div class='col-md-12'>
 
 
@@ -33,8 +32,7 @@
       <hr style='margin:1px;'>
     @endforeach
 
-{!! $berita->render() !!}
-  </div>
+   </div>
  </div>
 
 

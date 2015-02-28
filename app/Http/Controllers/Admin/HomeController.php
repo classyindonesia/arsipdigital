@@ -44,10 +44,8 @@ class HomeController extends Controller {
 
 
 	private function public_access(){
-		$hashids = new \Hashids\Hashids('qertymyr');
-		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->paginate(4);
-		$lampiran_berita = $lampiran_berita = LampiranBerita::orderBy('id', 'DESC')->take(5)->get();
-		return view('konten.frontend.auth.login.index', compact('berita', 'lampiran_berita', 'hashids'));
+		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->take(4)->get();
+		return view('konten.frontend.auth.login.index', compact('berita'));
 	}
 
 
