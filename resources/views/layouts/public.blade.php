@@ -23,8 +23,6 @@
 
  @yield('main_konten')
  
-
-
        </div>
 
 

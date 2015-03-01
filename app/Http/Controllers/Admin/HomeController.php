@@ -44,7 +44,7 @@ class HomeController extends Controller {
 
 
 	private function public_access(){
-		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->take(4)->get();
+		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->take(8)->get();
 		return view('konten.frontend.auth.login.index', compact('berita'));
 	}
 

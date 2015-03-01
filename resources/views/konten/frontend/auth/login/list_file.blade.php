@@ -12,3 +12,5 @@
 		</ul>
 
 	</div>
+
+@include('konten.frontend.auth.login.statistik')
