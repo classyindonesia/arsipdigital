@@ -113,4 +113,10 @@ class BeritaController extends Controller{
 	}
 
 
+
+	public function add_gambar(){
+		return view('konten.backend.berita.popup.add_gambar');
+	}
+
+
 }

@@ -3,10 +3,15 @@
 	<input placeholder='judul berita...' type='text' name='judul' id='judul' class='form-control'>
 </div>
 
+@include('konten.backend.berita.action.add_gambar')
+
+<hr>
 
 
 {!! Form::label('artikel', 'Artikel :') !!}
 <textarea name='artikel' id='ckeditor'></textarea>
+
+
 
 
 <hr>

@@ -62,3 +62,11 @@ Route::get('berita/add_lampiran/{id}', [
 	'uses'			=> 'Admin\BeritaController@del_lampiran',
 	'as'			=> 'admin_berita.del_lampiran'
 	]);
+
+
+
+Route::get('berita/add_gambar', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\BeritaController@add_gambar',
+	'as'			=> 'admin_berita.add_gambar'
+	]);
