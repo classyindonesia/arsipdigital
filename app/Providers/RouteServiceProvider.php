@@ -75,6 +75,7 @@ class RouteServiceProvider extends ServiceProvider {
 			require app_path('Http/routes/public/auth.php');
 			require app_path('Http/routes/public/pengguna.php');
 			require app_path('Http/routes/public/password.php');
+			require app_path('Http/routes/public/file.php');
 
 		});
 	}
