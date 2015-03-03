@@ -56,6 +56,7 @@ class RouteServiceProvider extends ServiceProvider {
 			require app_path('Http/routes/staff_akses.php');
 			require app_path('Http/routes/admin_email.php');
 			require app_path('Http/routes/admin_config.php');
+			require app_path('Http/routes/admin_weblink.php');
 
 
 			/*hanya utk level staff */

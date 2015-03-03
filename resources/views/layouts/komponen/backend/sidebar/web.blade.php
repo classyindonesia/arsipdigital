@@ -20,6 +20,13 @@
                     </li>
 
 
+                    <li @if(isset($weblink_home)) class="active" @endif >
+                        <a href="{{ URL::route('admin_weblink.index') }}">
+                            <i class='fa fa-link'></i> Web link
+                        </a>
+                    </li>                    
+
+
                     <li @if(isset($my_profile)) class="active" @endif>
                         <a href="{{ URL::route('my_profile.index') }}">
                             <i class='fa fa-wrench'></i> Profil Saya
