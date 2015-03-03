@@ -9,6 +9,8 @@ use Auth, Input, Session, Fungsi;
 use App\Models\Mst\Berita;
 use App\Models\Mst\BeritaToLampiran;
 use App\Models\Mst\LampiranBerita;
+use App\Models\Mst\GambarBerita;
+
 
 /* request */
 use App\Http\Requests\CreateOrUpdateBerita;
@@ -115,8 +117,72 @@ class BeritaController extends Controller{
 
 
 	public function add_gambar(){
-		return view('konten.backend.berita.popup.add_gambar');
+		$gambar = GambarBerita::orderBy('id', 'DESC')->paginate(6);
+		return view('konten.backend.berita.popup.add_gambar', compact('gambar'));
 	}
+
+	public function upload_gambar(){
+		$max = explode('M', ini_get("upload_max_filesize"));
+		$max_upload = $max[0] * 1048576;		
+		$view = 'konten.backend.berita.popup.upload_gambar';
+		return view($view, compact('max_upload'));
+	}
+
+	public function do_upload_gambar(){
+		$results = array();
+		foreach(\Request::file('files') as $file){
+			try{
+						$assetPath = '/upload/gambar_berita';
+						$uploadPath = public_path($assetPath);
+
+ 					 	$name = $file->getClientOriginalName();
+					 	$name = Fungsi::limit_karakter($name);
+				    	$nama_file_db = str_slug($name, '.');
+				    	$nama_file_to_server = md5($nama_file_db).'_'.date('YmdHis').'.'.$file->getClientOriginalExtension();			 	
+					 	$file->move($uploadPath, $nama_file_to_server);
+					 	$name = $file->getClientOriginalName().' telah tersimpan! ';				
+ 
+					 	$data_insert = [
+					 		'nama_file_asli'		=> $nama_file_to_server,
+  					 		'mst_user_id'			=> Auth::user()->id
+					 	];
+					 	GambarBerita::create($data_insert);
+
+
+						// resize gambar
+						$img = \Image::make(public_path('upload/gambar_berita/'.$nama_file_to_server));
+						// prevent possible upsizing
+						$img->resize(null, 400, function ($constraint) {
+						    $constraint->aspectRatio();
+						    $constraint->upsize();
+						});
+						$img->save();
+
+
+			} catch(Exception $e) {
+				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
+				 		//$results[] = compact('name');   
+			 		}
+		$results[] = compact('name');	
+		}
+	 return array(
+	        'files' => $results,
+ 	    );		
+	}
+
+	public function del_gambar(){
+		$o = GambarBerita::find(Input::get('id'));
+
+		$path = public_path('upload/gambar_berita/'.$o->nama_file_asli);
+		if(file_exists($path)){
+ 			unlink($path);
+		} 
+		$o->delete();
+		return 'ok';
+	}
+
+
+
 
 
 }

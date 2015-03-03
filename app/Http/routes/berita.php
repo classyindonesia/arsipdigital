@@ -70,3 +70,21 @@ Route::get('berita/add_gambar', [
 	'uses'			=> 'Admin\BeritaController@add_gambar',
 	'as'			=> 'admin_berita.add_gambar'
 	]);
+
+Route::get('berita/upload_gambar', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\BeritaController@upload_gambar',
+	'as'			=> 'admin_berita.upload_gambar'
+	]);
+
+Route::post('berita/do_upload_gambar', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\BeritaController@do_upload_gambar',
+	'as'			=> 'admin_berita.do_upload_gambar'
+	]);
+
+Route::post('berita/del_gambar', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\BeritaController@del_gambar',
+	'as'			=> 'admin_berita.del_gambar'
+	]);
