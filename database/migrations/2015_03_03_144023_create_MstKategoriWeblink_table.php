@@ -12,7 +12,7 @@ class CreateMstKategoriWeblinkTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('mst_kategiri_weblink', function(Blueprint $table)
+		Schema::create('mst_kategori_weblink', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('nama');
@@ -27,7 +27,7 @@ class CreateMstKategoriWeblinkTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('mst_kategiri_weblink');
+		Schema::drop('mst_kategori_weblink');
 	}
 
 }

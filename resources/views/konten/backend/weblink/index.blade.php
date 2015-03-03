@@ -4,6 +4,7 @@
 
 @section('title_header')	
  
+@include('konten.backend.weblink.tombol_kategori')
 
  <h1 class='title_header '>Weblink  </h1>
 <hr>
