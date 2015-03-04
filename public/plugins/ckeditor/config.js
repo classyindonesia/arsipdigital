@@ -13,7 +13,8 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
 		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
 		{ name: 'links' },
-		{ name: 'insert' },
+
+		//{ name: 'insert' },
 		{ name: 'forms' },
 		{ name: 'tools' },
 		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
@@ -23,8 +24,10 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
 		{ name: 'styles' },
 		{ name: 'colors' },
-		{ name: 'about' }
+		{ name: 'insert', groups: ['Image', 'Youtube']},
+ 		{ name: 'about' }
 	];
+
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
@@ -32,7 +35,18 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Set the most common block elements.
 	config.format_tags = 'p;h1;h2;h3;pre';
+	forceSimpleAmpersand = true;
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	//mencegah konten hilang otomatis
+	CKEDITOR.config.allowedContent = true; 
+	config.protectedSource.push(/<i[^>]*><\/i>/g); //allow i tag
+	config.extraPlugins = 'youtube'; //tambah codesnippet
+  	/*
+	config.codeSnippet_languages = {
+    javascript: 'JavaScript',
+    php: 'PHP'
+    */
 };
