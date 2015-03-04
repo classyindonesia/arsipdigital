@@ -9,12 +9,22 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php $no = $weblink->firstItem(); ?>
+@foreach($weblink as $list)
 		<tr>
-			<td class='text-center'></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td class='text-center'>{{ $no }}</td>
+			<td>{{ $list->nama }}</td>
+			<td>@if(count($list->mst_kategori_weblink)>0) {!! $list->mst_kategori_weblink->nama !!} @else - @endif</td>
+			<td> {{ $list->url }} </td>
+			<td>
+				@include('konten.backend.weblink.action.edit')
+				@include('konten.backend.weblink.action.del')
+
+			</td>
 		</tr>
+		<?php $no++; ?>
+@endforeach
 	</tbody>
 </table>
+
+{!! $weblink->render() !!}

@@ -26,11 +26,9 @@
        </div>
 
 
-    <footer class="footer">
-      <div class="container">
-       <p class="text-muted">Copyright &copy; {{ str_replace('http://', '', URL::to("/")) }}</p>
-      </div>
-    </footer>
+
+@include('layouts.komponen.public.footer')
+
 
  @yield('script_bottom') 
  
