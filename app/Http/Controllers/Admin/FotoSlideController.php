@@ -79,6 +79,65 @@ class FotoSlideController extends Controller {
 		$o->delete();
 		return 'ok';
 	}
+
+	public function edit($id){
+		$max = explode('M', ini_get("upload_max_filesize"));
+		$max_upload = $max[0] * 1048576;			
+		$foto = FotoSlide::findOrFail($id);
+		$jabatan = Jabatan::all();
+		return view('konten.backend.foto_slide.popup.edit', compact('foto', 'jabatan', 'max_upload'));
+	}
+
+	public function update(){
+		$o = FotoSlide::find(\Input::get('id'));
+		$o->nama = \Input::get('nama');
+		$o->no_induk = \Input::get('no_induk');
+		$o->ref_jabatan_id = \Input::get('ref_jabatan_id');
+		$o->save();
+
+		return 'ok';
+	}
+
+
+
+	public function do_update_foto(){
+		$results = array();
+		$file = \Request::file('files');
+			try{
+				$assetPath = '/upload/foto_slide';
+				$uploadPath = public_path($assetPath);
+
+				$foto = FotoSlide::find(\Input::get('id'));
+
+
+		    	$nama_file_to_server = $foto->nama_file_asli;			 	
+			 	$file->move($uploadPath, $nama_file_to_server);
+			 	$name = $file->getClientOriginalName().' telah tersimpan! ';				
+
+
+				// resize gambar
+				$img = \Image::make(public_path('upload/foto_slide/'.$nama_file_to_server));
+				// prevent possible upsizing
+				$img->resize(null, 180, function ($constraint) {
+				    $constraint->aspectRatio();
+				    $constraint->upsize();
+				});
+				$img->save();
+			} catch(Exception $e) {
+		 		$name = $file->getClientOriginalName().' gagal tersimpan!';
+		}
+		$results[] = compact('name');	
+ 
+	 return array(
+	        'files' => $results,
+ 	    );		
+	}
+
+
+
+
+
+
 	
 
 

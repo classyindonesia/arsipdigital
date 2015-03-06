@@ -9,6 +9,7 @@
     <div style='height:200px;overflow:hidden;'>
       <img src="/upload/foto_slide/{!! $list->nama_file_asli !!}" alt="...">
     </div>
+    @include('konten.backend.foto_slide.action.edit')
     @include('konten.backend.foto_slide.action.del')
 
 

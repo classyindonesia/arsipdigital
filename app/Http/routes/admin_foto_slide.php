@@ -26,6 +26,26 @@ Route::post('foto_slide/do_upload', [
 	'as'			=> 'foto_slide.do_upload'
 	]);
 
+Route::get('foto_slide/edit/{id}', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\FotoSlideController@edit',
+	'as'			=> 'foto_slide.edit'
+	]);
+
+
+Route::post('foto_slide/update', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\FotoSlideController@update',
+	'as'			=> 'foto_slide.update'
+	]);
+
+Route::post('foto_slide/do_update_foto', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\FotoSlideController@do_update_foto',
+	'as'			=> 'foto_slide.do_update_foto'
+	]);
+
+
 
 
 
