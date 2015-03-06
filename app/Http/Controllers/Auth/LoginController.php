@@ -16,6 +16,10 @@ class LoginController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+	public function login(){
+		return view('konten.frontend.auth.login.form_login_modal');
+	}
+
 
 
 	public function do_login(Request $request){

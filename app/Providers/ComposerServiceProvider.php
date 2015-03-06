@@ -15,6 +15,8 @@ class ComposerServiceProvider extends ServiceProvider {
         View::composer('konten.frontend.auth.login.list_file', 'App\Http\ViewComposers\Frontend\LampiranBeritaComposer@compose');
         View::composer('konten.frontend.auth.login.statistik', 'App\Http\ViewComposers\Frontend\StatistikComposer@compose');
         View::composer('layouts.komponen.public.footer', 'App\Http\ViewComposers\Frontend\WeblinkComposer@compose');
+        View::composer('konten.frontend.auth.login.form_login', 'App\Http\ViewComposers\Frontend\LoginComposer@compose');
+
     }
 
     /**

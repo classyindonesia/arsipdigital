@@ -11,7 +11,8 @@
      <body> 
 
 
- 
+     @include('layouts.komponen.modal')
+
 
 @include('layouts.komponen.public.navbar')
 
