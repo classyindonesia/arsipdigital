@@ -27,11 +27,24 @@
                     </li>                    
 
 
+                    <li @if(isset($foto_slide_home)) class="active" @endif>
+                        <a href="{{ URL::route('foto_slide.index') }}">
+                            <i class='fa fa-image'></i> Foto Slide
+                        </a>
+                    </li>
+
+
+
+
                     <li @if(isset($my_profile)) class="active" @endif>
                         <a href="{{ URL::route('my_profile.index') }}">
                             <i class='fa fa-wrench'></i> Profil Saya
                         </a>
                     </li>
+
+
+
+
 
                     <li><a href="{{ URL::to('auth/logout') }}"><i class="glyphicon glyphicon-off"></i> Logout</a> </li>
 

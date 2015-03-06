@@ -28,7 +28,7 @@
 		@include('konten.frontend.auth.login.form_login')
 
 
-
+		@include('konten.frontend.auth.login.foto_slide')
 
 			
 		@include('konten.frontend.auth.login.list_file')

@@ -6,7 +6,7 @@
 		<table width='100%'>
 			<tr>
 				<td>
-					{!! $jml_total !!}
+					{!! Fungsi::restyle_text($jml_total)  !!}
 				</td>
 				<td><i class='fa fa-user'></i></td>
 				<td>total hits halaman</td>
@@ -14,7 +14,7 @@
 
 			<tr>
 				<td>
-					{!! $jml_pengunjung !!}
+					{!! Fungsi::restyle_text($jml_pengunjung)  !!}
 				</td>
 				<td><i class='fa fa-user'></i></td>
 				<td>jumlah pengunjung</td>
@@ -23,7 +23,7 @@
 
 			<tr>
 				<td>
-					{!! $hits_hr_ini !!}
+					{!! Fungsi::restyle_text($hits_hr_ini)  !!}
 				</td>
 				<td><i class='fa fa-user'></i></td>
 				<td>hits hari ini</td>
@@ -32,7 +32,7 @@
 
 			<tr>
 				<td>
-					{!! $pengunjung_hr_ini !!}
+					{!! Fungsi::restyle_text($pengunjung_hr_ini)   !!}
 				</td>
 				<td><i class='fa fa-user'></i></td>
 				<td>pengunjung hari ini</td>

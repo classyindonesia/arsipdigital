@@ -25,6 +25,7 @@ elixir(function(mix) {
 		'plugins/jquery/jquery-2.1.3.min.js',
 		'plugins/bootstrap/dist/js/bootstrap.js',
     'plugins/pace/pace.min.js',
+    'plugins/vticker/jquery.vticker.min.js',
     'app.js'
 		], 'public/js/main.js');
 
@@ -41,7 +42,7 @@ elixir(function(mix) {
          
     ], 'public/css/main.css');
 
-   mix.version("css/main.css");
+   mix.version(["css/main.css", "js/main.js"]);
 
   mix.copy(path_style+'plugins/bootstrap/dist/fonts/', 'public/build/fonts/');
   mix.copy(path_style+'plugins/font-awesome/fonts/', 'public/build/fonts/');

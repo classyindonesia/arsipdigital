@@ -19,9 +19,6 @@
 
 
        <div class='container'>
-
-
-
  @yield('main_konten')
  
        </div>
