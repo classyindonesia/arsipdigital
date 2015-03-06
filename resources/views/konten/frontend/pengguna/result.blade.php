@@ -26,7 +26,7 @@
 $id = $hashids->encode(1000, 2000, $list->id);
 ?>
 		<tr>
-			<td class='text-align'>{{ $no }} </td>
+			<td class='text-center'>{{ $no }} </td>
 			<td>{{ $list->nama }}</td>
 			<td>{{ $list->mst_user->email }}</td>
 			<td>
@@ -34,6 +34,7 @@ $id = $hashids->encode(1000, 2000, $list->id);
 
 			</td>
 		</tr>
+		<?php $no++; ?>
 @endforeach
 	</tbody>
 </table>
