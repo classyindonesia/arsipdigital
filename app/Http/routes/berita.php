@@ -88,3 +88,21 @@ Route::post('berita/del_gambar', [
 	'uses'			=> 'Admin\BeritaController@del_gambar',
 	'as'			=> 'admin_berita.del_gambar'
 	]);
+
+
+
+Route::get('berita/add_vidio', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\BeritaController@add_vidio',
+	'as'			=> 'admin_berita.add_vidio'
+	]);
+Route::get('berita/upload_vidio', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\BeritaController@upload_vidio',
+	'as'			=> 'admin_berita.upload_vidio'
+	]);
+post('berita/do_upload_vidio', [
+	'middleware'	=> 'hanya_web',
+	'uses'			=> 'Admin\BeritaController@do_upload_vidio',
+	'as'			=> 'admin_berita.do_upload_vidio'
+	]);

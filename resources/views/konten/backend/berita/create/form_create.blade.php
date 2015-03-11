@@ -4,6 +4,7 @@
 </div>
 
 @include('konten.backend.berita.action.add_gambar')
+@include('konten.backend.berita.action.add_vidio')
 
 <hr>
 

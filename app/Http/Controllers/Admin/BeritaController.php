@@ -10,6 +10,7 @@ use App\Models\Mst\Berita;
 use App\Models\Mst\BeritaToLampiran;
 use App\Models\Mst\LampiranBerita;
 use App\Models\Mst\GambarBerita;
+use App\Models\Mst\Vidio;
 
 
 /* request */
@@ -183,6 +184,51 @@ class BeritaController extends Controller{
 
 
 
+	public function add_vidio(){
+		$vidio = Vidio::paginate(6);
+		return view('konten.backend.berita.popup.add_vidio', compact('vidio'));
+	}
+
+	public function upload_vidio(){
+		$max = explode('M', ini_get("upload_max_filesize"));
+		$max_upload = $max[0] * 1048576;			
+		return view('konten.backend.berita.popup.upload_vidio', compact('max_upload'));		
+	}
+
+
+	public function do_upload_vidio(){
+		$results = array();
+		foreach(\Request::file('files') as $file){
+			try{
+						$assetPath = '/upload/vidio';
+						$uploadPath = public_path($assetPath);
+
+ 					 	$name = $file->getClientOriginalName();
+					 	$name = Fungsi::limit_karakter($name);
+				    	$nama_file_db = str_slug($name, '.');
+				    	$nama_file_to_server = md5($nama_file_db).'_'.date('YmdHis').'.'.$file->getClientOriginalExtension();			 	
+					 	$file->move($uploadPath, $nama_file_to_server);
+					 	$name = $file->getClientOriginalName().' telah tersimpan! ';				
+ 
+					 	$data_insert = [
+					 		'nama_file_asli'		=> $nama_file_to_server,
+  					 		'mst_user_id'			=> Auth::user()->id
+					 	];
+					 	Vidio::create($data_insert);
+
+ 
+
+			} catch(Exception $e) {
+				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
+				 		//$results[] = compact('name');   
+			 		}
+		$results[] = compact('name');	
+		}
+	 return array(
+	        'files' => $results,
+ 	    );	
+
+	}
 
 
 }
