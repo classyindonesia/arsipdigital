@@ -14,7 +14,7 @@ $(document).ready(function(){
 @foreach($vidio as $list)
 
 
- 	<video id='vidio_src{!! $list->id !!}' width="280" height="200" controls>
+ 	<video style='cursor:pointer;' id='vidio_src{!! $list->id !!}' width="280" height="200" controls>
 	  <source src="/upload/vidio/{!! $list->nama_file_asli !!}" type="video/mp4">
 	Your browser does not support the video tag.
 	</video>
@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 $('#vidio_src{!! $list->id !!}').click(function(){
-	CKEDITOR.instances['ckeditor'].insertHtml("<video width='280' height='200' controls> <source src='/upload/vidio/{!! $list->nama_file_asli !!}'' type='video/mp4'>Your browser does not support the video tag.</video> your text here");
+	CKEDITOR.instances['ckeditor'].insertHtml("<video width='380' height='300' controls> <source src='/upload/vidio/{!! $list->nama_file_asli !!}'' type='video/mp4'>Your browser does not support the video tag.</video> <br>");
 	console.log('modal hidden');
 	$('#myModal').modal('hide');
 
