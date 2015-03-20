@@ -28,4 +28,4 @@
 	</tbody>
 </table>
 
-{!! $arsip->render() !!}
+{!! $arsip_user->render() !!}
