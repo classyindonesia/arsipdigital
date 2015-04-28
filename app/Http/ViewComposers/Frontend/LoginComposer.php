@@ -1,8 +1,9 @@
 <?php namespace App\Http\ViewComposers\Frontend;
 
+use App\Models\SetupVariable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Users\Repository as UserRepository;
-use SetupVariable;
+
 class LoginComposer {
 
 
@@ -23,7 +24,7 @@ class LoginComposer {
      * @return void
      */
     public function compose(View $view){
-        $view->with('sv', new \App\Models\SetupVariable); 
+        $view->with('sv', new SetupVariable); 
     }
 
 }

@@ -16,7 +16,7 @@
 			@endforeach
 			</div>
 </div>
-<hr style='border:2px solid #aaa;'>
+<hr style='border:1px solid #aaa;'>
       <div class="container">
 			<div class="col-md-12">
 				
