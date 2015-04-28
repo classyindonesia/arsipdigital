@@ -27,3 +27,5 @@
 
 	</tbody>
 </table>
+
+{!! $arsip_user->render() !!}
