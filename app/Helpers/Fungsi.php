@@ -1,4 +1,6 @@
 <?php namespace App\Helpers;
+
+use App\Models\SetupVariable;
 class Fungsi {
 
 
@@ -352,7 +354,7 @@ public static function http_file_exists($url, $followRedirects = true)
 
   public static function setup_variable($var){
 
-    $val = Setup_Variable::where('variable', '=', $var)
+    $val = SetupVariable::where('variable', '=', $var)
           ->take(1)
           ->get();
 
