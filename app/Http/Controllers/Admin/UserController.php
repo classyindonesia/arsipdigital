@@ -141,7 +141,15 @@ class UserController extends Controller{
 		                if($i != 1 && $i != 2){                    
 		                      $no  	= trim($data->val($i, 'B')); //username email
 		                      $no2 	= trim($data->val($i, 'C')); // domain email
-		                       $no3 = trim($data->val($i, 'D')); // Password
+		                      $no3 = trim($data->val($i, 'D')); // Password
+
+		                      // data user 
+		                      $no4 = trim($data->val($i, 'E')); //nama
+		                      $no5 = trim($data->val($i, 'F')); // alamat
+		                      $no6 = trim($data->val($i, 'G')); // no hp
+		                      $no7 = trim($data->val($i, 'H')); //nama ibu kandung
+		                      $no8 = trim($data->val($i, 'I')); // no ktp
+
 		                       if($no != NULL && $no2 != NULL){
 
 		                       	$email = $no.'@'.$no2;
@@ -164,7 +172,14 @@ class UserController extends Controller{
 											'ref_user_level_id'	=> 3
 											];
 									$insert_user = User::create($data_insert);
-									DataUser::create(['nama' => "", 'mst_user_id' => $insert_user->id]);
+									DataUser::create([
+										'nama' 				=> $no4, 
+										'mst_user_id' 		=> $insert_user->id,
+										'alamat'			=> $no5,
+										'no_hp'				=> $no6,
+										'nama_ibu_kandung'	=> $no7,
+										'no_ktp'			=> $no8
+										]);
 									$name = "user dgn email : ".$email.' telah ditambahkan';
 								}
 								 

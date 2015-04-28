@@ -24,6 +24,7 @@
     @include('konten.backend.config.list_config.akses_pencarian_publik')
     @include('konten.backend.config.list_config.akses_password_publik')
     @include('konten.backend.config.list_config.login_publik')
+    @include('konten.backend.config.list_config.nama_pencarian')
 
 </table>
 

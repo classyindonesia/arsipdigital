@@ -4,7 +4,7 @@
 
  
 
-<h2>Pencarian Data Pengguna</h2>
+<h2>Pencarian Data {!! Fungsi::setup_variable("config_nama_pencarian") !!}</h2>
 <hr>
 
 

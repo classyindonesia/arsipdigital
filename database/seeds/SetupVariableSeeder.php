@@ -21,6 +21,9 @@ class SetupVariableSeeder  extends Seeder {
 		if(count($v)<=0) SetupVariable::create(['variable' => 'config_login_frontend', 'value' => 1]); //1=show,0=hide
  		$this->command->info('config login halaman depan telah ditambahkan!');
 
+		$v = SetupVariable::whereVariable('config_nama_pencarian')->first();
+		if(count($v)<=0) SetupVariable::create(['variable' => 'config_nama_pencarian', 'value' => 'pengguna']);  
+ 		$this->command->info('config nama pencarian telah ditambahkan!');
 
 
 	}
