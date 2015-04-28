@@ -7,7 +7,7 @@
 
      @if($sv->get_val('config_pencarian_frontend') == 1)
       <li @if(isset($pencarian_pengguna_home)) class='active' @endif><a href="{!! URL::route('pengguna.index') !!}">  
-        <i class='fa fa-search'></i> pencarian data pengguna</a></li>
+        <i class='fa fa-search'></i> pencarian data {!! $sv->get_val('config_nama_pencarian') !!}</a></li>
       @endif
 
 
