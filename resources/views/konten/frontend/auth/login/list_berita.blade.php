@@ -1,5 +1,5 @@
   <div class='col-md-12 jumbotron nimated fadeIn'>
-      <h1 style='margin-top: 0px;'> <i class='fa fa-cubes'></i> {!! env('LOGIN_MSG_HEADER') !!}</h1>
+      <h1 style='margin-top: 0px;'> <i class='{!! env("ICON_DEPAN") !!}'></i> {!! env('LOGIN_MSG_HEADER') !!}</h1>
       <hr style='margin:2px;'>
         {!! env('DESKRIPSI_APP') !!}
   </div>

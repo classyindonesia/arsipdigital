@@ -5,7 +5,7 @@
  
 
 <a class='btn btn-primary pull-right' href="{!! URL::route('pengguna.search') !!}"> <i class='fa fa-angle-left'></i> kembali ke hasil pencarian</a>
-<h2>Detail Data  </h2>
+<h2>Detail Data {!! Fungsi::setup_variable("config_nama_pencarian") !!}</h2>
 <hr>
 <div class="col-md-5">
 
