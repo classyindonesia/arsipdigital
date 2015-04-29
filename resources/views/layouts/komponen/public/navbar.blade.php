@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{!! URL::route('home.index') !!}"><i class='fa fa-cubes'></i> {!! env("NAMA_APP") !!} </a>
+          <a class="navbar-brand" href="{!! URL::route('home.index') !!}"><i class='{!! ICON_DEPAN !!}'></i> {!! env("NAMA_APP") !!} </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 
