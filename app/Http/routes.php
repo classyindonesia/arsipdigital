@@ -34,6 +34,7 @@
 	/* level web */
 	require app_path('Http/routes/admin_weblink.php');
 	require app_path('Http/routes/admin_foto_slide.php');
+	require app_path('Http/routes/galery.php');
 
 
 	/*hanya utk level staff */

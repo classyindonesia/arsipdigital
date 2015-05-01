@@ -12,6 +12,10 @@
 <h2>Daftar File Lampiran Berita</h2>
 
 
+
+@include($base_view.'form_search')
+
+
 <ol class="breadcrumb">
   <li><a href="/">Home</a></li>
    <li class="active">Daftar File Lampiran Berita</li>

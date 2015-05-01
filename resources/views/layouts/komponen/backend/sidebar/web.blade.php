@@ -35,6 +35,12 @@
 
 
 
+                    <li @if(isset($galery_home)) class="active" @endif>
+                        <a href="{{ URL::route('backend_galery.index') }}">
+                            <i class='fa fa-image'></i> Galery
+                        </a>
+                    </li>
+
 
                     <li @if(isset($my_profile)) class="active" @endif>
                         <a href="{{ URL::route('my_profile.index') }}">
