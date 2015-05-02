@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateUser extends Request {
+class createAlbumGalery extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,10 +22,7 @@ class CreateUser extends Request {
 	public function rules()
 	{
 		return [
-			'email'		=> 'required|email|unique:mst_users',
-			'password'	=> 'required|confirmed|min:6',
-			'nama'		=> 'required',
-			'ref_user_level_id'	=> 'required'
+			'judul'		=> 'required'
 		];
 	}
 
