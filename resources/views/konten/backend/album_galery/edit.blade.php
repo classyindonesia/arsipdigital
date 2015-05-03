@@ -1,6 +1,6 @@
 @include($base_view.'komponen.tombol_list_album')
 
-<h1>Tambah Album</h1>
+<h1>Edit Album</h1>
 <hr>
 
 
@@ -9,12 +9,12 @@
 
 <div class="form-group">
  {!! Form::label('judul', 'judul album : ') !!}
- <input type="text" name='judul' id='judul' placeholder='judul album...' class="form-control">
+ <input value="{!! $a->judul !!}" type="text" name='judul' id='judul' placeholder='judul album...' class="form-control">
 </div>
 
 <div class="form-group">
  {!! Form::label('keterangan', 'keterangan album : ') !!}
- <input type="text" name='keterangan' id='keterangan' placeholder='keterangan album...' class="form-control">
+ <input value="{!! $a->keterangan !!}" type="text" name='keterangan' id='keterangan' placeholder='keterangan album...' class="form-control">
 </div>
 
 
@@ -35,11 +35,12 @@ keterangan = $('#keterangan').val();
 form_data ={
 	judul : judul,
 	keterangan : keterangan,
+	id : '{!! $a->id !!}',
  	_token : '{!! csrf_token() !!}'
 }
 $('#simpan').attr('disabled', 'disabled');
 	$.ajax({
-		url : '{{ URL::route("backend_album_galery.store") }}',
+		url : '{{ URL::route("backend_album_galery.update") }}',
 		data : form_data,
 		type : 'post',
 		error:function(xhr, status, error){

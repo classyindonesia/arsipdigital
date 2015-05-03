@@ -36,6 +36,24 @@ class AlbumGaleryController extends Controller {
 		return 'ok';
 	}
 
+	public function del(Request $request){
+		$a = AlbumGalery::findOrFail($request->id);
+		$a->delete();
+		return 'ok';
+	}
+
+	public function edit($id){
+		$a = AlbumGalery::findOrFail($id);
+		return view($this->base_view.'edit', compact('a'));
+	}
+
+	public function update(Request $request){
+		$a = AlbumGalery::findOrFail($request->id);
+		$a->judul = $request->judul;
+		$a->keterangan = $request->keterangan;
+		$a->save();
+		return 'ok';
+	}
 
 
 

@@ -205,3 +205,8 @@ code {
 hr{
   border : 1px solid #ccc;
 }
+
+
+.cursor{
+  cursor:pointer;
+}

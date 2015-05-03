@@ -1,3 +1,5 @@
+@include($base_view.'komponen.tombol_add_album')
+
 <h1>Album Galery</h1>
 <hr>
 
@@ -7,6 +9,7 @@
 			<th width="50px" class="text-center">No</th>
 			<th>Judul Album</th>
 			<th>keterangan</th>
+			<th width="100px" class="text-center">action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -16,6 +19,7 @@
 			<td>{!! $no !!}</td>
 			<td>{!! $list->judul !!}</td>
 			<td>{!! $list->keterangan !!}</td>
+			<td class="text-center"> @include($base_view.'action') </td>
 		</tr>
 		<?php $no++; ?>
 @endforeach		
