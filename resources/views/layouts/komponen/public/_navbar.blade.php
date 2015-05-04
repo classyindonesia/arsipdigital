@@ -1,6 +1,11 @@
   <ul class="nav navbar-nav navbar-right">
 
 
+
+       <li @if(isset($galery_home)) class='active' @endif><a href="{!! URL::route('galery.index') !!}">  
+        <i class='fa fa-image'></i> galery</a></li>
+
+
        <li @if(isset($daftar_file_home)) class='active' @endif><a href="{!! URL::route('daftar_file.index') !!}">  
         <i class='fa fa-folder'></i> daftar file</a></li>
 

@@ -8,6 +8,7 @@
 		<tr>
 			<th width="50px" class="text-center">No</th>
 			<th>Judul Album</th>
+			<th>Jml File</th>
 			<th>keterangan</th>
 			<th width="100px" class="text-center">action</th>
 		</tr>
@@ -18,6 +19,7 @@
 		<tr>
 			<td>{!! $no !!}</td>
 			<td>{!! $list->judul !!}</td>
+			<td>{!! count($list->mst_galery) !!}</td>
 			<td>{!! $list->keterangan !!}</td>
 			<td class="text-center"> @include($base_view.'action') </td>
 		</tr>

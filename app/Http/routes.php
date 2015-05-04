@@ -56,3 +56,5 @@
 	require app_path('Http/routes/public/pengguna.php');
 	require app_path('Http/routes/public/password.php');
 	require app_path('Http/routes/public/file.php');
+	require app_path('Http/routes/public/galery.php');
+

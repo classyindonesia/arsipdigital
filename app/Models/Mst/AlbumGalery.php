@@ -9,5 +9,12 @@ class AlbumGalery extends Eloquent{
 
 
  
+	public function mst_galery(){
+		return $this->hasMany('\App\Models\Mst\Galery', 'mst_album_galery_id');
+	}
+
+
+
+
 
 }
