@@ -42,6 +42,16 @@
                     </li>
 
 
+
+
+                    <li @if(isset($menu_home)) class="active" @endif>
+                        <a href="{{ URL::route('backend_menu.index') }}">
+                            <i class='fa fa-bars'></i> Menu
+                        </a>
+                    </li>
+
+
+
                     <li @if(isset($my_profile)) class="active" @endif>
                         <a href="{{ URL::route('my_profile.index') }}">
                             <i class='fa fa-wrench'></i> Profil Saya

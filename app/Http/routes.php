@@ -36,6 +36,7 @@
 	require app_path('Http/routes/admin_foto_slide.php');
 	require app_path('Http/routes/galery.php');
 	require app_path('Http/routes/album_galery.php');
+	require app_path('Http/routes/menu.php');
 
 
 	/*hanya utk level staff */

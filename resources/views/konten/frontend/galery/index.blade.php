@@ -4,7 +4,7 @@
 
 
 @section('main_konten')
-	<h2>Galery</h2>
-
-	@include($base_view.'list_data')
+	<h1>Album Galery</h1>
+	<hr>
+	@include($base_view.'list_album')
 @endsection
