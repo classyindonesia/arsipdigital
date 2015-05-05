@@ -18,6 +18,7 @@ class MenuController extends Controller {
 
 
 	public function index(){
+		$menu = Menu::whereParentId(0)->with('mst_menu_child')->paginate(10);
 		return view($this->base_view.'index', compact('menu'));
 	}
 

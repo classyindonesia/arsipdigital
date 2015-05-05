@@ -23,7 +23,7 @@ class createMenu extends Request {
 	{
 		return [
 			'nama'	=> 'required',
-			'link'	=> 'required|url'
+			'link'	=> 'required'
 		];
 	}
 
