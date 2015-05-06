@@ -75,3 +75,16 @@ Route::post('users/reset_password', [
 	'as'			=> 'users.reset_password'
 	]);
 
+
+
+Route::get('users/change_avatar/{id}', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@change_avatar',
+	'as'			=> 'users.change_avatar'
+	]);
+
+Route::post('users/do_change_avatar', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\UserController@do_change_avatar',
+	'as'			=> 'users.do_change_avatar'
+	]);

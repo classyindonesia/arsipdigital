@@ -18,6 +18,9 @@ use Excel, Fungsi, Reader, Auth, Session, Gravatar, Input;
 class UserController extends Controller{
 
 
+
+	public $base_view = 'konten.backend.users.';
+
 	public function __construct(Session $session){
 		view()->share('users_home', true);
 	}
@@ -30,7 +33,7 @@ class UserController extends Controller{
 			$users = DataUser::paginate(10);
 		}
 
-		return view('konten.backend.users.index', compact('users'));
+		return view($this->base_view.'index', compact('users'));
 	}
 
 
@@ -47,7 +50,7 @@ class UserController extends Controller{
 
 	public function add(){
 		$level = UserLevel::all();
-		return view('konten.backend.users.popup.add', compact('level'));
+		return view($this->base_view.'popup.add', compact('level'));
 	}
 
 	public function insert(CreateUser $request, User $users, DataUser $data_user, Gravatar $gravatar){
@@ -79,7 +82,7 @@ class UserController extends Controller{
 	public function edit($id){
 		$level = UserLevel::all();
 		$user = User::with('data_user')->whereId($id)->first();
-		return view('konten.backend.users.popup.edit', compact('level', 'user'));
+		return view($this->base_view.'popup.edit', compact('level', 'user'));
 	}
 
 
@@ -120,7 +123,7 @@ class UserController extends Controller{
 	public function import(){
 	$max = explode('M', ini_get("upload_max_filesize"));
 	$max_upload = $max[0] * 1048576;		
-		return view('konten.backend.users.popup.import', compact('max_upload'));
+		return view($this->base_view.'popup.import', compact('max_upload'));
 	}
 
 
@@ -149,6 +152,9 @@ class UserController extends Controller{
 		                      $no6 = trim($data->val($i, 'G')); // no hp
 		                      $no7 = trim($data->val($i, 'H')); //nama ibu kandung
 		                      $no8 = trim($data->val($i, 'I')); // no ktp
+		                      $no9 = trim($data->val($i, 'J')); // tempat lahir
+		                      $no10 = trim($data->val($i, 'K')); // tgl lahir
+		                      $no11 = trim($data->val($i, 'L')); // ID homebase
 
 		                       if($no != NULL && $no2 != NULL){
 
@@ -178,7 +184,10 @@ class UserController extends Controller{
 										'alamat'			=> $no5,
 										'no_hp'				=> $no6,
 										'nama_ibu_kandung'	=> $no7,
-										'no_ktp'			=> $no8
+										'no_ktp'			=> $no8,
+										'tempat_lahir'		=> $no9,
+										'tgl_lahir'			=> $no10,
+										'ref_homebase_id'	=> $no11,
 										]);
 									$name = "user dgn email : ".$email.' telah ditambahkan';
 								}
@@ -295,7 +304,7 @@ class UserController extends Controller{
 
 	public function show($id){
 		$data_user = DataUser::find($id);
-		return view('konten.backend.users.popup.show', compact('data_user'));
+		return view($this->base_view.'popup.show', compact('data_user'));
 	}
 
 
@@ -308,6 +317,42 @@ class UserController extends Controller{
 		}
 		return 'ok';
 	}
+
+
+
+	public function change_avatar($id){
+		$max = explode('M', ini_get("upload_max_filesize"));
+		$max_upload = $max[0] * 1048576;	
+		$user = User::findOrFail($id);	
+		return view($this->base_view.'popup.change_avatar', compact('max_upload', 'user'));
+	}
+
+ 	public function do_change_avatar(Request $request){
+		$assetPath = '/upload/avatars';
+		$uploadPath = public_path($assetPath);	
+		$file =  $request->file('files');
+		$results = [];
+
+		try {
+			$nama_file = md5($request->email).'.jpg';
+		 	$file->move($uploadPath, $nama_file);
+		 	
+		 	$img = \Image::make($uploadPath.'/'.$nama_file);
+			$img->resize(300, null, function ($constraint) {
+			    $constraint->aspectRatio();
+			});
+			$img->save($uploadPath.'/'.$nama_file);
+
+		 	$name = $file->getClientOriginalName().' telah tersimpan! ';
+		}catch(Exception $e) {
+	 		$name = $file->getClientOriginalName().' gagal tersimpan!';
+	 		$results[] = compact('name');   
+		}
+		$results[] = compact('name');   
+	 return array(
+	        'files' => $results,
+ 	    );					
+ 	}
 
 
 
