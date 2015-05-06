@@ -15,7 +15,8 @@
 		<tr class='bg-olive'>
 			<th width='20px'>No.</th>
 			<th>Nama</th>
-			<th width='200px'>Email</th>
+			<th width='200px'>Homebase</th>
+			<th width='200px'>Status Ikatan</th>
 			<th width='60px'>action</th>
 		</tr>
 	</thead>
@@ -28,7 +29,8 @@ $id = $hashids->encode(1000, 2000, $list->id);
 		<tr>
 			<td class='text-center'>{{ $no }} </td>
 			<td>{{ $list->nama }}</td>
-			<td>{{ $list->mst_user->email }}</td>
+			<td>@if(count($list->ref_homebase)>0) {{ $list->ref_homebase->nama }} @else - @endif</td>
+			<td>@if(count($list->ref_status_ikatan)>0) {{ $list->ref_status_ikatan->nama }} @else - @endif </td>
 			<td>
 				<a class='label bg-yellow' href="{!! URL::route('pengguna.detail', $id) !!}">view detail</a>
 

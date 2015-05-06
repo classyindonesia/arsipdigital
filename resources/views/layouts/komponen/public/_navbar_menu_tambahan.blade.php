@@ -22,8 +22,8 @@
 	@else
 
 		<li>
-			<a @if($list2->is_internal == 0)  target="__blank" @endif  href="{!! $list->link !!}">  
-				<i class='fa fa-folder'></i> {!! $list->nama !!}
+			<a @if($list->is_internal == 0)  target="__blank" @endif  href="{!! $list->link !!}">  
+			  {!! $list->nama !!}
 			</a>
 		</li>
 	@endif
