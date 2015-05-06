@@ -13,6 +13,28 @@ Route::group(['middleware' => ['auth', 'hanya_web']], function()
 		'as'			=> 'backend_menu.add'
 		]);
 
+	Route::get('backend/menu/edit/{id}', [
+	 	'uses'			=> 'Admin\MenuController@edit',
+		'as'			=> 'backend_menu.edit'
+		]);
+
+	Route::get('backend/menu/child/{id}', [
+	 	'uses'			=> 'Admin\MenuController@child',
+		'as'			=> 'backend_menu.child'
+		]);
+
+
+	Route::post('backend/menu/update', [
+	 	'uses'			=> 'Admin\MenuController@update',
+		'as'			=> 'backend_menu.update'
+		]);
+
+	Route::post('backend/menu/del', [
+	 	'uses'			=> 'Admin\MenuController@del',
+		'as'			=> 'backend_menu.del'
+		]);
+
+
 	Route::post('backend/menu/insert', [
 	 	'uses'			=> 'Admin\MenuController@insert',
 		'as'			=> 'backend_menu.insert'

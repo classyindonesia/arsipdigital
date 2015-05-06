@@ -17,6 +17,7 @@ class ComposerServiceProvider extends ServiceProvider {
         View::composer('layouts.komponen.public.footer', 'App\Http\ViewComposers\Frontend\WeblinkComposer@compose');
         View::composer('konten.frontend.auth.login.form_login', 'App\Http\ViewComposers\Frontend\LoginComposer@compose');
         View::composer('konten.frontend.auth.login.foto_slide', 'App\Http\ViewComposers\Frontend\FotoSlideComposer@compose');
+        View::composer('layouts.komponen.public._navbar_menu_tambahan', 'App\Http\ViewComposers\Frontend\NavbarMenuTambahanComposer@compose');
 
     }
 

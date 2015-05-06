@@ -24,8 +24,9 @@ class GaleryController extends Controller {
 
 
 	public function images($mst_album_galery_id){
+		$album = AlbumGalery::findOrFail($mst_album_galery_id);
 		$galery = Galery::whereMstAlbumGaleryId($mst_album_galery_id)->with('mst_album_galery')->paginate(6);
-		return view($this->base_view.'images.index', compact('galery'));
+		return view($this->base_view.'images.index', compact('galery', 'album'));
 	}
 
 

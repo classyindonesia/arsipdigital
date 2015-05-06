@@ -22,11 +22,21 @@
 				@endif
 			</td>
 			<td> {!! $list->link !!} </td>
-			<td class="text-center"> {!! count($list->mst_menu_child) !!} </td>
-			<td></td>
+			<td class="text-center"> 
+				<a class="label label-info" href="{!! route('backend_menu.child', $list->id) !!}">
+					{!! count($list->mst_menu_child) !!} 
+				</a>
+				
+			</td>
+			<td>
+				@include($base_view.'action')
+			</td>
 		</tr>
 		<?php $no++; ?>
 @endforeach
 
 	</tbody>
 </table>
+
+
+{!! $menu->render() !!}

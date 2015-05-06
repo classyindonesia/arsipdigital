@@ -40,6 +40,42 @@ class MenuController extends Controller {
 		return 'ok';
 	}
 
+	public function edit($id){
+		$menu = Menu::findOrFail($id);
+		$parent = Menu::whereParentId(0)->get();
+		return view($this->base_view.'popup.edit', compact('menu', 'parent'));
+	}
+
+
+	public function update(createMenu $request){
+		$m = Menu::findOrFail($request->id);
+		$m->parent_id = $request->parent_id;
+		$m->nama 		= $request->nama;
+		$m->link 		= $request->link;
+		$m->is_internal = $request->is_internal;
+		$m->save();
+		return 'ok';
+	}
+
+	public function del(Request $request){
+		$m = Menu::findOrFail($request->id);
+
+		//delete child menu
+			if(count($m->mst_menu_child)>0){
+				foreach($m->mst_menu_child as $list){
+					$list->delete();
+				}
+			}
+
+		$m->delete();
+		return 'ok';
+	}
+
+	public function child($id){
+		$menu = Menu::whereParentId($id)->with('mst_menu_child')->paginate(10);
+		return view($this->base_view.'index', compact('menu'));		
+	}
+
 
 
 }

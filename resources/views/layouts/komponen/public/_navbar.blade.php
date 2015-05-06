@@ -2,6 +2,9 @@
 
 
 
+ @include('layouts.komponen.public._navbar_menu_tambahan')
+
+
        <li @if(isset($galery_home)) class='active' @endif><a href="{!! URL::route('galery.index') !!}">  
         <i class='fa fa-image'></i> galery</a></li>
 
