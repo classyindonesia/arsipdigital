@@ -155,6 +155,8 @@ class UserController extends Controller{
 		                      $no9 = trim($data->val($i, 'J')); // tempat lahir
 		                      $no10 = trim($data->val($i, 'K')); // tgl lahir
 		                      $no11 = trim($data->val($i, 'L')); // ID homebase
+		                      $no12 = trim($data->val($i, 'M')); // No Induk
+		                      $no13 = trim($data->val($i, 'N')); // ID status Ikatan
 
 		                       if($no != NULL && $no2 != NULL){
 
@@ -188,6 +190,8 @@ class UserController extends Controller{
 										'tempat_lahir'		=> $no9,
 										'tgl_lahir'			=> $no10,
 										'ref_homebase_id'	=> $no11,
+										'no_induk'			=> $no12,
+										'ref_status_ikatan_id'	=> $no13,
 										]);
 									$name = "user dgn email : ".$email.' telah ditambahkan';
 								}

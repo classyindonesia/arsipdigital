@@ -51,10 +51,24 @@ if(!file_exists($path)){
   			<td>NO HP</td>
   			<td>{!! $pengguna->no_hp !!}</td>
   		</tr> 
+
+      <tr>
+        <td>NO Induk</td>
+        <td>{!! $pengguna->no_induk !!}</td>
+      </tr> 
+
+
   		<tr>
   			<td>Home Base</td>
   			<td> @if(count($pengguna->ref_homebase)>0) {!! $pengguna->ref_homebase->nama !!} @else - @endif </td>
   		</tr>   
+
+      <tr>
+        <td>Status Ikatan</td>
+        <td> @if(count($pengguna->ref_status_ikatan)>0) {!! $pengguna->ref_status_ikatan->nama !!} @else - @endif </td>
+      </tr>   
+
+
   	</table> 
 </div>
 
