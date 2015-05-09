@@ -25,6 +25,11 @@ class SetupVariableSeeder  extends Seeder {
 		if(count($v)<=0) SetupVariable::create(['variable' => 'config_nama_pencarian', 'value' => 'pengguna']);  
  		$this->command->info('config nama pencarian telah ditambahkan!');
 
+		$v = SetupVariable::whereVariable('config_show_galery')->first();
+		if(count($v)<=0) {
+			SetupVariable::create(['variable' => 'config_show_galery', 'value' => 1]);  
+	 		$this->command->info('config show galery depan telah ditambahkan!');
+		}
 
 	}
 

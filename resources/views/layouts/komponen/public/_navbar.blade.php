@@ -5,9 +5,11 @@
  @include('layouts.komponen.public._navbar_menu_tambahan')
 
 
+
+@if($sv->get_val('config_show_galery') == 1)
        <li @if(isset($galery_home)) class='active' @endif><a href="{!! URL::route('galery.index') !!}">  
         <i class='fa fa-image'></i> galery</a></li>
-
+@endif
 
        <li @if(isset($daftar_file_home)) class='active' @endif><a href="{!! URL::route('daftar_file.index') !!}">  
         <i class='fa fa-folder'></i> daftar file</a></li>
