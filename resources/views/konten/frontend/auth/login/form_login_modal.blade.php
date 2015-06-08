@@ -26,7 +26,7 @@
 						</div>
 						<div class="form-group">
  							<div class="col-md-9">
-								<input placeholder='email...' type="password" class="form-control" name="password">
+								<input placeholder='password...' type="password" class="form-control" name="password">
 							</div>
 							<div class="col-md-3">
 								<button type="submit" class="btn btn-primary pull-right" style="margin-right: 15px;">
