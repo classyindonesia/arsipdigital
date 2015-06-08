@@ -67,6 +67,7 @@ if(password != password_confirmation){
 form_data ={
 	email : email,
 	nama : nama,
+	password_confirmation : password_confirmation,
 	password : password,
 	ref_user_level_id : level,
 	_token : '{!! csrf_token() !!}'
