@@ -1,11 +1,13 @@
-<?php namespace App\Commands;
+<?php 
 
-use App\Commands\Command;
+namespace App\Jobs;
+
+use App\Jobs\Job;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 /* facade */
 use Mail, Auth;
@@ -15,7 +17,7 @@ use App\Models\Mst\User;
 use App\Models\Mst\AttachEmail;
 
 
-class SendEmail extends Command implements SelfHandling, ShouldBeQueued {
+class SendEmail extends Job implements SelfHandling, ShouldQueue {
 
 	use InteractsWithQueue, SerializesModels;
 

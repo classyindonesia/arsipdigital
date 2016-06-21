@@ -12,6 +12,7 @@ return [
 	| application. If disabled, a simple generic error page is shown.
 	|
 	*/
+	'env' => env('APP_ENV', 'production'),
 
 	'debug' => env('APP_DEBUG'),
 
@@ -118,7 +119,6 @@ return [
 		'Illuminate\Bus\BusServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
-		'Illuminate\Routing\ControllerServiceProvider',
 		'Illuminate\Cookie\CookieServiceProvider',
 		'Illuminate\Database\DatabaseServiceProvider',
 		'Illuminate\Encryption\EncryptionServiceProvider',
@@ -139,19 +139,19 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
+		Illuminate\Broadcasting\BroadcastServiceProvider::class,
+		Cviebrock\EloquentSluggable\ServiceProvider::class,
 		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\ComposerServiceProvider',
  
 
 		/* tambahan */
-		'Illuminate\Html\HtmlServiceProvider',
-		'Intervention\Image\ImageServiceProvider',
+		Collective\Html\HtmlServiceProvider::class,
+		// Intervention\Image\ImageServiceProvider::class,
 		'Maatwebsite\Excel\ExcelServiceProvider',
-		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+		// 'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
 	],
 
@@ -202,10 +202,12 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		/* tambahan */
-		'Form'		=> 'Illuminate\Html\FormFacade',
-		'HTML'		=> 'Illuminate\Html\HtmlFacade',
+	    'Form' => Collective\Html\FormFacade::class,
+	    'HTML' => Collective\Html\HtmlFacade::class,
+	    'Gate' => Illuminate\Support\Facades\Gate::class,
+
 		'Fungsi'	=> 'App\Helpers\Fungsi',
-		'Image' 	=> 'Intervention\Image\Facades\Image',
+		// 'Image' 	=> 'Intervention\Image\Facades\Image',
 		'Reader'	=> '\PHPExcelReader\SpreadsheetReader',
 		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
 		'Gravatar'	=> 'App\Helpers\Gravatar',

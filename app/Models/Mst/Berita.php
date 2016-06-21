@@ -1,24 +1,29 @@
 <?php namespace App\Models\Mst;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 
-class Berita extends Eloquent implements SluggableInterface{
+class Berita extends Eloquent {
 
 
-    use SluggableTrait;
+    use Sluggable;
 
 
 
 	protected $fillable = ['judul', 'slug', 'artikel',
 					'is_published', 'komentar', 'mst_user_id'];
 	protected $table = 'mst_berita';
-    protected $sluggable = array(
-        'build_from' => 'judul',
-        'save_to'    => 'slug',
-    );
 
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'judul'
+            ]
+        ];
+    }
+
+ 
 
 	public function mst_user(){
 		return $this->belongsTo('App\Models\Mst\User', 'mst_user_id');

@@ -101,7 +101,7 @@ Route::get('berita/upload_vidio', [
 	'uses'			=> 'Admin\BeritaController@upload_vidio',
 	'as'			=> 'admin_berita.upload_vidio'
 	]);
-post('berita/do_upload_vidio', [
+Route::post('berita/do_upload_vidio', [
 	'middleware'	=> 'hanya_web',
 	'uses'			=> 'Admin\BeritaController@do_upload_vidio',
 	'as'			=> 'admin_berita.do_upload_vidio'

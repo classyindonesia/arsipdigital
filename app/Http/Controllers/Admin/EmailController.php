@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 use Input, Auth, Mail, Session, Fungsi, Queue;
 
 /* queue commands */
-use App\Commands\SendEmail;
-use App\Commands\DelAttachedFiles;
+use App\Jobs\SendEmail;
+use App\Jobs\DelAttachedFiles;
 
 
 class EmailController extends Controller {

@@ -1,16 +1,18 @@
-<?php namespace App\Commands;
+<?php 
 
-use App\Commands\Command;
+namespace App\Jobs;
+
+use App\Jobs\Job;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 /* models */
 use App\Models\Mst\AttachEmail;
 
-class DelAttachedFiles extends Command implements SelfHandling, ShouldBeQueued {
+class DelAttachedFiles extends Job implements SelfHandling, ShouldQueue {
 
 	use InteractsWithQueue, SerializesModels;
 
