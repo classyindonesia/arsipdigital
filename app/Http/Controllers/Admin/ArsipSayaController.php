@@ -49,7 +49,8 @@ class ArsipSayaController extends Controller {
 	public function files($mst_arsip_id)
 	{
 		$arsip = $this->arsip->find($mst_arsip_id);
-		$vars = compact('arsip');
+		$arsip_home = true;
+		$vars = compact('arsip', 'arsip_home');
 		return view($this->base_view.'files.index', $vars);
 	}
 

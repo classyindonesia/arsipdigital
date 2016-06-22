@@ -26,6 +26,9 @@ class AppRepositoryServoceProvider extends ServiceProvider
         $this->app->bind('Repo\Contracts\Mst\UserRepoInterface',
             'Repo\Eloquent\Mst\UserRepo');
 
+        $this->app->bind('Repo\Contracts\Mst\DataUserRepoInterface',
+            'Repo\Eloquent\Mst\DataUserRepo');        
+
         $this->app->bind('Repo\Contracts\Mst\ArsipRepoInterface',
             'Repo\Eloquent\Mst\ArsipRepo');
 

@@ -3,29 +3,32 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Http\Requests\UpdateMyProfile;
 use App\Http\Requests\UpdatePassword;
-
-use Hash, Auth, Image;
-
-/*models */
-use App\Models\Ref\StatusPernikahan;
-use App\Models\Ref\StatusIkatan;
-use App\Models\Ref\Agama;
-use App\Models\Ref\Kota;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
-class MyProfileController extends Controller
- {
- 
+use App\Models\Ref\Agama;
+use App\Models\Ref\Kota;
+use App\Models\Ref\StatusIkatan;
+use App\Models\Ref\StatusPernikahan;
+use App\Services\MyProfile\uploadAvatarService;
+use Hash, Auth, Image;
+use Illuminate\Http\Request;
+use Repo\Contracts\Mst\DataUserRepoInterface;
 
-	public function __construct(){
+class MyProfileController extends Controller
+{
+ 	
+ 	protected $data_user;
+
+	public function __construct(DataUserRepoInterface $data_user)
+	{
+		$this->data_user = $data_user;
 		view()->share('my_profile', true);
 	}
 
- 	public function index(){
+ 	public function index()
+ 	{
  		$agama = Agama::all();
  		$kota = Kota::all();
  		$ref_status_pernikahan = StatusPernikahan::all();
@@ -37,36 +40,10 @@ class MyProfileController extends Controller
  		return view('konten.backend.my_profile.index', $vars);
  	}
 
-/*   
-	 
- 	'ref_agama_id', 'ref_kota_id', 'ref_status_pernikahan_id',
-
- */
- 	public function update(UpdateMyProfile $req){
-		$d = DataUser::find($req->id);
-		$d->nama 						= $req->nama;
-		$d->no_induk 					= $req->no_induk;
-		$d->alamat						= $req->alamat;
-		$d->tgl_lahir					= $req->tgl_lahir;
-		$d->tempat_lahir				= $req->tempat_lahir;
-		$d->jenis_kelamin				= $req->jenis_kelamin;
-		$d->no_hp 						= $req->no_hp;
-		$d->kode_post 					= $req->kode_post;
-		$d->no_telp 					= $req->no_telp;
-		$d->no_ktp 						= $req->no_ktp;
-		$d->nama_ibu_kandung			= $req->nama_ibu_kandung;
-		$d->ref_status_ikatan_id 		= $req->ref_status_ikatan_id;
-		$d->ref_status_pernikahan_id 	= $req->ref_status_pernikahan_id;
-		$d->ref_agama_id 				= $req->ref_agama_id;
-		$d->ref_kota_id 				= $req->ref_kota_id;
-		$d->ref_homebase_id				= $req->ref_homebase_id;
-
-		$d->save();
-
+ 	public function update(UpdateMyProfile $request){
+ 		$this->data_user->update($request->id, $request->except('_token'));
 		return 'ok';
  	}
-
-
 
  	public function change_avatar(){
 		$max = explode('M', ini_get("upload_max_filesize"));
@@ -74,35 +51,9 @@ class MyProfileController extends Controller
  		return view('konten.backend.my_profile.popup.form_change_avatar', compact('max_upload'));
  	}
 
-
- 	public function do_change_avatar(Request $request){
-		$assetPath = '/upload/avatars';
-		$uploadPath = public_path($assetPath);	
-		$file =  $request->file('files');
-		$results = [];
-
-		try {
-			$nama_file = md5(Auth::user()->email).'.jpg';
-		 	$file->move($uploadPath, $nama_file);
-		 	
-		 	$img = Image::make($uploadPath.'/'.$nama_file);
-			$img->resize(300, null, function ($constraint) {
-			    $constraint->aspectRatio();
-			});
-			$img->save($uploadPath.'/'.$nama_file);
-
-		 	$name = $file->getClientOriginalName().' telah tersimpan! ';
-		}catch(Exception $e) {
-	 		$name = $file->getClientOriginalName().' gagal tersimpan!';
-	 		$results[] = compact('name');   
-		}
-		$results[] = compact('name');   
-	 return array(
-	        'files' => $results,
- 	    );					
+ 	public function do_change_avatar(uploadAvatarService $upload){
+		return $upload->handle();
  	}
-
-
 
  	public function change_password(){
  		return view('konten.backend.my_profile.popup.change_password');

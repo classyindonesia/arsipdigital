@@ -30,7 +30,7 @@
 
                     <li @if(isset($users_home)) class="active" @endif>
                         <a href="{{ URL::route('users.index') }}">
-                            <i class='fa fa-users'></i> Daftar Pengguna
+                            <i class='fa fa-users'></i> Pengguna
                         </a>
                     </li>
                
@@ -46,14 +46,14 @@
 
                     <li @if(isset($rak_home)) class="active" @endif>
                         <a href="{{ URL::route('rak.index') }}">
-                            <i class='fa fa-building'></i> Daftar Rak Arsip
+                            <i class='fa fa-building'></i> Rak Arsip
                         </a>
                     </li>
 
 
                     <li @if(isset($folder_home)) class="active" @endif>
                         <a href="{{ URL::route('folders.index') }}">
-                            <i class='fa fa-folder'></i> Daftar Folder/Map Arsip
+                            <i class='fa fa-folder'></i> Folder Arsip
                         </a>
                     </li>
 
