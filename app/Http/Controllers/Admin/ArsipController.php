@@ -1,44 +1,37 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use Auth;
 use App\Models\Mst\Arsip;
 use App\Models\Mst\File;
 use App\Models\Mst\User;
-use Illuminate\Http\Request; 
-
+use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Session\Store as Session;
+use Repo\Contracts\Mst\ArsipRepoInterface;
 
 class ArsipController extends Controller {
  
+ 	private $perPage = 10;
+ 	private $base_view = 'konten.backend.arsip.';
+ 	protected $arsip;
 
-	public function __construct(Session $session){
+	public function __construct(Session $session, ArsipRepoInterface $arsip){
 		$this->session = $session;
+		$this->arsip = $arsip;
 		view()->share('arsip_home', true);
 	}
 
 
 	public function index(){
+		$filter = ['order' => 'desc'];
 		if($this->session->has('pencarian_arsip')){
-			$arsip = Arsip::with('mst_file', 'mst_folder', 'mst_user')
-			->where('nama', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-			->orderBy('id', 'DESC')->paginate(10);
-			if(count($arsip)<=0){
-				//search by keterangan
-				$arsip = Arsip::with('mst_file', 'mst_folder', 'mst_user')
-				->where('keterangan', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-				->orderBy('id', 'DESC')->paginate(10);				
-			}
-			if(count($arsip)<=0){
-				$arsip = Arsip::with('mst_file', 'mst_folder', 'mst_user')
-				->where('kode_arsip', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-				->orderBy('id', 'DESC')->paginate(10);					
-			}
-		}else{
-			$arsip = Arsip::with('mst_file', 'mst_folder', 'mst_user')->orderBy('id', 'DESC')->paginate(10);
+			// jika ada session pencarian arsip
+			$search_value = $this->session->get('pencarian_arsip');
+			$add_filter = ['search' => $search_value];		
+			$filter = array_merge($filter, $add_filter);			
 		}
-		return view('konten.backend.arsip.index', compact('arsip'));
+		$arsip = $this->arsip->all($this->perPage, $filter);
+		return view($this->base_view.'index', compact('arsip'));
 	}
 
 
@@ -48,7 +41,8 @@ class ArsipController extends Controller {
 		$file = File::whereMstArsipId($arsip->id)->get();
 		$user = User::find($arsip->mst_user_id)->data_user;
 		$size = File::whereMstArsipId($arsip->id)->sum('size');
-		return view('konten.backend.arsip.upload_file', compact('arsip', 'file', 'user', 'size', 'max_upload'));
+		$vars = compact('arsip', 'file', 'user', 'size', 'max_upload');
+		return view($this->base_view.'upload_file', $vars);
 	} 
 
 	public function submit_search(Request $request){

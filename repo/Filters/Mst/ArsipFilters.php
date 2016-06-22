@@ -12,20 +12,23 @@ class ArsipFilters extends QueryFilters
     public function search($value)
     {
     	// query berdasarkan tabel relasi
-    	return $this->builder->whereHas('mst_file', function($query) use ($value){
+    	return $this->builder
+                ->where('kode_arsip', 'like', '%'.$value.'%')
+                ->orWhere('nama', 'like', '%'.$value.'%')
+                ->orWhereHas('mst_file', function($query) use ($value){
     		$query->where('nama_file_asli', 'like',  '%'.$value.'%');
     	});
     }
 
     public function userId($value)
     {
-    	return $this->builder->where('mst_arsip.mst_user_id', '=', $value);
+    	return $this->builder->where('mst_user_id', '=', $value);
     }
 
 
     public function order($order = 'desc')
     {
-        return $this->builder->orderBy('mst_arsip.id', $order);
+        return $this->builder->orderBy('id', $order);
     }
 
 }
