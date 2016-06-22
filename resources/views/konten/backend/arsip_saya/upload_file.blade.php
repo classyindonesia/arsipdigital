@@ -20,6 +20,7 @@
 
 <hr>
 <h3>Daftar File Tersimpan</h3>
+<hr>
 
 <div class='col-md-9' id='list_file_raw'>
 	@include('konten.backend.arsip_saya.list_file_uploaded')

@@ -1,27 +1,26 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-
-use Auth, Fungsi;
-
-/* models */
-use App\Models\Mst\User;
-use App\Models\Mst\Arsip;
-use App\Models\Mst\Folder;
-use App\Models\Mst\File;
-
-use Illuminate\Http\Request; 
 use App\Http\Requests\CreateArsip;
 use App\Http\Requests\UpdateArsip;
-
+use App\Models\Mst\Arsip;
+use App\Models\Mst\File;
+use App\Models\Mst\Folder;
+use App\Models\Mst\User;
+use Auth, Fungsi;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Http\Request;
 use Illuminate\Session\Store as Session;
+use Repo\Contracts\Mst\ArsipRepoInterface;
 
 
 class ArsipSayaController extends Controller {
+
+	private $perPage = 10;
+	protected $arsip;
  
-	public function __construct(Session $session){
+	public function __construct(Session $session, ArsipRepoInterface $arsip){
+		$this->arsip = $arsip;
 		$this->session = $session;
 		view()->share('my_archive', true);
 	}
@@ -30,36 +29,16 @@ class ArsipSayaController extends Controller {
 
 	public function index(){
 		$my_archive_home = true;
-
-
-
+		$filter = ['userId' => \Auth::user()->id];
 		if($this->session->has('pencarian_arsip')){
-			$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
-			->orderBy('id', 'DESC')
-			->where('nama', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-			->with('mst_file')
-			->paginate(10);
-			if(count($arsip)<=0){
-				$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
-				->orderBy('id', 'DESC')
-				->where('kode_arsip', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-				->with('mst_file')
-				->paginate(10);				
-			}
-			if(count($arsip)<=0){
-				$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
-				->orderBy('id', 'DESC')
-				->where('keterangan', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-				->with('mst_file')
-				->paginate(10);				
-			}
-		}else{
-			$arsip = Arsip::where('mst_user_id', '=', Auth::user()->id)
-			->orderBy('id', 'DESC')
-			->with('mst_file')
-			->paginate(10);
+			// jika ada session pencarian arsip
+			$search_value = $this->session->get('pencarian_arsip');
+			$add_filter = ['search' => $search_value];		
+			$filter = array_merge($filter, $add_filter);			
 		}
-	return view('konten.backend.arsip_saya.index', compact('arsip', 'my_archive_home'));
+		$arsip = $this->arsip->all($this->perPage, $filter);
+		$vars = compact('arsip', 'my_archive_home');
+		return view('konten.backend.arsip_saya.index', $vars);
 	}
 
 
@@ -101,16 +80,7 @@ class ArsipSayaController extends Controller {
 
 
 	public function update(UpdateArsip $request){
-		$a = Arsip::find($request->id);
-		$a->nama 		= $request->nama;
-		$a->keterangan	= $request->keterangan;
-		$a->mst_folder_id	= $request->mst_folder_id;
-		$a->tgl_arsip		= $request->tgl_arsip;
-		$a->tgl_surat		= $request->tgl_surat;
-		$a->no_surat		= $request->no_surat;
-		$a->nama_tujuan		= $request->nama_tujuan;
-		$a->save();
-
+		$this->arsip->update($request->id, $request->except('_token'));
 		return 'ok';
 	}
 
@@ -188,7 +158,7 @@ class ArsipSayaController extends Controller {
 			 	$results[] = compact('name');
 			 }
 
-$size_all_files = File::whereMstArsipId($request->input('mst_arsip_id'))->sum('size');
+	 $size_all_files = File::whereMstArsipId($request->input('mst_arsip_id'))->sum('size');
 	 return array(
 	        'files' => $results,
 	        'jml_file'	=> File::whereMstArsipId($request->input('mst_arsip_id'))->count(),

@@ -145,13 +145,16 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\ComposerServiceProvider',
+		App\Providers\AppRepositoryServoceProvider::class,
+
  
 
 		/* tambahan */
 		Collective\Html\HtmlServiceProvider::class,
-		// Intervention\Image\ImageServiceProvider::class,
+
+		Intervention\Image\ImageServiceProvider::class,
 		'Maatwebsite\Excel\ExcelServiceProvider',
-		// 'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+		Cviebrock\EloquentSluggable\ServiceProvider::class,
 
 	],
 

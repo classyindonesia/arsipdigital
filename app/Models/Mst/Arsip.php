@@ -4,8 +4,10 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 use App\Models\Mst\Arsip;
 use App\Models\Mst\Rak;
 use App\Models\Mst\Folder;
-
-class Arsip extends Eloquent {
+use App\MyPackages\QueryFilters\Filterable;
+class Arsip extends Eloquent 
+{
+	use Filterable;
 
 	protected $fillable = ['nama', 'kode_arsip', 'keterangan', 
 						'mst_folder_id', 'mst_user_id', 'tgl_arsip',
