@@ -1,13 +1,19 @@
-<?php namespace App\Models\Mst;
+<?php 
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+namespace App\Models\Mst;
+
+use App\Models\Mst\AksesStaff;
+use App\Models\Mst\DataUser;
+use App\Models\Mst\User;
+use App\Models\Ref\UserLevel;
 use App\MyPackages\QueryFilters\Filterable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -41,28 +47,33 @@ class User extends Model implements AuthenticatableContract,
 	protected $hidden = ['password', 'remember_token'];
 
 
-	public function data_user(){
-		return $this->hasOne('App\Models\Mst\DataUser', 'mst_user_id');
+	public function data_user()
+	{
+		return $this->hasOne(DataUser::class, 'mst_user_id');
 	}
 
 
-	public function level(){
-		return $this->belongsTo('App\Models\Ref\UserLevel', 'ref_user_level_id');
+	public function level()
+	{
+		return $this->belongsTo(UserLevel::class, 'ref_user_level_id');
 	}
 
-	public function setPasswordAttribute($password){
+	public function setPasswordAttribute($password)
+	{
 		$this->attributes['password'] = bcrypt($password);
 	}
 
 
 	/* get akses staff yg level user */
-	public function akses_staff_user(){
-		return $this->hasMany('\App\Models\Mst\AksesStaff', 'mst_user_id');	
+	public function akses_staff_user()
+	{
+		return $this->hasMany(AksesStaff::class, 'mst_user_id');	
 	}
 
 
-	public function staff_user(){
-		return $this->belongsToMany('\App\Models\Mst\User', 'mst_akses_staff', 'mst_user_staff_id', 'mst_user_id');
+	public function staff_user()
+	{
+		return $this->belongsToMany(User::class, 'mst_akses_staff', 'mst_user_staff_id', 'mst_user_id');
 	}
 
 

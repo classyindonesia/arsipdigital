@@ -1,21 +1,27 @@
-<?php namespace App\Models\Mst;
+<?php 
 
+namespace App\Models\Mst;
+
+use App\Models\Mst\Folder;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Rak extends Eloquent {
+class Rak extends Eloquent 
+{
 
 	protected $fillable = ['nama', 'kode_rak', 'keterangan'];
 	protected $table = 'mst_rak';
 
 
-	public function mst_folder(){
-		return $this->hasMany('App\Models\Mst\Folder', 'mst_rak_id');
+	public function mst_folder()
+	{
+		return $this->hasMany(Folder::class, 'mst_rak_id');
 	}
  
 
 
 
-	public function keygen(){
+	public function keygen()
+	{
 		$key = '';
 		$length = 10;
 		list($usec, $sec) = explode(' ', microtime());
@@ -32,7 +38,8 @@ class Rak extends Eloquent {
 
 
 
-	public function setKodeRakAttribute($kode_rak){ 
+	public function setKodeRakAttribute($kode_rak)
+	{ 
 		$keygen = $this->keygen();
 		$cek = Rak::whereKodeRak($keygen)->first();
 		while(count($cek)>0){

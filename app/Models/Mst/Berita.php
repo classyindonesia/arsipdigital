@@ -1,9 +1,12 @@
 <?php namespace App\Models\Mst;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use App\Models\Mst\BeritaToLampiran;
+use App\Models\Mst\User;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Berita extends Eloquent {
+class Berita extends Eloquent 
+{
 
 
     use Sluggable;
@@ -25,12 +28,14 @@ class Berita extends Eloquent {
 
  
 
-	public function mst_user(){
-		return $this->belongsTo('App\Models\Mst\User', 'mst_user_id');
+	public function mst_user()
+	{
+		return $this->belongsTo(User::class, 'mst_user_id');
 	}
 
-	public function berita_to_lampiran(){
-		return $this->hasMany('\App\Models\Mst\BeritaToLampiran', 'mst_berita_id');
+	public function berita_to_lampiran()
+	{
+		return $this->hasMany(BeritaToLampiran::class, 'mst_berita_id');
 	}
 
  

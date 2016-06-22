@@ -1,10 +1,15 @@
-<?php namespace App\Models\Mst;
+<?php 
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+namespace App\Models\Mst;
+
+use App\Models\Mst\AksesStaff;
 use App\Models\Mst\Arsip;
-use App\Models\Mst\Rak;
+use App\Models\Mst\File;
 use App\Models\Mst\Folder;
+use App\Models\Mst\Rak;
+use App\Models\Mst\User;
 use App\MyPackages\QueryFilters\Filterable;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 class Arsip extends Eloquent 
 {
 	use Filterable;
@@ -17,23 +22,27 @@ class Arsip extends Eloquent
 
 
 
-	public function mst_folder(){
-		return $this->belongsTo('App\Models\Mst\Folder', 'mst_folder_id');
+	public function mst_folder()
+	{
+		return $this->belongsTo(Folder::class, 'mst_folder_id');
 	}
 
-	public function mst_file(){
-		return $this->hasMany('App\Models\Mst\File', 'mst_arsip_id');
+	public function mst_file()
+	{
+		return $this->hasMany(File::class, 'mst_arsip_id');
 	}
 
-	public function mst_user(){
-		return $this->belongsTo('App\Models\Mst\User', 'mst_user_id');
+	public function mst_user()
+	{
+		return $this->belongsTo(User::class, 'mst_user_id');
 	}
 
  
 
 
  	/*fungsi untuk set kode arsip menjadi [kode-rak]-[nomor urut] */
-	public function set_kode_arsip($mst_folder_id){
+	public function set_kode_arsip($mst_folder_id)
+	{
 		$folder = Folder::find($mst_folder_id);
        	$rak = Rak::find($folder->mst_rak_id);
 		$get_kode_arsip = Arsip::where('kode_arsip', 'like', $rak->kode_rak.'%')
@@ -63,7 +72,8 @@ class Arsip extends Eloquent
 		value=mst_folder_id, 
 		otomatis jika masuk ke db, langsung dlm bentuk kode arsip 
 	*/
-	public function setKodeArsipAttribute($mst_folder_id){
+	public function setKodeArsipAttribute($mst_folder_id)
+	{
  		$kode_arsip = $this->set_kode_arsip($mst_folder_id);
 		$this->attributes['kode_arsip'] = $kode_arsip;
 	}
@@ -71,8 +81,9 @@ class Arsip extends Eloquent
 
 
 
-	public function akses_staff(){
-		return $this->belongsTo('\App\Models\Mst\AksesStaff', 'mst_user_id', 'mst_user_id');
+	public function akses_staff()
+	{
+		return $this->belongsTo(AksesStaff::class, 'mst_user_id', 'mst_user_id');
 	}
 
 

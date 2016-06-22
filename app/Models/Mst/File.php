@@ -1,5 +1,8 @@
-<?php namespace App\Models\Mst;
+<?php 
 
+namespace App\Models\Mst;
+
+use App\Models\Mst\Arsip;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Intervention\Image\Facades\Image; 
 
@@ -10,8 +13,9 @@ class File extends Eloquent {
 	protected $table = 'mst_file';
 
 
-	public function mst_arsip(){
-		return $this->belongsTo('App\Models\Mst\Arsip', 'mst_arsip_id');
+	public function mst_arsip()
+	{
+		return $this->belongsTo(Arsip::class, 'mst_arsip_id');
 	}
 
 
@@ -22,7 +26,8 @@ class File extends Eloquent {
 		2=pdf
 		3=lain2
 	 */
-	public function get_jenis_eksternsi($nama_file){
+	public function get_jenis_eksternsi($nama_file)
+	{
 
 		$is_gambar = 0;
 		$is_pdf = 0;
@@ -62,7 +67,8 @@ class File extends Eloquent {
 	handle file saat upload,
 	menentukan mana yg diberi watermark dan tidak
 	 */
-	public function handle_file($nama_file){
+	public function handle_file($nama_file)
+	{
 		$jenis_ekstensi = $this->get_jenis_eksternsi($nama_file);
 		if($jenis_ekstensi == 1){
 			//jika gambar, maka insert ke tabel watermark+create new gambar
@@ -73,7 +79,8 @@ class File extends Eloquent {
 	}
 
 
-	public function remove_watermark_file($nama_file){
+	public function remove_watermark_file($nama_file)
+	{
 		$assetPath = '/upload/arsip/watermark';
 		$uploadPath = public_path($assetPath);
 		$path_file = $uploadPath.'/'.$nama_file;
