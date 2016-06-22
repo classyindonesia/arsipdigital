@@ -1,20 +1,15 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
- 
+use App\Jobs\DelAttachedFiles;
+use App\Jobs\SendEmail;
 use App\Models\Mst\AntrianEmail;
+use App\Models\Mst\AttachEmail;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
-use App\Models\Mst\AttachEmail;
-
+use App\Services\Email\uploadFileEmailService;
 use Illuminate\Http\Request;
-
-/* facade */
 use Input, Auth, Mail, Session, Fungsi, Queue;
-
-/* queue commands */
-use App\Jobs\SendEmail;
-use App\Jobs\DelAttachedFiles;
 
 
 class EmailController extends Controller {
@@ -135,38 +130,8 @@ class EmailController extends Controller {
 	}
 
 
-	public function do_upload_file(Request $request){
-		$assetPath = '/attach/'.Auth::user()->id.'/';
-		$uploadPath = storage_path($assetPath);
-		$results = array();
-		$files = $request->file('files');
-			 foreach ($files as $file) {
-				try {
-						$size = $file->getSize();
-					 	$name = $file->getClientOriginalName();
-					 	$name = Fungsi::limit_karakter($name);
-				    	$nama_file_db = str_slug($name, '.');
-					 	$file->move($uploadPath, $nama_file_db);
-					 	$name = $nama_file_db.' telah tersimpan! ';
-
-					 	/* simpan ke DB */
-					 	$data_insert = [
-					 		'nama_file_asli'		=> $nama_file_db,
-  					 		'mst_user_id'			=> Auth::user()->id
-					 	];
-					 	AttachEmail::create($data_insert);
-					} catch(Exception $e) {
-				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
-			 		}
-			 	
-			 	$results[] = compact('name');
-			 }
-
-
-	 return array(
-	        'files' => $results
-	    );	
-
+	public function do_upload_file(uploadFileEmailService $upload){
+		return $upload->handle();
 	}
 
 
