@@ -1,48 +1,54 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php 
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-/*facade */
-use Auth, Input, Session, Fungsi;
-
-/* models*/ 
+use App\Http\Requests\CreateOrUpdateBerita;
 use App\Models\Mst\Berita;
 use App\Models\Mst\BeritaToLampiran;
-use App\Models\Mst\LampiranBerita;
 use App\Models\Mst\GambarBerita;
+use App\Models\Mst\LampiranBerita;
 use App\Models\Mst\Vidio;
+use App\Services\Berita\doUploadGambarBeritaService;
+use Auth, Input, Session, Fungsi;
+use Repo\Contracts\Mst\BeritaRepoInterface;
+use Illuminate\Session\Store as getSession;
 
+class BeritaController extends Controller
+{
 
-/* request */
-use App\Http\Requests\CreateOrUpdateBerita;
-class BeritaController extends Controller{
+	private $base_view = 'konten.backend.berita.';
+	protected $berita;
+	protected $session;
+	private $perPage = 10;
 
-
-	public function __construct(){
+	public function __construct(BeritaRepoInterface $berita, getSession $session)
+	{
+		$this->session = $session;
+		$this->berita = $berita;
 		view()->share('berita_home', true);
 	}
 
 	public function index(){
-		if(Session::has('pencarian_berita')){
-			$berita = Berita::orderBy('id', 'DESC')
-			->where('judul', 'like', '%'.Session::get('pencarian_berita').'%')
-			->with('berita_to_lampiran')
-			->paginate(10);			
-		}else{
-			$berita = Berita::orderBy('id', 'DESC')->with('berita_to_lampiran')->paginate(10);
+		$filter = ['order' => 'desc'];
+		if($this->session->has('pencarian_berita')){
+			$search_value = $this->session->get('pencarian_berita');
+			$add_filter = ['search' => $search_value];		
+			$filter = array_merge($filter, $add_filter);			
 		}
+		$berita = $this->berita->all($this->perPage, $filter);
 		$nav_berita = true;
-		return view('konten.backend.berita.index', compact('berita', 'nav_berita'));
+		return view($this->base_view.'index', compact('berita', 'nav_berita'));
 	}
 
 
 	public function create(){
-		return view('konten.backend.berita.create.index');
+		return view($this->base_view.'create.index');
 	}
 
 	public function edit($id){
 		$berita = Berita::find($id);
-		return view('konten.backend.berita.create.index', compact('berita'));
+		return view($this->base_view.'create.index', compact('berita'));
 	}
 
 	public function insert(CreateOrUpdateBerita $request){
@@ -79,8 +85,6 @@ class BeritaController extends Controller{
 
 	}
 
-
-
 	public function del(){
 		$o = Berita::find(Input::get('id'));
 		$o->delete();
@@ -88,14 +92,10 @@ class BeritaController extends Controller{
 	}
 	
 
-
-
-
-
 	public function add_lampiran($id){
 		$list_lampiran = Fungsi::get_dropdown(LampiranBerita::orderBy('id','DESC')->get(), 'lampiran');
 		$lampiran = BeritaToLampiran::where('mst_berita_id', '=', $id)->with('mst_lampiran')->get();
-		$view = 'konten.backend.berita.popup.add_lampiran';
+		$view = $this->base_view.'popup.add_lampiran';
 		return view($view, compact('lampiran', 'list_lampiran'));
 	}
 
@@ -119,115 +119,40 @@ class BeritaController extends Controller{
 
 	public function add_gambar(){
 		$gambar = GambarBerita::orderBy('id', 'DESC')->paginate(6);
-		return view('konten.backend.berita.popup.add_gambar', compact('gambar'));
+		return view($this->base_view.'popup.add_gambar', compact('gambar'));
 	}
 
 	public function upload_gambar(){
 		$max = explode('M', ini_get("upload_max_filesize"));
 		$max_upload = $max[0] * 1048576;		
-		$view = 'konten.backend.berita.popup.upload_gambar';
+		$view = $this->base_view.'popup.upload_gambar';
 		return view($view, compact('max_upload'));
 	}
 
-	public function do_upload_gambar(){
-		$results = array();
-		foreach(\Request::file('files') as $file){
-			try{
-						$assetPath = '/upload/gambar_berita';
-						$uploadPath = public_path($assetPath);
-
- 					 	$name = $file->getClientOriginalName();
-					 	$name = Fungsi::limit_karakter($name);
-				    	$nama_file_db = str_slug($name, '.');
-				    	$nama_file_to_server = md5($nama_file_db).'_'.date('YmdHis').'.'.$file->getClientOriginalExtension();			 	
-					 	$file->move($uploadPath, $nama_file_to_server);
-					 	$name = $file->getClientOriginalName().' telah tersimpan! ';				
- 
-					 	$data_insert = [
-					 		'nama_file_asli'		=> $nama_file_to_server,
-  					 		'mst_user_id'			=> Auth::user()->id
-					 	];
-					 	GambarBerita::create($data_insert);
-
-
-						// resize gambar
-						$img = \Image::make(public_path('upload/gambar_berita/'.$nama_file_to_server));
-						// prevent possible upsizing
-						$img->resize(null, 400, function ($constraint) {
-						    $constraint->aspectRatio();
-						    $constraint->upsize();
-						});
-						$img->save();
-
-
-			} catch(Exception $e) {
-				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
-				 		//$results[] = compact('name');   
-			 		}
-		$results[] = compact('name');	
-		}
-	 return array(
-	        'files' => $results,
- 	    );		
+	public function do_upload_gambar(doUploadGambarBeritaService $upload){
+		return $upload->handle();
 	}
 
-	public function del_gambar(){
-		$o = GambarBerita::find(Input::get('id'));
-
-		$path = public_path('upload/gambar_berita/'.$o->nama_file_asli);
-		if(file_exists($path)){
- 			unlink($path);
-		} 
-		$o->delete();
-		return 'ok';
+	public function del_gambar(delGambarBeritaService $delete){
+		return $delete->handle();
 	}
 
 
 
 	public function add_vidio(){
 		$vidio = Vidio::paginate(6);
-		return view('konten.backend.berita.popup.add_vidio', compact('vidio'));
+		return view($this->base_view.'popup.add_vidio', compact('vidio'));
 	}
 
 	public function upload_vidio(){
 		$max = explode('M', ini_get("upload_max_filesize"));
 		$max_upload = $max[0] * 1048576;			
-		return view('konten.backend.berita.popup.upload_vidio', compact('max_upload'));		
+		return view($this->base_view.'popup.upload_vidio', compact('max_upload'));		
 	}
 
 
-	public function do_upload_vidio(){
-		$results = array();
-		foreach(\Request::file('files') as $file){
-			try{
-						$assetPath = '/upload/vidio';
-						$uploadPath = public_path($assetPath);
-
- 					 	$name = $file->getClientOriginalName();
-					 	$name = Fungsi::limit_karakter($name);
-				    	$nama_file_db = str_slug($name, '.');
-				    	$nama_file_to_server = md5($nama_file_db).'_'.date('YmdHis').'.'.$file->getClientOriginalExtension();			 	
-					 	$file->move($uploadPath, $nama_file_to_server);
-					 	$name = $file->getClientOriginalName().' telah tersimpan! ';				
- 
-					 	$data_insert = [
-					 		'nama_file_asli'		=> $nama_file_to_server,
-  					 		'mst_user_id'			=> Auth::user()->id
-					 	];
-					 	Vidio::create($data_insert);
-
- 
-
-			} catch(Exception $e) {
-				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
-				 		//$results[] = compact('name');   
-			 		}
-		$results[] = compact('name');	
-		}
-	 return array(
-	        'files' => $results,
- 	    );	
-
+	public function do_upload_vidio(uploadVidioBeritaService $upload_vidio){
+		return $upload_vidio->handle();
 	}
 
 

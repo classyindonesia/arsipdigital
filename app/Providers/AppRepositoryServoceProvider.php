@@ -29,5 +29,8 @@ class AppRepositoryServoceProvider extends ServiceProvider
         $this->app->bind('Repo\Contracts\Mst\ArsipRepoInterface',
             'Repo\Eloquent\Mst\ArsipRepo');
 
+        $this->app->bind('Repo\Contracts\Mst\BeritaRepoInterface',
+            'Repo\Eloquent\Mst\BeritaRepo');        
+
     }
 }

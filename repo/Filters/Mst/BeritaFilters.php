@@ -5,14 +5,14 @@ namespace Repo\Filters\Mst;
 use App\MyPackages\QueryFilters\QueryFilters;
 use Illuminate\Database\Eloquent\Builder;
 
-class UserFilters extends QueryFilters
+class BeritaFilters extends QueryFilters
 {
  
 
     public function search($value)
     {
-	     return  $this->builder
-	     			  ->where('email', 'like', '%'.$value.'%');
+      return $this->builder
+           		  ->where('judul', 'like', '%'.$value.'%');
     }
 
 

@@ -13,8 +13,11 @@ use Illuminate\Session\Store as Session;
 
 class ArsipUserController extends Controller{
 
+	private $base_view = 'konten.backend.arsip_user.';
+
 	public function __construct(Session $session){
 		$this->session = $session;
+		view()->share('base_view', $this->base_view);
 		view()->share('arsip_user_home', true);
 	}
 
@@ -23,37 +26,20 @@ class ArsipUserController extends Controller{
 		$arsip_user = AksesStaff::whereMstUserStaffId(Auth::user()->id)
 		->with('mst_user', 'mst_arsip')
 		->paginate(10);
-
-
- 		return view('konten.backend.arsip_user.index', compact('arsip_user'));
+ 		return view($this->base_view.'index', compact('arsip_user'));
 	}
 
 	public function list_arsip($id){
+		$filter = ['userId' => $id];
 		if($this->session->has('pencarian_arsip')){
-			$arsip = Arsip::whereMstUserId($id)->orderBy('id', 'DESC')
-				->where('nama', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-				->with('mst_file')
-				->paginate(10);
-			if(count($arsip)<=0){
-				$arsip = Arsip::whereMstUserId($id)->orderBy('id', 'DESC')
-					->where('kode_arsip', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-					->with('mst_file')
-					->paginate(10);				
-			}
-			if(count($arsip)<=0){
-				$arsip = Arsip::whereMstUserId($id)->orderBy('id', 'DESC')
-					->where('keterangan', 'like', '%'.$this->session->get('pencarian_arsip').'%')
-					->with('mst_file')
-					->paginate(10);
-			}
-
-		}else{
-			$arsip = Arsip::whereMstUserId($id)->orderBy('id', 'DESC')
-				->paginate(10);			
+			// jika ada session pencarian arsip
+			$search_value = $this->session->get('pencarian_arsip');
+			$add_filter = ['search' => $search_value];		
+			$filter = array_merge($filter, $add_filter);			
 		}
-		$user = User::find($id);
-		
-		return view('konten.backend.arsip_user.list_arsip.index', compact('arsip', 'user'));
+		$arsip = $this->arsip->all($this->perPage, $filter);
+		$user = User::find($id);		
+		return view($this->base_view.'list_arsip.index', compact('arsip', 'user'));
 	}
 
 	public function upload_file($id, $mst_arsip_id){
@@ -70,14 +56,13 @@ class ArsipUserController extends Controller{
 
 	public function list_file_raw($id, $mst_arsip_id){
 		$file = File::whereMstArsipId($mst_arsip_id)->get();
-		return view('konten.backend.arsip_saya.list_file_uploaded', 
-					compact('file'));
+		return view($this->base_view.'list_file_uploaded', compact('file'));
 	}
 
 
 	public function add($id){
 		$folder = Folder::all();
-		return view('konten.backend.arsip_user.list_arsip.popup.add', compact('folder'));
+		return view($this->base_view.'list_arsip.popup.add', compact('folder'));
 	}
 
 

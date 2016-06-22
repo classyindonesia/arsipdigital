@@ -36,25 +36,8 @@ class AlbumGaleryController extends Controller {
 		return 'ok';
 	}
 
-	public function del(Request $request){
-		$a = AlbumGalery::findOrFail($request->id);
-		foreach($a->mst_galery as $list){
-			//hapus gambar asli
-			$path = public_path('upload/galery/'.$list->nama_file);
-			if(file_exists($path)){
-				unlink($path);
-			}			
-
-			//hapus thumbnail
-			$path2 = public_path('upload/galery/thumbnail_'.$list->nama_file);
-			if(file_exists($path2)){
-				unlink($path2);
-			}			
-			$list->delete();
-		}
-
-		$a->delete();
-		return 'ok';
+	public function del(delAlbumService $delAlbum){
+		return $delAlbum->handle();
 	}
 
 	public function edit($id){

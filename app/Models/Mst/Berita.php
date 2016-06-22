@@ -4,9 +4,11 @@ use App\Models\Mst\BeritaToLampiran;
 use App\Models\Mst\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use App\MyPackages\QueryFilters\Filterable;
 
 class Berita extends Eloquent 
 {
+	use Filterable;
 
 
     use Sluggable;

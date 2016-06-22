@@ -7,8 +7,10 @@ use App\Models\Mst\Arsip;
 use App\Models\Mst\File;
 use App\Models\Mst\Folder;
 use App\Models\Mst\User;
+use App\Services\Arsip\delFileArsipService;
+use App\Services\Arsip\delArsipService;
+use App\Services\Arsip\doUploadFileArsipService;
 use Auth, Fungsi;
-use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store as Session;
 use Repo\Contracts\Mst\ArsipRepoInterface;
@@ -18,11 +20,13 @@ class ArsipSayaController extends Controller {
 
 	private $perPage = 10;
 	protected $arsip;
+	private $base_view = 'konten.backend.arsip_saya.';
  
 	public function __construct(Session $session, ArsipRepoInterface $arsip){
 		$this->arsip = $arsip;
 		$this->session = $session;
 		view()->share('my_archive', true);
+		view()->share('base_view', $this->base_view);
 	}
 
 
@@ -38,21 +42,21 @@ class ArsipSayaController extends Controller {
 		}
 		$arsip = $this->arsip->all($this->perPage, $filter);
 		$vars = compact('arsip', 'my_archive_home');
-		return view('konten.backend.arsip_saya.index', $vars);
+		return view($this->base_view.'index', $vars);
 	}
 
 
 
 	public function add(){
 		$folder = Folder::all();
-		return view('konten.backend.arsip_saya.popup.add', compact('folder'));
+		return view($this->base_view.'popup.add', compact('folder'));
 	}
 
 
 
 	public function edit(Arsip $arsip){
 		$folder = Folder::all();
-		return view('konten.backend.arsip_saya.popup.edit', compact('folder', 'arsip'));
+		return view($this->base_view.'popup.edit', compact('folder', 'arsip'));
 	}
 
 
@@ -87,23 +91,9 @@ class ArsipSayaController extends Controller {
 
 
 
-	public function del(Request $request, File $f){
-		$o = Arsip::find($request->input('id'));
-		$assetPath = '/upload/arsip';
-		$uploadPath = public_path($assetPath);
-		$file  = File::whereMstArsipId($request->input('id'))->get();
-		foreach($file as $list){
-			$path_file = $uploadPath.'/'.$list->nama_file_tersimpan;
-			if(file_exists($path_file)){
-				unlink($path_file);
-			}
-			$f->remove_watermark_file($list->nama_file_tersimpan);		
-			$list->delete();	
-		}
-
-
-		$o->delete();
-		return 'ok';
+	public function del(delArsipService $delArsip)
+	{
+		return $delArsip->handle();
 	}
 
 
@@ -113,117 +103,58 @@ class ArsipSayaController extends Controller {
 		$file = File::whereMstArsipId($arsip->id)->get();
 		$user = User::find($arsip->mst_user_id)->data_user;
 		$size = File::whereMstArsipId($arsip->id)->sum('size');
-		return view('konten.backend.arsip_saya.upload_file', compact('arsip', 'file', 'user', 'size', 'max_upload'));
+		$vars = compact('arsip', 'file', 'user', 'size', 'max_upload');
+		return view($this->base_view.'upload_file', $vars);
 	} 
 
 	
 	public function list_file_raw($id){
 		$file = File::whereMstArsipId($id)->get();
-		return view('konten.backend.arsip_saya.list_file_uploaded', compact('file'));
+		return view($this->base_view.'list_file_uploaded', compact('file'));
 	}
 
 
-	public function do_upload_file(Request $request, Filesystem $filesystem){
-		$assetPath = '/upload/arsip';
-		$uploadPath = public_path($assetPath);
-		$results = array();
-		$files = $request->file('files');
-			 foreach ($files as $file) {
-				try {
-						$size = $file->getSize();
-					 	$name = $file->getClientOriginalName();
-					 	$name = Fungsi::limit_karakter($name);
-				    	$nama_file_db = str_slug($name, '.');
-				    	$nama_file_to_server = md5($nama_file_db).'_'.date('YmdHis').'.'.$file->getClientOriginalExtension();			 	
-					 	$file->move($uploadPath, $nama_file_to_server);
-					 	$name = $file->getClientOriginalName().' telah tersimpan! ';
-
-					 	/* simpan ke DB */
-					 	$data_insert = [
-					 		'nama_file_asli'		=> $nama_file_db,
-					 		'nama_file_tersimpan'	=> $nama_file_to_server,
-					 		'size'					=> $size,//bytes
-					 		'mst_arsip_id'			=> $request->input('mst_arsip_id'),
-					 		'mst_user_id'			=> Auth::user()->id
-					 	];
-					 	File::create($data_insert);
-
-					 	$f = new File;
-					 	$f->handle_file($nama_file_to_server);
-					} catch(Exception $e) {
-				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
-				 		//$results[] = compact('name');   
-			 		}
-			 	
-			 	$results[] = compact('name');
-			 }
-
-	 $size_all_files = File::whereMstArsipId($request->input('mst_arsip_id'))->sum('size');
-	 return array(
-	        'files' => $results,
-	        'jml_file'	=> File::whereMstArsipId($request->input('mst_arsip_id'))->count(),
-	        'size_all_files'	=> Fungsi::size($size_all_files)
-	    );		
+	public function do_upload_file(doUploadFileArsipService $uploadService){
+		return $uploadService->handle();
 	}
 
 
-	public function hapus_file(Request $request, File $f){
-		$file = File::find($request->input('id'));
-		$assetPath = '/upload/arsip';
-		$uploadPath = public_path($assetPath);
-		$path_file = $uploadPath.'/'.$file->nama_file_tersimpan;
-		if(file_exists($path_file)){
-			unlink($path_file);
-		}
-		$f->remove_watermark_file($file->nama_file_tersimpan);
-		$file->delete();
-		return 'ok';
+	public function hapus_file(delFileArsipService $delFileArsip){
+		return $delFileArsip->handle();
 	}
 
 	/* param = id file table */
 	public function download_file($id){
 		$file = File::find($id);
 		$assetPath = '/upload/arsip';
-		$uploadPath = public_path($assetPath);		
-		return response()->download($uploadPath.'/'.$file->nama_file_tersimpan, $file->nama_file_asli);
+		$uploadPath = public_path($assetPath);
+		$file_path = $uploadPath.'/'.$file->nama_file_tersimpan;		
+		return response()->download($file_path, $file->nama_file_asli);
 	}
 
 
 
-	/* param = id file table */
-	public function download_file_watermark($id, File $f){
-		$file = File::find($id);
-		$assetPath = '/upload/arsip/watermark';
-		$uploadPath = public_path($assetPath);	
-
-		if(!file_exists($uploadPath.'/'.$file->nama_file_tersimpan)){
-			$f->handle_file($file->nama_file_tersimpan);
-		}		
-
-		$cek = $f->get_jenis_eksternsi($file->nama_file_tersimpan);
-		if($cek != 1){
-			abort(403, 'Unauthorized action.');
-		}
-
-	
-		return response()->download($uploadPath.'/'.$file->nama_file_tersimpan, $file->nama_file_asli);
+	/**
+	 * download file beserta watermark
+	 * @param  [int] $id mst_file.id
+	 * @param  File   $f  [description]
+	 * @return [type]     [description]
+	 */
+	public function download_file_watermark($id, downloadFileWatermarkService $df){
+		return $df->handle($id);
 	}
 
 
 
 	public function before_download($id, File $f){
 		$file = File::find($id);
-
 		$assetPath = '/upload/arsip/watermark';
 		$uploadPath = public_path($assetPath);	
-
 		if(!file_exists($uploadPath.'/'.$file->nama_file_tersimpan)){
 			$f->handle_file($file->nama_file_tersimpan);
-		}	
-
-		
+		}		
 		$cek = $f->get_jenis_eksternsi($file->nama_file_tersimpan);		
-		return view('konten.backend.arsip_saya.popup.before_download', compact('file', 'cek'));
+		return view($this->base_view.'popup.before_download', compact('file', 'cek'));
 	}
 
 
@@ -231,7 +162,7 @@ class ArsipSayaController extends Controller {
 		$file = $file->find($id);
 		$cek = $file->get_jenis_eksternsi($file->nama_file_tersimpan);
 		if($cek == 1 || $cek == 2){
-			return view('konten.backend.arsip_saya.file.view', compact('file', 'cek'));
+			return view($this->base_view.'file.view', compact('file', 'cek'));
 		}else{
 			abort(403, 'Unauthorized action.');
 		}
@@ -245,7 +176,7 @@ class ArsipSayaController extends Controller {
 		$file = $file->find($id);
 		$cek = $file->get_jenis_eksternsi($file->nama_file_tersimpan);
 		if($cek == 2){
-			return view('konten.backend.arsip_saya.file.view_pdf_full', compact('file', 'cek'));
+			return view($this->base_view.'file.view_pdf_full', compact('file', 'cek'));
 		}else{
 			abort(403, 'Unauthorized action.');
 		}
