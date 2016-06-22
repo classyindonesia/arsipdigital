@@ -7,7 +7,7 @@
 			<th width='15%'>Folder</th>
 			<th  style='text-align:center;' width='7%'>jml file</th>
 			<th width='20%'>Tgl berkas diarsipkan</th>
-			<th width='10%'>action</th>
+			<th width='150px' class="text-center">action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,7 +17,11 @@
 		<tr>
 			<td style='text-align:center;'>{{ $no }}</td>
 			<td>{{ $list->kode_arsip }}</td>
-			<td>{{ $list->nama }}</td>
+			<td>
+				<a href="{!! route('my_archive.files', $list->id) !!}">
+					{{ $list->nama }}
+				</a>
+			</td>
 			<td>
 				@if(count($list->mst_folder)>0) 
 				<a href="{!! URL::route('list_folder.list_arsip', $list->mst_folder->id) !!}">
@@ -29,7 +33,7 @@
 			</td>
 			<td style='text-align:center;'>{{ count($list->mst_file) }}</td>
 			<td>{{ Fungsi::date_to_tgl($list->tgl_arsip) }}</td>
-			<td> 
+			<td class="text-center"> 
 				@include('konten.backend.arsip_saya.action')
 			</td>
 		</tr>

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab9585390be6d72f935c7875381ba1f7",
-    "content-hash": "d781658584fc42ba6336fdc07ea11186",
+    "hash": "9ad46a3233111f6a18476b7b5b54b8be",
+    "content-hash": "13ba0cb2ec7fc17e598fb47737804dea",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -566,12 +566,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "22088b04728a039bd1fc32f7e79a89a118b78698"
+                "reference": "6886d43f5babe6900c29c59640ca81401fe71c80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/22088b04728a039bd1fc32f7e79a89a118b78698",
-                "reference": "22088b04728a039bd1fc32f7e79a89a118b78698",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/6886d43f5babe6900c29c59640ca81401fe71c80",
+                "reference": "6886d43f5babe6900c29c59640ca81401fe71c80",
                 "shasum": ""
             },
             "require": {
@@ -620,7 +620,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2016-04-26 14:08:40"
+            "time": "2016-06-22 08:03:11"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3947,6 +3947,9 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.5.9",
+        "ext-zip": "*"
+    },
     "platform-dev": []
 }

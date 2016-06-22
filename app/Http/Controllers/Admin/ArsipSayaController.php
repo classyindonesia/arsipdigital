@@ -7,9 +7,10 @@ use App\Models\Mst\Arsip;
 use App\Models\Mst\File;
 use App\Models\Mst\Folder;
 use App\Models\Mst\User;
-use App\Services\Arsip\delFileArsipService;
 use App\Services\Arsip\delArsipService;
+use App\Services\Arsip\delFileArsipService;
 use App\Services\Arsip\doUploadFileArsipService;
+use App\Services\File\createZipService;
 use Auth, Fungsi;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store as Session;
@@ -43,6 +44,13 @@ class ArsipSayaController extends Controller {
 		$arsip = $this->arsip->all($this->perPage, $filter);
 		$vars = compact('arsip', 'my_archive_home');
 		return view($this->base_view.'index', $vars);
+	}
+
+	public function files($mst_arsip_id)
+	{
+		$arsip = $this->arsip->find($mst_arsip_id);
+		$vars = compact('arsip');
+		return view($this->base_view.'files.index', $vars);
 	}
 
 
@@ -151,8 +159,13 @@ class ArsipSayaController extends Controller {
 		$assetPath = '/upload/arsip/watermark';
 		$uploadPath = public_path($assetPath);	
 		if(!file_exists($uploadPath.'/'.$file->nama_file_tersimpan)){
-			$f->handle_file($file->nama_file_tersimpan);
-		}		
+			$f->handle_file($file->nama_file_tersimpan);			
+		}
+
+		if(!file_exists(public_path('upload/arsip/'.$file->nama_file_tersimpan))){
+			return 'file tdk ditemukan atau sudah terhapus';
+		}
+
 		$cek = $f->get_jenis_eksternsi($file->nama_file_tersimpan);		
 		return view($this->base_view.'popup.before_download', compact('file', 'cek'));
 	}
@@ -180,6 +193,12 @@ class ArsipSayaController extends Controller {
 		}else{
 			abort(403, 'Unauthorized action.');
 		}
+	}
+
+
+	public function download_all_files($mst_arsip_id, createZipService $create)
+	{
+		return $create->make($mst_arsip_id);
 	}
 
 

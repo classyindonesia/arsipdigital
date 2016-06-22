@@ -9,14 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class uploadFileEmailService
 {
+	protected $request;
+
+	public function __construct(Request $request)
+	{
+		$this->request = $request;
+	}
 
 
-	public function handle(Request $request)
+	public function handle()
 	{
 		$assetPath = '/attach/'.Auth::user()->id.'/';
 		$uploadPath = storage_path($assetPath);
 		$results = array();
-		$files = $request->file('files');
+		$files = $this->request->file('files');
 			 foreach ($files as $file) {
 				try {
 						$size = $file->getSize();

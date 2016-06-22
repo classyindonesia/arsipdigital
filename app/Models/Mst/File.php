@@ -11,6 +11,26 @@ class File extends Eloquent {
 	protected $fillable = ['nama_file_asli', 'nama_file_tersimpan', 
 					'mst_arsip_id', 'mst_user_id', 'size'];
 	protected $table = 'mst_file';
+	protected $appends = [
+		'c__data_url_image'
+	];
+
+	public function getCDataUrlImageAttribute()
+	{
+		$nama_file = $this->attributes['nama_file_tersimpan'];
+		$path = public_path('upload/arsip/'.$nama_file);
+		if(file_exists($path)){
+			// jika file ada
+			if(is_image($path)){
+				// dan jika file tsb adalah file gambar
+				$img = \Image::make($path);
+				$img->resize(400, null, function ($constraint) {
+							    $constraint->aspectRatio();
+							});
+				return $img->stream('data-url', 60);
+			}
+		}
+	}
 
 
 	public function mst_arsip()

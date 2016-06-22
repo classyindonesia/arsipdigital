@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php 
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +17,8 @@ use App\Models\Ref\Agama;
 use App\Models\Ref\Kota;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
- class MyProfileController extends Controller {
+class MyProfileController extends Controller
+ {
  
 
 	public function __construct(){
@@ -27,13 +30,11 @@ use App\Models\Mst\User;
  		$kota = Kota::all();
  		$ref_status_pernikahan = StatusPernikahan::all();
  		$ref_status_ikatan = StatusIkatan::all();
- 		return view('konten.backend.my_profile.index', compact(
- 			'ref_status_ikatan',
- 			'data_user',
- 			'ref_status_pernikahan',
- 			'agama',
- 			'kota'
- 			));
+ 		$vars = compact(
+	 			'ref_status_ikatan', 'data_user', 'ref_status_pernikahan',
+	 			'agama', 'kota'
+ 			);
+ 		return view('konten.backend.my_profile.index', $vars);
  	}
 
 /*   

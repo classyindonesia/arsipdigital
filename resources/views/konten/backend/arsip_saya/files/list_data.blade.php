@@ -16,7 +16,7 @@ $(function () {
 	</thead>
 	<tbody>
 <?php $no=1; ?>
-@foreach($file as $list)
+@foreach($arsip->mst_file as $list)
 
 		<tr>
 			<td align='center'>{{ $no }}</td>

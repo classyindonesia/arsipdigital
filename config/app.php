@@ -210,7 +210,7 @@ return [
 	    'Gate' => Illuminate\Support\Facades\Gate::class,
 
 		'Fungsi'	=> 'App\Helpers\Fungsi',
-		// 'Image' 	=> 'Intervention\Image\Facades\Image',
+		'Image' 	=> 'Intervention\Image\Facades\Image',
 		'Reader'	=> '\PHPExcelReader\SpreadsheetReader',
 		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
 		'Gravatar'	=> 'App\Helpers\Gravatar',

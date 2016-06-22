@@ -7,8 +7,14 @@ use Illuminate\Http\Request;
 
 class DelAlbumService 
 {
+	protected $request;
 
-	public function handle(Request $request)
+	public function __construct(Request $request)
+	{
+		$this->request = $request;
+	}
+
+	public function handle()
 	{
 		$a = AlbumGalery::findOrFail($request->id);
 		foreach($a->mst_galery as $list){

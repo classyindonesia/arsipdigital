@@ -10,6 +10,8 @@ use App\Models\Mst\Rak;
 use App\Models\Mst\User;
 use App\MyPackages\QueryFilters\Filterable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Carbon\Carbon;
+
 class Arsip extends Eloquent 
 {
 	use Filterable;
@@ -19,8 +21,20 @@ class Arsip extends Eloquent
 						'tgl_surat', 'no_surat', 'nama_tujuan'
 						];
 	protected $table = 'mst_arsip';
+	protected $appends = ['c__waktu_pembuatan'];
 
 
+	public function getCWaktuPembuatanAttribute()
+	{
+        if(isset($this->attributes['created_at'])){
+            Carbon::setLocale('id');
+            $now = $this->attributes['created_at'];
+            $now = date('Y-m-d H:i:s', strtotime($now));
+            $wkt = Carbon::createFromFormat('Y-m-d H:i:s', $now)
+                         ->diffForHumans();
+            return $wkt;            
+        }		
+	}
 
 	public function mst_folder()
 	{

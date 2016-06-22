@@ -5,6 +5,8 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
+		"php": ">=5.5.9",
+		"ext-zip" : "*",
 		"laravel/framework": "5.2.*",
 		"laravelcollective/html": "5.2.*",
 		"intervention/image": "dev-master",
@@ -27,6 +29,7 @@
 			"database",
 			"app/Helpers"
 		],
+		"files" : ["app/Helpers/myHelpers.php"],
 		"psr-4": {
 			"App\\": "app/",
 			"Repo\\": "repo/"

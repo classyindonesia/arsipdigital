@@ -7,8 +7,8 @@
 		<tr class='bg-olive'>
 			<th>Arsip</th>
 			<th class='text-center' width='10%'>jml file</th>
-			<th width='15%'>created at</th>
-			<th width='15%' class='text-center'>Action</th>
+			<th width='170px'>created at</th>
+			<th width='150px' class='text-center'>Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,7 +17,11 @@
 		<tr>
 			<td>{{{ $list->nama }}}</td>
 			<td class='text-center'>{{ count($list->mst_file) }}</td>
-			<td>{!! Fungsi::date_to_tgl(date('Y-m-d', strtotime($list->created_at))) !!}</td>
+			<td>
+				<span data-toggle='tooltip' title="{!! Fungsi::date_to_tgl(date('Y-m-d', strtotime($list->created_at))) !!}">
+					{!! $list->c__waktu_pembuatan !!}									
+				</span>
+			</td>
 			<td class='text-center'>
 				@include('konten.backend.arsip_saya.action')
 			</td>
