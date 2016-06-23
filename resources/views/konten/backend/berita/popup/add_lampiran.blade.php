@@ -35,13 +35,13 @@ $('#tambah').click(function(){
 
 $.ajax({
 	url : "{!! URL::route('admin_berita.insert_lampiran') !!}",
-	data: { mst_lampiran_berita_id : lampiran_id, mst_berita_id : '{{ Request::segment(3) }}', _token : '{!! csrf_token() !!}'},
+	data: { mst_lampiran_berita_id : lampiran_id, mst_berita_id : '{{ Request::segment(4) }}', _token : '{!! csrf_token() !!}'},
 	type : 'post',
 	error:function(err){
 		alert('error! terjadi kesalahan pada sisi server!');
 	},
 	success:function(ok){
-		$('.modal-body').load('{!! URL::route("admin_berita.add_lampiran", Request::segment(3)) !!}');
+		$('.modal-body').load('{!! URL::route("admin_berita.add_lampiran", Request::segment(4)) !!}');
 	}
 })
 

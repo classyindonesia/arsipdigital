@@ -95,7 +95,7 @@ form_data ={
 	mst_folder_id	: mst_folder_id,
 	keterangan		: keterangan,
 	tgl_arsip		: tgl_arsip,
-	mst_user_id		: '{{ Request::segment(3) }}',
+	mst_user_id		: '{{ Request::segment(4) }}',
 	tgl_surat		: tgl_surat,
    	_token 			: '{!! csrf_token() !!}'
 }

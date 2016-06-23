@@ -27,7 +27,7 @@
 						<input type="hidden" name="token" value="{{ $token }}">
 
 						<?php 
-							$results =  DB::table('password_resets')->where('token', Request::segment(3))->first(); 
+							$results =  DB::table('password_resets')->where('token', Request::segment(4))->first(); 
 						if(count($results)>0){
 							?>
 							<input type='hidden' name='email' value='{!! $results->email !!}'>

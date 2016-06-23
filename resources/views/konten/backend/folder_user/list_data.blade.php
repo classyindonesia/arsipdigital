@@ -1,5 +1,5 @@
 <?php 
-$parent_id = Request::segment(3);
+$parent_id = Request::segment(4);
 $folder_parent = \App\Models\Mst\Folder::whereParentId($parent_id)->first();
 ?>
 @if(count($folder_parent)>0) 

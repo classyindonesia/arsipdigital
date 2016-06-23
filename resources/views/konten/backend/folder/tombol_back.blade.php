@@ -1,5 +1,5 @@
 <?php
-$id = Request::segment(3);
+$id = Request::segment(4);
 	?>
 
 @if($id != NULL)

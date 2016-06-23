@@ -1,11 +1,11 @@
 
 
 
-<input data-form-data='{"_token": "{!! csrf_token() !!}", "mst_arsip_id" :  "{{ Request::segment(3) }}"  }' 
+<input data-form-data='{"_token": "{!! csrf_token() !!}", "mst_arsip_id" :  "{{ Request::segment(4) }}"  }' 
     id="fileupload" 
     type="file"
     name="files[]" 
-    data-url="{!! URL::route('my_archive.do_upload_file', Request::segment(3)) !!}" 
+    data-url="{!! URL::route('my_archive.do_upload_file', Request::segment(4)) !!}" 
     multiple 
     class='btn btn-primary'
 />
@@ -90,7 +90,7 @@ $(function () {
         $('#close_alert').fadeIn();
     	console.log('Uploads finished');
         set_progress_bar(0);
-        $('#list_file_raw').load('{!! URL::route("my_archive.list_file_raw", Request::segment(3)) !!}');
+        $('#list_file_raw').load('{!! URL::route("my_archive.list_file_raw", Request::segment(4)) !!}');
 	},
 	fail: function (e, data) {
 		console.log(data.jqXHR)

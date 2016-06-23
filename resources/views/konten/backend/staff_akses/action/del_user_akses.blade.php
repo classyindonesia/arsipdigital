@@ -10,7 +10,7 @@ $('#del{{ $list->id }}').click(function(){
 		form_data = {
 			id : '{{ $list->id }}', 
 			_token : '{!! csrf_token() !!}',
-			mst_user_staff_id : '{{ Request::segment(3) }}'
+			mst_user_staff_id : '{{ Request::segment(4) }}'
 			}
 		$.ajax({
 			url : '{{ URL::route("staff_akses.del_akses") }}',
@@ -20,7 +20,7 @@ $('#del{{ $list->id }}').click(function(){
 				alert('error! terjadi sesuatu pada sisi server!');
 			},
 			success:function(ok){
-				$('.modal-body').load('{!! URL::route("staff_akses.list_user", Request::segment(3)) !!}')
+				$('.modal-body').load('{!! URL::route("staff_akses.list_user", Request::segment(4)) !!}')
 				//window.location.reload();
 			}
 		})

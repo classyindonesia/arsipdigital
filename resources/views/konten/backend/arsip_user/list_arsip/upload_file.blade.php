@@ -10,7 +10,7 @@
 
 <ol class="breadcrumb">
   <li><a href="{!! URL::route('arsip_user.index') !!}">Home</a></li>
-   <li> <a href="{!! URL::route('arsip_user.list_arsip', Request::segment(3)) !!}">{{ $user->nama }} </a></li>
+   <li> <a href="{!! URL::route('arsip_user.list_arsip', Request::segment(4)) !!}">{{ $user->nama }} </a></li>
   <li class="active"> {{ $arsip->nama }}</li>
 </ol>
 

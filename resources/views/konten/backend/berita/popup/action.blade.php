@@ -12,7 +12,7 @@ $('#del{{ $list->id }}').click(function(){
 				alert('error! terjadi sesuatu pada sisi server!');
 			},
 			success:function(ok){
-				$('.modal-body').load('{!! URL::route("admin_berita.add_lampiran", Request::segment(3)) !!}');			
+				$('.modal-body').load('{!! URL::route("admin_berita.add_lampiran", Request::segment(4)) !!}');			
 			}
 		})
 	}

@@ -13,7 +13,7 @@
 
 
 @section('main_konten') 
-	@if(Request::segment(3) != NULL)
+	@if(Request::segment(4) != NULL)
 		@include('konten.backend.berita.create.form_edit')
 	@else
 		@include('konten.backend.berita.create.form_create')
