@@ -17,7 +17,7 @@ class BeritaController extends Controller {
 
 	public function public_berita($slug){
 		$hashids = new \Hashids\Hashids('qertymyr');
-		$berita = Berita::findBySlug($slug);
+		$berita = Berita::where('slug', $slug)->first();
 		if($berita->is_published == 0){
 			abort(404);
 		}
@@ -33,7 +33,12 @@ class BeritaController extends Controller {
 				
 		$f = LampiranBerita::find($id);
 		if(count($f)>0){
-			return response()->download(storage_path('lampiran/'.$f->nama_file_tersimpan), $f->nama_file_asli);			
+			$pathToFile = storage_path('lampiran/'.$f->nama_file_tersimpan);
+			if(file_exists($pathToFile)){
+				return response()->download($pathToFile, $f->nama_file_asli);							
+			}else{
+				return response('error, file tdk ditemukan dalam server!', 404);
+			}
 		}else{
 			abort(404);
 		}		

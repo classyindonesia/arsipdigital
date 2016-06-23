@@ -59,4 +59,5 @@
 	require app_path('Http/routes/public/file.php');
 	require app_path('Http/routes/public/galery.php');
 	require app_path('Http/routes/public/feed.php');
+	require app_path('Http/routes/public/register.php');
 

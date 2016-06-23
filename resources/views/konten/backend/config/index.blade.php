@@ -26,6 +26,7 @@
     @include('konten.backend.config.list_config.login_publik')
     @include('konten.backend.config.list_config.nama_pencarian')
     @include('konten.backend.config.list_config.show_galery_frontend')
+    @include('konten.backend.config.list_config.show_registrasi_frontend')
 
 </table>
 

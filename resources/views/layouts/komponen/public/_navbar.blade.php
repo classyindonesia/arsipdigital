@@ -6,6 +6,8 @@
 
 
 
+
+
 @if($sv->get_val('config_show_galery') == 1)
        <li @if(isset($galery_home)) class='active' @endif><a href="{!! URL::route('galery.index') !!}">  
         <i class='fa fa-image'></i> galery</a></li>
@@ -22,10 +24,16 @@
 
 
       @if($sv->get_val('config_password_frontend') == 1)
-      <li @if(isset($reset_password_home)) class='active' @endif><a href="/password/email">
-        <i class='fa fa-envelope'></i> lupa password</a></li>  
-        @endif      
+        <li @if(isset($reset_password_home)) class='active' @endif><a href="/password/email">
+            <i class='fa fa-envelope'></i> lupa password</a>
+        </li>  
+      @endif      
 
+      @if($sv->get_val('config_show_register') == 1)
+             <li @if(isset($frontend_register_home)) class='active' @endif>
+                <a href="{!! route('frontend_register.index') !!}">  
+              <i class='fa fa-user'></i> Pendaftaran</a></li>
+      @endif
 
       @if($sv->get_val('config_login_frontend') == 0)
       <li>

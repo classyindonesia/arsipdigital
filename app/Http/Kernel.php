@@ -36,7 +36,8 @@ class Kernel extends HttpKernel {
 		'akses_ke_arsip_user'		=> 'App\Http\Middleware\StaffAccessToUserArchive',
 		'akses_pencarian_publik'	=> 'App\Http\Middleware\AksesPencarianPublik',
 		'akses_password_publik'		=> 'App\Http\Middleware\AksesResetPasswordPublik',
-		'akses_galery_frontend'		=> 'App\Http\Middleware\aksesGaleryFrontend'
+		'akses_galery_frontend'		=> 'App\Http\Middleware\aksesGaleryFrontend',
+		'akses_registrasi_frontend'	=> 'App\Http\Middleware\aksesRegistrasiFrontend',
 	];
 
 }

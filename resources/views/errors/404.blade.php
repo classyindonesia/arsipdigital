@@ -28,13 +28,16 @@
 			.title {
 				font-size: 72px;
 				margin-bottom: 40px;
+				font-weight: bolder;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title"> {!! env('PESAN_ERROR_404', "variable pesan error : PESAN_ERROR_404") !!} </div>
+				<div class="title"> 
+					{!! env('PESAN_ERROR_404', "variable pesan error : PESAN_ERROR_404") !!} 
+				</div>
 			</div>
 		</div>
 	</body>

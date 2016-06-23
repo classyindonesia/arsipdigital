@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', env('NAMA_APP'))</title>
-<link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+{{-- <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'> --}}
     @include('layouts.komponen.public.head')
   </head>
      <body> 

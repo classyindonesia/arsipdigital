@@ -1,0 +1,81 @@
+<?php 
+
+namespace Repo\Eloquent\Mst;
+
+use App\Models\Mst\UserRegistration as Model;
+use Illuminate\Http\Request;
+use Repo\Contracts\Mst\UserRegistrationRepoInterface;
+use Repo\Filters\Mst\UserRegistrationFilters;
+
+class UserRegistrationRepo implements UserRegistrationRepoInterface
+{
+
+	protected $model;
+
+	public function __construct(Model $model)
+	{
+		$this->model = $model;
+	}
+
+	/* standart */
+  
+	public function all($perPage = null, array $filter = [])
+	{
+		return $this->filter_data($filter, $perPage);			
+	}
+
+	public function find($id)
+	{
+		return $this->model->find($id);
+	}
+
+	public function create(array $data)
+	{
+		return $this->model->create($data);
+	}
+
+	public function update($id, array $data)
+	{
+		$this->model->where('id', '=', $id)->update($data);
+		$q = $this->find($id);
+		return $q;
+	}
+
+	public function delete($id)
+	{
+		$q = $this->find($id);
+		return $q->delete();
+	}
+
+
+	public function findBy(array $data = [])
+	{
+		$data = new Request($data);
+		$data = new UserRegistrationFilters($data);
+			$q =  $this->model
+					   ->filter($data)
+					   ->first();			
+		return $q;
+	}	
+
+
+	public function filter_data(array $data = [], $perPage = null)
+	{
+		$data = new Request($data);
+		$data = new UserRegistrationFilters($data);
+		if($perPage == null){
+			$q =  $this->model
+					   ->filter($data)
+					   ->orderBy('id', 'DESC')
+					   ->get();			
+		}else{
+			$q =  $this->model
+					   ->filter($data)
+					   ->orderBy('id', 'DESC')
+					   ->paginate($perPage);			
+		}
+
+		return $q;
+	}	
+
+}
