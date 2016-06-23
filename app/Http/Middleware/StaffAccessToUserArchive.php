@@ -27,7 +27,7 @@ class StaffAccessToUserArchive {
 				return response('Unauthorized.', 401);
 			}else{
 				$akses = AksesStaff::where('mst_user_staff_id', '=', Auth::user()->id)
-				->where('mst_user_id', '=', $request->segment(3))
+				->where('mst_user_id', '=', $request->segment(4))
 				->get();
 				if(count($akses)<=0){
 					return response('Unauthorized.', 401);

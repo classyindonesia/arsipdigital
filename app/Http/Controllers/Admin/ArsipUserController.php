@@ -1,22 +1,25 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Auth;
 use App\Models\Mst\AksesStaff;
 use App\Models\Mst\Arsip;
-
-use App\Models\Mst\User;
 use App\Models\Mst\File;
 use App\Models\Mst\Folder;
+use App\Models\Mst\User;
+use Auth;
 use Illuminate\Session\Store as Session;
+use Repo\Contracts\Mst\ArsipRepoInterface;
 
 
 class ArsipUserController extends Controller{
 
 	private $base_view = 'konten.backend.arsip_user.';
+	protected $arsip;
+	private $perPage = 10;
 
-	public function __construct(Session $session){
+	public function __construct(Session $session, ArsipRepoInterface $arsip){
 		$this->session = $session;
+		$this->arsip = $arsip;
 		view()->share('base_view', $this->base_view);
 		view()->share('arsip_user_home', true);
 	}

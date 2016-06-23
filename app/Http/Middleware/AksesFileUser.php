@@ -38,7 +38,7 @@ class AksesFileUser {
 			}
 		}else{
 			if( $level == 3){
-				$file = File::find($request->segment(3));
+				$file = File::find($request->segment(4));
 				if($file->mst_user->id != $this->auth->user()->id){
 					return response('Unauthorized.', 401);
 				}
