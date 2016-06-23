@@ -31,11 +31,7 @@ class doUploadFileArsipService
 		$files = $this->request->file('files');
 			 foreach ($files as $file) {
 				try {
-					// $name = $arsip->nama.'_'.date('Y-m-d H:i');		
 						$size = $file->getSize();
-					 	// $name = $file->getClientOriginalName();					 	
-					 	// $name = pathinfo($name, PATHINFO_FILENAME);
-					 	// $name = str_limit($name, 40, '').'_'.date('Y-m-d H:i');		
 					 	$name = $arsip->nama.'_'.\Fungsi::date_to_tgl(date('Y-m-d')).'_'.date('H-i-s');				 	
 				    	$nama_file_db = str_slug($name, '_').'.'.$file->getClientOriginalExtension();
 
@@ -57,7 +53,6 @@ class doUploadFileArsipService
 					 	$f->handle_file($nama_file_to_server);
 					} catch(Exception $e) {
 				 		$name = $file->getClientOriginalName().' gagal tersimpan!';
-				 		//$results[] = compact('name');   
 			 		}
 			 	
 			 	$results[] = compact('name');
