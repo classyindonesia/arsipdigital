@@ -5,11 +5,8 @@
 @section('title_header')
 
 
-			<button   id='simpan' class='btn btn-primary pull-right'><i class='fa fa-floppy-o'></i> simpan</button>
-
-
-
-
+	@include($base_view.'komponen.tombol_simpan') 
+	@include($base_view.'komponen.tombol_export_excel') 
   <h1 class='title_header  '>My Profile  </h1>
 	<hr>
 @stop

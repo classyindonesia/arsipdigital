@@ -11,6 +11,8 @@ use App\Models\Ref\Agama;
 use App\Models\Ref\Kota;
 use App\Models\Ref\StatusIkatan;
 use App\Models\Ref\StatusPernikahan;
+use App\Services\MyProfile\exportExcelProfileService;
+use App\Services\MyProfile\updatePasswordService;
 use App\Services\MyProfile\uploadAvatarService;
 use Hash, Auth, Image;
 use Illuminate\Http\Request;
@@ -20,9 +22,11 @@ class MyProfileController extends Controller
 {
  	
  	protected $data_user;
+ 	private $base_view = 'konten.backend.my_profile.';
 
 	public function __construct(DataUserRepoInterface $data_user)
 	{
+		view()->share('base_view', $this->base_view);
 		$this->data_user = $data_user;
 		view()->share('my_profile', true);
 	}
@@ -37,7 +41,7 @@ class MyProfileController extends Controller
 	 			'ref_status_ikatan', 'data_user', 'ref_status_pernikahan',
 	 			'agama', 'kota'
  			);
- 		return view('konten.backend.my_profile.index', $vars);
+ 		return view($this->base_view.'index', $vars);
  	}
 
  	public function update(UpdateMyProfile $request){
@@ -48,7 +52,8 @@ class MyProfileController extends Controller
  	public function change_avatar(){
 		$max = explode('M', ini_get("upload_max_filesize"));
 		$max_upload = $max[0] * 1048576; 		
- 		return view('konten.backend.my_profile.popup.form_change_avatar', compact('max_upload'));
+		$vars = compact('max_upload');
+ 		return view($this->base_view.'popup.form_change_avatar', $vars);
  	}
 
  	public function do_change_avatar(uploadAvatarService $upload){
@@ -56,21 +61,16 @@ class MyProfileController extends Controller
  	}
 
  	public function change_password(){
- 		return view('konten.backend.my_profile.popup.change_password');
+ 		return view($this->base_view.'popup.change_password');
  	}
 
- 	public function update_password(UpdatePassword $request){
- 		$old_password = Auth::user()->password;
- 		if (Hash::check($request->password_lama, $old_password)){
-			    // The passwords match...
- 				$u = User::find(Auth::user()->id);
- 				$u->password = $request->password_baru;
- 				$u->save();
- 				return 'ok';
-			}else{
-		 		$response = ['error' => 'password salah! '];
-		 		return response()->json($response, 422);				
-			}
+ 	public function update_password(updatePasswordService $update){
+ 		return $update->handle();
+ 	}
+
+ 	public function export_profile_excel(exportExcelProfileService $export)
+ 	{
+ 		return $export->handle(\Auth::user()->id);
  	}
 
  }
