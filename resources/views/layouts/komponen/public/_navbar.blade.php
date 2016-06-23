@@ -52,4 +52,13 @@ $('#login_page').click(function(){
         @endif  
 
 
+      @if(Auth::check())
+          <li>
+              <a href="{!! route('home.index') !!}">
+                <i class='fa fa-server'></i> dashboard
+              </a>
+          </li>  
+        @endif
+
+
 </ul>

@@ -56,7 +56,7 @@ class LoginController extends Controller {
 			return $this->redirectPath;
 		}
 
-		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
+		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/backend';
 	}
 
 

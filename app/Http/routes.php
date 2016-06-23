@@ -1,19 +1,15 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
+use App\Models\Mst\Berita;
  
+Route::get('/', function(){
+		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->take(8)->get();
+		return view('konten.frontend.auth.login.index', compact('berita'));
+});
 
- 
+
+ Route::group(['prefix' => 'backend'], function(){
+
 	require app_path('Http/routes/admin_home.php');
 	require app_path('Http/routes/admin_users.php');
 	require app_path('Http/routes/admin_rak.php');
@@ -44,20 +40,31 @@
 	require app_path('Http/routes/berita.php');
 	require app_path('Http/routes/lampiran_berita.php');
 
-
-
 	/* hanya utk user */
 	require app_path('Http/routes/user/arsip_saya.php');
 	require app_path('Http/routes/user/list_folder.php');
 
+ });
+ 
+
+
+
 
 	/* public */
-	require app_path('Http/routes/public/berita.php');
 	require app_path('Http/routes/public/auth.php');
 	require app_path('Http/routes/public/pengguna.php');
 	require app_path('Http/routes/public/password.php');
-	require app_path('Http/routes/public/file.php');
-	require app_path('Http/routes/public/galery.php');
+	
+	
 	require app_path('Http/routes/public/feed.php');
 	require app_path('Http/routes/public/register.php');
+
+	// ini juga root-path+1 segment
+	require app_path('Http/routes/public/file.php');
+
+	// route ini jg menggunakan root-path+1 segment
+	require app_path('Http/routes/public/galery.php');
+
+	// menggunakan root-path/{slug}, jadi harus ditempatkan yg paling bawah
+	require app_path('Http/routes/public/berita.php');
 
