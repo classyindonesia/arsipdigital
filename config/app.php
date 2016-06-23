@@ -155,6 +155,8 @@ return [
 		Intervention\Image\ImageServiceProvider::class,
 		'Maatwebsite\Excel\ExcelServiceProvider',
 		Cviebrock\EloquentSluggable\ServiceProvider::class,
+		Roumen\Feed\FeedServiceProvider::class,
+
 
 	],
 
@@ -214,7 +216,9 @@ return [
 		'Reader'	=> '\PHPExcelReader\SpreadsheetReader',
 		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
 		'Gravatar'	=> 'App\Helpers\Gravatar',
-		'SetupVariable'	=> 'App\Models\SetupVariable'
+		'SetupVariable'	=> 'App\Models\SetupVariable',
+		'Feed' => Roumen\Feed\Feed::class,
+
 
 	],
 

@@ -18,6 +18,9 @@ class Berita extends Eloquent
 	protected $fillable = ['judul', 'slug', 'artikel',
 					'is_published', 'komentar', 'mst_user_id'];
 	protected $table = 'mst_berita';
+	protected $appends = [
+		'fk__mst_user'
+	];
 
     public function sluggable()
     {
@@ -26,6 +29,16 @@ class Berita extends Eloquent
                 'source' => 'judul'
             ]
         ];
+    }
+
+    public function getFkMstUserAttribute()
+    {
+
+    	if(count($this->mst_user)>0){
+    		if(count($this->mst_user->data_user)>0){
+	    		return $this->mst_user->data_user->nama;    			
+    		}
+    	}
     }
 
  
