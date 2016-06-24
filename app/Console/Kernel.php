@@ -24,6 +24,10 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
+		// backup db ke email
+		$schedule->command('backup_db_to_email')
+				 ->dailyAt(env('JAM_BACKUP_DB'), '23:00');	
+
 		$schedule->command('registration:clear')
 				 ->dailyAt('23:00');		
 		
