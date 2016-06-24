@@ -35,20 +35,21 @@
               <i class='fa fa-user'></i> Pendaftaran</a></li>
       @endif
 
-      @if($sv->get_val('config_login_frontend') == 0)
-      <li>
-           <a id='login_page' href="#">
-            <i class='fa fa-lock'></i> LOGIN
-          </a>
-      </li>  
-<script type="text/javascript">
-$('#login_page').click(function(){
-  $('#myModal').modal('show');
-  $('.modal-body').load('{!! route("auth.login") !!}')
-  return false;
-})
-</script>
-
+      @if(Auth::guest())
+        @if($sv->get_val('config_login_frontend') == 0)
+          <li>
+               <a id='login_page' href="#">
+                <i class='fa fa-lock'></i> LOGIN
+              </a>
+          </li>  
+            <script type="text/javascript">
+            $('#login_page').click(function(){
+              $('#myModal').modal('show');
+              $('.modal-body').load('{!! route("auth.login") !!}')
+              return false;
+            })
+            </script>
+          @endif  
         @endif  
 
 

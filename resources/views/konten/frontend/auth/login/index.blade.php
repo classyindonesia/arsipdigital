@@ -24,9 +24,9 @@
 
 		<div class="col-md-10 col-md-offset-2">
 
- 
+ 		@if(Auth::guest())
 		@include('konten.frontend.auth.login.form_login')
-
+		@endif
 
 		@include('konten.frontend.auth.login.foto_slide')
 

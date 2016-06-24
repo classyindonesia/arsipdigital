@@ -7,11 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          @if(Auth::check())
-            <a class="navbar-brand" href="{!! URL::route('home.index') !!}"><i class='{!! env("ICON_DEPAN") !!}'></i> {!! env("NAMA_APP") !!} </a>
-          @else
             <a class="navbar-brand" href="/"><i class='{!! env("ICON_DEPAN") !!}'></i> {!! env("NAMA_APP") !!} </a>
-          @endif
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 

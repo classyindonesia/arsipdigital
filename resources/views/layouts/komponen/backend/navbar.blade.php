@@ -14,7 +14,7 @@
         <span class="icon-bar"></span>
       </button>
 
-            <a style='margin-top:-10px;margin-left:2em;' class="navbar-brand" href="{{ URL::route('home.index') }}"> 
+            <a style='margin-top:-10px;margin-left:2em;' class="navbar-brand" href="/"> 
               <i style='font-size:30px;' class="fa fa-cubes"></i> {{ env('NAMA_APP') }}</a>
  
     </div>
