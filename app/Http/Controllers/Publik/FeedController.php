@@ -53,4 +53,10 @@ class FeedController extends Controller
     return $feed->render('atom');  	
     }
 
+    public function rss()
+    {
+      return redirect()->to('/feed');      
+    }
+
+
 }

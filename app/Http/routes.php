@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Mst\Berita;
+
  
-Route::get('/', function(){
-		$berita = Berita::orderBy('id', 'DESC')->whereIsPublished(1)->take(8)->get();
-		return view('konten.frontend.auth.login.index', compact('berita'));
-});
+Route::get('/', [
+	'as'	=> 'frontend_home.index',
+	'uses'	=> 'Publik\HomeController@index'
+]);
 
 
  Route::group(['prefix' => 'backend'], function(){
