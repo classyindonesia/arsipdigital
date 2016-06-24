@@ -79,8 +79,11 @@ class ResetPasswordsController extends Controller {
 		{
 			throw new NotFoundHttpException;
 		}
-
-		return view('konten.frontend.auth.reset.form_reset')->with('token', $token);
+		$results =  \DB::table('password_resets')->where('token', $token)->first(); 
+		if(count($results)<=0){
+			abort(404);
+		}
+		return view('konten.frontend.auth.reset.form_reset', compact('token', 'results'));
 	}
 
 	/**

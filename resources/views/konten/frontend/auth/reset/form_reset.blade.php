@@ -26,17 +26,8 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="token" value="{{ $token }}">
 
-						<?php 
-							$results =  DB::table('password_resets')->where('token', Request::segment(4))->first(); 
-						if(count($results)>0){
-							?>
 							<input type='hidden' name='email' value='{!! $results->email !!}'>
-							<?php
-							
-						}else{
-							abort(404);
-						}
-						?>
+ 
 						
 						
 
