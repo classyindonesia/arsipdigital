@@ -18,6 +18,12 @@ class AksesStaffFilters extends QueryFilters
     	});
  	}
 
+    public function userId($mst_user_id)
+    {
+        return $this->builder->where('mst_user_id', '=', $mst_user_id);
+    }
+
+
     public function Akses($mst_user_staff_id)
     {
 	     return  $this->builder->where('mst_user_staff_id', '=', $mst_user_staff_id);

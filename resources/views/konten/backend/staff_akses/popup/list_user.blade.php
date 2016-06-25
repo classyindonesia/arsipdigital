@@ -4,17 +4,15 @@
 
 
 
-<i style='cursor:pointer;' data-toggle='tooltip' title='add user' class='fa fa-plus-square pull-right' id='add'></i>
+@include($base_view.'popup.action.add')
+@include($base_view.'popup.action.add_all')
+
+
 <script type="text/javascript">
-$('#add').click(function(){
-	$('.modal-body').load('{!! URL::route("staff_akses.add_list_user", Request::segment(4)) !!}');
-})
-
-
-
 $('#myModal').on('hidden.bs.modal', function (e) {
 	window.location.reload();
 })
+</script>
 
 
 

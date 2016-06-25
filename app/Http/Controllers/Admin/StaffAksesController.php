@@ -1,15 +1,22 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-/* models */
-use App\Models\Mst\User;
 use App\Models\Mst\AksesStaff;
+use App\Models\Mst\User;
+use Illuminate\Http\Request;
+use Repo\Contracts\Mst\AksesStaffRepoInterface;
+use Repo\Contracts\Mst\UserRepoInterface;
 
 class StaffAksesController extends Controller{
 
-	public function __construct(){
+	private $base_view = 'konten.backend.staff_akses.';
+	protected $user;
+	protected $akses_staff;
+
+	public function __construct(UserRepoInterface $user, AksesStaffRepoInterface $akses_staff){
+		$this->akses_staff = $akses_staff;
+		$this->user = $user;
+		view()->share('base_view', $this->base_view);
 		view()->share('staff_akses_home', true);
 	}
 
@@ -50,6 +57,20 @@ class StaffAksesController extends Controller{
 				'mst_user_id'	=> $request->input('mst_user_id')
 			];
 			AksesStaff::create($i);
+		}
+		return 'ok';
+	}
+
+	public function insert_all_user(Request $request)
+	{
+		$user = $this->user->all(null, ['level' => 3]);
+		foreach($user as $list){
+			$filter_check = ['userId' => $list->id, 'Akses' => $request->mst_user_staff_id];
+			$check = $this->akses_staff->all(null, $filter_check);
+			if(count($check)<=0){
+				$data = ['mst_user_id' => $list->id, 'mst_user_staff_id' => $request->mst_user_staff_id];
+				$this->akses_staff->create($data);				
+			}
 		}
 		return 'ok';
 	}

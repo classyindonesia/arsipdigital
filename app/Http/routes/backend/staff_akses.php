@@ -30,3 +30,9 @@ Route::post('staff_akses/update_akses', [
 	'uses'			=> 'Admin\StaffAksesController@update_akses',
 	'as'			=> 'staff_akses.update_akses'
 	]);
+
+Route::post('staff_akses/insert_all_user', [
+	'middleware'	=> 'hanya_admin',
+	'uses'			=> 'Admin\StaffAksesController@insert_all_user',
+	'as'			=> 'staff_akses.insert_all_user'
+	]);
