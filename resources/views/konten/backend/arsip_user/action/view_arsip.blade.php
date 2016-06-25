@@ -1,1 +1,1 @@
-<a class='label label-primary' href="{!! URL::route('arsip_user.list_arsip', $list2->id) !!}">view arsip</a>
+<a class='label label-primary' href="{!! URL::route('arsip_user.list_arsip', $list->id) !!}">view arsip</a>

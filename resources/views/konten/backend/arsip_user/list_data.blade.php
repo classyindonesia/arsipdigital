@@ -12,15 +12,13 @@
 		<?php $no = $arsip_user->firstItem(); ?>
 @foreach($arsip_user as $list)
 		<tr>
-			@foreach($list->mst_user as $list2)
-				<td width='5%' class='text-center'>{{ $no }}</td>
-				<td> {!! $list2->data_user->nama !!} </td>
-				<td width='20%'  > {!! $list2->email !!} </td>
-				<td class='text-center'>{{ count($list->mst_arsip) }}</td>
-				<td class='text-center'>
-					@include('konten.backend.arsip_user.action')
-				</td>
-			@endforeach
+			<td width='5%' class='text-center'>{{ $no }}</td>
+			<td> {!! $list->mst_user->data_user->nama !!} </td>
+			<td width='20%'  > {!! $list->mst_user->email !!} </td>
+			<td class='text-center'>{{ count($list->mst_arsip) }}</td>
+			<td class='text-center'>
+				@include('konten.backend.arsip_user.action')
+			</td>
 		</tr>
 		<?php $no++; ?>
 @endforeach

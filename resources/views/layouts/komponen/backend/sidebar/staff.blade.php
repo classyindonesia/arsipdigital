@@ -19,12 +19,16 @@
                         </a>
                     </li>
 
-
-
-
                     <li @if(isset($my_profile)) class="active" @endif>
                         <a href="{{ URL::route('my_profile.index') }}">
                             <i class='fa fa-wrench'></i> Profil Saya
+                        </a>
+                    </li>
+
+
+                    <li @if(isset($backend_staff_user_home)) class="active" @endif>
+                        <a href="{{ route('backend_staff_user.index') }}">
+                            <i class='fa fa-users'></i> Pengguna
                         </a>
                     </li>
 

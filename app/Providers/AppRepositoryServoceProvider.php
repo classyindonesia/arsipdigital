@@ -23,6 +23,10 @@ class AppRepositoryServoceProvider extends ServiceProvider
      */
     public function register()
     {
+
+        $this->app->bind('Repo\Contracts\Mst\AksesStaffRepoInterface',
+            'Repo\Eloquent\Mst\AksesStaffRepo');
+
         $this->app->bind('Repo\Contracts\Mst\UserRegistrationRepoInterface',
             'Repo\Eloquent\Mst\UserRegistrationRepo');
 
