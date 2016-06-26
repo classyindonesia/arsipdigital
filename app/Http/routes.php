@@ -33,6 +33,7 @@ Route::get('/', [
 	require app_path('Http/routes/backend/galery.php');
 	require app_path('Http/routes/backend/album_galery.php');
 	require app_path('Http/routes/backend/menu.php');
+	require app_path('Http/routes/backend/password.php');
 
 
 	/*hanya utk level staff */

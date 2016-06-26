@@ -50,6 +50,11 @@
                         </a>
                     </li>
 
+                    <li @if(isset($backend_password_home)) class="active" @endif>
+                        <a href="{{ URL::route('backend_password.index') }}">
+                            <i class='fa fa-lock'></i> Password
+                        </a>
+                    </li>
 
 
                     <li @if(isset($my_profile)) class="active" @endif>

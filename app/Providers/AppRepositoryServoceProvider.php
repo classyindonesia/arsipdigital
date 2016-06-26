@@ -24,6 +24,10 @@ class AppRepositoryServoceProvider extends ServiceProvider
     public function register()
     {
 
+
+        $this->app->bind('Repo\Contracts\Mst\PasswordMediaRepoInterface',
+            'Repo\Eloquent\Mst\PasswordMediaRepo');
+
         $this->app->bind('Repo\Contracts\Mst\AksesStaffRepoInterface',
             'Repo\Eloquent\Mst\AksesStaffRepo');
 
