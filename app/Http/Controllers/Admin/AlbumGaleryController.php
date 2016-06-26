@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\createAlbumGalery;
 use App\Models\Mst\AlbumGalery;
+use App\Services\AlbumGalery\DelAlbumService;
 use Illuminate\Http\Request;
 
 class AlbumGaleryController extends Controller {
@@ -29,6 +30,7 @@ class AlbumGaleryController extends Controller {
 	public function store(createAlbumGalery $request){
 		$data = [
 		'judul'	=> $request->judul,
+		'mst_password_media_id'	=> $request->mst_password_media_id,
 		'keterangan'	=> $request->keterangan
 		];
 		AlbumGalery::create($data);
@@ -36,7 +38,7 @@ class AlbumGaleryController extends Controller {
 		return 'ok';
 	}
 
-	public function del(delAlbumService $delAlbum){
+	public function del(DelAlbumService $delAlbum){
 		return $delAlbum->handle();
 	}
 

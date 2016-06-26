@@ -10,7 +10,7 @@ class AlbumGalery extends Eloquent
 {
 
 	protected $table = 'mst_album_galery';
-	protected $fillable = ['judul', 'keterangan'];
+	protected $fillable = ['judul', 'keterangan', 'mst_password_media_id'];
 
 
  

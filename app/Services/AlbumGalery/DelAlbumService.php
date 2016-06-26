@@ -16,7 +16,7 @@ class DelAlbumService
 
 	public function handle()
 	{
-		$a = AlbumGalery::findOrFail($request->id);
+		$a = AlbumGalery::findOrFail($this->request->id);
 		foreach($a->mst_galery as $list){
 			//hapus gambar asli
 			$path = public_path('upload/galery/'.$list->nama_file);
