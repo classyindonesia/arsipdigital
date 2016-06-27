@@ -18,6 +18,17 @@ Route::group(['middleware' => ['akses_galery_frontend']], function()
 		'as'			=> 'galery.image'
 		]);
 
+	Route::post('galery/submit_password_album', [
+		'uses'			=> 'Publik\GaleryController@submit_password_album',
+		'as'			=> 'galery.submit_password_album'
+		]);
+
+	Route::post('galery/submit_lock_album', [
+		'uses'			=> 'Publik\GaleryController@submit_lock_album',
+		'as'			=> 'galery.submit_lock_album'
+		]);
+
+
 
 });
 

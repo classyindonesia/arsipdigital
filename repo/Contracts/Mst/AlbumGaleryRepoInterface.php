@@ -2,11 +2,9 @@
 
 namespace Repo\Contracts\Mst;
 
-interface PasswordMediaRepoInterface 
+interface AlbumGaleryRepoInterface
 {
 
-	public function getAllDropdown(); 
-	
 	public function all($perPage = null, array $filter = []);
 
 	public function find($id);
@@ -18,6 +16,7 @@ interface PasswordMediaRepoInterface
 	public function delete($id);
 
 	public function filter_data(array $data = [], $perPage = null);
+
 
 
 }

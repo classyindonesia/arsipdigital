@@ -18,6 +18,11 @@
 </div>
 
 
+<div class="form-group">
+ {!! Form::label('mst_password_media_id', 'Password album : ') !!}
+ {!! Form::select('mst_password_media_id', $password, '', ['id' => 'mst_password_media_id', 'class' => 'form-control']) !!}
+</div>
+
 
 
 
@@ -34,6 +39,7 @@ keterangan = $('#keterangan').val();
 
 form_data ={
 	judul : judul,
+	mst_password_media_id : $('#mst_password_media_id').val(),
 	keterangan : keterangan,
  	_token : '{!! csrf_token() !!}'
 }

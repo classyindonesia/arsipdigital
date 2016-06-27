@@ -10,6 +10,7 @@
 			<th>Judul Album</th>
 			<th>Jml File</th>
 			<th>keterangan</th>
+			<th width="50px">status</th>
 			<th width="100px" class="text-center">action</th>
 		</tr>
 	</thead>
@@ -21,6 +22,13 @@
 			<td>{!! $list->judul !!}</td>
 			<td>{!! count($list->mst_galery) !!}</td>
 			<td>{!! $list->keterangan !!}</td>
+			<td class="text-center">
+				@if($list->mst_password_media_id != null)
+					<i class='fa fa-lock text-danger'></i>
+				@else
+					<i class='fa fa-check text-success'></i>
+				@endif
+			</td>
 			<td class="text-center"> @include($base_view.'action') </td>
 		</tr>
 		<?php $no++; ?>

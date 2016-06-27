@@ -17,6 +17,10 @@
  <input value="{!! $a->keterangan !!}" type="text" name='keterangan' id='keterangan' placeholder='keterangan album...' class="form-control">
 </div>
 
+<div class="form-group">
+ {!! Form::label('mst_password_media_id', 'Password album : ') !!}
+ {!! Form::select('mst_password_media_id', $password, $a->mst_password_media_id, ['id' => 'mst_password_media_id', 'class' => 'form-control']) !!}
+</div>
 
 
 
@@ -33,6 +37,7 @@ keterangan = $('#keterangan').val();
  
 
 form_data ={
+	mst_password_media_id  : $('#mst_password_media_id').val(),
 	judul : judul,
 	keterangan : keterangan,
 	id : '{!! $a->id !!}',

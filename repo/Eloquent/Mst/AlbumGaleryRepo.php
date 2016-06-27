@@ -2,12 +2,12 @@
 
 namespace Repo\Eloquent\Mst;
 
-use App\Models\Mst\PasswordMedia as Model;
+use App\Models\Mst\AlbumGalery as Model;
 use Illuminate\Http\Request;
-use Repo\Contracts\Mst\PasswordMediaRepoInterface;
-use Repo\Filters\Mst\PasswordMediaFilters;
+use Repo\Contracts\Mst\AlbumGaleryRepoInterface;
+use Repo\Filters\Mst\AlbumGaleryFilters;
 
-class PasswordMediaRepo implements PasswordMediaRepoInterface
+class AlbumGaleryRepo implements AlbumGaleryRepoInterface
 {
 
 	protected $model;
@@ -16,18 +16,6 @@ class PasswordMediaRepo implements PasswordMediaRepoInterface
 	{
 		$this->model = $model;
 	}
-
-
-    public function getAllDropdown()
-    {
-        $data = ['' => '-pilih password-'];
-        foreach ($this->all() as $list) {
-            $data[$list->id] = $list->nama;
-        }
-        return $data;
-    }
-
-
 
 	/* standart */
   
@@ -63,7 +51,7 @@ class PasswordMediaRepo implements PasswordMediaRepoInterface
 	public function filter_data(array $data = [], $perPage = null)
 	{
 		$data = new Request($data);
-		$data = new PasswordMediaFilters($data);
+		$data = new AlbumGaleryFilters($data);
 		if($perPage == null){
 			$q =  $this->model
 					   ->filter($data)

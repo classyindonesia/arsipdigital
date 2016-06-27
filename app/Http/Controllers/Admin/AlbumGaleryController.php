@@ -6,15 +6,18 @@ use App\Http\Requests\createAlbumGalery;
 use App\Models\Mst\AlbumGalery;
 use App\Services\AlbumGalery\DelAlbumService;
 use Illuminate\Http\Request;
+use Repo\Contracts\Mst\PasswordMediaRepoInterface;
 
 class AlbumGaleryController extends Controller {
 
 		
 	public $base_view = 'konten.backend.album_galery.';
+	protected $password;
 
-	public function __construct(){
+	public function __construct(PasswordMediaRepoInterface $password){
 		view()->share('base_view', $this->base_view);
 		view()->share('album_galery', true);
+		$this->password = $password;
 	}
 
 
@@ -24,7 +27,8 @@ class AlbumGaleryController extends Controller {
 	}
 
 	public function add(){
-		return view($this->base_view.'add');
+		$password = $this->password->getAllDropdown();
+		return view($this->base_view.'add', compact('password'));
 	}
 
 	public function store(createAlbumGalery $request){
@@ -43,8 +47,10 @@ class AlbumGaleryController extends Controller {
 	}
 
 	public function edit($id){
+		$password = $this->password->getAllDropdown();
 		$a = AlbumGalery::findOrFail($id);
-		return view($this->base_view.'edit', compact('a'));
+		$vars = compact('a', 'password');
+		return view($this->base_view.'edit', $vars);
 	}
 
 	public function update(Request $request){
