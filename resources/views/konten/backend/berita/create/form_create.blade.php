@@ -17,18 +17,27 @@
 
 <hr>
 
-
-<div class='form-group'>
-	{!! Form::label('is_published', 'Status berita :') !!}
-	{!! Form::select('is_published', [1=>'published',0=>'draft'], 1, ['id' => 'is_published']) !!}
+<div class="row">
+	<div class="col-md-3">
+		<div class='form-group'>
+			{!! Form::label('mst_password_media_id', 'Password :') !!}
+			{!! Form::select('mst_password_media_id', $password, '', ['id' => 'mst_password_media_id', 'class' => 'form-control']) !!}
+		</div>		
+	</div>
+	<div class="col-md-3">
+		<div class='form-group'>
+			{!! Form::label('is_published', 'Status berita :') !!}
+			{!! Form::select('is_published', [1=>'published',0=>'draft'], 1, ['id' => 'is_published', 'class' => 'form-control']) !!}
+		</div>			
+	</div>
+	<div class="col-md-3">
+		<div class='form-group'>
+			{!! Form::label('komentar', 'Komentar :') !!}
+			{!! Form::select('komentar', [1=>'open',0=>'closed'], 1, ['id' => 'komentar', 'class' => 'form-control']) !!}
+		</div>			
+	</div>
 </div>
 
-
-
-<div class='form-group'>
-	{!! Form::label('komentar', 'Komentar :') !!}
-	{!! Form::select('komentar', [1=>'open',0=>'closed'], 1, ['id' => 'komentar']) !!}
-</div>
 
 
 
@@ -57,11 +66,12 @@ komentar = $('#komentar').val();
 artikel = CKEDITOR.instances["ckeditor"].getData() ;
 
 form_data ={
-	judul 			: judul,
-	artikel 		: artikel,
-	komentar 		: komentar,
-	is_published	: is_published,
- 	_token 			: '{!! csrf_token() !!}'
+	mst_password_media_id   : $('#mst_password_media_id').val(),
+	judul 					: judul,
+	artikel 				: artikel,
+	komentar 				: komentar,
+	is_published			: is_published,
+ 	_token 					: '{!! csrf_token() !!}'
 }
 $('#simpan').attr('disabled', 'disabled');
 	$.ajax({

@@ -14,17 +14,28 @@
 
 <hr> 
 
-<div class='form-group'>
-	{!! Form::label('is_published', 'Status berita :') !!}
-	{!! Form::select('is_published', [1=>'published',0=>'draft'], $berita->is_published, ['id' => 'is_published']) !!}
+ 
+<div class="row">
+	<div class="col-md-3">
+		<div class='form-group'>
+			{!! Form::label('mst_password_media_id', 'Password :') !!}
+			{!! Form::select('mst_password_media_id', $password, $berita->mst_password_media_id, ['id' => 'mst_password_media_id', 'class' => 'form-control']) !!}
+		</div>		
+	</div>
+	<div class="col-md-3">
+		<div class='form-group'>
+			{!! Form::label('is_published', 'Status berita :') !!}
+			{!! Form::select('is_published', [1=>'published',0=>'draft'], $berita->is_published, ['id' => 'is_published', 'class' => 'form-control']) !!}
+		</div>			
+	</div>
+	<div class="col-md-3">
+		<div class='form-group'>
+			{!! Form::label('komentar', 'Komentar :') !!}
+			{!! Form::select('komentar', [1=>'open',0=>'closed'], $berita->komentar, ['id' => 'komentar', 'class' => 'form-control']) !!}
+		</div>			
+	</div>
 </div>
 
-
-
-<div class='form-group'>
-	{!! Form::label('komentar', 'Komentar :') !!}
-	{!! Form::select('komentar', [1=>'open',0=>'closed'], $berita->komentar, ['id' => 'komentar']) !!}
-</div>
 
 
 
@@ -52,6 +63,7 @@ komentar = $('#komentar').val();
 artikel = CKEDITOR.instances["ckeditor"].getData() ;
 
 form_data ={
+	mst_password_media_id : $('#mst_password_media_id').val(),
 	id 				: {{ $berita->id }},
 	judul 			: judul,
 	artikel 		: artikel,

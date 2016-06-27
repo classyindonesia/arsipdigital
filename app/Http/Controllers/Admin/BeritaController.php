@@ -11,8 +11,9 @@ use App\Models\Mst\LampiranBerita;
 use App\Models\Mst\Vidio;
 use App\Services\Berita\doUploadGambarBeritaService;
 use Auth, Input, Session, Fungsi;
-use Repo\Contracts\Mst\BeritaRepoInterface;
 use Illuminate\Session\Store as getSession;
+use Repo\Contracts\Mst\BeritaRepoInterface;
+use Repo\Contracts\Mst\PasswordMediaRepoInterface;
 
 class BeritaController extends Controller
 {
@@ -21,9 +22,13 @@ class BeritaController extends Controller
 	protected $berita;
 	protected $session;
 	private $perPage = 10;
+	protected $password;
 
-	public function __construct(BeritaRepoInterface $berita, getSession $session)
-	{
+	public function __construct(BeritaRepoInterface $berita, 
+								getSession $session,
+								PasswordMediaRepoInterface $password
+	){
+		$this->password = $password;
 		$this->session = $session;
 		$this->berita = $berita;
 		view()->share('berita_home', true);
@@ -43,17 +48,21 @@ class BeritaController extends Controller
 
 
 	public function create(){
-		return view($this->base_view.'create.index');
+		$password = $this->password->getAllDropdown();
+		return view($this->base_view.'create.index', compact('password'));
 	}
 
 	public function edit($id){
+		$password = $this->password->getAllDropdown();
 		$berita = Berita::find($id);
-		return view($this->base_view.'create.index', compact('berita'));
+		$vars = compact('berita', 'password');
+		return view($this->base_view.'create.index', $vars);
 	}
 
 	public function insert(CreateOrUpdateBerita $request){
 		$data = [
 			'judul'		=> $request->judul,
+			'mst_password_media_id'	=> $request->mst_password_media_id,
 			'artikel'	=> $request->artikel,
 			'is_published'	=> $request->is_published,
 			'komentar'		=> $request->komentar,
@@ -66,6 +75,7 @@ class BeritaController extends Controller
 
 	public function update(CreateOrUpdateBerita $request){
 		$b = Berita::find($request->id);
+		$b->mst_password_media_id = $request->mst_password_media_id;
 		$b->judul			= $request->judul;
 		$b->artikel 		= $request->artikel;
 		$b->is_published 	= $request->is_published;

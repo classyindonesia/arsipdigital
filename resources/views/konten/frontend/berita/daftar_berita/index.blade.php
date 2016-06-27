@@ -26,7 +26,16 @@
 
 
     @foreach($berita as $list)
-      <b> <i class='fa fa-caret-right'></i> {{ $list->judul }}</b>
+      <b> <i class='fa fa-caret-right'></i> {{ $list->judul }}
+        @if($list->mst_password_media_id != null)
+            @if( session('berita_'.$list->id) != null && $list->mst_password_media_id != null)
+              <i class='fa fa-lock text-success'></i>
+            @else
+              <i class='fa fa-lock text-danger'></i>
+            @endif
+         @endif
+
+      </b>
       <br>
       {{ str_limit(strip_tags($list->artikel), $limit = 170, $end = '') }} 
         <a style='font-weight:bold;' href="{!! URL::route('berita.public_berita', $list->slug) !!}">selengkapnya...</a>

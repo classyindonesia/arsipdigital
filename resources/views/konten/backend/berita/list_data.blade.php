@@ -15,7 +15,12 @@
 @foreach($berita as $list)
 		<tr>
 			<td class='text-center'>{{ $no }}</td>
-			<td>{{ $list->judul }}</td>
+			<td>
+				{{ $list->judul }}
+				@if($list->mst_password_media_id != null)
+					<i class='fa fa-lock text-danger'></i>
+				@endif
+			</td>
 			<td> @if($list->is_published == 0) 
 					<span class='label label-warning'>draft</span> 
 				@else

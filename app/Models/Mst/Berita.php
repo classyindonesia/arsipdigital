@@ -1,10 +1,11 @@
 <?php namespace App\Models\Mst;
 
 use App\Models\Mst\BeritaToLampiran;
+use App\Models\Mst\PasswordMedia;
 use App\Models\Mst\User;
+use App\MyPackages\QueryFilters\Filterable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use App\MyPackages\QueryFilters\Filterable;
 
 class Berita extends Eloquent 
 {
@@ -16,7 +17,9 @@ class Berita extends Eloquent
 
 
 	protected $fillable = ['judul', 'slug', 'artikel',
-					'is_published', 'komentar', 'mst_user_id'];
+					'is_published', 'komentar', 'mst_user_id',
+					'mst_password_media_id'
+		];
 	protected $table = 'mst_berita';
 	protected $appends = [
 		'fk__mst_user'
@@ -41,6 +44,10 @@ class Berita extends Eloquent
     	}
     }
 
+    public function mst_password_media()
+    {
+    	return $this->belongsTo(PasswordMedia::class, 'mst_password_media_id');
+    }
  
 
 	public function mst_user()
