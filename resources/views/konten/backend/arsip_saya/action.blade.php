@@ -1,3 +1,5 @@
+@include('konten.backend.arsip_saya.action.send_to_email')
+||
 @include('konten.backend.arsip_saya.action.download_all_files')
 ||
 @include('konten.backend.arsip_saya.action.upload')

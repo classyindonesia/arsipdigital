@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateArsip;
 use App\Http\Requests\UpdateArsip;
+use App\Jobs\ArsipUser\sendFileArsipToEmailJob;
 use App\Models\Mst\Arsip;
 use App\Models\Mst\File;
 use App\Models\Mst\Folder;
@@ -200,6 +201,25 @@ class ArsipSayaController extends Controller {
 	public function download_all_files($mst_arsip_id, createZipService $create)
 	{
 		return $create->make($mst_arsip_id);
+	}
+
+	public function send_to_email($mst_arsip_id)
+	{
+		$arsip = $this->arsip->find($mst_arsip_id);
+
+		$size = $arsip->mst_file->sum('size');
+		$max_size = sendFileArsipToEmailJob::SIZE_FILE_ARSIP;
+		if($size > $max_size){
+			return 'ukuran file melebihi batas maksimal : '.\Fungsi::size($max_size);
+		}
+
+		return view($this->base_view.'popup.send_to_email', compact('arsip'));
+	}
+
+	public function do_send_to_email(Request $request)
+	{
+		$job = new sendFileArsipToEmailJob($request->email, $request->mst_arsip_id);
+		return $this->dispatch($job);		
 	}
 
 

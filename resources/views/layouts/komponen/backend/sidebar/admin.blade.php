@@ -63,6 +63,11 @@
                         </a>
                     </li>
 
+                    <li @if(isset($backend_filter_domain)) class="active" @endif>
+                        <a href="{{ URL::route('backend.filter_domain.index') }}">
+                            <i class='fa fa-list'></i> Filter Domain
+                        </a>
+                    </li>
 
 
                     <li @if(isset($my_profile)) class="active" @endif>

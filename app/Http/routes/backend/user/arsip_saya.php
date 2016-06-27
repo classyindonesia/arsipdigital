@@ -54,6 +54,17 @@ Route::group(['prefix' => 'my_archive', 'namespace' => 'Admin'], function(){
 			'uses'			=> 'ArsipSayaController@list_file_raw',
 			'as'			=> 'my_archive.list_file_raw'
 		]);
+
+		Route::get('send_to_email/{id}', [
+			'uses'			=> 'ArsipSayaController@send_to_email',
+			'as'			=> 'my_archive.send_to_email'
+		]);
+
+		Route::post('do_send_to_email', [
+			'uses'			=> 'ArsipSayaController@do_send_to_email',
+			'as'			=> 'my_archive.do_send_to_email'
+		]);		
+
 	});
 
 	Route::group(['middleware' => 'auth'], function(){

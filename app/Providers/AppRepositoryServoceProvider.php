@@ -23,6 +23,9 @@ class AppRepositoryServoceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind('Repo\Contracts\Mst\FilterDomainRepoInterface',
+            'Repo\Eloquent\Mst\FilterDomainRepo');
+
 
         $this->app->bind('Repo\Contracts\Mst\AlbumGaleryRepoInterface',
             'Repo\Eloquent\Mst\AlbumGaleryRepo');

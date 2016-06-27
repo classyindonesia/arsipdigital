@@ -26,6 +26,7 @@ Route::get('/', [
 	require app_path('Http/routes/backend/staff_akses.php');
 	require app_path('Http/routes/backend/admin_email.php');
 	require app_path('Http/routes/backend/admin_config.php');
+	require app_path('Http/routes/backend/admin_filter_domain.php');
 
 	/* level web */
 	require app_path('Http/routes/backend/admin_weblink.php');

@@ -7,10 +7,22 @@ Route::get('arsip_user', [
 	]);
 
 /* param=id mst_user table */
-Route::get('arsip_user/list_arsip/{id}', [
+Route::get('arsip_user/list_arsip/{mst_user_id}', [
 	'middleware'	=> 'akses_ke_arsip_user',
 	'uses'			=> 'Admin\ArsipUserController@list_arsip',
 	'as'			=> 'arsip_user.list_arsip'
+	]);
+
+Route::get('arsip_user/send_to_email/{mst_user_id}/{mst_arsip_id}', [
+	'middleware'	=> 'akses_ke_arsip_user',
+	'uses'			=> 'Admin\ArsipUserController@send_to_email',
+	'as'			=> 'arsip_user.send_to_email'
+	]);
+
+Route::post('arsip_user/do_send_to_email', [
+	'middleware'	=> 'hanya_staff',
+	'uses'			=> 'Admin\ArsipUserController@do_send_to_email',
+	'as'			=> 'arsip_user.do_send_to_email'
 	]);
 
 

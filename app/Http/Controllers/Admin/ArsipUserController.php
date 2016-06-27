@@ -1,12 +1,14 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ArsipUser\sendFileArsipToEmailJob;
 use App\Models\Mst\AksesStaff;
 use App\Models\Mst\Arsip;
 use App\Models\Mst\File;
 use App\Models\Mst\Folder;
 use App\Models\Mst\User;
 use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Session\Store as Session;
 use Repo\Contracts\Mst\ArsipRepoInterface;
 
@@ -26,23 +28,34 @@ class ArsipUserController extends Controller{
 
 
 	public function index(){
-		$arsip_user = AksesStaff::whereMstUserStaffId(Auth::user()->id)
-		->with('mst_user', 'mst_arsip')
-		->paginate(10);
+		$arsip_user = AksesStaff::whereMstUserStaffId(Auth::user()->id)->paginate(10);
  		return view($this->base_view.'index', compact('arsip_user'));
 	}
 
-	public function list_arsip($id){
-		$filter = ['userId' => $id];
+	public function send_to_email($mst_user_id, $mst_arsip_id)
+	{
+		$arsip = $this->arsip->find($mst_arsip_id);
+		$vars = compact('arsip');
+		return view($this->base_view.'list_arsip.popup.send_to_email', $vars);
+	}
+
+	public function do_send_to_email(Request $request)
+	{
+		$job = new sendFileArsipToEmailJob($request->email, $request->mst_arsip_id);
+		return $this->dispatch($job);
+	}
+
+	public function list_arsip($mst_user_id){
+		$filter = ['userId' => $mst_user_id];
 		if($this->session->has('pencarian_arsip')){
-			// jika ada session pencarian arsip
 			$search_value = $this->session->get('pencarian_arsip');
 			$add_filter = ['search' => $search_value];		
 			$filter = array_merge($filter, $add_filter);			
 		}
 		$arsip = $this->arsip->all($this->perPage, $filter);
-		$user = User::find($id);		
-		return view($this->base_view.'list_arsip.index', compact('arsip', 'user'));
+		$user = User::find($mst_user_id);		
+		$vars = compact('arsip', 'user');
+		return view($this->base_view.'list_arsip.index', $vars);
 	}
 
 	public function upload_file($id, $mst_arsip_id){
