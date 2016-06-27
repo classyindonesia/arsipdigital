@@ -84,7 +84,7 @@ $('#simpan').attr('disabled', 'disabled');
 		success:function(ok){
 			//window.location.reload();
 			id_berita = ok["id"];
-			window.location.href = '{!! URL::to("berita/edit") !!}/'+id_berita;
+			window.location.href = '{!! URL::to("backend/berita/edit") !!}/'+id_berita;
 			//alert(id_berita);
 		}
 	})
