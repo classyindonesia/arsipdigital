@@ -2,6 +2,7 @@
 
 namespace App\Services\Register;
 
+use App\Models\Sms\Sms;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Repo\Contracts\Mst\FilterDomainRepoInterface;
@@ -15,11 +16,14 @@ class submitRegisterService
 	protected $request;
 	protected $user_registration;
 	protected $filter_domain;
+	protected $sms;
 
 	public function __construct(Request $request, 
 								UserRegistrationRepoInterface $user_registration,
-								FilterDomainRepoInterface $filter_domain
+								FilterDomainRepoInterface $filter_domain,
+								Sms $sms
 			){
+		$this->sms = $sms;
 		$this->filter_domain = $filter_domain;
 		$this->request = $request;
 		$this->user_registration = $user_registration;
@@ -39,8 +43,24 @@ class submitRegisterService
     		return response(['error' => 'domain dari email tidak dapat mendaftar!'], 422);
     	}
 
+    	$this->sendSms($this->request->token, $this->request->no_hp);
+
     	$this->sendEmail($this->request->token);
     	return $this->user_registration->create($this->request->except('_token'));		
+	}
+
+	private function sendSms($token, $no_hp)
+	{
+		$config_sms = setup_variable('notif_sms_registrasi');
+		if($config_sms == 1){
+			$pesan = 'klik link berikut untuk aktivasi : '.url('register/aktivasi/'.$token);
+			$data = [
+				'pesan' => $pesan,
+				'no_hp' => $no_hp,
+				'statusKirim' => 0
+			];
+			$this->sms->create($data);
+		}
 	}
 
 	private function checkDomain($email)

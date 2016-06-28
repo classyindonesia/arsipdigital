@@ -23,6 +23,10 @@ class AppRepositoryServoceProvider extends ServiceProvider
      */
     public function register()
     {
+        
+        $this->app->bind('Repo\Contracts\SetupVariableInterface',
+            'Repo\Eloquent\SetupVariable');        
+
         $this->app->bind('Repo\Contracts\Mst\FilterDomainRepoInterface',
             'Repo\Eloquent\Mst\FilterDomainRepo');
 

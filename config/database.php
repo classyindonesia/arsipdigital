@@ -64,6 +64,21 @@ return [
 			'strict'    => false,
 		],
 
+
+		'sms' => [
+			'driver'    => 'mysql',
+			'host'      => env('DB_SMS_HOST', 'localhost'),
+			'database'  => env('DB_SMS_DATABASE', 'forge'),
+			'username'  => env('DB_SMS_USERNAME', 'forge'),
+			'password'  => env('DB_SMS_PASSWORD', ''),
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'strict'    => false,
+		],
+
+
+
 		'pgsql' => [
 			'driver'   => 'pgsql',
 			'host'     => env('DB_HOST', 'localhost'),

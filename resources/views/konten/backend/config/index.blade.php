@@ -27,6 +27,7 @@
     @include('konten.backend.config.list_config.nama_pencarian')
     @include('konten.backend.config.list_config.show_galery_frontend')
     @include('konten.backend.config.list_config.show_registrasi_frontend')
+    @include('konten.backend.config.list_config.notif_sms_registrasi')
 
 </table>
 

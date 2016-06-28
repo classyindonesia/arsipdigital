@@ -9,7 +9,7 @@
 
 
 
-
+{!! csrf_token() !!}
 
 <div class="container-fluid">
 	<div class="row">

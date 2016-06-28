@@ -36,7 +36,13 @@ class SetupVariableSeeder  extends Seeder {
 			SetupVariable::create(['variable' => 'config_show_register', 'value' => 1]);  
 	 		$this->command->info('config show register page depan telah ditambahkan!');
 		}
-		
+	
+		$v = SetupVariable::whereVariable('notif_sms_registrasi')->first();
+		if(count($v)<=0) {
+			SetupVariable::create(['variable' => 'notif_sms_registrasi', 'value' => 1]);  
+	 		$this->command->info('config notifikasi sms registrasi telah ditambahkan!');
+		}
+
 
 	}
 
