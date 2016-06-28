@@ -53,7 +53,7 @@ class FilterDomainController extends Controller
     {
     	$filter = $this->filter_domain->find($id);
     	$vars = compact('filter');
-    	return view($this->base_view.'edit', $vars);
+    	return view($this->base_view.'popup.edit', $vars);
     }
 
     public function update()
@@ -63,6 +63,11 @@ class FilterDomainController extends Controller
     		'domain'	=> 'required'
     	]);
     	return $this->filter_domain->update($this->request->id, $this->request->except('_token'));    	
+    }
+
+    public function delete()
+    {
+    	return $this->filter_domain->delete($this->request->id);
     }
 
 }

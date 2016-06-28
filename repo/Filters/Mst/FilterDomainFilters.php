@@ -15,6 +15,11 @@ class FilterDomainFilters extends QueryFilters
            		  ->where('nama', 'like', '%'.$value.'%');
     }
 
+    public function domain($domain)
+    {
+    	return $this->builder->where('domain', '=', $domain);
+    }
+
 
     public function order($order = 'desc')
     {

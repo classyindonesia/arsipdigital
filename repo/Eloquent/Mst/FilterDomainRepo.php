@@ -44,7 +44,12 @@ class FilterDomainRepo implements FilterDomainRepoInterface
 	public function delete($id)
 	{
 		$q = $this->find($id);
-		return $q->delete();
+		if(count($q)>0){
+			$q->delete();			
+			return 'data telah terhapus';
+		}else{
+			return 'data tdk ditemukan';
+		}
 	}
 
 
