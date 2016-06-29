@@ -14,7 +14,13 @@ class AlbumGalery extends Eloquent
 	protected $table = 'mst_album_galery';
 	protected $fillable = ['judul', 'keterangan', 'mst_password_media_id'];
 
-
+	public function getMstPasswordMediaIdAttribute()
+	{
+		$val = $this->attributes['mst_password_media_id'];
+		if($val == 0 || $val == null){
+			return 0;
+		}
+	}
  
 	public function mst_galery()
 	{
