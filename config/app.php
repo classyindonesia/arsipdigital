@@ -156,6 +156,7 @@ return [
 		'Maatwebsite\Excel\ExcelServiceProvider',
 		Cviebrock\EloquentSluggable\ServiceProvider::class,
 		Roumen\Feed\FeedServiceProvider::class,
+		Roumen\Sitemap\SitemapServiceProvider::class,
 
 
 	],
