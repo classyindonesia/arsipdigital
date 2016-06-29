@@ -4,9 +4,17 @@
 <h3>Upload Foto Galery</h3>
 <hr>
 
+<div class="form-group">
+  {!! Form::label('mst_album_galery_id', 'Pilih Album : ') !!}
+  {!! Form::select('mst_album_galery_id', Fungsi::get_dropdown($album, 'album galery'), 
+      '', ['class' => 'form-control', 'id' => 'mst_album_galery_id']) !!}
+</div>
 
-{!! Form::select('mst_album_galery_id', Fungsi::get_dropdown($album, 'album galery'), 
-    '', ['class' => 'form-control', 'id' => 'mst_album_galery_id']) !!}
+<div class="form-group">
+  {!! Form::label('is_watermarked', 'Watermark ? ') !!}
+  {!! Form::select('is_watermarked', [1 => 'beri watermark', 0 => 'tanpa watermark'], 0, ['class' => 'form-control', 'id' => 'is_watermarked']) !!}
+</div>
+
 
 
 <div class="fileUpload btn btn-primary">
@@ -106,7 +114,8 @@ $(function () {
 
     }).on('fileuploadsubmit', function (e, data) {
 		  data.formData = {
-		  	mst_album_galery_id : $('#mst_album_galery_id').val(),
+        mst_album_galery_id : $('#mst_album_galery_id').val(),
+        is_watermarked : $('#is_watermarked').val(),
 		  	_token: "{!! csrf_token() !!}"  
 		  }
 	});

@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 class Galery extends Eloquent
 {
 	protected $table = 'mst_galery';
-	protected $fillable = ['nama_file', 'mst_album_galery_id'];
+	protected $fillable = [
+		'nama_file', 'mst_album_galery_id', 'is_watermarked'
+	];
 
 
  
