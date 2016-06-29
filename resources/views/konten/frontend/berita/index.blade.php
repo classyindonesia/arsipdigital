@@ -12,7 +12,7 @@
   @include($base_view.'header_berita')
   <hr>
 
-    @if( session('berita_'.$berita->id) == null && $berita->mst_password_media_id != null)
+    @if( session('berita_'.$berita->id) == null && $berita->mst_password_media_id != 0 || $berita->mst_password_media_id != "")
         @include($base_view.'lock_berita')
     @else
       

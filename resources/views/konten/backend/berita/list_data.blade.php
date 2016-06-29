@@ -17,7 +17,7 @@
 			<td class='text-center'>{{ $no }}</td>
 			<td>
 				{{ $list->judul }}
-				@if($list->mst_password_media_id != null)
+				@if($list->mst_password_media_id != "" || $list->mst_password_media_id != 0)
 					<i class='fa fa-lock text-danger'></i>
 				@endif
 			</td>
