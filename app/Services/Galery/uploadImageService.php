@@ -3,6 +3,7 @@
 namespace App\Services\Galery;
 
 use App\Models\Mst\Galery;
+use App\Services\Galery\applyWatermarkService;
 use Illuminate\Http\Request;
 
 class uploadImageService
@@ -10,9 +11,11 @@ class uploadImageService
 
 	protected $request;
 	private $uploadPath;
+	protected $applyWatermark;
 
-	public function __construct(Request $request)
+	public function __construct(Request $request, applyWatermarkService $applyWatermark)
 	{
+		$this->applyWatermark = $applyWatermark;
 		$assetPath = '/upload/galery/';
 		$this->uploadPath = public_path($assetPath);
 		$this->request = $request;
@@ -33,7 +36,9 @@ class uploadImageService
 				 	$name = $file->getClientOriginalName().' telah tersimpan! ';
 
 				 	if($this->request->is_watermarked == 1){
-				 		$this->applyWatermark($nama_file);
+				 		$pathToRawImgFile = $this->uploadPath.'/'.$nama_file;
+				 		$pathToWatermarkedImgFile = $pathToRawImgFile;
+				 		$this->applyWatermark->handle($pathToRawImgFile, $pathToWatermarkedImgFile);
 				 	}
 
 				 	//create thumbnail
@@ -54,18 +59,6 @@ class uploadImageService
 	 return array(
 	        'files' => $results,
  	    );			
-	}
-
-	private function applyWatermark($nama_file)
-	{
-		$pathToFile = $this->uploadPath.'/'.$nama_file;
-		$imgWatermarkPath = public_path('upload/'.env('NAMA_FILE_WATERMARK'));
-
-		$img = \Image::make($pathToFile);
-		// sisipkan file watermark
-		$img->insert($imgWatermarkPath, env('SETTING_POSISI_WATERMARK'), 10, 10);
-		// simpan file yg telah diberi watermark
-		$img->save($pathToFile);		
 	}
 
 
