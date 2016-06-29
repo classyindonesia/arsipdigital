@@ -74,8 +74,12 @@ class submitRegisterService
 		}else{
 			$jml_domain = $this->filter_domain->all();
 			if(count($jml_domain)>0){
+				//jika ada record, 
+				//maka tdk diijinkan mendaftar dgn domain selain yg ada pada database
 				return 0;
 			}else{
+				//jika tdk ada record sama sekali
+				//maka bs mendaftar domain mana saja
 				return 1;
 			}
 		}
