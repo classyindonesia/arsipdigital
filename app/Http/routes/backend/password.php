@@ -1,5 +1,5 @@
 <?php
-Route::group(['middleware' => ['auth', 'hanya_web'], 'namespace' => 'Admin'], function(){
+Route::group(['middleware' => 'hanya_web', 'namespace' => 'Admin'], function(){
 
 	Route::get('password_media', [
 		'as'	=> 'backend_password.index',

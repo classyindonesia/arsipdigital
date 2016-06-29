@@ -1,5 +1,5 @@
 <?php
-Route::group(['middleware' => ['auth', 'hanya_web']], function()
+Route::group(['middleware' => 'hanya_web'], function()
 {
  
 	Route::get('backend/album_galery', [

@@ -1,7 +1,9 @@
 <?php
 Route::group(['prefix' => 'my_archive', 'namespace' => 'Admin'], function(){
 
+	// start user level only
 	Route::group(['middleware' => 'hanya_user'], function(){
+
 		Route::get('/', [
 				'uses'			=> 'ArsipSayaController@index',
 				'as'			=> 'my_archive.index'
@@ -66,50 +68,59 @@ Route::group(['prefix' => 'my_archive', 'namespace' => 'Admin'], function(){
 		]);		
 
 	});
-
-	Route::group(['middleware' => 'auth'], function(){
-		Route::get('before_download/{id}', [
-			'uses'			=> 'ArsipSayaController@before_download',
-			'as'			=> 'my_archive.before_download'
-		]);
-
-		Route::get('download_file/{id}', [
-			'uses'			=> 'ArsipSayaController@download_file',
-			'as'			=> 'my_archive.download_file'
-		]);
-
-		Route::get('download_file_watermark/{id}', [
-			'uses'			=> 'ArsipSayaController@download_file_watermark',
-			'as'			=> 'my_archive.download_file_watermark'
-		]);
-
-		Route::get('view_file/{id}', [
-			'uses'			=> 'ArsipSayaController@view_file',
-			'as'			=> 'my_archive.view_file'
-		]);
-
-		Route::get('view_file_pdf/{id}', [
-			'uses'			=> 'ArsipSayaController@view_file_pdf',
-			'as'			=> 'my_archive.view_file_pdf'
-		]);
-
-		Route::post('submit_search', [
-			'uses'			=> 'ArsipController@submit_search',
-			'as'			=> 'my_archive.submit_search'
-		]);
-
-		Route::get('files/{mst_arsip_id}', [
-			'uses'			=> 'ArsipSayaController@files',
-			'as'			=> 'my_archive.files'
-		]);
-
-		Route::get('download_all_files/{mst_arsip_id}', [
-			'uses'			=> 'ArsipSayaController@download_all_files',
-			'as'			=> 'my_archive.download_all_files'
-		]);
+	// end user level only
 
 
-	});
+	Route::get('before_download/{id}', [
+		'uses'			=> 'ArsipSayaController@before_download',
+		'as'			=> 'my_archive.before_download'
+	]);
+
+	Route::get('download_file/{id}', [
+		'uses'			=> 'ArsipSayaController@download_file',
+		'as'			=> 'my_archive.download_file'
+	]);
+
+	Route::get('download_file_watermark/{id}', [
+		'uses'			=> 'ArsipSayaController@download_file_watermark',
+		'as'			=> 'my_archive.download_file_watermark'
+	]);
+
+	Route::get('view_file/{id}', [
+		'uses'			=> 'ArsipSayaController@view_file',
+		'as'			=> 'my_archive.view_file'
+	]);
+
+	Route::get('view_file_pdf/{id}', [
+		'uses'			=> 'ArsipSayaController@view_file_pdf',
+		'as'			=> 'my_archive.view_file_pdf'
+	]);
+
+	Route::post('submit_search', [
+		'uses'			=> 'ArsipController@submit_search',
+		'as'			=> 'my_archive.submit_search'
+	]);
+
+	Route::get('files/{mst_arsip_id}', [
+		'uses'			=> 'ArsipSayaController@files',
+		'as'			=> 'my_archive.files'
+	]);
+
+	Route::get('download_all_files/{mst_arsip_id}', [
+		'uses'			=> 'ArsipSayaController@download_all_files',
+		'as'			=> 'my_archive.download_all_files'
+	]);
+ 
+	Route::get('send_file_to_email/{mst_file_id}', [
+		'uses'			=> 'ArsipSayaController@send_file_to_email',
+		'as'			=> 'my_archive.send_file_to_email'
+	]);
+
+	Route::post('do_send_file_to_email', [
+		'uses'			=> 'ArsipSayaController@do_send_file_to_email',
+		'as'			=> 'my_archive.do_send_file_to_email'
+	]);	
+
 
 
 });

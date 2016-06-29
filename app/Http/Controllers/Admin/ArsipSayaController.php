@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateArsip;
 use App\Http\Requests\UpdateArsip;
 use App\Jobs\ArsipUser\sendFileArsipToEmailJob;
+use App\Jobs\ArsipUser\sendSingleFileArsipToEmail;
 use App\Models\Mst\Arsip;
 use App\Models\Mst\File;
 use App\Models\Mst\Folder;
@@ -16,15 +17,21 @@ use Auth, Fungsi;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store as Session;
 use Repo\Contracts\Mst\ArsipRepoInterface;
+use Repo\Contracts\Mst\FileRepoInterface;
 
 
 class ArsipSayaController extends Controller {
 
 	private $perPage = 10;
 	protected $arsip;
+	protected $file;
 	private $base_view = 'konten.backend.arsip_saya.';
  
-	public function __construct(Session $session, ArsipRepoInterface $arsip){
+	public function __construct(Session $session, 
+								ArsipRepoInterface $arsip,
+								FileRepoInterface $file
+	){
+		$this->file = $file;
 		$this->arsip = $arsip;
 		$this->session = $session;
 		view()->share('my_archive', true);
@@ -213,13 +220,27 @@ class ArsipSayaController extends Controller {
 			return 'ukuran file melebihi batas maksimal : '.\Fungsi::size($max_size);
 		}
 
-		return view($this->base_view.'popup.send_to_email', compact('arsip'));
+		return view($this->base_view.'popup.send_arsip_to_email', compact('arsip'));
 	}
 
 	public function do_send_to_email(Request $request)
 	{
 		$job = new sendFileArsipToEmailJob($request->email, $request->mst_arsip_id);
 		return $this->dispatch($job);		
+	}
+
+	public function send_file_to_email($mst_file_id)
+	{
+		$file = $this->file->find($mst_file_id);
+		$vars = compact('file');
+		return view($this->base_view.'popup.send_file_to_email', $vars);
+	}
+
+	public function do_send_file_to_email(Request $request)
+	{
+		$this->validate($request, ['email' => 'required|email']);
+		$job = new sendSingleFileArsipToEmail($request->email, $request->mst_file_id); 
+		return $this->dispatch($job);
 	}
 
 

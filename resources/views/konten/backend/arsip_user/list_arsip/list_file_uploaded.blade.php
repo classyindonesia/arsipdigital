@@ -16,6 +16,8 @@
 			<td>{{ $list->nama_file_asli }}</td>
 			<td align='center'>{{ Fungsi::size($list->size) }}</td>
 			<td class='text-center'>
+				@include('konten.backend.arsip_saya.action_file.send_file_to_email')
+				||
 				@include('konten.backend.arsip_saya.action_file.download_file')
 			</td>
 		</tr>

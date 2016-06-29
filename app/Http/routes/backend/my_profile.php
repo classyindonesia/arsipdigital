@@ -1,6 +1,6 @@
 <?php
-$group = ['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'my_profile'];
-Route::group($group, function(){
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'my_profile'], function(){
 
 	Route::get('/', [
 		'uses'			=> 'MyProfileController@index',

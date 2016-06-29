@@ -37,7 +37,9 @@ $(function () {
 				
 			</td>
 			<td align='center'>{{ Fungsi::size($list->size) }}</td>
-			<td class='text-center'>@include('konten.backend.arsip_saya.action_file')</td>
+			<td class='text-center'>
+				@include('konten.backend.arsip_saya.action_file')
+			</td>
 		</tr>
 		<?php $no++; ?>
 @endforeach

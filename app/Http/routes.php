@@ -8,7 +8,7 @@ Route::get('/', [
 ]);
 
 
- Route::group(['prefix' => 'backend'], function(){
+ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function(){
 
 	require app_path('Http/routes/backend/admin_home.php');
 	require app_path('Http/routes/backend/admin_users.php');

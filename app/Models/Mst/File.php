@@ -5,8 +5,11 @@ namespace App\Models\Mst;
 use App\Models\Mst\Arsip;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Intervention\Image\Facades\Image; 
+use App\MyPackages\QueryFilters\Filterable;
 
-class File extends Eloquent {
+class File extends Eloquent 
+{
+	use Filterable;
 
 	protected $fillable = ['nama_file_asli', 'nama_file_tersimpan', 
 					'mst_arsip_id', 'mst_user_id', 'size'];

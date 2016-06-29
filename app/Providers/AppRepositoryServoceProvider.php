@@ -30,6 +30,9 @@ class AppRepositoryServoceProvider extends ServiceProvider
         $this->app->bind('Repo\Contracts\Mst\FilterDomainRepoInterface',
             'Repo\Eloquent\Mst\FilterDomainRepo');
 
+        $this->app->bind('Repo\Contracts\Mst\FileRepoInterface',
+            'Repo\Eloquent\Mst\FileRepo');
+
 
         $this->app->bind('Repo\Contracts\Mst\AlbumGaleryRepoInterface',
             'Repo\Eloquent\Mst\AlbumGaleryRepo');
