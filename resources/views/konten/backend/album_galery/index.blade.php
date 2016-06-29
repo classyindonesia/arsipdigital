@@ -23,7 +23,7 @@
 			<td>{!! count($list->mst_galery) !!}</td>
 			<td>{!! $list->keterangan !!}</td>
 			<td class="text-center">
-				@if($list->mst_password_media_id != null)
+				@if($list->mst_password_media_id != null $list->mst_password_media_id != 0 )
 					<i class='fa fa-lock text-danger'></i>
 				@else
 					<i class='fa fa-check text-success'></i>
