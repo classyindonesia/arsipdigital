@@ -1,7 +1,6 @@
 /vendor
 /node_modules
 .env
-/public/upload/arsip/
 /public/upload/avatars/*
 /public/upload/logo_watermark/*
 /public/favicon.ico
