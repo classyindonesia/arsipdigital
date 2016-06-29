@@ -18,7 +18,7 @@ class AlbumGalery extends Eloquent
 	{
 		$val = $this->attributes['mst_password_media_id'];
 		if($val == 0 || $val == null){
-			return 0;
+			return null;
 		}
 	}
  
