@@ -39,6 +39,8 @@ class Berita extends Eloquent
 		$val = $this->attributes['mst_password_media_id'];
 		if($val == null || $val == 0){
 			return null;
+		}else{
+			return $val;
 		}
 	}
 
