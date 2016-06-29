@@ -20,7 +20,7 @@ class PasswordMediaRepo implements PasswordMediaRepoInterface
 
     public function getAllDropdown()
     {
-        $data = ['' => '-pilih password-'];
+        $data = ['' => '-tanpa password-'];
         foreach ($this->all() as $list) {
             $data[$list->id] = $list->nama;
         }

@@ -72,8 +72,12 @@ class submitRegisterService
 			// ada
 			return 1;
 		}else{
-			// tdk ada
-			return 0;
+			$jml_domain = $this->filter_domain->all();
+			if(count($jml_domain)>0){
+				return 0;
+			}else{
+				return 1;
+			}
 		}
 	}
 
