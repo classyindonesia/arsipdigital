@@ -56,6 +56,7 @@ class AlbumGaleryController extends Controller {
 	public function update(Request $request){
 		$a = AlbumGalery::findOrFail($request->id);
 		$a->judul = $request->judul;
+		$a->mst_password_media_id = $request->mst_password_media_id;
 		$a->keterangan = $request->keterangan;
 		$a->save();
 		return 'ok';
