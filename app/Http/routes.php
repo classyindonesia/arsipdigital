@@ -27,15 +27,18 @@ Route::get('/', [
 	require app_path('Http/routes/backend/admin_email.php');
 	require app_path('Http/routes/backend/admin_config.php');
 	require app_path('Http/routes/backend/admin_filter_domain.php');
-
-	/* level web */
+	
+/* level web */
+Route::group(['middleware' => 'hanya_web', 'namespace' => 'Admin'], function()
+{	
 	require app_path('Http/routes/backend/admin_weblink.php');
 	require app_path('Http/routes/backend/admin_foto_slide.php');
 	require app_path('Http/routes/backend/galery.php');
 	require app_path('Http/routes/backend/album_galery.php');
 	require app_path('Http/routes/backend/menu.php');
 	require app_path('Http/routes/backend/password.php');
-
+	require app_path('Http/routes/backend/visitors.php');
+});
 
 	/*hanya utk level staff */
 	require app_path('Http/routes/backend/arsip_user.php');

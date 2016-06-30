@@ -27,6 +27,9 @@ class AppRepositoryServoceProvider extends ServiceProvider
         $this->app->bind('Repo\Contracts\SetupVariableInterface',
             'Repo\Eloquent\SetupVariable');        
 
+        $this->app->bind('Repo\Contracts\Mst\HitsRepoInterface',
+            'Repo\Eloquent\Mst\HitsRepo');
+
         $this->app->bind('Repo\Contracts\Mst\FilterDomainRepoInterface',
             'Repo\Eloquent\Mst\FilterDomainRepo');
 

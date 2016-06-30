@@ -26,6 +26,12 @@
                         </a>
                     </li>                    
 
+                    <li @if(isset($backend_visitors_home)) class="active" @endif>
+                        <a href="{{ URL::route('backend.visitors.index') }}">
+                            <i class='fa fa-bar-chart'></i> Statistik Visitor
+                        </a>
+                    </li>
+
 
                     <li @if(isset($foto_slide_home)) class="active" @endif>
                         <a href="{{ URL::route('foto_slide.index') }}">

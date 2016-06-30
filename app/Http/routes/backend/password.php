@@ -1,6 +1,5 @@
 <?php
-Route::group(['middleware' => 'hanya_web', 'namespace' => 'Admin'], function(){
-
+ 
 	Route::get('password_media', [
 		'as'	=> 'backend_password.index',
 		'uses'	=> 'PasswordMediaController@index'
@@ -34,5 +33,4 @@ Route::group(['middleware' => 'hanya_web', 'namespace' => 'Admin'], function(){
 		'uses'	=> 'PasswordMediaController@delete'
 	]);
 
-
-});
+ 
