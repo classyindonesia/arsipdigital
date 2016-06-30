@@ -18,6 +18,68 @@ class HitsRepo implements HitsRepoInterface
 		$this->model = $model;
 	}
 
+
+	public function countThisDay()
+	{
+		$today = Carbon::now()->toDateString();
+		return $this->model
+					->where('tgl', '=', $today)		
+					->count();		
+	}
+
+	public function countYesterday()
+	{
+		$today = Carbon::yesterday()->toDateString();
+		return $this->model
+					->where('tgl', '=', $today)		
+					->count();		
+	}
+
+	public function countPrevDay()
+	{
+		$today = Carbon::yesterday()->subDay(1)->toDateString();
+		return $this->model
+					->where('tgl', '=', $today)		
+					->count();			
+	}
+
+
+	public function countThisMonth()
+	{
+		$fromDate = Carbon::now()->startOfMonth()->toDateString();
+		$tillDate = Carbon::now()->toDateString();
+
+		return $this->model
+					->whereBetween('tgl', [$fromDate, $tillDate])		
+					->count();
+	}
+
+	public function countLastMonth()
+	{
+		// ambil tanggal di hari bulan kemarin
+		$fromDate =  Carbon::parse('Monday last month')->subMonth(1)->toDateString();
+		// ambil tanggal di hari terakhir dalam bulan kemarin
+		$tillDate = Carbon::parse('Monday last month')->subMonth(1)->endOfMonth()->toDateString();
+		return $this->model
+					->whereBetween('tgl', [$fromDate, $tillDate])		
+					->count();
+	}
+
+
+	public function countPrevMonth()
+	{
+		// ambil tanggal di hari minggu kemarin
+		$fromDate =  Carbon::parse('Monday this month')->subMonths(2)->toDateString();
+		// ambil tanggal di hari terakhir dalam minggu kemarin
+		$tillDate = Carbon::parse('Monday this month')->subMonths(2)->endOfMonth()->toDateString();
+		return $this->model
+					->whereBetween('tgl', [$fromDate, $tillDate])		
+					->count();
+	}
+
+
+
+
 	public function countThisWeek()
 	{
 		$fromDate = Carbon::now()->subDay()->startOfWeek()->toDateString();
@@ -30,16 +92,28 @@ class HitsRepo implements HitsRepoInterface
 
 	public function countLastWeek()
 	{
-		// ambil tanggal di hari minggu ini
-		$fromDate = Carbon::now()->subDay()->startOfWeek()->toDateString();
-		$fromDate = $fromDate->previous(Carbon::MONDAY);
-		// ambil tanggal sekarang
-		$tillDate = Carbon::now()->toDateString();
-
+		// ambil tanggal di hari minggu kemarin
+		$fromDate =  Carbon::parse('Monday last week')->toDateString();
+		// ambil tanggal di hari terakhir dalam minggu kemarin
+		$tillDate = Carbon::parse('Monday last week')->endOfWeek()->toDateString();
 		return $this->model
 					->whereBetween('tgl', [$fromDate, $tillDate])		
 					->count();
 	}
+
+
+	public function countPrevWeek()
+	{
+		// ambil tanggal di hari minggu kemarin
+		$fromDate =  Carbon::parse('Monday this week')->subWeeks(2)->toDateString();
+		// ambil tanggal di hari terakhir dalam minggu kemarin
+		$tillDate = Carbon::parse('Monday this week')->subWeeks(2)->endOfWeek()->toDateString();
+		return $this->model
+					->whereBetween('tgl', [$fromDate, $tillDate])		
+					->count();
+	}
+
+
 
 
 	/* standart */

@@ -5,7 +5,15 @@ namespace Repo\Contracts\Mst;
 interface HitsRepoInterface
 {
 
+	public function countThisDay();
+
+	public function countYesterday();
+
 	public function countThisWeek();
+
+	public function countLastWeek();
+
+	public function countPrevWeek();
 
 	public function all($perPage = null, array $filter = []);
 
