@@ -18,7 +18,7 @@ class Berita extends Eloquent
 
 	protected $fillable = ['judul', 'slug', 'artikel',
 					'is_published', 'komentar', 'mst_user_id',
-					'mst_password_media_id'
+					'mst_password_media_id', 'description', 'keyword'
 		];
 	protected $table = 'mst_berita';
 	protected $appends = [

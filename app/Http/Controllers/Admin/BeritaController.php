@@ -66,6 +66,8 @@ class BeritaController extends Controller
 			'artikel'	=> $request->artikel,
 			'is_published'	=> $request->is_published,
 			'komentar'		=> $request->komentar,
+			'description'	=> $request->description,
+			'keyword'		=> $request->keyword,
 			'mst_user_id'	=> Auth::user()->id
 		];
 		$insert = Berita::create($data);
@@ -80,6 +82,8 @@ class BeritaController extends Controller
 		$b->artikel 		= $request->artikel;
 		$b->is_published 	= $request->is_published;
 		$b->komentar		= $request->komentar;
+		$b->description		= $request->description;
+		$b->keyword			= $request->keyword;
 		$b->save();
 
 		return $request->all();		

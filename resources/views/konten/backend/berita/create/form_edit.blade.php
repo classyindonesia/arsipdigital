@@ -14,6 +14,25 @@
 
 <hr> 
 
+<div class="row">
+	<div class="col-md-6">
+		
+		<div class="form-group">
+			{!! Form::label('keyword', 'Keyword : ') !!}
+			{!! Form::text('keyword', $berita->keyword, ['id' => 'keyword', 'class' => 'form-control', 'placeholder' => 'keyword seo']) !!}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			{!! Form::label('description', 'Description : ') !!}
+			{!! Form::textarea('description', $berita->description, ['id' => 'description', 'class' => 'form-control', 'placeholder' => 'Description seo', 'style' => 'height:80px']) !!}
+		</div>
+		
+	</div>
+</div>
+
+<hr> 
+
  
 <div class="row">
 	<div class="col-md-3">
@@ -67,6 +86,8 @@ form_data ={
 	id 				: {{ $berita->id }},
 	judul 			: judul,
 	artikel 		: artikel,
+	keyword 		: $('#keyword').val(),
+	description 	: $('#description').val(),
 	komentar 		: komentar,
 	is_published	: is_published,
  	_token 			: '{!! csrf_token() !!}'
