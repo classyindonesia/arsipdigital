@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Mst\AlbumGalery;
 use App\Models\Mst\Galery;
+use App\Services\Galery\deleteImageService;
 use App\Services\Galery\uploadImageService;
 use Illuminate\Http\Request;
 
