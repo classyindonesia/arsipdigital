@@ -30,4 +30,4 @@
   @endforeach
 </div>
 
-{!! $album->render() !!}
+{!! $album->appends(Request::all())->render() !!}

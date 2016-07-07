@@ -18,8 +18,15 @@ class GaleryController extends Controller {
 	}
 
  
-	public function index(){
-		$galery = Galery::with('mst_album_galery')->orderBy('id', 'desc')->paginate(6);
+	public function index(Request $request){
+		$search = $request->get('search');
+		if($search){
+			$galery = Galery::whereHas('mst_album_galery', function($q) use ($search){
+				$q->where('judul', 'like', '%'.$search.'%');
+			})->orderBy('id', 'desc')->paginate(6);
+		}else{
+			$galery = Galery::with('mst_album_galery')->orderBy('id', 'desc')->paginate(6);
+		}
 		return view($this->base_view.'index', compact('galery'));
 	}
 

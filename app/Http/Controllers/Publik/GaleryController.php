@@ -19,10 +19,20 @@ class GaleryController extends Controller {
 	}
 
 
-	public function index(){
-		$album = AlbumGalery::with(['mst_galery' => function($query){
-			$query->orderBy('id','desc')->get();
-		}])->paginate(6);
+	public function index(Request $request){
+		$search = $request->get('search');
+		if($search){
+			$album = AlbumGalery::where('judul', 'like', '%'.$search.'%')
+			->with(['mst_galery' => function($query){
+				$query->orderBy('id','desc')->get();
+			}])->paginate(6);
+		}else{
+			$album = AlbumGalery::with(['mst_galery' => function($query){
+				$query->orderBy('id','desc')->get();
+			}])->paginate(6);			
+		}
+
+
 		return view($this->base_view.'index', compact('album'));
 	}
 

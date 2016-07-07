@@ -14,6 +14,8 @@
 
 @section('main_konten') 
 
+	@include($base_view.'komponen.form_search')
+
 	@include($base_view.'list_data')
 
 

@@ -17,6 +17,6 @@
 
 @endforeach
 
-{!! $galery->render() !!}
+{!! $galery->appends(Request::all())->render() !!}
 
  
