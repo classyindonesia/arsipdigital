@@ -10,6 +10,7 @@ use App\Models\Mst\GambarBerita;
 use App\Models\Mst\LampiranBerita;
 use App\Models\Mst\Vidio;
 use App\Services\Berita\doUploadGambarBeritaService;
+use App\Services\Berita\uploadVidioBeritaService;
 use Auth, Input, Session, Fungsi;
 use Illuminate\Session\Store as getSession;
 use Repo\Contracts\Mst\BeritaRepoInterface;

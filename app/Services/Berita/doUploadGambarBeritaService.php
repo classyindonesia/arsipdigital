@@ -4,6 +4,7 @@ namespace App\Services\Berita;
 
 use App\Helpers\Fungsi;
 use App\Models\Mst\GambarBerita;
+use Illuminate\Support\Facades\Auth;
 
 class doUploadGambarBeritaService
 {
