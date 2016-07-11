@@ -3,6 +3,7 @@
 namespace App\Models\Mst;
 
 use App\Models\Mst\AksesStaff;
+use App\Models\Mst\Arsip;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
 use App\Models\Ref\UserLevel;
@@ -74,6 +75,11 @@ class User extends Model implements AuthenticatableContract,
 	public function staff_user()
 	{
 		return $this->belongsToMany(User::class, 'mst_akses_staff', 'mst_user_staff_id', 'mst_user_id');
+	}
+
+	public function mst_arsip()
+	{
+		return $this->hasMany(Arsip::class, 'mst_user_id');
 	}
 
 

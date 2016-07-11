@@ -2,12 +2,12 @@
 
 namespace Repo\Eloquent\Mst;
 
-use App\Models\Mst\Berita as Model;
+use App\Models\Mst\LampiranBerita as Model;
 use Illuminate\Http\Request;
-use Repo\Contracts\Mst\BeritaRepoInterface;
-use Repo\Filters\Mst\BeritaFilters;
+use Repo\Contracts\Mst\LampiranBeritaRepoInterface;
+use Repo\Filters\Mst\LampiranBeritaFilters;
 
-class BeritaRepo implements BeritaRepoInterface
+class LampiranBeritaRepo implements LampiranBeritaRepoInterface
 {
 
 	protected $model;
@@ -50,7 +50,7 @@ class BeritaRepo implements BeritaRepoInterface
 	public function count(array $filter = [])
 	{
 		$filter = new Request($filter);
-		$filter = new BeritaFilters($filter);	
+		$filter = new LampiranBeritaFilters($filter);	
 		$q =  $this->model
 				   ->filter($filter)
 				   ->count();
@@ -61,7 +61,7 @@ class BeritaRepo implements BeritaRepoInterface
 	public function filter_data(array $data = [], $perPage = null)
 	{
 		$data = new Request($data);
-		$data = new BeritaFilters($data);
+		$data = new LampiranBeritaFilters($data);
 		if($perPage == null){
 			$q =  $this->model
 					   ->filter($data)

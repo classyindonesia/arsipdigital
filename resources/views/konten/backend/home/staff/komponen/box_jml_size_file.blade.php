@@ -1,16 +1,16 @@
-<div class="small-box bg-olive">
+<div class="small-box bg-red">
     <div class="inner">
         <h3>
-            {{ $jml_arsip }}
+            {{ Fungsi::size($size_file) }}
         </h3>
         <p>
-            Jml Arsip
+            File Size
         </p>
     </div>
     <div class="icon">
-       <i class='fa fa-archive'></i>
+       <i class='fa fa-file'></i>
     </div>
-    <a href="{!! route('arsip_user.index') !!}" class="small-box-footer">
+    <a href="#" class="small-box-footer">
         More info <i class="fa fa-arrow-circle-right"></i>
     </a>
 </div>

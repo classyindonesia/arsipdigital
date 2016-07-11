@@ -15,6 +15,8 @@ interface BeritaRepoInterface
 
 	public function delete($id);
 
+	public function count(array $filter = []);
+
 	public function filter_data(array $data = [], $perPage = null);
 
 

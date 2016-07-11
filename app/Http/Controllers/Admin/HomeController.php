@@ -1,24 +1,33 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-/* models */
-use App\Models\Mst\User;
-use App\Models\Mst\Rak;
-use App\Models\Mst\Folder;
-use App\Models\Mst\Arsip;
-use App\Models\Mst\File;
 use App\Models\Mst\AksesStaff;
+use App\Models\Mst\Arsip;
 use App\Models\Mst\Berita;
+use App\Models\Mst\File;
+use App\Models\Mst\Folder;
 use App\Models\Mst\LampiranBerita;
-
-/* facade */
+use App\Models\Mst\Rak;
+use App\Models\Mst\User;
 use Auth;
+use Repo\Contracts\Mst\AlbumGaleryRepoInterface;
+use Repo\Contracts\Mst\BeritaRepoInterface;
+use Repo\Contracts\Mst\LampiranBeritaRepoInterface;
 
 class HomeController extends Controller {
  
-	public function __construct(){
+ 	protected $berita;
+ 	protected $lampiran_berita;
+ 	protected $album_galery;
+
+	public function __construct(BeritaRepoInterface $berita, 
+								LampiranBeritaRepoInterface $lampiran_berita,
+								AlbumGaleryRepoInterface $album_galery
+		){
+		$this->album_galery = $album_galery;
 		view()->share('dashboard_home', true);
+		$this->berita = $berita;
+		$this->lampiran_berita = $lampiran_berita;
 	}
 
 
@@ -32,6 +41,9 @@ class HomeController extends Controller {
 			}elseif(Auth::user()->ref_user_level_id == 2){
 				//level staff
 				return $this->level_staff();	
+			}elseif(Auth::user()->ref_user_level_id == 4){
+				// level web
+				return $this->level_web();
 			}else{
 				//level user
 				return $this->level_user();			
@@ -39,6 +51,19 @@ class HomeController extends Controller {
 		}else{
 			return $this->public_access();
 		}
+	}
+
+	public function level_web()
+	{
+		$jml_berita = $this->berita->count();
+		$jml_lampiran_berita = $this->lampiran_berita->count();
+		$jml_album_galery = $this->album_galery->count();
+		$berita = $this->berita->all(10);
+    	$vars = compact('jml_berita', 'jml_lampiran_berita', 
+    					'jml_album_galery', 'berita'
+    	);
+		$view = 'konten.backend.home.web.index';	
+		return view($view, $vars);			
 	}
 
 
@@ -67,10 +92,13 @@ class HomeController extends Controller {
 		$jml_arsip = $this->jml_arsip_staff($user_id);
 		$jml_file = $this->jml_file_staff($user_id);
 		$jml_berita = Berita::count();
+		$size_file = $this->getFileSize($user_id);
 		$jml_user = AksesStaff::whereMstUserStaffId($user_id)->count();
 		$berita_terakhir = Berita::take(5)->orderBy('id', 'DESC')->get();
 		$view = 'konten.backend.home.staff.index';	
-		return view($view, compact('jml_arsip', 'jml_file', 'jml_user', 'jml_berita', 'berita_terakhir'));			
+		$vars = compact('jml_arsip', 'jml_file', 'jml_user', 
+						'jml_berita', 'berita_terakhir', 'size_file');
+		return view($view, $vars);			
 	}
 
 	private function level_user(){
@@ -96,15 +124,27 @@ class HomeController extends Controller {
 	*/
 	private function jml_arsip_staff($mst_user_id){
 		$jml_arsip = 0;
-		$as = AksesStaff::where('mst_user_staff_id', '=', $mst_user_id)->get();
-		foreach($as as $list){
-			$arsip_per_user = Arsip::whereMstUserId($list->mst_user_id)->get();
-			foreach($arsip_per_user as $list2){
-				$jml_arsip = $jml_arsip+1;
-			}
+		$q =  AksesStaff::where('mst_user_staff_id', '=', $mst_user_id)
+						 ->get();
+		foreach($q as $list)
+		{
+			$jml_arsip = $jml_arsip + $list->jml_arsip_per_staff;
 		}
 		return $jml_arsip;
 	}
+
+	private function getFileSize($mst_user_id)
+	{
+		$size = 0;
+		$q =  AksesStaff::where('mst_user_staff_id', '=', $mst_user_id)
+						 ->get();
+		foreach($q as $list)
+		{
+			$size = $size + $list->file_size_per_staff;
+		}
+		return $size;		
+	}
+
 
 	/**
 	* menghitung jml file yg ada di user staff(berdasarkan akses yg dimiliki)

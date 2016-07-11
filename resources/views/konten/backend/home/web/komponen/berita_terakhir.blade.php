@@ -1,4 +1,4 @@
-@foreach($berita_terakhir as $list)
+@foreach($berita as $list)
 
 	<b> <i class='fa fa-angle-right'></i> {{ $list->judul }}</b>
 	<br>

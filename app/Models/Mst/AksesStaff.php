@@ -12,12 +12,40 @@ class AksesStaff extends Eloquent
 
 	protected $fillable = ['mst_user_id', 'mst_user_staff_id'];
 	protected $table = 'mst_akses_staff';
+
+	protected $appends = ['jml_arsip_per_staff', 'file_size_per_staff'];
+
+
+	public function getFileSizePerStaffAttribute()
+	{
+		$size = 0;
+		$q =  $this->mst_user->mst_arsip;
+		foreach($q as $list)
+		{
+			foreach($list->mst_file as $list_file)
+			{
+				$size = $size + $list_file->size;				
+			}
+		}
+		return $size;
+	}
+
+
+	public function getJmlArsipPerStaffAttribute()
+	{
+		return $this->mst_user->mst_arsip->count();
+	}
+
  
 	public function mst_arsip()
 	{
 		return $this->hasMany(Arsip::class, 'mst_user_id', 'mst_user_id');
 	} 
 
+	public function mst_user_staff()
+	{
+		return $this->hasMany(self::class, 'mst_user_staff_id');
+	}
 
 	public function mst_user()
 	{

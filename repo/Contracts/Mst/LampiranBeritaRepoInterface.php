@@ -2,7 +2,7 @@
 
 namespace Repo\Contracts\Mst;
 
-interface AlbumGaleryRepoInterface
+interface LampiranBeritaRepoInterface 
 {
 
 	public function all($perPage = null, array $filter = []);
@@ -18,7 +18,6 @@ interface AlbumGaleryRepoInterface
 	public function count(array $filter = []);
 
 	public function filter_data(array $data = [], $perPage = null);
-
 
 
 }

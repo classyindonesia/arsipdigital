@@ -10,7 +10,7 @@
     <div class="icon">
        <i class='fa fa-users'></i>
     </div>
-    <a href="#" class="small-box-footer">
+    <a href="{!! route('backend_staff_user.index') !!}" class="small-box-footer">
         More info <i class="fa fa-arrow-circle-right"></i>
     </a>
 </div>

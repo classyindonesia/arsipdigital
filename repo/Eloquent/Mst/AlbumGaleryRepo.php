@@ -47,6 +47,16 @@ class AlbumGaleryRepo implements AlbumGaleryRepoInterface
 		return $q->delete();
 	}
 
+	public function count(array $filter = [])
+	{
+		$filter = new Request($filter);
+		$filter = new AlbumGaleryFilters($filter);
+		$q =  $this->model
+				   ->filter($filter)
+				   ->count();		
+		return $q;		
+	}
+
 
 	public function filter_data(array $data = [], $perPage = null)
 	{
