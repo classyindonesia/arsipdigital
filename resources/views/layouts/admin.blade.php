@@ -7,7 +7,7 @@
     <title>@yield('title', env('NAMA_APP'))</title>
 
  
-<link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
   
 
 
